@@ -14,15 +14,13 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  jni:
-    path: ../../../jni
+  jni: ^0.14.1
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^3.0.2
-  jnigen:
-    path: ../../
+  jnigen: ^0.14.1
 
 flutter:
   plugin:
