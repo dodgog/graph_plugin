@@ -23,7 +23,7 @@ if (flutterVersionName == null) {
 }
 
 android {
-    namespace "com.example.kotlin_plugin.example"
+    namespace "com.example.graph_plugin.example"
 
     compileSdk flutter.compileSdkVersion
     ndkVersion flutter.ndkVersion
@@ -42,7 +42,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.example.kotlin_plugin.example"
+        applicationId "com.example.graph_plugin.example"
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-gradle-build-configuration.
         minSdkVersion flutter.minSdkVersion

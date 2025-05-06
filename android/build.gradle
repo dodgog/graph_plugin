@@ -1,6 +1,6 @@
 // The Android Gradle Plugin builds the native code with the Android NDK.
 
-group 'com.example.kotlin_plugin'
+group 'com.example.graph_plugin'
 version '1.0'
 
 rootProject.allprojects {
@@ -14,7 +14,7 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 
 android {
-    namespace 'com.example.kotlin_plugin'
+    namespace 'com.example.graph_plugin'
 
     compileSdk flutter.compileSdkVersion
     ndkVersion flutter.ndkVersion

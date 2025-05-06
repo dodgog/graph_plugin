@@ -1,3 +1,3 @@
-library kotlin_plugin;
+library graph_plugin;
 
 export 'kotlin_bindings.dart';

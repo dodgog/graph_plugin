@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:kotlin_plugin/kotlin_plugin.dart';
+import 'package:graph_plugin/graph_plugin.dart';
 
 void main() {
   runApp(const MyApp());

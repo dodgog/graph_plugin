@@ -12,11 +12,10 @@ dependencies:
   flutter:
     sdk: flutter
 
-  kotlin_plugin:
+  graph_plugin:
     path: ../
+  jni: ^0.14.1
   
-  jni:
-    path: ../../../../jni
 
 dev_dependencies:
   flutter_test:
