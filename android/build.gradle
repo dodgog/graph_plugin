@@ -3,6 +3,22 @@
 group 'com.example.graph_plugin'
 version '1.0'
 
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+
+    dependencies {
+        // Android Gradle Plugin
+        classpath "com.android.tools.build:gradle:8.6.0"
+
+        // Kotlin Gradle Plugin  (version should match what your
+        // example app uses, e.g. 1.8.22 or 1.9.24)
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.9.24"
+    }
+}
+
 rootProject.allprojects {
     repositories {
         google()
@@ -16,8 +32,16 @@ apply plugin: 'kotlin-android'
 android {
     namespace 'com.example.graph_plugin'
 
-    compileSdk flutter.compileSdkVersion
-    ndkVersion flutter.ndkVersion
+    // work-around!
+    // hard-coded to be the same as the flutter's sdk down in example
+    compileSdk = 35
+
+    // work-around!
+    // Use the NDK version
+    // declared in /android/app/build.gradle file of the Flutter project.
+    // Replace it with a version number if this plugin requires a specific NDK version.
+    // (e.g. ndkVersion "23.1.7779620")
+    ndkVersion = android.ndkVersion
 
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
