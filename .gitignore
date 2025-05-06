@@ -1,0 +1,80 @@
+# General
+*.DS_Store
+*.vscode/
+*.iml
+*.ipr
+*.iws
+/build/
+/.gradle/
+/.dart_tool/
+**/.metadata
+/.packages
+/coverage/
+*.log
+
+# Flutter
+.flutter-plugins
+.flutter-plugins-dependencies
+flutter_build.yaml
+app_framework_info # Created by Flutter tools
+
+# Android
+*.apk
+*.aab
+*.ap_
+*.dex
+*.class
+*.jar
+*.keystore
+*.jks
+/android/captures/
+/android/**/build/
+/android/**/release/
+/android/**/profile/
+/android/**/debug/
+/android/app/src/main/assets/flutter_assets/
+/android/gradlew
+/android/gradlew.bat
+/android/local.properties
+/android/.gradle
+/android/app/google-services.json # If you use Firebase, keep this line if you don't want to commit your config
+
+# CMake/NDK build artifacts
+**/.cxx/
+
+# Example app specific (if it has its own build artifacts not covered above)
+/example/build/
+/example/.dart_tool/
+/example/.packages
+/example/.flutter-plugins
+/example/.flutter-plugins-dependencies
+/example/android/local.properties
+/example/android/.gradle/
+/example/android/**/build/
+
+# If you use VS Code
+.vscode/
+
+# If you use Android Studio/IntelliJ
+*.iml
+*.ipr
+*.iws
+**/.idea/caches/
+.idea/libraries/
+.idea/workspace.xml # Add this if you don't want to share workspace specific settings
+.idea/tasks.xml
+.idea/usage.statistics.xml
+.idea/shelf/
+**/.idea/gradle.xml
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Linux
+*~ 
