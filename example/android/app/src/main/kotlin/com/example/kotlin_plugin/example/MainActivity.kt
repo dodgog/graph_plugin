@@ -1,4 +1,4 @@
-package com.example.kotlin_plugin.example
+package com.example.graph_plugin.example
 
 import io.flutter.embedding.android.FlutterActivity
 
