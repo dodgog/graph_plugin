@@ -1,6 +1,6 @@
 // The Android Gradle Plugin builds the native code with the Android NDK.
 
-group 'com.example.graphplugin'
+group 'com.daylightcomputer.graphplugin'
 version '1.0'
 
 def localProperties = new Properties()
@@ -33,7 +33,7 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 
 android {
-    namespace 'com.example.graphplugin'
+    namespace 'com.daylightcomputer.graphplugin'
 
     compileSdk flutter.compileSdkVersion
     ndkVersion flutter.ndkVersion
@@ -60,7 +60,7 @@ android {
 sqldelight {
     databases {
         create("Database") {
-            packageName.set("com.example.graphplugin.dbdb")
+            packageName.set("com.daylightcomputer.graphplugin.dbdb")
         }
     }
 }
