@@ -41,6 +41,7 @@ android {
 
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
+        main.java.srcDirs += '../example/build/graphplugin/generated/sqldelight/code/Database/release/com/daylightcomputer/graphplugin/dbdb'
     }
 
     compileOptions {
@@ -71,7 +72,12 @@ dependencies {
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3"
     implementation "androidx.annotation:annotation:1.9.1"
     implementation "app.cash.sqldelight:android-driver:2.0.2"
+    testImplementation("androidx.test:core:1.6.1")
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.1")
     testImplementation("app.cash.sqldelight:sqlite-driver:2.0.2")
+    testImplementation 'org.testng:testng:6.9.6'
+    testImplementation("com.willowtreeapps.assertk:assertk:0.28.1")
+
     // Override somehow for tests
     //testImplementation('org.xerial:sqlite-jdbc') {
     //    // Override the version of sqlite used by sqlite-driver to match Android API 23
