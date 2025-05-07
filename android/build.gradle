@@ -44,6 +44,7 @@ rootProject.allprojects {
     }
 }
 
+apply plugin: 'app.cash.sqldelight'
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 
