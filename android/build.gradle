@@ -71,4 +71,10 @@ dependencies {
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3"
     implementation "androidx.annotation:annotation:1.9.1"
     implementation "app.cash.sqldelight:android-driver:2.0.2"
+    testImplementation("app.cash.sqldelight:sqlite-driver:2.0.2")
+    // Override somehow for tests
+    //testImplementation('org.xerial:sqlite-jdbc') {
+    //    // Override the version of sqlite used by sqlite-driver to match Android API 23
+    //    version { strictly('3.8.10.2') }
+    //  }
 }
