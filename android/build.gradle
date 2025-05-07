@@ -21,22 +21,6 @@ if (flutterVersionName == null) {
     flutterVersionName = '1.0'
 }
 
-buildscript {
-    repositories {
-        google()
-        mavenCentral()
-    }
-
-    dependencies {
-        // Android Gradle Plugin
-        classpath "com.android.tools.build:gradle:8.6.0"
-
-        // Kotlin Gradle Plugin  (version should match what your
-        // example app uses, e.g. 1.8.22 or 1.9.24)
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.9.24"
-    }
-}
-
 rootProject.allprojects {
     repositories {
         google()
@@ -86,4 +70,5 @@ dependencies {
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3"
     implementation "androidx.annotation:annotation:1.9.1"
+    implementation "app.cash.sqldelight:android-driver:2.0.2"
 }

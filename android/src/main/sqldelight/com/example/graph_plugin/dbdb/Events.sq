@@ -1,0 +1,35 @@
+CREATE TABLE events (
+    id TEXT NOT NULL PRIMARY KEY,
+    entity_id TEXT NOT NULL, -- doesn't always reference an existing node, so references is omitted
+    attribute TEXT NOT NULL,
+    value TEXT NOT NULL,
+    timestamp TEXT NOT NULL
+);
+
+--CREATE INDEX event_entity_id_index ON events(entity_id);
+
+getEvents:
+SELECT * FROM events;
+
+insertEvent:
+INSERT INTO events (
+    id,
+    entity_id,
+    attribute,
+    value,
+    timestamp
+)
+VALUES (
+    ?,
+    ?,
+    ?,
+    ?,
+    ?
+);
+--ON CONFLICT (id) DO NOTHING;
+
+getEventByEntityId:
+SELECT * FROM events WHERE entity_id = ?;
+
+resetDatabase:
+DELETE FROM events;
