@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:graph_plugin/graph_plugin.dart';
+import 'package:graphplugin/graphplugin.dart';
 
 void main() {
   runApp(const MyApp());

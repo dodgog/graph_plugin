@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.graph_plugin.example">
+    package="com.example.graphplugin.example">
    <application
         android:label="example"
         android:name="${applicationName}"

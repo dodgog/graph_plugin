@@ -83,7 +83,7 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-  graph_plugin:
+  graphplugin:
     dependency: "direct main"
     description:
       path: ".."

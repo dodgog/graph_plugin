@@ -1,4 +1,4 @@
-package com.example.graph_plugin.example
+package com.example.graphplugin.example
 
 import io.flutter.embedding.android.FlutterActivity
 

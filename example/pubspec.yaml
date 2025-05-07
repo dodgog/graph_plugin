@@ -12,7 +12,7 @@ dependencies:
   flutter:
     sdk: flutter
 
-  graph_plugin:
+  graphplugin:
     path: ../
   jni: ^0.14.1
   
