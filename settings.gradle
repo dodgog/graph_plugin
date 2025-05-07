@@ -18,8 +18,10 @@ plugins {
 }
 
 /* --- declare native modules ----------------------- */
-include(":pluginAndroid")
-project(":pluginAndroid").projectDir = file("android")
+include(":graph_plugin")
+project(":graph_plugin").projectDir = file("android")
 
 include(":exampleApp")
 project(":exampleApp").projectDir = file("example/android/app")
+
+rootProject.name = 'graph_plugin'
