@@ -1,5 +1,8 @@
 # kotlin_plugin
 
+./gradlew :graphplugin:testDebugUnitTest makes a build folder in the anroid 
+folder and runs the unit tests. ./gradlew tasks lists all the tasks
+
 This example generates bindings for a Kotlin-based library. It showcases the conversion of `suspend fun` in Kotlin to `async` functions in Dart.
 
 The command to regenerate JNI bindings is:

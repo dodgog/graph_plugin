@@ -52,7 +52,7 @@ android {
 
 sqldelight {
     databases {
-        register ("Database") {
+        register("Database") {
             packageName.set("com.daylightcomputer.graphplugin.dbdb")
         }
     }
@@ -70,8 +70,9 @@ dependencies {
     testImplementation("com.willowtreeapps.assertk:assertk:0.28.1")
 
     // Override somehow for tests
-    //testImplementation('org.xerial:sqlite-jdbc') {
-    //    // Override the version of sqlite used by sqlite-driver to match Android API 23
-    //    version { strictly('3.8.10.2') }
-    //  }
+    testImplementation('org.xerial:sqlite-jdbc') {
+        // Override the version of sqlite used by device to match jagar 3.32a
+        // https://developer.android.com/reference/android/database/sqlite/package-summary
+        version { strictly('3.32.3.3') }
+    }
 }
