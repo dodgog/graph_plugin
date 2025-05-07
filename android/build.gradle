@@ -11,16 +11,6 @@ if (localPropertiesFile.exists()) {
     }
 }
 
-def flutterVersionCode = localProperties.getProperty('flutter.versionCode')
-if (flutterVersionCode == null) {
-    flutterVersionCode = '1'
-}
-
-def flutterVersionName = localProperties.getProperty('flutter.versionName')
-if (flutterVersionName == null) {
-    flutterVersionName = '1.0'
-}
-
 rootProject.allprojects {
     repositories {
         google()
@@ -62,14 +52,13 @@ android {
 
 sqldelight {
     databases {
-        create("Database") {
+        register ("Database") {
             packageName.set("com.daylightcomputer.graphplugin.dbdb")
         }
     }
 }
 
 dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3"
     implementation "androidx.annotation:annotation:1.9.1"
