@@ -1,0 +1,18 @@
+CREATE TABLE users (
+  id TEXT NOT NULL PRIMARY KEY,
+  name TEXT
+);
+
+CREATE TABLE clients (
+  id TEXT NOT NULL PRIMARY KEY,
+  user_id TEXT REFERENCES users (id)
+);
+
+createClient:
+INSERT INTO clients (id, user_id) VALUES (:client_id, :user_id);
+
+getUserFromClientId:
+SELECT u.*
+FROM users u
+INNER JOIN clients c ON c.user_id = u.id
+WHERE c.id = :client_id; 

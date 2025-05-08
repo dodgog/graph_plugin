@@ -1,0 +1,38 @@
+CREATE TABLE config (
+   client_id TEXT, -- unique per device
+   -- TODO set this in a smarter way
+   last_server_issued_timestamp TEXT NOT NULL DEFAULT '1970-01-01T00:00:01.000Z-0000-serverId',
+   user_id TEXT REFERENCES users (id),
+   user_token TEXT,
+   hlc_absolute_zero TEXT NOT NULL DEFAULT '1970-01-01T00:00:01.000Z-00001'
+   -- TODO add hlc absolute zero time to use in lookups
+);
+
+getCurrentClient:
+SELECT c.*
+FROM clients c
+INNER JOIN config conf ON conf.client_id = c.id;
+
+initializeConfig:
+INSERT INTO config (client_id, user_id, user_token)
+VALUES (NULL, NULL, NULL);
+
+setClientId:
+UPDATE config
+SET client_id = :new_client_id;
+
+setLastSyncTime:
+UPDATE config
+SET last_server_issued_timestamp = :new_last_sync_time;
+
+getConfig:
+SELECT * FROM config;
+
+setUserId:
+UPDATE config
+SET user_id = :new_user_id;
+
+setUserToken:
+UPDATE config
+SET user_token = :new_user_token;
+

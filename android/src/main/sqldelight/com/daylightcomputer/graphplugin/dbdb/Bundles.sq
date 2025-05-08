@@ -1,0 +1,13 @@
+CREATE TABLE bundles (
+    id TEXT NOT NULL PRIMARY KEY,
+    user_id TEXT NOT NULL REFERENCES users (id),
+    timestamp TEXT NOT NULL,
+    payload TEXT
+);
+
+insertBundle:
+INSERT OR IGNORE INTO bundles (id, user_id, timestamp, payload)
+VALUES(:id, :user_id, :timestamp, :payload);
+
+getAllBundlesIds:
+SELECT id FROM bundles;

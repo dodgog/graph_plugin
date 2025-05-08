@@ -1,13 +1,3 @@
-CREATE TABLE clients (
-  id TEXT NOT NULL PRIMARY KEY,
-  user_id TEXT REFERENCES users (id)
-);
-
-CREATE TABLE users (
-  id TEXT NOT NULL PRIMARY KEY,
-  name TEXT
-);
-
 CREATE TABLE events (
     id TEXT NOT NULL PRIMARY KEY,
     client_id TEXT NOT NULL REFERENCES clients(id),
@@ -21,17 +11,6 @@ CREATE TABLE events (
 );
 
 CREATE INDEX event_client_id_index ON events(client_id);
-
-
-createClient:
-INSERT INTO clients (id, user_id) VALUES (:client_id, :user_id);
-
-getUserFromClientId:
-SELECT u.*
-FROM users u
-INNER JOIN clients c ON c.user_id = u.id
-WHERE c.id = :client_id;
-
 
 getEvents:
 SELECT * FROM events;
@@ -54,7 +33,6 @@ VALUES (
     :timestamp
 );
 
-
 getLocalEventsToPush:
 SELECT e.*
 FROM events e
@@ -62,59 +40,7 @@ WHERE e.timestamp > (
   -- TODO hlc could provide the absolute zero timestamp
   -- AIUSE help with this coalesce
   SELECT COALESCE(last_server_issued_timestamp, hlc_absolute_zero)
-  FROM config
+  FROM config -- This references 'config' table from AppData.sq
   LIMIT 1
 );
-
-CREATE TABLE bundles (
-    id TEXT NOT NULL PRIMARY KEY,
-    user_id TEXT NOT NULL REFERENCES users (id),
-    timestamp TEXT NOT NULL,
-    payload TEXT
-);
-
-insertBundle:
-INSERT OR IGNORE INTO bundles (id, user_id, timestamp, payload)
-VALUES(:id, :user_id, :timestamp, :payload);
-
-getAllBundlesIds:
-SELECT id FROM bundles;
-
-CREATE TABLE config (
-   client_id TEXT, -- unique per device
-   -- TODO set this in a smarter way
-   last_server_issued_timestamp TEXT NOT NULL DEFAULT '1970-01-01T00:00:01.000Z-0000-serverId',
-   user_id TEXT REFERENCES users (id),
-   user_token TEXT,
-   hlc_absolute_zero TEXT NOT NULL DEFAULT '1970-01-01T00:00:01.000Z-00001'
-   -- TODO add hlc absolute zero time to use in lookups
-);
-
-getCurrentClient:
-SELECT c.*
-FROM clients c
-INNER JOIN config conf ON conf.client_id = c.id;
-
-initializeConfig:
-INSERT INTO config (client_id, user_id, user_token)
-VALUES (NULL, NULL, NULL);
-
-setClientId:
-UPDATE config
-SET client_id = :new_client_id;
-
-setLastSyncTime:
-UPDATE config
-SET last_server_issued_timestamp = :new_last_sync_time;
-
-getConfig:
-SELECT * FROM config;
-
-setUserId:
-UPDATE config
-SET user_id = :new_user_id;
-
-setUserToken:
-UPDATE config
-SET user_token = :new_user_token;
 
