@@ -8,11 +8,14 @@ CREATE TABLE clients (
   user_id TEXT REFERENCES users (id)
 );
 
-createClient:
+addKnownClient:
 INSERT INTO clients (id, user_id) VALUES (:client_id, :user_id);
+
+addKnownUser:
+INSERT INTO users (id, name) VALUES (:id, :name);
 
 getUserFromClientId:
 SELECT u.*
 FROM users u
 INNER JOIN clients c ON c.user_id = u.id
-WHERE c.id = :client_id; 
+WHERE c.id = :client_id;

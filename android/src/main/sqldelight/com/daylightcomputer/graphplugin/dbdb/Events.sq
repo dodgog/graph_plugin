@@ -37,10 +37,8 @@ getLocalEventsToPush:
 SELECT e.*
 FROM events e
 WHERE e.timestamp > (
-  -- TODO hlc could provide the absolute zero timestamp
-  -- AIUSE help with this coalesce
-  SELECT COALESCE(last_server_issued_timestamp, hlc_absolute_zero)
-  FROM config -- This references 'config' table from AppData.sq
-  LIMIT 1
+  SELECT COALESCE(
+    (SELECT value FROM config WHERE key = 'last_server_issued_timestamp'),
+    (SELECT value FROM config WHERE key = 'hlc_absolute_zero')
+  )
 );
-
