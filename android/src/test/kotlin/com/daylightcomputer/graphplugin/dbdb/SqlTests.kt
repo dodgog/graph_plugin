@@ -11,9 +11,9 @@ class SqlTests {
     fun sample() = testing { db ->
         assertThat(db.eventsQueries.getEvents().executeAsList()).isEmpty()
 
-        db.eventsQueries.insertEvent("ab", "c", "d", "a","a")
+        db.eventsQueries.insertEvent("ab", "c", "d", "a","a", "s")
         assertThat(
             db.eventsQueries.getEvents().executeAsList()
-        ).isEqualTo(listOf(Events("ab", "c", "d", "a","a")))
+        ).isEqualTo(listOf(Events("ab", "c", "d", "a","a", "s")))
     }
 }
