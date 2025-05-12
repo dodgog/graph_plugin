@@ -1,5 +1,7 @@
 # Setting Up IntelliSense Support
 
+Warning: AI USE Formatted by AI, written by Vania
+
 The default setup from Dart Native Manual doesn't provide full Kotlin support in
 IDEs. Without proper configuration, Kotlin code used for Dart bindings with JNI
 won't have syntax highlighting.

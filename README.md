@@ -2,6 +2,8 @@
 
 ## Getting Started
 
+Warning: AI USE Formatted by AI, written by Vania
+
 ### Running Tests
 ```bash
 # Run unit tests (creates a build folder in the Android directory)
