@@ -1,0 +1,1 @@
+ /Users/vania/data/dev/graph_plugin/example/.dart_tool/flutter_build/8da573bc7d3cd09dfaf445981c8d4d7d/native_assets.json: 

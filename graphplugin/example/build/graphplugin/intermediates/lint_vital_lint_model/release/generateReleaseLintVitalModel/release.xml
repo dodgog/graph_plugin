@@ -1,0 +1,31 @@
+<variant
+    name="release"
+    package="com.daylightcomputer.graphplugin"
+    minSdkVersion="16"
+    targetSdkVersion="16"
+    mergedManifest="/Users/vania/data/dev/graph_plugin/example/build/graphplugin/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml"
+    manifestMergeReport="/Users/vania/data/dev/graph_plugin/example/build/graphplugin/outputs/logs/manifest-merger-release-report.txt"
+    proguardFiles="/Users/vania/data/dev/graph_plugin/example/build/graphplugin/intermediates/default_proguard_files/global/proguard-android.txt-8.6.0"
+    partialResultsDir="/Users/vania/data/dev/graph_plugin/example/build/graphplugin/intermediates/lint_vital_partial_results/release/lintVitalAnalyzeRelease/out">
+  <buildFeatures
+      namespacing="REQUIRED"/>
+  <sourceProviders>
+    <sourceProvider
+        manifests="src/main/AndroidManifest.xml"
+        javaDirectories="src/main/java:src/main/kotlin:src/release/java:src/release/kotlin"
+        resDirectories="src/main/res:src/release/res"
+        assetsDirectories="src/main/assets:src/release/assets"/>
+  </sourceProviders>
+  <testSourceProviders>
+  </testSourceProviders>
+  <testFixturesSourceProviders>
+  </testFixturesSourceProviders>
+  <artifact
+      classOutputs="/Users/vania/data/dev/graph_plugin/example/build/graphplugin/intermediates/javac/release/compileReleaseJavaWithJavac/classes:/Users/vania/data/dev/graph_plugin/example/build/graphplugin/tmp/kotlin-classes/release:/Users/vania/data/dev/graph_plugin/example/build/graphplugin/intermediates/compile_r_class_jar/release/generateReleaseRFile/R.jar"
+      type="MAIN"
+      applicationId="com.daylightcomputer.graphplugin"
+      generatedSourceFolders="/Users/vania/data/dev/graph_plugin/example/build/graphplugin/generated/sqldelight/code/Database/release:/Users/vania/data/dev/graph_plugin/example/build/graphplugin/generated/ap_generated_sources/release/out"
+      generatedResourceFolders="/Users/vania/data/dev/graph_plugin/example/build/graphplugin/generated/res/resValues/release"
+      desugaredMethodsFiles="/Users/vania/.gradle/caches/transforms-4/613755c84a5d46c8fa0aaa5fcc1b5223/transformed/D8BackportedDesugaredMethods.txt">
+  </artifact>
+</variant>

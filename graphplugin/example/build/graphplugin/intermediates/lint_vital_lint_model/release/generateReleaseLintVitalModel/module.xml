@@ -1,0 +1,19 @@
+<lint-module
+    format="1"
+    dir="/Users/vania/data/dev/graph_plugin/android"
+    name=":graphplugin"
+    type="LIBRARY"
+    maven="com.daylightcomputer.graphplugin:graphplugin:1.0"
+    agpVersion="8.6.0"
+    buildFolder="/Users/vania/data/dev/graph_plugin/example/build/graphplugin"
+    bootClassPath="/Users/vania/Library/Android/sdk/platforms/android-35/android.jar:/Users/vania/Library/Android/sdk/build-tools/34.0.0/core-lambda-stubs.jar"
+    javaSourceLevel="11"
+    compileTarget="android-35"
+    neverShrinking="true">
+  <lintOptions
+      abortOnError="true"
+      absolutePaths="true"
+      checkReleaseBuilds="true"
+      explainIssues="true"/>
+  <variant name="release"/>
+</lint-module>

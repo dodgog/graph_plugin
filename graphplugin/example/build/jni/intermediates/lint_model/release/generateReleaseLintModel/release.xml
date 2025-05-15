@@ -1,0 +1,32 @@
+<variant
+    name="release"
+    package="com.github.dart_lang.jni"
+    minSdkVersion="21"
+    targetSdkVersion="21"
+    mergedManifest="/Users/vania/data/dev/graph_plugin/example/build/jni/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml"
+    manifestMergeReport="/Users/vania/data/dev/graph_plugin/example/build/jni/outputs/logs/manifest-merger-release-report.txt"
+    proguardFiles="/Users/vania/data/dev/graph_plugin/example/build/jni/intermediates/default_proguard_files/global/proguard-android.txt-8.6.0"
+    consumerProguardFiles="consumer-rules.pro"
+    partialResultsDir="/Users/vania/data/dev/graph_plugin/example/build/jni/intermediates/lint_partial_results/release/lintAnalyzeRelease/out">
+  <buildFeatures
+      namespacing="REQUIRED"/>
+  <sourceProviders>
+    <sourceProvider
+        manifests="src/main/AndroidManifest.xml"
+        javaDirectories="src/main/java:/Users/vania/.pub-cache/hosted/pub.dev/jni-0.14.1/java/src/main/java:src/release/java:src/main/kotlin:src/release/kotlin"
+        resDirectories="src/main/res:src/release/res"
+        assetsDirectories="src/main/assets:src/release/assets"/>
+  </sourceProviders>
+  <testSourceProviders>
+  </testSourceProviders>
+  <testFixturesSourceProviders>
+  </testFixturesSourceProviders>
+  <artifact
+      classOutputs="/Users/vania/data/dev/graph_plugin/example/build/jni/intermediates/javac/release/compileReleaseJavaWithJavac/classes:/Users/vania/data/dev/graph_plugin/example/build/jni/intermediates/compile_r_class_jar/release/generateReleaseRFile/R.jar"
+      type="MAIN"
+      applicationId="com.github.dart_lang.jni"
+      generatedSourceFolders="/Users/vania/data/dev/graph_plugin/example/build/jni/generated/ap_generated_sources/release/out"
+      generatedResourceFolders="/Users/vania/data/dev/graph_plugin/example/build/jni/generated/res/resValues/release"
+      desugaredMethodsFiles="/Users/vania/.gradle/caches/transforms-4/1f5ae4255cfffb9827f7af1feb0a68fa/transformed/D8BackportedDesugaredMethods.txt">
+  </artifact>
+</variant>
