@@ -1,4 +1,0 @@
-/Users/vania/Library/Android/sdk/cmake/3.22.1/bin/ninja \
-  -C \
-  /Users/vania/.pub-cache/hosted/pub.dev/jni-0.14.1/android/.cxx/RelWithDebInfo/g1t1e13b/x86 \
-  jni

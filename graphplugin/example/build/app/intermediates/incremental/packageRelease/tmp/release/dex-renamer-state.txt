@@ -1,4 +1,0 @@
-#Wed May 07 17:32:59 CDT 2025
-base.0=/Users/vania/data/dev/graph_plugin/example/build/app/intermediates/dex/release/minifyReleaseWithR8/classes.dex
-path.0=classes.dex
-renamed.0=classes.dex

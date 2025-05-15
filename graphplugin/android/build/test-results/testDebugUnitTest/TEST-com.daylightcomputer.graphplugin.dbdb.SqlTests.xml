@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.daylightcomputer.graphplugin.dbdb.SqlTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2025-05-15T17:44:23" hostname="vania-pro" time="0.448">
-  <properties/>
-  <testcase name="sample" classname="com.daylightcomputer.graphplugin.dbdb.SqlTests" time="0.448"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

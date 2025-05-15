@@ -1,2 +1,0 @@
-ninja: Entering directory `/Users/vania/.pub-cache/hosted/pub.dev/jni-0.14.1/android/.cxx/RelWithDebInfo/g1t1e13b/armeabi-v7a'
-ninja: no work to do.
