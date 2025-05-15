@@ -14,7 +14,7 @@
   },
   {
     "level_": 0,
-    "message_": "JSON \u0027/Users/vania/data/dev/graph_plugin/example/android/app/.cxx/Debug/z67x82y5/x86/android_gradle_build.json\u0027 was up-to-date",
+    "message_": "JSON \u0027/Users/vania/data/dev/knowledge_sync/graphplugin/example/android/app/.cxx/Debug/z67x82y5/x86/android_gradle_build.json\u0027 was up-to-date",
     "file_": "/Users/vania/data/dev/installs/flutter/packages/flutter_tools/gradle/src/main/groovy/CMakeLists.txt",
     "tag_": "debug|x86",
     "diagnosticCode_": 0,

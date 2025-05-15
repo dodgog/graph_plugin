@@ -8,9 +8,9 @@
     "triple": "i686-linux-android",
     "llvmTriple": "i686-none-linux-android"
   },
-  "cxxBuildFolder": "/Users/vania/data/dev/graph_plugin/example/android/app/.cxx/Debug/z67x82y5/x86",
-  "soFolder": "/Users/vania/data/dev/graph_plugin/example/android/app/build/intermediates/cxx/Debug/z67x82y5/obj/x86",
-  "soRepublishFolder": "/Users/vania/data/dev/graph_plugin/example/android/app/build/intermediates/cmake/debug/obj/x86",
+  "cxxBuildFolder": "/Users/vania/data/dev/knowledge_sync/graphplugin/example/android/app/.cxx/Debug/z67x82y5/x86",
+  "soFolder": "/Users/vania/data/dev/knowledge_sync/graphplugin/example/android/app/build/intermediates/cxx/Debug/z67x82y5/obj/x86",
+  "soRepublishFolder": "/Users/vania/data/dev/knowledge_sync/graphplugin/example/android/app/build/intermediates/cmake/debug/obj/x86",
   "abiPlatformVersion": 21,
   "cmake": {
     "effectiveConfiguration": {
@@ -37,12 +37,12 @@
     "implicitBuildTargetSet": [],
     "cmakeSettingsConfiguration": "android-gradle-plugin-predetermined-name",
     "module": {
-      "cxxFolder": "/Users/vania/data/dev/graph_plugin/example/android/app/.cxx",
-      "intermediatesBaseFolder": "/Users/vania/data/dev/graph_plugin/example/android/app/build/intermediates",
-      "intermediatesFolder": "/Users/vania/data/dev/graph_plugin/example/android/app/build/intermediates/cxx",
+      "cxxFolder": "/Users/vania/data/dev/knowledge_sync/graphplugin/example/android/app/.cxx",
+      "intermediatesBaseFolder": "/Users/vania/data/dev/knowledge_sync/graphplugin/example/android/app/build/intermediates",
+      "intermediatesFolder": "/Users/vania/data/dev/knowledge_sync/graphplugin/example/android/app/build/intermediates/cxx",
       "gradleModulePathName": ":exampleApp",
-      "moduleRootFolder": "/Users/vania/data/dev/graph_plugin/example/android/app",
-      "moduleBuildFile": "/Users/vania/data/dev/graph_plugin/example/android/app/build.gradle",
+      "moduleRootFolder": "/Users/vania/data/dev/knowledge_sync/graphplugin/example/android/app",
+      "moduleBuildFile": "/Users/vania/data/dev/knowledge_sync/graphplugin/example/android/app/build.gradle",
       "makeFile": "/Users/vania/data/dev/installs/flutter/packages/flutter_tools/gradle/src/main/groovy/CMakeLists.txt",
       "buildSystem": "CMAKE",
       "ndkFolder": "/Users/vania/Library/Android/sdk/ndk/26.3.11579264",
@@ -141,7 +141,7 @@
         "SYSTEM": {}
       },
       "project": {
-        "rootBuildGradleFolder": "/Users/vania/data/dev/graph_plugin",
+        "rootBuildGradleFolder": "/Users/vania/data/dev/knowledge_sync/graphplugin",
         "sdkFolder": "/Users/vania/Library/Android/sdk",
         "isBuildOnlyTargetAbiEnabled": true,
         "isCmakeBuildCohabitationEnabled": false,
@@ -160,7 +160,7 @@
   "buildSettings": {
     "environmentVariables": []
   },
-  "prefabFolder": "/Users/vania/data/dev/graph_plugin/example/android/app/.cxx/Debug/z67x82y5/prefab/x86",
+  "prefabFolder": "/Users/vania/data/dev/knowledge_sync/graphplugin/example/android/app/.cxx/Debug/z67x82y5/prefab/x86",
   "isActiveAbi": true,
   "fullConfigurationHash": "z67x82y5a4q295c5z2k3s1w226b62p512k372i3u2o4t5m1f4v5u5x70d4j",
   "fullConfigurationHashKey": "# Values used to calculate the hash in this folder name.\n# Should not depend on the absolute path of the project itself.\n#   - AGP: 8.6.0.\n#   - $NDK is the path to NDK 26.3.11579264.\n#   - $PROJECT is the path to the parent folder of the root Gradle build file.\n#   - $ABI is the ABI to be built with. The specific value doesn\u0027t contribute to the value of the hash.\n#   - $HASH is the hash value computed from this text.\n#   - $CMAKE is the path to CMake 3.22.1.\n#   - $NINJA is the path to Ninja.\n-H/Users/vania/data/dev/installs/flutter/packages/flutter_tools/gradle/src/main/groovy\n-DCMAKE_SYSTEM_NAME\u003dAndroid\n-DCMAKE_EXPORT_COMPILE_COMMANDS\u003dON\n-DCMAKE_SYSTEM_VERSION\u003d21\n-DANDROID_PLATFORM\u003dandroid-21\n-DANDROID_ABI\u003d$ABI\n-DCMAKE_ANDROID_ARCH_ABI\u003d$ABI\n-DANDROID_NDK\u003d$NDK\n-DCMAKE_ANDROID_NDK\u003d$NDK\n-DCMAKE_TOOLCHAIN_FILE\u003d$NDK/build/cmake/android.toolchain.cmake\n-DCMAKE_MAKE_PROGRAM\u003d$NINJA\n-DCMAKE_LIBRARY_OUTPUT_DIRECTORY\u003d$PROJECT/example/android/app/build/intermediates/cxx/Debug/$HASH/obj/$ABI\n-DCMAKE_RUNTIME_OUTPUT_DIRECTORY\u003d$PROJECT/example/android/app/build/intermediates/cxx/Debug/$HASH/obj/$ABI\n-DCMAKE_BUILD_TYPE\u003dDebug\n-B$PROJECT/example/android/app/.cxx/Debug/$HASH/$ABI\n-GNinja\n-Wno-dev\n--no-warn-unused-cli",
@@ -176,13 +176,13 @@
     "-DCMAKE_ANDROID_NDK\u003d/Users/vania/Library/Android/sdk/ndk/26.3.11579264",
     "-DCMAKE_TOOLCHAIN_FILE\u003d/Users/vania/Library/Android/sdk/ndk/26.3.11579264/build/cmake/android.toolchain.cmake",
     "-DCMAKE_MAKE_PROGRAM\u003d/Users/vania/Library/Android/sdk/cmake/3.22.1/bin/ninja",
-    "-DCMAKE_LIBRARY_OUTPUT_DIRECTORY\u003d/Users/vania/data/dev/graph_plugin/example/android/app/build/intermediates/cxx/Debug/z67x82y5/obj/x86",
-    "-DCMAKE_RUNTIME_OUTPUT_DIRECTORY\u003d/Users/vania/data/dev/graph_plugin/example/android/app/build/intermediates/cxx/Debug/z67x82y5/obj/x86",
+    "-DCMAKE_LIBRARY_OUTPUT_DIRECTORY\u003d/Users/vania/data/dev/knowledge_sync/graphplugin/example/android/app/build/intermediates/cxx/Debug/z67x82y5/obj/x86",
+    "-DCMAKE_RUNTIME_OUTPUT_DIRECTORY\u003d/Users/vania/data/dev/knowledge_sync/graphplugin/example/android/app/build/intermediates/cxx/Debug/z67x82y5/obj/x86",
     "-DCMAKE_BUILD_TYPE\u003dDebug",
-    "-B/Users/vania/data/dev/graph_plugin/example/android/app/.cxx/Debug/z67x82y5/x86",
+    "-B/Users/vania/data/dev/knowledge_sync/graphplugin/example/android/app/.cxx/Debug/z67x82y5/x86",
     "-GNinja",
     "-Wno-dev",
     "--no-warn-unused-cli"
   ],
-  "intermediatesParentFolder": "/Users/vania/data/dev/graph_plugin/example/android/app/build/intermediates/cxx/Debug/z67x82y5"
+  "intermediatesParentFolder": "/Users/vania/data/dev/knowledge_sync/graphplugin/example/android/app/build/intermediates/cxx/Debug/z67x82y5"
 }
