@@ -1,4 +1,7 @@
-package com.daylightcomputer.hlc
+package com.daylightcomputer.hlc.model
+
+import com.daylightcomputer.hlc.HLCEnvironment
+import com.daylightcomputer.hlc.exceptions.CounterOverflowException
 
 /**
  * Represents a logical counter in a Hybrid Logical Clock

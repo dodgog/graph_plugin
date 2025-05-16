@@ -1,5 +1,9 @@
 package com.daylightcomputer.hlc
 
+import com.daylightcomputer.hlc.model.Counter
+import com.daylightcomputer.hlc.model.LogicalTimestamp
+import com.daylightcomputer.hlc.model.Packable
+
 data class HLCConfig(
     val maxClockDriftMilliseconds: Int = 3_600_000,
 

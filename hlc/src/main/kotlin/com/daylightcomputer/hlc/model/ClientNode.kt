@@ -1,4 +1,6 @@
-package com.daylightcomputer.hlc
+package com.daylightcomputer.hlc.model
+
+import com.daylightcomputer.hlc.HLCEnvironment
 
 data class ClientNode(val clientNodeId: String) : Comparable<ClientNode>, Packable<ClientNode> {
     init {

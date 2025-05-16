@@ -1,5 +1,12 @@
 package com.daylightcomputer.hlc
 
+import com.daylightcomputer.hlc.exceptions.ClientException
+import com.daylightcomputer.hlc.exceptions.ClockDriftException
+import com.daylightcomputer.hlc.exceptions.CounterOverflowException
+import com.daylightcomputer.hlc.model.ClientNode
+import com.daylightcomputer.hlc.model.Counter
+import com.daylightcomputer.hlc.model.LogicalTimestamp
+import com.daylightcomputer.hlc.model.Timestamp
 import kotlin.math.max
 
 class HLC(

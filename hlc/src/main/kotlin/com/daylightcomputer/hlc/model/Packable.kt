@@ -1,4 +1,4 @@
-package com.daylightcomputer.hlc
+package com.daylightcomputer.hlc.model
 
 interface Packable<T> {
     interface HelpHelp<T>{
