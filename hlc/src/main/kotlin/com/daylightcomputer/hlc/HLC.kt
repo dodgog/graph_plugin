@@ -14,14 +14,14 @@ class HLC(
     previousTimestamp: Timestamp? = null
 ) {
     private val config: HLCConfig = HLCEnvironment.config
-    private var _timestamp: Timestamp
+    private var timestamp: Timestamp
 
     init {
         if (previousTimestamp != null && previousTimestamp.clientNode != clientNode) {
             throw ClientException("Previous issuing client differs from current")
         }
 
-        _timestamp = previousTimestamp ?: Timestamp(
+        timestamp = previousTimestamp ?: Timestamp(
             LogicalTimestamp.Companion.fromMillis(0),
             clientNode,
             Counter(0)
@@ -54,23 +54,23 @@ class HLC(
 
     fun receive(incoming: Timestamp): Timestamp {
         val now = config.getPhysicalTime()
-        val newLogicalTime = maxOf(now, incoming.logicalTime, _timestamp.logicalTime)
+        val newLogicalTime = maxOf(now, incoming.logicalTime, timestamp.logicalTime)
 
         val newCounter = when {
-            newLogicalTime == _timestamp.logicalTime && newLogicalTime == incoming.logicalTime ->
-                Counter(max(_timestamp.counter.value, incoming.counter.value) + 1)
+            newLogicalTime == timestamp.logicalTime && newLogicalTime == incoming.logicalTime ->
+                Counter(max(timestamp.counter.value, incoming.counter.value) + 1)
 
-            newLogicalTime == _timestamp.logicalTime ->
-                _timestamp.counter.increment()
+            newLogicalTime == timestamp.logicalTime ->
+                timestamp.counter.increment()
 
             newLogicalTime == incoming.logicalTime ->
-                _timestamp.counter.increment()
+                timestamp.counter.increment()
 
             else ->
                 Counter(0)
         }
 
-        val newTimestamp = _timestamp.copy(
+        val newTimestamp = timestamp.copy(
             logicalTime = newLogicalTime,
             counter = newCounter
         )
@@ -81,12 +81,12 @@ class HLC(
     private fun localEventOrSend(): Timestamp {
         val now = config.getPhysicalTime()
 
-        val newTimestamp = if (_timestamp.logicalTime > now) {
-            _timestamp.copy(
-                counter = _timestamp.counter.increment()
+        val newTimestamp = if (timestamp.logicalTime > now) {
+            timestamp.copy(
+                counter = timestamp.counter.increment()
             )
         } else {
-            _timestamp.copy(
+            timestamp.copy(
                 logicalTime = now,
                 counter = Counter(0)
             )
@@ -113,12 +113,12 @@ class HLC(
             }
         }
 
-        _timestamp = newTimestamp
-        return _timestamp
+        timestamp = newTimestamp
+        return timestamp
     }
 
     fun getCurrentTimestamp(): Timestamp {
-        return _timestamp
+        return timestamp
     }
 
     companion object {
