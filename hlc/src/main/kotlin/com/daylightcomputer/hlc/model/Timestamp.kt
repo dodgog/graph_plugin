@@ -1,4 +1,6 @@
-package com.daylightcomputer.hlc
+package com.daylightcomputer.hlc.model
+
+import com.daylightcomputer.hlc.exceptions.TimestampFormatException
 
 data class Timestamp(
     val logicalTime: LogicalTimestamp,

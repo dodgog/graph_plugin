@@ -1,5 +1,6 @@
-package com.daylightcomputer.hlc
+package com.daylightcomputer.hlc.model
 
+import com.daylightcomputer.hlc.HLCEnvironment
 import java.time.Instant
 import java.time.ZoneOffset
 import java.time.format.DateTimeFormatter
