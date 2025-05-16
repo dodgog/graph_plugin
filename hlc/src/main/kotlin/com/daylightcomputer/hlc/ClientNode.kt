@@ -1,0 +1,23 @@
+package com.daylightcomputer.hlc
+
+data class ClientNode(val clientNodeId: String) : Comparable<ClientNode>, Packable<ClientNode> {
+    init {
+        require(clientNodeId.length == numberOfCharactersInRepresentation)
+    }
+
+    companion object : Packable.HelpHelp<ClientNode> {
+        override val numberOfCharactersInRepresentation: Int
+            get() = HLCEnvironment.config.numberOfCharactersInClientNodeRepresentation
+        override fun fromPackedImpl(data: String): ClientNode {
+            return ClientNode(data)
+        }
+    }
+    
+    override fun pack(): String {
+        return clientNodeId
+    }
+    
+    override fun compareTo(other: ClientNode): Int {
+        return clientNodeId.compareTo(other.clientNodeId)
+    }
+}
