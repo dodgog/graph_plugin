@@ -12,7 +12,7 @@ data class LogicalTimestamp(val instant: Instant) : Comparable<LogicalTimestamp>
         override val numberOfCharactersInRepresentation: Int
             get() =
                 HLCEnvironment.config.numberOfCharactersInLogicalTimestampRepresentation
-        private val formatter: DateTimeFormatter = DateTimeFormatter
+        val formatter: DateTimeFormatter = DateTimeFormatter
             .ISO_INSTANT
             .withZone(ZoneOffset.UTC)
 

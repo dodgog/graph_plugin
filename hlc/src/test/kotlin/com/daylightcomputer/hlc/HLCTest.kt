@@ -20,7 +20,7 @@ import java.time.Instant
 // AIUSE: tests handwritten in dart, converted to kotlin with AI
 
 class HLCTest {
-    private val fixedTime = LogicalTimestamp.fromMillis(Instant.now().toEpochMilli()) // 2024-01-01 00:00:00 UTC
+    private val fixedTime = LogicalTimestamp.fromMillis(Instant.now().toEpochMilli())
 
     @BeforeEach
     fun setup() {
