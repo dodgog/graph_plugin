@@ -40,4 +40,6 @@ data class LogicalTimestamp(val instant: Instant) : Comparable<LogicalTimestamp>
     override fun compareTo(other: LogicalTimestamp): Int {
         return instant.compareTo(other.instant)
     }
+
+    val millis: Long get() = instant.toEpochMilli()
 }
