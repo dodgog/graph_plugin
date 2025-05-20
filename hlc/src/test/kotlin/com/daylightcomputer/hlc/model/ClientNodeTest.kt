@@ -17,7 +17,7 @@ class ClientNodeTest {
         HLCEnvironment.resetForTests()
         HLCEnvironment.initialize(
             HLCConfig(
-                numberOfCharactersInClientNodeRepresentation = 6
+                clientNodeLength = 6
             )
         )
     }

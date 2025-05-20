@@ -195,7 +195,7 @@ class HLCTest {
         HLCEnvironment.initialize(
             HLCConfig(
                 getPhysicalTime = { fixedTime },
-                numberOfCharactersInCounterHexRepresentation = 1
+                hexCounterLength = 1
             )
         )
 

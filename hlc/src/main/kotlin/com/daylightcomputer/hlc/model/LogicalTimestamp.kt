@@ -9,9 +9,9 @@ import kotlin.math.absoluteValue
 data class LogicalTimestamp(val instant: Instant) : Comparable<LogicalTimestamp>, Packable<LogicalTimestamp> {
 
     companion object : Packable.HelpHelp<LogicalTimestamp> {
-        override val numberOfCharactersInRepresentation: Int
+        override val packedLength: Int
             get() =
-                HLCEnvironment.config.numberOfCharactersInLogicalTimestampRepresentation
+                HLCEnvironment.config.logicalTimestampLength
         val formatter: DateTimeFormatter = DateTimeFormatter
             .ISO_INSTANT
             .withZone(ZoneOffset.UTC)

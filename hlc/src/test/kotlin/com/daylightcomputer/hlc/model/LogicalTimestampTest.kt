@@ -19,7 +19,7 @@ class LogicalTimestampTest {
         HLCEnvironment.resetForTests()
         HLCEnvironment.initialize(
             HLCConfig(
-                numberOfCharactersInLogicalTimestampRepresentation = 27
+                logicalTimestampLength = 27
             )
         )
     }
