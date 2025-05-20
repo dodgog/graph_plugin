@@ -3,7 +3,6 @@ package com.daylightcomputer.hlc
 import java.util.concurrent.atomic.AtomicReference
 
 object HLCEnvironment {
-
     private val ref: AtomicReference<HLCConfig> = AtomicReference()
 
     val config: HLCConfig

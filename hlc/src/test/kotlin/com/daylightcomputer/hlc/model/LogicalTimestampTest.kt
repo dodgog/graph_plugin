@@ -16,7 +16,7 @@ class LogicalTimestampTest {
 
     @BeforeEach
     fun setup() {
-        HLCEnvironment.resetForTests()
+        HLCEnvironment.resetTest()
         HLCEnvironment.initialize(
             HLCConfig(
                 logicalTimestampLength = 27
@@ -32,8 +32,8 @@ class LogicalTimestampTest {
 
     @Test
     fun `LogicalTimestamp fromMillis works`() {
-        val timestamp = LogicalTimestamp.fromMillis(fixedTime.toEpochMilli())
-        assertThat(timestamp.millis).isEqualTo(fixedTime.toEpochMilli())
+        val timestamp = LogicalTimestamp.fromMillisForTests(fixedTime.toEpochMilli())
+        assertThat(timestamp.millisForTests).isEqualTo(fixedTime.toEpochMilli())
     }
 
     @Test

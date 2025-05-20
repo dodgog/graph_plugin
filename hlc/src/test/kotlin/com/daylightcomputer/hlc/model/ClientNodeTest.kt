@@ -14,7 +14,7 @@ import com.daylightcomputer.hlc.HLCConfig
 class ClientNodeTest {
     @BeforeEach
     fun setup() {
-        HLCEnvironment.resetForTests()
+        HLCEnvironment.resetTest()
         HLCEnvironment.initialize(
             HLCConfig(
                 clientNodeLength = 6

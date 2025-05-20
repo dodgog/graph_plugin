@@ -1,12 +1,13 @@
 package com.daylightcomputer.hlc
 
-import com.daylightcomputer.hlc.exceptions.ClientException
+import com.daylightcomputer.hlc.exceptions.ClientFormatException
 import com.daylightcomputer.hlc.exceptions.ClockDriftException
 import com.daylightcomputer.hlc.exceptions.CounterOverflowException
 import com.daylightcomputer.hlc.model.ClientNode
 import com.daylightcomputer.hlc.model.Counter
 import com.daylightcomputer.hlc.model.LogicalTimestamp
 import com.daylightcomputer.hlc.model.Timestamp
+import java.time.Instant
 import kotlin.math.max
 
 class HLC(
@@ -14,16 +15,18 @@ class HLC(
     previousTimestamp: Timestamp? = null
 ) {
     private val config: HLCConfig get() = HLCEnvironment.config
+
     private var timestamp: Timestamp
+
     val currentTimestamp: Timestamp get() = timestamp
 
     init {
         if (previousTimestamp != null && previousTimestamp.clientNode != clientNode) {
-            throw ClientException("Previous issuing client differs from current")
+            throw ClientFormatException("Previous issuing client differs from current")
         }
 
         timestamp = previousTimestamp ?: Timestamp(
-            LogicalTimestamp.Companion.fromMillis(0),
+            LogicalTimestamp(Instant.ofEpochMilli(0)),
             clientNode,
             Counter(0)
         )
@@ -118,12 +121,7 @@ class HLC(
         return timestamp
     }
 
-
-
     companion object {
-        /**
-         * Helper method to compare and find the maximum of three timestamps
-         */
         private fun maxOf(a: LogicalTimestamp, b: LogicalTimestamp, c: LogicalTimestamp): LogicalTimestamp {
             return maxOf(maxOf(a, b), c)
         }

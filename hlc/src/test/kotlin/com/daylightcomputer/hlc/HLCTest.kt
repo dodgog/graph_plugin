@@ -20,7 +20,7 @@ import java.time.Instant
 // AIUSE: tests handwritten in dart, converted to kotlin with AI
 
 class HLCTest {
-    private val fixedTime = LogicalTimestamp.fromMillis(Instant.now().toEpochMilli())
+    private val fixedTime = LogicalTimestamp.fromMillisForTests(Instant.now().toEpochMilli())
 
     @BeforeEach
     fun setup() {
@@ -33,7 +33,7 @@ class HLCTest {
 
     @AfterEach
     fun tearDown() {
-        HLCEnvironment.resetForTests()
+        HLCEnvironment.resetTest()
     }
 
     @Test
@@ -58,7 +58,7 @@ class HLCTest {
     @Test
     fun `Timestamp comparison works correctly`() {
         val now = fixedTime
-        val later = LogicalTimestamp.fromMillis(now.millis + 1000)
+        val later = LogicalTimestamp.fromMillisForTests(now.millisForTests + 1000)
 
         val timestamp1 = Timestamp(now, ClientNode("node01"), Counter(0))
         val timestamp2 = Timestamp(later, ClientNode("node01"), Counter(0))
@@ -92,7 +92,7 @@ class HLCTest {
 
     @Test
     fun `Local event with physical time - logical time sets counter to 0`() {
-        val pastTime = LogicalTimestamp.fromMillis(fixedTime.millis - 1000)
+        val pastTime = LogicalTimestamp.fromMillisForTests(fixedTime.millisForTests - 1000)
         val hlc = HLC(
             ClientNode("node01"),
             Timestamp(pastTime, ClientNode("node01"), Counter(5))
@@ -105,7 +105,7 @@ class HLCTest {
 
     @Test
     fun `Local event with logical time - physical time increments counter`() {
-        val futureTime = LogicalTimestamp.fromMillis(fixedTime.millis + 1000)
+        val futureTime = LogicalTimestamp.fromMillisForTests(fixedTime.millisForTests + 1000)
         val hlc = HLC(
             ClientNode("node01"),
             Timestamp(futureTime, ClientNode("node01"), Counter(5))
@@ -118,7 +118,7 @@ class HLCTest {
 
     @Test
     fun `Receive with same logical times local counter greater sets to local counter + 1`() {
-        val futureTime = LogicalTimestamp.fromMillis(fixedTime.millis + 1000)
+        val futureTime = LogicalTimestamp.fromMillisForTests(fixedTime.millisForTests + 1000)
         val hlc = HLC(
             ClientNode("node01"),
             Timestamp(futureTime, ClientNode("node01"), Counter(5))
@@ -132,7 +132,7 @@ class HLCTest {
 
     @Test
     fun `Receive with same logical times incoming counter greater sets to incoming counter + 1`() {
-        val futureTime = LogicalTimestamp.fromMillis(fixedTime.millis + 1000)
+        val futureTime = LogicalTimestamp.fromMillisForTests(fixedTime.millisForTests + 1000)
         val hlc = HLC(
             ClientNode("node01"),
             Timestamp(futureTime, ClientNode("node01"), Counter(3))
@@ -146,8 +146,8 @@ class HLCTest {
 
     @Test
     fun `Receive with local logical time greater than physical and incoming increments local`() {
-        val futureTime = LogicalTimestamp.fromMillis(fixedTime.millis + 2000)
-        val incomingTime = LogicalTimestamp.fromMillis(fixedTime.millis + 1000)
+        val futureTime = LogicalTimestamp.fromMillisForTests(fixedTime.millisForTests + 2000)
+        val incomingTime = LogicalTimestamp.fromMillisForTests(fixedTime.millisForTests + 1000)
         val hlc = HLC(
             ClientNode("node01"),
             Timestamp(futureTime, ClientNode("node01"), Counter(5))
@@ -161,8 +161,8 @@ class HLCTest {
 
     @Test
     fun `Receive with incoming logical time greater than physical and local increments incoming`() {
-        val incomingTime = LogicalTimestamp.fromMillis(fixedTime.millis + 2000)
-        val localTime = LogicalTimestamp.fromMillis(fixedTime.millis + 1000)
+        val incomingTime = LogicalTimestamp.fromMillisForTests(fixedTime.millisForTests + 2000)
+        val localTime = LogicalTimestamp.fromMillisForTests(fixedTime.millisForTests + 1000)
         val hlc = HLC(
             ClientNode("node01"),
             Timestamp(localTime, ClientNode("node01"), Counter(5))
@@ -176,8 +176,8 @@ class HLCTest {
 
     @Test
     fun `Receive with physical time greater than both logical times resets counter`() {
-        val pastLocalTime = LogicalTimestamp.fromMillis(fixedTime.millis - 2000)
-        val pastIncomingTime = LogicalTimestamp.fromMillis(fixedTime.millis - 1000)
+        val pastLocalTime = LogicalTimestamp.fromMillisForTests(fixedTime.millisForTests - 2000)
+        val pastIncomingTime = LogicalTimestamp.fromMillisForTests(fixedTime.millisForTests - 1000)
         val hlc = HLC(
             ClientNode("node01"),
             Timestamp(pastLocalTime, ClientNode("node01"), Counter(5))
@@ -191,7 +191,7 @@ class HLCTest {
 
     @Test
     fun `Counter overflow throws exception`() {
-        HLCEnvironment.resetForTests()
+        HLCEnvironment.resetTest()
         HLCEnvironment.initialize(
             HLCConfig(
                 getPhysicalTime = { fixedTime },
@@ -209,7 +209,7 @@ class HLCTest {
 
     @Test
     fun `Clock drift detection works`() {
-        val farFuture = LogicalTimestamp.fromMillis(fixedTime.millis + 7200000) // 2 hours ahead
+        val farFuture = LogicalTimestamp.fromMillisForTests(fixedTime.millisForTests + 7200000) // 2 hours ahead
         val driftedTimestamp = Timestamp(farFuture, ClientNode("node01"), Counter(0))
 
         assertFailure {

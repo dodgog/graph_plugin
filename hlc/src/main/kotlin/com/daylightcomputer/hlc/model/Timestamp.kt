@@ -7,6 +7,19 @@ data class Timestamp(
     val clientNode: ClientNode,
     val counter: Counter
 ) : Comparable<Timestamp>, Packable<Timestamp> {
+    override fun pack(): String {
+        return "${logicalTime.pack()}-${counter.pack()}-${clientNode.pack()}"
+    }
+
+    override fun compareTo(other: Timestamp): Int {
+        val timeCompare = logicalTime.compareTo(other.logicalTime)
+        if (timeCompare != 0) return timeCompare
+
+        val counterCompare = counter.compareTo(other.counter)
+        if (counterCompare != 0) return counterCompare
+
+        return clientNode.compareTo(other.clientNode)
+    }
 
     companion object : Packable.HelpHelp<Timestamp> {
         override val packedLength: Int
@@ -36,19 +49,5 @@ data class Timestamp(
                 }
             }
         }
-    }
-
-    override fun pack(): String {
-        return "${logicalTime.pack()}-${counter.pack()}-${clientNode.pack()}"
-    }
-
-    override fun compareTo(other: Timestamp): Int {
-        val timeCompare = logicalTime.compareTo(other.logicalTime)
-        if (timeCompare != 0) return timeCompare
-
-        val counterCompare = counter.compareTo(other.counter)
-        if (counterCompare != 0) return counterCompare
-
-        return clientNode.compareTo(other.clientNode)
     }
 }

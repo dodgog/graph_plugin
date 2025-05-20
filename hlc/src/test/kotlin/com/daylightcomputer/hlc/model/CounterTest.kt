@@ -15,7 +15,7 @@ import com.daylightcomputer.hlc.exceptions.CounterOverflowException
 class CounterTest {
     @BeforeEach
     fun setup() {
-        HLCEnvironment.resetForTests()
+        HLCEnvironment.resetTest()
         HLCEnvironment.initialize(
             HLCConfig(
                 hexCounterLength = 4

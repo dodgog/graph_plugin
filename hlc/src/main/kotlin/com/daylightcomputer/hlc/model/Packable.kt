@@ -3,6 +3,8 @@ package com.daylightcomputer.hlc.model
 import com.daylightcomputer.hlc.exceptions.TimestampFormatException
 
 interface Packable<T> {
+    fun pack(): String
+
     interface HelpHelp<T> {
         val packedLength: Int
 
@@ -21,7 +23,5 @@ interface Packable<T> {
             }
         }
     }
-
-    fun pack(): String
 }
 
