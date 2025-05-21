@@ -1,12 +1,12 @@
-package com.daylightcomputer.graphplugin.dbdb
+package com.daylightcomputer.graphplugin.sqldefinitions
 
 import app.cash.sqldelight.driver.jdbc.sqlite.JdbcSqliteDriver
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.test.runTest
 
 fun testing(block: suspend CoroutineScope.(Database) -> Unit) = runTest {
-    val driver = JdbcSqliteDriver(JdbcSqliteDriver.IN_MEMORY)
-    Database.Schema.create(driver)
-    block(Database(driver))
+    val driver = JdbcSqliteDriver(JdbcSqliteDriver.Companion.IN_MEMORY)
+    Database.Companion.Schema.create(driver)
+    block(Database.Companion(driver))
     driver.close()
 }

@@ -1,0 +1,11 @@
+cleanAllDataTables{
+    DELETE FROM events;
+    DELETE FROM attributes;
+    DELETE FROM bundles;
+}
+
+cleanAllSystemTables{
+    DELETE FROM config;
+    DELETE FROM users;
+    DELETE FROM clients;
+}
