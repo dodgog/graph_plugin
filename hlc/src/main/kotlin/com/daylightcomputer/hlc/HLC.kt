@@ -16,9 +16,9 @@ class HLC(
 ) {
     private val config: HLCConfig get() = HLCEnvironment.config
 
-    private var timestamp: Timestamp
+    private var _timestamp: Timestamp
 
-    val currentTimestamp: Timestamp get() = timestamp
+    val timestamp: Timestamp get() = _timestamp
 
     init {
         if (previousTimestamp != null &&
@@ -29,7 +29,7 @@ class HLC(
             )
         }
 
-        timestamp = previousTimestamp ?: Timestamp(
+        _timestamp = previousTimestamp ?: Timestamp(
             LogicalTimestamp(Instant.ofEpochMilli(0)),
             distributedNode,
             Counter(0),
@@ -39,21 +39,21 @@ class HLC(
     fun receive(incoming: Timestamp): Timestamp {
         val now = config.getPhysicalTime()
         val newLogicalTime =
-            maxOf(now, incoming.logicalTime, timestamp.logicalTime)
+            maxOf(now, incoming.logicalTime, _timestamp.logicalTime)
 
         val newCounter =
             when {
-                newLogicalTime == timestamp.logicalTime &&
+                newLogicalTime == _timestamp.logicalTime &&
                     newLogicalTime == incoming.logicalTime ->
                     Counter(
                         max(
-                            timestamp.counter.value,
+                            _timestamp.counter.value,
                             incoming.counter.value,
                         ) + 1,
                     )
 
-                newLogicalTime == timestamp.logicalTime ->
-                    timestamp.counter.increment()
+                newLogicalTime == _timestamp.logicalTime ->
+                    _timestamp.counter.increment()
 
                 newLogicalTime == incoming.logicalTime ->
                     incoming.counter.increment()
@@ -63,7 +63,7 @@ class HLC(
             }
 
         val newTimestamp =
-            timestamp.copy(
+            _timestamp.copy(
                 logicalTime = newLogicalTime,
                 counter = newCounter,
             )
@@ -75,12 +75,12 @@ class HLC(
         val now = config.getPhysicalTime()
 
         val newTimestamp =
-            if (timestamp.logicalTime > now) {
-                timestamp.copy(
-                    counter = timestamp.counter.increment(),
+            if (_timestamp.logicalTime > now) {
+                _timestamp.copy(
+                    counter = _timestamp.counter.increment(),
                 )
             } else {
-                timestamp.copy(
+                _timestamp.copy(
                     logicalTime = now,
                     counter = Counter(0),
                 )
@@ -112,8 +112,8 @@ class HLC(
             }
         }
 
-        timestamp = newTimestamp
-        return timestamp
+        _timestamp = newTimestamp
+        return _timestamp
     }
 
     companion object {
