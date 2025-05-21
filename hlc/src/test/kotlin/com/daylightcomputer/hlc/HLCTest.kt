@@ -5,6 +5,10 @@ import assertk.assertThat
 import assertk.assertions.hasClass
 import assertk.assertions.isEqualTo
 import assertk.assertions.isLessThan
+import com.daylightcomputer.hlc.events.issueLocalEvent
+import com.daylightcomputer.hlc.events.issueLocalEventPacked
+import com.daylightcomputer.hlc.events.receivePackedAndRepack
+import com.daylightcomputer.hlc.events.send
 import com.daylightcomputer.hlc.exceptions.ClockDriftException
 import com.daylightcomputer.hlc.exceptions.CounterOverflowException
 import com.daylightcomputer.hlc.model.ClientNode
