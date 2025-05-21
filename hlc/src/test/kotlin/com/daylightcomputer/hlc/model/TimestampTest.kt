@@ -33,11 +33,11 @@ class TimestampTest {
         val timestamp =
             Timestamp(
                 LogicalTimestamp(fixedTime),
-                ClientNode("node01"),
+                DistributedNode("node01"),
                 Counter(0),
             )
         assertThat(timestamp.logicalTime.instant).isEqualTo(fixedTime)
-        assertThat(timestamp.clientNode.clientNodeId).isEqualTo("node01")
+        assertThat(timestamp.distributedNode.clientNodeId).isEqualTo("node01")
         assertThat(timestamp.counter.value).isEqualTo(0)
     }
 
@@ -46,25 +46,25 @@ class TimestampTest {
         val t1 =
             Timestamp(
                 LogicalTimestamp(fixedTime),
-                ClientNode("node01"),
+                DistributedNode("node01"),
                 Counter(0),
             )
         val t2 =
             Timestamp(
                 LogicalTimestamp(fixedTime.plusMillis(1000)),
-                ClientNode("node01"),
+                DistributedNode("node01"),
                 Counter(0),
             )
         val t3 =
             Timestamp(
                 LogicalTimestamp(fixedTime),
-                ClientNode("node01"),
+                DistributedNode("node01"),
                 Counter(1),
             )
         val t4 =
             Timestamp(
                 LogicalTimestamp(fixedTime),
-                ClientNode("node02"),
+                DistributedNode("node02"),
                 Counter(0),
             )
 
@@ -78,7 +78,7 @@ class TimestampTest {
         val original =
             Timestamp(
                 LogicalTimestamp(fixedTime),
-                ClientNode("node01"),
+                DistributedNode("node01"),
                 Counter(0x1234),
             )
         val packed = original.encode()
@@ -88,8 +88,8 @@ class TimestampTest {
             unpacked.logicalTime.instant,
         ).isEqualTo(original.logicalTime.instant)
         assertThat(
-            unpacked.clientNode.clientNodeId,
-        ).isEqualTo(original.clientNode.clientNodeId)
+            unpacked.distributedNode.clientNodeId,
+        ).isEqualTo(original.distributedNode.clientNodeId)
         assertThat(unpacked.counter.value).isEqualTo(original.counter.value)
     }
 
@@ -98,7 +98,7 @@ class TimestampTest {
         val timestamp =
             Timestamp(
                 LogicalTimestamp(fixedTime),
-                ClientNode("node01"),
+                DistributedNode("node01"),
                 Counter(0x1234),
             )
         assertThat(

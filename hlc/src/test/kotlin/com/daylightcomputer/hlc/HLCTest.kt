@@ -11,7 +11,7 @@ import com.daylightcomputer.hlc.events.receivePackedAndRepack
 import com.daylightcomputer.hlc.events.send
 import com.daylightcomputer.hlc.exceptions.ClockDriftException
 import com.daylightcomputer.hlc.exceptions.CounterOverflowException
-import com.daylightcomputer.hlc.model.ClientNode
+import com.daylightcomputer.hlc.model.DistributedNode
 import com.daylightcomputer.hlc.model.Counter
 import com.daylightcomputer.hlc.model.LogicalTimestamp
 import com.daylightcomputer.hlc.model.Timestamp
@@ -44,9 +44,9 @@ class HLCTest {
 
     @Test
     fun `ClientNode comparison works correctly`() {
-        val node1 = ClientNode("node01")
-        val node2 = ClientNode("node02")
-        val node1Duplicate = ClientNode("node01")
+        val node1 = DistributedNode("node01")
+        val node2 = DistributedNode("node02")
+        val node1Duplicate = DistributedNode("node01")
 
         assertThat(node1).isLessThan(node2)
         assertThat(node1).isEqualTo(node1Duplicate)
@@ -54,9 +54,9 @@ class HLCTest {
 
     @Test
     fun `ClientNode packing and unpacking works`() {
-        val original = ClientNode("node12")
+        val original = DistributedNode("node12")
         val packed = original.encode()
-        val unpacked = ClientNode.fromEncoded(packed)
+        val unpacked = DistributedNode.fromEncoded(packed)
 
         assertThat(original.clientNodeId)
             .isEqualTo(unpacked.clientNodeId)
@@ -72,25 +72,25 @@ class HLCTest {
         val timestamp1 =
             Timestamp(
                 now,
-                ClientNode("node01"),
+                DistributedNode("node01"),
                 Counter(0),
             )
         val timestamp2 =
             Timestamp(
                 later,
-                ClientNode("node01"),
+                DistributedNode("node01"),
                 Counter(0),
             )
         val timestamp3 =
             Timestamp(
                 now,
-                ClientNode("node01"),
+                DistributedNode("node01"),
                 Counter(1),
             )
         val timestamp4 =
             Timestamp(
                 now,
-                ClientNode("node02"),
+                DistributedNode("node02"),
                 Counter(0),
             )
 
@@ -101,18 +101,18 @@ class HLCTest {
 
     @Test
     fun `Local event generation works`() {
-        val hlc = HLC(ClientNode("node01"))
+        val hlc = HLC(DistributedNode("node01"))
         val timestamp = hlc.issueLocalEvent()
 
         assertThat(timestamp.logicalTime).isEqualTo(fixedTime)
         assertThat(timestamp.counter.value).isEqualTo(0)
-        assertThat(timestamp.clientNode.clientNodeId)
+        assertThat(timestamp.distributedNode.clientNodeId)
             .isEqualTo("node01")
     }
 
     @Test
     fun `Send operation works`() {
-        val hlc = HLC(ClientNode("node01"))
+        val hlc = HLC(DistributedNode("node01"))
         val timestamp = hlc.send()
 
         assertThat(timestamp.logicalTime).isEqualTo(fixedTime)
@@ -126,10 +126,10 @@ class HLCTest {
                 .fromMillisForTests(fixedTime.millisForTests - 1000)
         val hlc =
             HLC(
-                ClientNode("node01"),
+                DistributedNode("node01"),
                 Timestamp(
                     pastTime,
-                    ClientNode("node01"),
+                    DistributedNode("node01"),
                     Counter(5),
                 ),
             )
@@ -146,10 +146,10 @@ class HLCTest {
                 .fromMillisForTests(fixedTime.millisForTests + 1000)
         val hlc =
             HLC(
-                ClientNode("node01"),
+                DistributedNode("node01"),
                 Timestamp(
                     futureTime,
-                    ClientNode("node01"),
+                    DistributedNode("node01"),
                     Counter(5),
                 ),
             )
@@ -166,10 +166,10 @@ class HLCTest {
                 .fromMillisForTests(fixedTime.millisForTests + 1000)
         val hlc =
             HLC(
-                ClientNode("node01"),
+                DistributedNode("node01"),
                 Timestamp(
                     futureTime,
-                    ClientNode("node01"),
+                    DistributedNode("node01"),
                     Counter(5),
                 ),
             )
@@ -177,7 +177,7 @@ class HLCTest {
         val incoming =
             Timestamp(
                 futureTime,
-                ClientNode("node02"),
+                DistributedNode("node02"),
                 Counter(3),
             )
         val result = hlc.receive(incoming)
@@ -192,10 +192,10 @@ class HLCTest {
                 .fromMillisForTests(fixedTime.millisForTests + 1000)
         val hlc =
             HLC(
-                ClientNode("node01"),
+                DistributedNode("node01"),
                 Timestamp(
                     futureTime,
-                    ClientNode("node01"),
+                    DistributedNode("node01"),
                     Counter(3),
                 ),
             )
@@ -203,7 +203,7 @@ class HLCTest {
         val incoming =
             Timestamp(
                 futureTime,
-                ClientNode("node02"),
+                DistributedNode("node02"),
                 Counter(5),
             )
         val result = hlc.receive(incoming)
@@ -221,10 +221,10 @@ class HLCTest {
                 .fromMillisForTests(fixedTime.millisForTests + 1000)
         val hlc =
             HLC(
-                ClientNode("node01"),
+                DistributedNode("node01"),
                 Timestamp(
                     futureTime,
-                    ClientNode("node01"),
+                    DistributedNode("node01"),
                     Counter(5),
                 ),
             )
@@ -232,7 +232,7 @@ class HLCTest {
         val incoming =
             Timestamp(
                 incomingTime,
-                ClientNode("node02"),
+                DistributedNode("node02"),
                 Counter(3),
             )
         val result = hlc.receive(incoming)
@@ -250,10 +250,10 @@ class HLCTest {
                 .fromMillisForTests(fixedTime.millisForTests + 1000)
         val hlc =
             HLC(
-                ClientNode("node01"),
+                DistributedNode("node01"),
                 Timestamp(
                     localTime,
-                    ClientNode("node01"),
+                    DistributedNode("node01"),
                     Counter(5),
                 ),
             )
@@ -261,7 +261,7 @@ class HLCTest {
         val incoming =
             Timestamp(
                 incomingTime,
-                ClientNode("node02"),
+                DistributedNode("node02"),
                 Counter(3),
             )
         val result = hlc.receive(incoming)
@@ -279,10 +279,10 @@ class HLCTest {
                 .fromMillisForTests(fixedTime.millisForTests - 1000)
         val hlc =
             HLC(
-                ClientNode("node01"),
+                DistributedNode("node01"),
                 Timestamp(
                     pastLocalTime,
-                    ClientNode("node01"),
+                    DistributedNode("node01"),
                     Counter(5),
                 ),
             )
@@ -290,7 +290,7 @@ class HLCTest {
         val incoming =
             Timestamp(
                 pastIncomingTime,
-                ClientNode("node02"),
+                DistributedNode("node02"),
                 Counter(3),
             )
         val result = hlc.receive(incoming)
@@ -310,11 +310,11 @@ class HLCTest {
 
         val hlc =
             HLC(
-                ClientNode("node01"),
+                DistributedNode("node01"),
                 previousTimestamp =
                     Timestamp(
                         fixedTime,
-                        ClientNode("node01"),
+                        DistributedNode("node01"),
                         Counter(15),
                     ),
             )
@@ -322,7 +322,7 @@ class HLCTest {
         val overflowCounter =
             Timestamp(
                 fixedTime,
-                ClientNode("node01"),
+                DistributedNode("node01"),
                 Counter(15),
             )
         assertFailure {
@@ -339,18 +339,18 @@ class HLCTest {
         val driftedTimestamp =
             Timestamp(
                 farFuture,
-                ClientNode("node01"),
+                DistributedNode("node01"),
                 Counter(0),
             )
 
         assertFailure {
-            HLC(ClientNode("node01")).receive(driftedTimestamp)
+            HLC(DistributedNode("node01")).receive(driftedTimestamp)
         }.hasClass(ClockDriftException::class.java)
     }
 
     @Test
     fun `Simulated distributed event ordering`() {
-        val hlc = HLC(ClientNode("node01"))
+        val hlc = HLC(DistributedNode("node01"))
         val event1 = hlc.issueLocalEventPacked()
 
         val receivedEvent =

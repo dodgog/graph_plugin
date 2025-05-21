@@ -4,12 +4,12 @@ import com.daylightcomputer.hlc.exceptions.TimestampFormatException
 
 data class Timestamp(
     val logicalTime: LogicalTimestamp,
-    val clientNode: ClientNode,
+    val distributedNode: DistributedNode,
     val counter: Counter,
 ) : Comparable<Timestamp>,
     Packable<Timestamp> {
     override fun encode(): String =
-        "${logicalTime.encode()}-${counter.encode()}-${clientNode.encode()}"
+        "${logicalTime.encode()}-${counter.encode()}-${distributedNode.encode()}"
 
     override fun compareTo(other: Timestamp): Int {
         val timeCompare = logicalTime.compareTo(other.logicalTime)
@@ -18,7 +18,7 @@ data class Timestamp(
         val counterCompare = counter.compareTo(other.counter)
         if (counterCompare != 0) return counterCompare
 
-        return clientNode.compareTo(other.clientNode)
+        return distributedNode.compareTo(other.distributedNode)
     }
 
     companion object : Packable.HelpHelp<Timestamp> {
@@ -26,7 +26,7 @@ data class Timestamp(
             get() =
                 Counter.encodedLength +
                     LogicalTimestamp.encodedLength +
-                    ClientNode.encodedLength + 2
+                    DistributedNode.encodedLength + 2
 
         override fun fromEncodedImpl(data: String): Timestamp {
             try {
@@ -44,9 +44,9 @@ data class Timestamp(
 
                 val logicalTime = LogicalTimestamp.fromEncoded(timeString)
                 val counter = Counter.fromEncoded(counterString)
-                val clientNode = ClientNode.fromEncoded(nodeString)
+                val distributedNode = DistributedNode.fromEncoded(nodeString)
 
-                return Timestamp(logicalTime, clientNode, counter)
+                return Timestamp(logicalTime, distributedNode, counter)
             } catch (e: Exception) {
                 when (e) {
                     is TimestampFormatException -> throw e

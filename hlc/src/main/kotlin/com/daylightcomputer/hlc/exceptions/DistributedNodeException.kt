@@ -1,5 +1,5 @@
 package com.daylightcomputer.hlc.exceptions
 
-class ClientFormatException(
+class DistributedNodeException(
     message: String,
 ) : Exception(message)
