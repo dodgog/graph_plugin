@@ -16,7 +16,7 @@ class LogicalTimestampTest {
 
     @BeforeEach
     fun setup() {
-        HLCEnvironment.resetTest()
+        HLCEnvironment.resetForTests()
         HLCEnvironment.initialize(
             HLCConfig(
                 logicalTimestampLength = 27,
@@ -61,8 +61,8 @@ class LogicalTimestampTest {
     @Test
     fun `LogicalTimestamp packing and unpacking works`() {
         val original = LogicalTimestamp(fixedTime)
-        val packed = original.pack()
-        val unpacked = LogicalTimestamp.fromPacked(packed)
+        val packed = original.encode()
+        val unpacked = LogicalTimestamp.fromEncoded(packed)
 
         assertThat(original.instant).isEqualTo(unpacked.instant)
     }
@@ -70,12 +70,12 @@ class LogicalTimestampTest {
     @Test
     fun `LogicalTimestamp packing maintains correct length`() {
         val timestamp = LogicalTimestamp(fixedTime)
-        assertThat(timestamp.pack().length).isEqualTo(27)
+        assertThat(timestamp.encode().length).isEqualTo(27)
     }
 
     @Test
     fun `LogicalTimestamp packing produces correct ISO format`() {
         val timestamp = LogicalTimestamp(fixedTime)
-        assertThat(timestamp.pack()).isEqualTo("2024-01-01T00:00:00.123456Z")
+        assertThat(timestamp.encode()).isEqualTo("2024-01-01T00:00:00.123456Z")
     }
 }

@@ -11,10 +11,10 @@ data class HLCConfig(
     val logicalTimestampLength: Int = 27,
     val getPhysicalTime: () -> LogicalTimestamp = { LogicalTimestamp.now() },
 ) : Packable<HLCConfig> {
-    override fun pack(): String {
+    override fun encode(): String {
         val serialized =
             "$maxClockDriftMilliseconds|$hexCounterLength|$clientNodeLength|$logicalTimestampLength"
-        return serialized.padEnd(packedLength, '#')
+        return serialized.padEnd(encodedLength, '#')
     }
 
     val maxCount: Int =
@@ -22,9 +22,9 @@ data class HLCConfig(
             .computeMaxValue(hexCounterLength)
 
     companion object : Packable.HelpHelp<HLCConfig> {
-        override val packedLength: Int = 50
+        override val encodedLength: Int = 50
 
-        override fun fromPackedImpl(data: String): HLCConfig {
+        override fun fromEncodedImpl(data: String): HLCConfig {
             val trimmed = data.trimEnd('#')
             val parts = trimmed.split("|")
             return HLCConfig(

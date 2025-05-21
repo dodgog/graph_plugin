@@ -10,7 +10,7 @@ data class LogicalTimestamp(
     val instant: Instant,
 ) : Comparable<LogicalTimestamp>,
     Packable<LogicalTimestamp> {
-    override fun pack(): String = FORMATTER.format(instant)
+    override fun encode(): String = FORMATTER.format(instant)
 
     override fun compareTo(other: LogicalTimestamp): Int =
         instant.compareTo(other.instant)
@@ -24,10 +24,10 @@ data class LogicalTimestamp(
     internal val millisForTests: Long get() = instant.toEpochMilli()
 
     companion object : Packable.HelpHelp<LogicalTimestamp> {
-        override val packedLength: Int
+        override val encodedLength: Int
             get() = HLCEnvironment.config.logicalTimestampLength
 
-        override fun fromPackedImpl(data: String): LogicalTimestamp =
+        override fun fromEncodedImpl(data: String): LogicalTimestamp =
             LogicalTimestamp(Instant.from(FORMATTER.parse(data)))
 
         val FORMATTER: DateTimeFormatter =

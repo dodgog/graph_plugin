@@ -15,7 +15,8 @@ data class Counter(
         }
     }
 
-    override fun pack(): String = value.toString(16).padStart(packedLength, '0')
+    override fun encode(): String =
+        value.toString(16).padStart(encodedLength, '0')
 
     override fun compareTo(other: Counter): Int = value.compareTo(other.value)
 
@@ -29,10 +30,10 @@ data class Counter(
         fun computeMaxValue(numberOfHexDigits: Int): Int =
             (1 shl (4 * numberOfHexDigits)) - 1
 
-        override val packedLength: Int
+        override val encodedLength: Int
             get() = HLCEnvironment.config.hexCounterLength
 
-        override fun fromPackedImpl(data: String): Counter {
+        override fun fromEncodedImpl(data: String): Counter {
             val value = data.toIntOrNull(16) ?: 0
             return Counter(value)
         }

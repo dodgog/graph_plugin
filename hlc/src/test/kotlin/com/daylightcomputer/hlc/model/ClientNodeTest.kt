@@ -14,7 +14,7 @@ import org.junit.jupiter.api.Test
 class ClientNodeTest {
     @BeforeEach
     fun setup() {
-        HLCEnvironment.resetTest()
+        HLCEnvironment.resetForTests()
         HLCEnvironment.initialize(
             HLCConfig(
                 clientNodeLength = 6,
@@ -49,7 +49,7 @@ class ClientNodeTest {
     @Test
     fun `ClientNode packing and unpacking works`() {
         val original = ClientNode("node12")
-        val packed = original.pack()
+        val packed = original.encode()
         val unpacked = ClientNode.fromPacked(packed)
 
         assertThat(original.clientNodeId).isEqualTo(unpacked.clientNodeId)
@@ -58,6 +58,6 @@ class ClientNodeTest {
     @Test
     fun `ClientNode packing maintains correct length`() {
         val node = ClientNode("node12")
-        assertThat(node.pack().length).isEqualTo(6)
+        assertThat(node.encode().length).isEqualTo(6)
     }
 }

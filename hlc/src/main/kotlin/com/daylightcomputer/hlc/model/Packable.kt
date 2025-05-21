@@ -3,22 +3,22 @@ package com.daylightcomputer.hlc.model
 import com.daylightcomputer.hlc.exceptions.TimestampFormatException
 
 interface Packable<T> {
-    fun pack(): String
+    fun encode(): String
 
     interface HelpHelp<T> {
-        val packedLength: Int
+        val encodedLength: Int
 
-        fun fromPacked(data: String): T {
-            validatePackedLength(data)
-            return fromPackedImpl(data)
+        fun fromEncoded(data: String): T {
+            validateLength(data)
+            return fromEncodedImpl(data)
         }
 
-        fun fromPackedImpl(data: String): T
+        fun fromEncodedImpl(data: String): T
 
-        fun validatePackedLength(data: String) {
-            if (data.length != packedLength) {
+        fun validateLength(data: String) {
+            if (data.length != encodedLength) {
                 throw TimestampFormatException(
-                    "Invalid packed data length: expected $packedLength but got ${data.length}",
+                    "Invalid packed data length: expected $encodedLength but got ${data.length}",
                 )
             }
         }

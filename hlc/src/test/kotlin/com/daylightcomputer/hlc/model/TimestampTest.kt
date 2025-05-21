@@ -18,7 +18,7 @@ class TimestampTest {
 
     @BeforeEach
     fun setup() {
-        HLCEnvironment.resetTest()
+        HLCEnvironment.resetForTests()
         HLCEnvironment.initialize(
             HLCConfig(
                 logicalTimestampLength = 27,
@@ -81,8 +81,8 @@ class TimestampTest {
                 ClientNode("node01"),
                 Counter(0x1234),
             )
-        val packed = original.pack()
-        val unpacked = Timestamp.fromPacked(packed)
+        val packed = original.encode()
+        val unpacked = Timestamp.fromEncoded(packed)
 
         assertThat(
             unpacked.logicalTime.instant,
@@ -102,7 +102,7 @@ class TimestampTest {
                 Counter(0x1234),
             )
         assertThat(
-            timestamp.pack(),
+            timestamp.encode(),
         ).isEqualTo("2024-01-01T00:00:00.123456Z-1234-node01")
     }
 
@@ -110,7 +110,7 @@ class TimestampTest {
     fun `Timestamp unpacking with invalid format throws exception`() {
         assertk
             .assertFailure {
-                Timestamp.fromPacked("invalid-format")
+                Timestamp.fromEncoded("invalid-format")
             }.hasClass(TimestampFormatException::class.java)
     }
 }
