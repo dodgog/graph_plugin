@@ -8,7 +8,7 @@ data class DistributedNode(
 ) : Comparable<DistributedNode>,
     Packable<DistributedNode> {
     init {
-        if (clientNodeId.length!=encodedLength) {
+        if (clientNodeId.length != encodedLength) {
             throw TimestampFormatException(
                 "Invalid clientNodeId Length, " +
                     "got ${clientNodeId.length} expecting $encodedLength",

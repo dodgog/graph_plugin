@@ -11,8 +11,8 @@ import com.daylightcomputer.hlc.events.receivePackedAndRepack
 import com.daylightcomputer.hlc.events.send
 import com.daylightcomputer.hlc.exceptions.ClockDriftException
 import com.daylightcomputer.hlc.exceptions.CounterOverflowException
-import com.daylightcomputer.hlc.model.DistributedNode
 import com.daylightcomputer.hlc.model.Counter
+import com.daylightcomputer.hlc.model.DistributedNode
 import com.daylightcomputer.hlc.model.LogicalTimestamp
 import com.daylightcomputer.hlc.model.Timestamp
 import org.junit.jupiter.api.AfterEach
