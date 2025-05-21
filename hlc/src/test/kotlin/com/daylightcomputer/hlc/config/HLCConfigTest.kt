@@ -19,12 +19,13 @@ class HLCConfigTest {
 
     @Test
     fun `HLCConfig custom values are set correctly`() {
-        val config = HLCConfig(
-            maxClockDriftMilliseconds = 1_800_000,
-            hexCounterLength = 2,
-            clientNodeLength = 4,
-            logicalTimestampLength = 20
-        )
+        val config =
+            HLCConfig(
+                maxClockDriftMilliseconds = 1_800_000,
+                hexCounterLength = 2,
+                clientNodeLength = 4,
+                logicalTimestampLength = 20,
+            )
         assertThat(config.maxClockDriftMilliseconds).isEqualTo(1_800_000)
         assertThat(config.hexCounterLength).isEqualTo(2)
         assertThat(config.clientNodeLength).isEqualTo(4)
@@ -39,19 +40,28 @@ class HLCConfigTest {
 
     @Test
     fun `HLCConfig packing and unpacking works`() {
-        val original = HLCConfig(
-            maxClockDriftMilliseconds = 1_800_000,
-            hexCounterLength = 2,
-            clientNodeLength = 4,
-            logicalTimestampLength = 20
-        )
+        val original =
+            HLCConfig(
+                maxClockDriftMilliseconds = 1_800_000,
+                hexCounterLength = 2,
+                clientNodeLength = 4,
+                logicalTimestampLength = 20,
+            )
         val packed = original.pack()
         val unpacked = HLCConfig.fromPacked(packed)
 
-        assertThat(unpacked.maxClockDriftMilliseconds).isEqualTo(original.maxClockDriftMilliseconds)
-        assertThat(unpacked.hexCounterLength).isEqualTo(original.hexCounterLength)
-        assertThat(unpacked.clientNodeLength).isEqualTo(original.clientNodeLength)
-        assertThat(unpacked.logicalTimestampLength).isEqualTo(original.logicalTimestampLength)
+        assertThat(
+            unpacked.maxClockDriftMilliseconds,
+        ).isEqualTo(original.maxClockDriftMilliseconds)
+        assertThat(
+            unpacked.hexCounterLength,
+        ).isEqualTo(original.hexCounterLength)
+        assertThat(
+            unpacked.clientNodeLength,
+        ).isEqualTo(original.clientNodeLength)
+        assertThat(
+            unpacked.logicalTimestampLength,
+        ).isEqualTo(original.logicalTimestampLength)
     }
 
     @Test
@@ -59,4 +69,4 @@ class HLCConfigTest {
         val config = HLCConfig()
         assertThat(config.pack().length).isEqualTo(50)
     }
-} 
+}

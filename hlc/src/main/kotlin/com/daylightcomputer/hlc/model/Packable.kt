@@ -18,10 +18,9 @@ interface Packable<T> {
         fun validatePackedLength(data: String) {
             if (data.length != packedLength) {
                 throw TimestampFormatException(
-                    "Invalid packed data length: expected $packedLength but got ${data.length}"
+                    "Invalid packed data length: expected $packedLength but got ${data.length}",
                 )
             }
         }
     }
 }
-

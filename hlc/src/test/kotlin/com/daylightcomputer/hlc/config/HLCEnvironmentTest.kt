@@ -27,16 +27,18 @@ class HLCEnvironmentTest {
     fun `HLCEnvironment double initialization throws exception`() {
         val config = HLCConfig()
         HLCEnvironment.initialize(config)
-        assertk.assertFailure {
-            HLCEnvironment.initialize(config)
-        }.hasClass(IllegalStateException::class.java)
+        assertk
+            .assertFailure {
+                HLCEnvironment.initialize(config)
+            }.hasClass(IllegalStateException::class.java)
     }
 
     @Test
     fun `HLCEnvironment access before initialization throws exception`() {
-        assertk.assertFailure {
-            HLCEnvironment.config
-        }.hasClass(IllegalStateException::class.java)
+        assertk
+            .assertFailure {
+                HLCEnvironment.config
+            }.hasClass(IllegalStateException::class.java)
     }
 
     @Test
@@ -44,8 +46,9 @@ class HLCEnvironmentTest {
         val config = HLCConfig()
         HLCEnvironment.initialize(config)
         HLCEnvironment.resetTest()
-        assertk.assertFailure {
-            HLCEnvironment.config
-        }.hasClass(IllegalStateException::class.java)
+        assertk
+            .assertFailure {
+                HLCEnvironment.config
+            }.hasClass(IllegalStateException::class.java)
     }
-} 
+}

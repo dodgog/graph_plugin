@@ -5,11 +5,11 @@ import com.daylightcomputer.hlc.exceptions.TimestampFormatException
 data class Timestamp(
     val logicalTime: LogicalTimestamp,
     val clientNode: ClientNode,
-    val counter: Counter
-) : Comparable<Timestamp>, Packable<Timestamp> {
-    override fun pack(): String {
-        return "${logicalTime.pack()}-${counter.pack()}-${clientNode.pack()}"
-    }
+    val counter: Counter,
+) : Comparable<Timestamp>,
+    Packable<Timestamp> {
+    override fun pack(): String =
+        "${logicalTime.pack()}-${counter.pack()}-${clientNode.pack()}"
 
     override fun compareTo(other: Timestamp): Int {
         val timeCompare = logicalTime.compareTo(other.logicalTime)
@@ -23,7 +23,8 @@ data class Timestamp(
 
     companion object : Packable.HelpHelp<Timestamp> {
         override val packedLength: Int
-            get() = Counter.packedLength +
+            get() =
+                Counter.packedLength +
                     LogicalTimestamp.packedLength +
                     ClientNode.packedLength + 2
 
@@ -33,8 +34,13 @@ data class Timestamp(
                 val counterLength = Counter.packedLength
 
                 val timeString = data.substring(0, timeLength)
-                val counterString = data.substring(timeLength + 1, timeLength + 1 + counterLength)
-                val nodeString = data.substring(timeLength + 1 + counterLength + 1)
+                val counterString =
+                    data.substring(
+                        timeLength + 1,
+                        timeLength + 1 + counterLength,
+                    )
+                val nodeString =
+                    data.substring(timeLength + 1 + counterLength + 1)
 
                 val logicalTime = LogicalTimestamp.fromPacked(timeString)
                 val counter = Counter.fromPacked(counterString)
@@ -44,8 +50,15 @@ data class Timestamp(
             } catch (e: Exception) {
                 when (e) {
                     is TimestampFormatException -> throw e
-                    is StringIndexOutOfBoundsException -> throw TimestampFormatException("Invalid timestamp format: $data")
-                    else -> throw TimestampFormatException("Failed to parse timestamp: $data. ${e.message}")
+                    is StringIndexOutOfBoundsException ->
+                        throw TimestampFormatException(
+                            "Invalid timestamp format: $data",
+                        )
+
+                    else -> throw TimestampFormatException(
+                        "Failed to parse timestamp: " +
+                            "$data. ${e.message}",
+                    )
                 }
             }
         }

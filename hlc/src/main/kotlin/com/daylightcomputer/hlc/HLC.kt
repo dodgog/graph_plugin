@@ -12,7 +12,7 @@ import kotlin.math.max
 
 class HLC(
     val clientNode: ClientNode,
-    previousTimestamp: Timestamp? = null
+    previousTimestamp: Timestamp? = null,
 ) {
     private val config: HLCConfig get() = HLCEnvironment.config
 
@@ -21,63 +21,66 @@ class HLC(
     val currentTimestamp: Timestamp get() = timestamp
 
     init {
-        if (previousTimestamp != null && previousTimestamp.clientNode != clientNode) {
-            throw ClientFormatException("Previous issuing client differs from current")
+        if (previousTimestamp != null &&
+            previousTimestamp.clientNode != clientNode
+        ) {
+            throw ClientFormatException(
+                "Previous issuing client differs from current",
+            )
         }
 
         timestamp = previousTimestamp ?: Timestamp(
             LogicalTimestamp(Instant.ofEpochMilli(0)),
             clientNode,
-            Counter(0)
+            Counter(0),
         )
     }
 
-    fun issueLocalEvent(): Timestamp {
-        return localEventOrSend()
-    }
+    fun issueLocalEvent(): Timestamp = localEventOrSend()
 
-    fun issueLocalEventPacked(): String {
-        return localEventOrSend().pack()
-    }
+    fun issueLocalEventPacked(): String = localEventOrSend().pack()
 
-    fun send(): Timestamp {
-        return localEventOrSend()
-    }
+    fun send(): Timestamp = localEventOrSend()
 
-    fun sendPacked(): String {
-        return localEventOrSend().pack()
-    }
+    fun sendPacked(): String = localEventOrSend().pack()
 
-    fun receivePacked(packedTimestamp: String): Timestamp {
-        return receive(Timestamp.fromPacked(packedTimestamp))
-    }
+    fun receivePacked(packedTimestamp: String): Timestamp =
+        receive(Timestamp.fromPacked(packedTimestamp))
 
-    fun receivePackedAndRepack(packedTimestamp: String): String {
-        return receive(Timestamp.fromPacked(packedTimestamp)).pack()
-    }
+    fun receivePackedAndRepack(packedTimestamp: String): String =
+        receive(Timestamp.fromPacked(packedTimestamp)).pack()
 
     fun receive(incoming: Timestamp): Timestamp {
         val now = config.getPhysicalTime()
-        val newLogicalTime = maxOf(now, incoming.logicalTime, timestamp.logicalTime)
+        val newLogicalTime =
+            maxOf(now, incoming.logicalTime, timestamp.logicalTime)
 
-        val newCounter = when {
-            newLogicalTime == timestamp.logicalTime && newLogicalTime == incoming.logicalTime ->
-                Counter(max(timestamp.counter.value, incoming.counter.value) + 1)
+        val newCounter =
+            when {
+                newLogicalTime == timestamp.logicalTime &&
+                    newLogicalTime == incoming.logicalTime ->
+                    Counter(
+                        max(
+                            timestamp.counter.value,
+                            incoming.counter.value,
+                        ) + 1,
+                    )
 
-            newLogicalTime == timestamp.logicalTime ->
-                timestamp.counter.increment()
+                newLogicalTime == timestamp.logicalTime ->
+                    timestamp.counter.increment()
 
-            newLogicalTime == incoming.logicalTime ->
-                incoming.counter.increment()
+                newLogicalTime == incoming.logicalTime ->
+                    incoming.counter.increment()
 
-            else ->
-                Counter(0)
-        }
+                else ->
+                    Counter(0)
+            }
 
-        val newTimestamp = timestamp.copy(
-            logicalTime = newLogicalTime,
-            counter = newCounter
-        )
+        val newTimestamp =
+            timestamp.copy(
+                logicalTime = newLogicalTime,
+                counter = newCounter,
+            )
 
         return setTimestamp(newTimestamp, physicalDriftReferenceTime = now)
     }
@@ -85,34 +88,40 @@ class HLC(
     private fun localEventOrSend(): Timestamp {
         val now = config.getPhysicalTime()
 
-        val newTimestamp = if (timestamp.logicalTime > now) {
-            timestamp.copy(
-                counter = timestamp.counter.increment()
-            )
-        } else {
-            timestamp.copy(
-                logicalTime = now,
-                counter = Counter(0)
-            )
-        }
+        val newTimestamp =
+            if (timestamp.logicalTime > now) {
+                timestamp.copy(
+                    counter = timestamp.counter.increment(),
+                )
+            } else {
+                timestamp.copy(
+                    logicalTime = now,
+                    counter = Counter(0),
+                )
+            }
 
         return setTimestamp(newTimestamp, physicalDriftReferenceTime = now)
     }
 
     private fun setTimestamp(
         newTimestamp: Timestamp,
-        physicalDriftReferenceTime: LogicalTimestamp? = null
+        physicalDriftReferenceTime: LogicalTimestamp? = null,
     ): Timestamp {
         if (newTimestamp.counter.value > config.maxCount) {
-            throw CounterOverflowException("Counter exceeded the limit of ${config.maxCount}")
+            throw CounterOverflowException(
+                "Counter exceeded the limit of ${config.maxCount}",
+            )
         }
 
         if (physicalDriftReferenceTime != null) {
-            val drift = newTimestamp.logicalTime.absDifferenceInMillis(physicalDriftReferenceTime)
+            val drift =
+                newTimestamp.logicalTime.absDifferenceInMillis(
+                    physicalDriftReferenceTime,
+                )
 
             if (drift > config.maxClockDriftMilliseconds) {
                 throw ClockDriftException(
-                    "Logical time drifted from physical time by more than ${config.maxClockDriftMilliseconds} ms"
+                    "Logical time drifted from physical time by more than ${config.maxClockDriftMilliseconds} ms",
                 )
             }
         }
@@ -122,9 +131,10 @@ class HLC(
     }
 
     companion object {
-        private fun maxOf(a: LogicalTimestamp, b: LogicalTimestamp, c: LogicalTimestamp): LogicalTimestamp {
-            return maxOf(maxOf(a, b), c)
-        }
+        private fun maxOf(
+            a: LogicalTimestamp,
+            b: LogicalTimestamp,
+            c: LogicalTimestamp,
+        ): LogicalTimestamp = maxOf(maxOf(a, b), c)
     }
 }
-

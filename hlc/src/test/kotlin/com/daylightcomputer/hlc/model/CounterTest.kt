@@ -4,11 +4,11 @@ import assertk.assertThat
 import assertk.assertions.hasClass
 import assertk.assertions.isEqualTo
 import assertk.assertions.isLessThan
+import com.daylightcomputer.hlc.HLCConfig
+import com.daylightcomputer.hlc.HLCEnvironment
+import com.daylightcomputer.hlc.exceptions.CounterOverflowException
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
-import com.daylightcomputer.hlc.HLCEnvironment
-import com.daylightcomputer.hlc.HLCConfig
-import com.daylightcomputer.hlc.exceptions.CounterOverflowException
 
 // AIUSE: AI generated tests
 
@@ -18,8 +18,8 @@ class CounterTest {
         HLCEnvironment.resetTest()
         HLCEnvironment.initialize(
             HLCConfig(
-                hexCounterLength = 4
-            )
+                hexCounterLength = 4,
+            ),
         )
     }
 
@@ -31,16 +31,18 @@ class CounterTest {
 
     @Test
     fun `Counter initialization with negative value throws exception`() {
-        assertk.assertFailure {
-            Counter(-1)
-        }.hasClass(IllegalArgumentException::class.java)
+        assertk
+            .assertFailure {
+                Counter(-1)
+            }.hasClass(IllegalArgumentException::class.java)
     }
 
     @Test
     fun `Counter initialization with overflow value throws exception`() {
-        assertk.assertFailure {
-            Counter(0x10000)
-        }.hasClass(CounterOverflowException::class.java)
+        assertk
+            .assertFailure {
+                Counter(0x10000)
+            }.hasClass(CounterOverflowException::class.java)
     }
 
     @Test
@@ -53,9 +55,10 @@ class CounterTest {
     @Test
     fun `Counter increment at max value throws exception`() {
         val counter = Counter(0xFFFF)
-        assertk.assertFailure {
-            counter.increment()
-        }.hasClass(CounterOverflowException::class.java)
+        assertk
+            .assertFailure {
+                counter.increment()
+            }.hasClass(CounterOverflowException::class.java)
     }
 
     @Test
@@ -88,4 +91,4 @@ class CounterTest {
         val counter = Counter(0x1234)
         assertThat(counter.pack()).isEqualTo("1234")
     }
-} 
+}

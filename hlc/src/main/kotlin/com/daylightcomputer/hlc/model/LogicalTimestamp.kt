@@ -6,18 +6,20 @@ import java.time.ZoneOffset
 import java.time.format.DateTimeFormatter
 import kotlin.math.absoluteValue
 
-data class LogicalTimestamp(val instant: Instant) : Comparable<LogicalTimestamp>, Packable<LogicalTimestamp> {
-    override fun pack(): String {
-        return FORMATTER.format(instant)
-    }
+data class LogicalTimestamp(
+    val instant: Instant,
+) : Comparable<LogicalTimestamp>,
+    Packable<LogicalTimestamp> {
+    override fun pack(): String = FORMATTER.format(instant)
 
-    override fun compareTo(other: LogicalTimestamp): Int {
-        return instant.compareTo(other.instant)
-    }
+    override fun compareTo(other: LogicalTimestamp): Int =
+        instant.compareTo(other.instant)
 
-    fun absDifferenceInMillis(other: LogicalTimestamp): Long {
-        return (instant.toEpochMilli() - other.instant.toEpochMilli()).absoluteValue
-    }
+    fun absDifferenceInMillis(other: LogicalTimestamp): Long =
+        (
+            instant.toEpochMilli() -
+                other.instant.toEpochMilli()
+        ).absoluteValue
 
     internal val millisForTests: Long get() = instant.toEpochMilli()
 
@@ -25,20 +27,17 @@ data class LogicalTimestamp(val instant: Instant) : Comparable<LogicalTimestamp>
         override val packedLength: Int
             get() = HLCEnvironment.config.logicalTimestampLength
 
-        override fun fromPackedImpl(data: String): LogicalTimestamp {
-            return LogicalTimestamp(Instant.from(FORMATTER.parse(data)))
-        }
+        override fun fromPackedImpl(data: String): LogicalTimestamp =
+            LogicalTimestamp(Instant.from(FORMATTER.parse(data)))
 
-        val FORMATTER: DateTimeFormatter = DateTimeFormatter
-            .ISO_INSTANT
-            .withZone(ZoneOffset.UTC)
+        val FORMATTER: DateTimeFormatter =
+            DateTimeFormatter
+                .ISO_INSTANT
+                .withZone(ZoneOffset.UTC)
 
-        fun now(): LogicalTimestamp {
-            return LogicalTimestamp(Instant.now())
-        }
+        fun now(): LogicalTimestamp = LogicalTimestamp(Instant.now())
 
-        internal fun fromMillisForTests(millis: Long): LogicalTimestamp {
-            return LogicalTimestamp(Instant.ofEpochMilli(millis))
-        }
+        internal fun fromMillisForTests(millis: Long): LogicalTimestamp =
+            LogicalTimestamp(Instant.ofEpochMilli(millis))
     }
 }
