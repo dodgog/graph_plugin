@@ -1,13 +1,12 @@
 // The Android Gradle Plugin builds the native code with the Android NDK.
 
-//plugins {
-//    id 'com.daylightcomputer.hlc'
-//}
+plugins {
+    id("com.android.library")
+    id("org.jetbrains.kotlin.android")
+    id("app.cash.sqldelight")
+}
 
-group 'com.daylightcomputer.graphplugin'
-version '1.0'
-
-rootProject.allprojects {
+allprojects {
     repositories {
         google()
         mavenCentral()
@@ -15,14 +14,12 @@ rootProject.allprojects {
     }
 }
 
-apply plugin: 'app.cash.sqldelight'
-apply plugin: 'com.android.library'
-apply plugin: 'kotlin-android'
+group = "com.daylightcomputer.graphplugin"
+version = "1.0"
 
 android {
-    namespace 'com.daylightcomputer.graphplugin'
-
-    compileSdk 35
+    namespace = "com.daylightcomputer.graphplugin"
+    compileSdk = 35
 
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
@@ -51,8 +48,8 @@ sqldelight {
 }
 
 dependencies {
-    implementation 'com.daylightcomputer.hlc:hlc:1.0-SNAPSHOT'
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3"
+    implementation("com.daylightcomputer.hlc:hlc:1.0-SNAPSHOT")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3"
     implementation "androidx.annotation:annotation:1.9.1"
     implementation "app.cash.sqldelight:android-driver:2.0.2"
