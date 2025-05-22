@@ -4,7 +4,7 @@ import com.daylightcomputer.hlc.HLCConfig
 import com.daylightcomputer.hlc.HLCEnvironment
 import com.daylightcomputer.hlc.events.issueLocalEventPacked
 import com.daylightcomputer.hlc.model.DistributedNode
-import kotlinx.coroutines.*
+import kotlinx.coroutines.delay
 
 @Keep
 class Example {

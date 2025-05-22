@@ -3,7 +3,6 @@ package com.daylightcomputer.graphplugin.sqldefinitions
 import assertk.assertThat
 import assertk.assertions.isEmpty
 import assertk.assertions.isEqualTo
-import com.daylightcomputer.graphplugin.sqldefinitions.Events
 import com.daylightcomputer.hlc.HLC
 import com.daylightcomputer.hlc.HLCConfig
 import com.daylightcomputer.hlc.HLCEnvironment
@@ -13,16 +12,17 @@ import org.junit.Test
 
 class SqlTests {
     @Test
-    fun sample() = testing { db ->
-        assertThat(db.eventsQueries.getEvents().executeAsList()).isEmpty()
+    fun sample() =
+        testing { db ->
+            assertThat(db.eventsQueries.getEvents().executeAsList()).isEmpty()
 
-        HLCEnvironment.initialize(HLCConfig())
-        val a = HLC(DistributedNode("abc123"))
-        println(a.issueLocalEventPacked())
+            HLCEnvironment.initialize(HLCConfig())
+            val a = HLC(DistributedNode("abc123"))
+            println(a.issueLocalEventPacked())
 
-        db.eventsQueries.insertEvent("ab", "c", "d", "a", "a", "s")
-        assertThat(
-            db.eventsQueries.getEvents().executeAsList()
-        ).isEqualTo(listOf(Events("ab", "c", "d", "a", "a", "s")))
-    }
+            db.eventsQueries.insertEvent("ab", "c", "d", "a", "a", "s")
+            assertThat(
+                db.eventsQueries.getEvents().executeAsList(),
+            ).isEqualTo(listOf(Events("ab", "c", "d", "a", "a", "s")))
+        }
 }
