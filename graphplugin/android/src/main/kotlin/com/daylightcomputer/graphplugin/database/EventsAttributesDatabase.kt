@@ -1,7 +1,7 @@
 package com.daylightcomputer.graphplugin.database
 
 import app.cash.sqldelight.db.SqlDriver
-import com.daylightcomputer.graphplugin.sqldefinitions.Database
+import com.daylightcomputer.graphplugin.database.sqldefinitions.Database
 import com.daylightcomputer.hlc.HLC
 import com.daylightcomputer.hlc.HLCConfig
 import com.daylightcomputer.hlc.HLCEnvironment
