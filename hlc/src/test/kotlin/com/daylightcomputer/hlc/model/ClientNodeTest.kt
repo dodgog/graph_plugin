@@ -24,7 +24,7 @@ class ClientNodeTest {
 
     @Test
     fun `ClientNode initialization with valid ID works`() {
-        val node = ClientNode("node01")
+        val node = DistributedNode("node01")
         assertThat(node.clientNodeId).isEqualTo("node01")
     }
 
@@ -32,15 +32,15 @@ class ClientNodeTest {
     fun `ClientNode initialization with invalid length throws exception`() {
         assertk
             .assertFailure {
-                ClientNode("node1")
+                DistributedNode("node1")
             }.hasClass(IllegalArgumentException::class.java)
     }
 
     @Test
     fun `ClientNode comparison works correctly`() {
-        val node1 = ClientNode("node01")
-        val node2 = ClientNode("node02")
-        val node1Duplicate = ClientNode("node01")
+        val node1 = DistributedNode("node01")
+        val node2 = DistributedNode("node02")
+        val node1Duplicate = DistributedNode("node01")
 
         assertThat(node1).isLessThan(node2)
         assertThat(node1).isEqualTo(node1Duplicate)
@@ -48,16 +48,16 @@ class ClientNodeTest {
 
     @Test
     fun `ClientNode packing and unpacking works`() {
-        val original = ClientNode("node12")
+        val original = DistributedNode("node12")
         val packed = original.encode()
-        val unpacked = ClientNode.fromPacked(packed)
+        val unpacked = DistributedNode.fromEncoded(packed)
 
         assertThat(original.clientNodeId).isEqualTo(unpacked.clientNodeId)
     }
 
     @Test
     fun `ClientNode packing maintains correct length`() {
-        val node = ClientNode("node12")
+        val node = DistributedNode("node12")
         assertThat(node.encode().length).isEqualTo(6)
     }
 }

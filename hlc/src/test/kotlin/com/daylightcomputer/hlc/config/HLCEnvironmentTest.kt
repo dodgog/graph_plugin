@@ -13,7 +13,7 @@ import org.junit.jupiter.api.Test
 class HLCEnvironmentTest {
     @AfterEach
     fun tearDown() {
-        HLCEnvironment.resetTest()
+        HLCEnvironment.resetForTests()
     }
 
     @Test

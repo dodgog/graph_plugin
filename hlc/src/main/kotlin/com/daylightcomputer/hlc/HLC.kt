@@ -1,9 +1,9 @@
 package com.daylightcomputer.hlc
 
-import com.daylightcomputer.hlc.exceptions.ClientFormatException
+import com.daylightcomputer.hlc.exceptions.DistributedNodeException
 import com.daylightcomputer.hlc.exceptions.ClockDriftException
 import com.daylightcomputer.hlc.exceptions.CounterOverflowException
-import com.daylightcomputer.hlc.model.ClientNode
+import com.daylightcomputer.hlc.model.DistributedNode
 import com.daylightcomputer.hlc.model.Counter
 import com.daylightcomputer.hlc.model.LogicalTimestamp
 import com.daylightcomputer.hlc.model.Timestamp
@@ -11,7 +11,7 @@ import java.time.Instant
 import kotlin.math.max
 
 class HLC(
-    val clientNode: ClientNode,
+    val distributedNode: DistributedNode,
     previousTimestamp: Timestamp? = null,
 ) {
     private val config: HLCConfig get() = HLCEnvironment.config
@@ -22,16 +22,16 @@ class HLC(
 
     init {
         if (previousTimestamp != null &&
-            previousTimestamp.clientNode != clientNode
+            previousTimestamp.distributedNode != distributedNode
         ) {
-            throw ClientFormatException(
+            throw DistributedNodeException(
                 "Previous issuing client differs from current",
             )
         }
 
         timestamp = previousTimestamp ?: Timestamp(
             LogicalTimestamp(Instant.ofEpochMilli(0)),
-            clientNode,
+            distributedNode,
             Counter(0),
         )
     }

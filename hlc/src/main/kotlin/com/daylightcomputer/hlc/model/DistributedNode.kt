@@ -1,15 +1,15 @@
 package com.daylightcomputer.hlc.model
 
 import com.daylightcomputer.hlc.HLCEnvironment
-import com.daylightcomputer.hlc.exceptions.ClientFormatException
+import com.daylightcomputer.hlc.exceptions.TimestampFormatException
 
-data class ClientNode(
+data class DistributedNode(
     val clientNodeId: String,
-) : Comparable<ClientNode>,
-    Packable<ClientNode> {
+) : Comparable<DistributedNode>,
+    Packable<DistributedNode> {
     init {
-        if (clientNodeId.length != encodedLength) {
-            throw ClientFormatException(
+        if (clientNodeId.length!=encodedLength) {
+            throw TimestampFormatException(
                 "Invalid clientNodeId Length, " +
                     "got ${clientNodeId.length} expecting $encodedLength",
             )
@@ -18,14 +18,14 @@ data class ClientNode(
 
     override fun encode(): String = clientNodeId
 
-    override fun compareTo(other: ClientNode): Int =
+    override fun compareTo(other: DistributedNode): Int =
         clientNodeId.compareTo(other.clientNodeId)
 
-    companion object : Packable.HelpHelp<ClientNode> {
+    companion object : Packable.HelpHelp<DistributedNode> {
         override val encodedLength: Int
             get() = HLCEnvironment.config.clientNodeLength
 
-        override fun fromEncodedImpl(data: String): ClientNode =
-            ClientNode(data)
+        override fun fromEncodedImpl(data: String): DistributedNode =
+            DistributedNode(data)
     }
 }
