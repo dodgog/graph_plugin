@@ -9,5 +9,5 @@ insertBundle:
 INSERT OR IGNORE INTO bundles (id, user_id, timestamp, payload)
 VALUES(:id, :user_id, :timestamp, :payload);
 
-getAllBundlesIds:
+getAllBundleIds:
 SELECT id FROM bundles;
