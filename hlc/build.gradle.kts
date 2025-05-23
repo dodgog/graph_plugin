@@ -43,7 +43,11 @@ tasks.register<Jar>("fatJar") {
         attributes("Main-Class" to "com.hlc.demo.HLCDemoKt")
     }
     archiveClassifier.set("fat")
-    from(configurations.runtimeClasspath.get().map { if (it.isDirectory) it else zipTree(it) })
+    from(
+        configurations.runtimeClasspath.get().map {
+            if (it.isDirectory) it else zipTree(it)
+        },
+    )
     with(tasks.jar.get())
     duplicatesStrategy = DuplicatesStrategy.EXCLUDE
 }
@@ -52,10 +56,10 @@ publishing {
     publications {
         create<MavenPublication>("maven") {
             from(components["java"])
-            
+
             groupId = "com.daylightcomputer.hlc"
             artifactId = "hlc"
             version = "1.0-SNAPSHOT"
         }
     }
-} 
+}
