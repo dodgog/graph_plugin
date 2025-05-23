@@ -19,9 +19,62 @@ COMPLETED_STEPS=()
 
 # Parse command line arguments
 ACCEPT=false
-if [[ "$1" == "--accept" || "$1" == "-a" ]]; then
-    ACCEPT=true
-fi
+CLEAN=false
+for arg in "$@"; do
+    case $arg in
+        --accept)
+            ACCEPT=true
+            ;;
+        --clean)
+            CLEAN=true
+            ;;
+        --help)
+            echo "Usage: $0 [OPTIONS]"
+            echo "Options:"
+            echo "  -a, --accept   Run all steps without confirmations"
+            echo "  -c, --clean    Clean all caches and build directories before building"
+            echo "  -h, --help     Show this help message"
+            echo ""
+            echo "Single-letter options can be combined, e.g.: -ac (same as -a -c)"
+            exit 0
+            ;;
+        -*)
+            # Handle combined single-letter flags like -ac
+            flags="${arg#-}"  # Remove the leading dash
+            for (( i=0; i<${#flags}; i++ )); do
+                flag="${flags:$i:1}"
+                case $flag in
+                    a)
+                        ACCEPT=true
+                        ;;
+                    c)
+                        CLEAN=true
+                        ;;
+                    h)
+                        echo "Usage: $0 [OPTIONS]"
+                        echo "Options:"
+                        echo "  -a, --accept   Run all steps without confirmations"
+                        echo "  -c, --clean    Clean all caches and build directories before building"
+                        echo "  -h, --help     Show this help message"
+                        echo ""
+                        echo "Single-letter options can be combined, e.g.: -ac (same as -a -c)"
+                        exit 0
+                        ;;
+                    *)
+                        echo "Unknown option: -$flag"
+                        echo "Use -h or --help for usage information"
+                        exit 1
+                        ;;
+                esac
+            done
+            ;;
+        *)
+            echo "Unknown argument: $arg"
+            echo "Use -h or --help for usage information"
+            exit 1
+            ;;
+    esac
+done
 
 # Function to print colored output
 print_step() {
@@ -92,6 +145,38 @@ cd "$SCRIPT_DIR"
 print_info "Starting Knowledge Sync build process..."
 print_info "Working directory: $(pwd)"
 
+# Clean steps (if --clean flag is provided)
+if [[ "$CLEAN" == "true" ]]; then
+    print_info "Clean mode enabled - cleaning all caches and build directories..."
+    
+    # Clean HLC Gradle project
+    if confirm_step "Clean HLC Gradle project"; then
+        run_command "HLC Gradle clean" "./gradlew clean" "hlc" "✓ Cleaned HLC Gradle project"
+        cd "$SCRIPT_DIR"  # Return to root
+    fi
+    
+    # Clean coreplugin Android Gradle project
+    if confirm_step "Clean coreplugin Android Gradle project"; then
+        run_command "Coreplugin Android Gradle clean" "./gradlew clean" "coreplugin/android" "✓ Cleaned coreplugin Android Gradle project"
+        cd "$SCRIPT_DIR"  # Return to root
+    fi
+    
+    # Clean Flutter project
+    if confirm_step "Clean Flutter project and caches"; then
+        run_command "Flutter clean" "flutter clean" "coreplugin/example" "✓ Cleaned Flutter project"
+        cd "$SCRIPT_DIR"  # Return to root
+    fi
+    
+    # Clean JNI generated files and other build artifacts
+    if confirm_step "Clean JNI generated files and build artifacts"; then
+        run_command "JNI and build artifacts cleanup" "rm -rf lib/src/generated build .dart_tool" "coreplugin" "✓ Cleaned JNI generated files and build artifacts"
+        cd "$SCRIPT_DIR"  # Return to root
+    fi
+    
+    print_success "All clean operations completed!"
+    echo
+fi
+
 # Step 1: Publish HLC to Maven Local
 if confirm_step "Publish HLC to Maven local (Gradle task)"; then
     run_command "HLC Maven local publishing" "./gradlew publishToMavenLocal" "hlc" "✓ Published HLC to Maven local"
@@ -141,6 +226,8 @@ fi
 
 if [[ "$ACCEPT" == "false" ]]; then
     echo
-    print_info "To run this script without confirmations, use: $0 --accept"
+    print_info "To run this script without confirmations, use: $0 -a (or --accept)"
+    print_info "To clean all caches and build directories first, use: $0 -c (or --clean)"
+    print_info "To combine both options, use: $0 -ac (or --accept --clean)"
     print_info "At any prompt, you can type 'q' to quit the build process"
 fi 
