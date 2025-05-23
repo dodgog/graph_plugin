@@ -6,7 +6,8 @@ import assertk.assertions.isEqualTo
 import com.daylightcomputer.hlc.HLC
 import com.daylightcomputer.hlc.HLCConfig
 import com.daylightcomputer.hlc.HLCEnvironment
-import com.daylightcomputer.hlc.model.ClientNode
+import com.daylightcomputer.hlc.events.issueLocalEventPacked
+import com.daylightcomputer.hlc.model.DistributedNode
 import org.junit.Test
 
 
@@ -16,7 +17,7 @@ class SqlTests {
         assertThat(db.eventsQueries.getEvents().executeAsList()).isEmpty()
 
         HLCEnvironment.initialize(HLCConfig())
-        val a = HLC(ClientNode("abc123"))
+        val a = HLC(DistributedNode("abc123"))
         println(a.issueLocalEventPacked())
 
         db.eventsQueries.insertEvent("ab", "c", "d", "a","a", "s")

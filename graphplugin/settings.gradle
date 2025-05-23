@@ -25,4 +25,4 @@ project(":graphplugin").projectDir = file("android")
 include(":exampleApp")
 project(":exampleApp").projectDir = file("example/android/app")
 
-rootProject.name = 'graphplugin'
+rootProject.name = 'pluginRoot'
