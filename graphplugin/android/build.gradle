@@ -1,5 +1,9 @@
 // The Android Gradle Plugin builds the native code with the Android NDK.
 
+//plugins {
+//    id 'com.daylightcomputer.hlc'
+//}
+
 group 'com.daylightcomputer.graphplugin'
 version '1.0'
 
@@ -7,6 +11,7 @@ rootProject.allprojects {
     repositories {
         google()
         mavenCentral()
+        mavenLocal()
     }
 }
 
@@ -19,16 +24,8 @@ android {
 
     compileSdk 35
 
-
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
-
-        main.java.srcDirs += '../../hlc/src/main/kotlin'
-
-        // THINK: Removed because of the double declaration when using tests.
-        // Confusingly, there are two build folders now with the refactor
-        // one for tests and one for the executable part
-        // main.java.srcDirs += '../example/build/graphplugin/generated/sqldelight/code/Database/release/com/daylightcomputer/graphplugin/dbdb'
     }
 
     compileOptions {
@@ -54,6 +51,7 @@ sqldelight {
 }
 
 dependencies {
+    implementation 'com.daylightcomputer.hlc:hlc:1.0-SNAPSHOT'
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3"
     implementation "androidx.annotation:annotation:1.9.1"
