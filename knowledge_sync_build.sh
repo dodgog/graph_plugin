@@ -100,7 +100,7 @@ confirm_step() {
         print_info "Running (accept mode): $message"
         return 0
     fi
-    
+
     print_step "$message"
     while true; do
         read -p "Do you want to proceed? (y/n/q): " yn
@@ -119,14 +119,14 @@ run_command() {
     local command="$2"
     local directory="$3"
     local step_summary="$4"
-    
+
     if [[ -n "$directory" ]]; then
         print_info "Changing to directory: $directory"
         cd "$directory"
     fi
-    
+
     print_info "Running: $command"
-    
+
     if eval "$command"; then
         print_success "$description completed successfully"
         # Add to completed steps array
@@ -204,6 +204,7 @@ fi
 # Step 5: Run Kotlin library tests
 if confirm_step "Run Kotlin library tests (coreplugin unit tests)"; then
     run_command "Kotlin library tests" "./gradlew test" "coreplugin/android" "✓ Ran Kotlin library tests (coreplugin unit tests)"
+    cd "$SCRIPT_DIR"  # Return to root
 fi
 
 # Step 6: Run Kotlin lint
@@ -218,7 +219,7 @@ if [[ ${#COMPLETED_STEPS[@]} -eq 0 ]]; then
 else
     print_success "Completed ${#COMPLETED_STEPS[@]} step(s) successfully!"
     print_info "Summary of completed steps:"
-    
+
     for step in "${COMPLETED_STEPS[@]}"; do
         print_info "$step"
     done
@@ -230,4 +231,4 @@ if [[ "$ACCEPT" == "false" ]]; then
     print_info "To clean all caches and build directories first, use: $0 -c (or --clean)"
     print_info "To combine both options, use: $0 -ac (or --accept --clean)"
     print_info "At any prompt, you can type 'q' to quit the build process"
-fi 
+fi

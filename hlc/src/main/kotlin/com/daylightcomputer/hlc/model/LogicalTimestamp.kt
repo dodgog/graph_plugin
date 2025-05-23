@@ -29,7 +29,8 @@ data class LogicalTimestamp(
         override fun fromEncodedImpl(data: String): LogicalTimestamp =
             LogicalTimestamp(data.toInstant())
 
-        fun now(): LogicalTimestamp = LogicalTimestamp(kotlinx.datetime.Clock.System.now())
+        fun now(): LogicalTimestamp =
+            LogicalTimestamp(HLCEnvironment.config.getPhysicalTime())
 
         internal fun fromMillisForTests(millis: Long): LogicalTimestamp =
             LogicalTimestamp(Instant.fromEpochMilliseconds(millis))
