@@ -34,7 +34,7 @@ class CounterTest {
         assertk
             .assertFailure {
                 Counter(-1)
-            }.hasClass(IllegalArgumentException::class.java)
+            }.hasClass(CounterOverflowException::class.java)
     }
 
     @Test
