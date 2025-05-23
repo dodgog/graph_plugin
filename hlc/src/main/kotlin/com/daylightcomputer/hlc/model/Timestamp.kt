@@ -12,7 +12,7 @@ data class Timestamp(
         override val numberOfCharactersInRepresentation: Int
             get() = Counter.numberOfCharactersInRepresentation +
                     LogicalTimestamp.numberOfCharactersInRepresentation +
-                    ClientNode.numberOfCharactersInRepresentation
+                    ClientNode.numberOfCharactersInRepresentation + 2
 
         override fun fromPackedImpl(data: String): Timestamp {
             try {

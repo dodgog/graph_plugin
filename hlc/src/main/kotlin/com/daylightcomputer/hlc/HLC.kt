@@ -13,7 +13,7 @@ class HLC(
     val clientNode: ClientNode,
     previousTimestamp: Timestamp? = null
 ) {
-    private val config: HLCConfig = HLCEnvironment.config
+    private val config: HLCConfig get() = HLCEnvironment.config
     private var timestamp: Timestamp
 
     init {
@@ -64,7 +64,7 @@ class HLC(
                 timestamp.counter.increment()
 
             newLogicalTime == incoming.logicalTime ->
-                timestamp.counter.increment()
+                incoming.counter.increment()
 
             else ->
                 Counter(0)

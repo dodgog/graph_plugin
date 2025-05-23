@@ -2,18 +2,21 @@ package com.daylightcomputer.hlc.model
 
 import com.daylightcomputer.hlc.HLCEnvironment
 import com.daylightcomputer.hlc.exceptions.CounterOverflowException
+import kotlin.math.max
 
 /**
  * Represents a logical counter in a Hybrid Logical Clock
  */
 data class Counter(val value: Int) : Comparable<Counter>, Packable<Counter> {
     init {
-        require(value <= maxValue)
+        if (value > maxValue){
+            throw CounterOverflowException("Counter exceeded the limit of $maxValue")
+        }
     }
 
     companion object : Packable.HelpHelp<Counter> {
         override val numberOfCharactersInRepresentation: Int
-            get() = HLCEnvironment.config.numberOfCharactersInClientNodeRepresentation
+            get() = HLCEnvironment.config.numberOfCharactersInCounterHexRepresentation
         val maxValue: Int get() = HLCEnvironment.config.maxCount
 
         override fun fromPackedImpl(data: String): Counter {
