@@ -36,20 +36,6 @@ class HLC(
         )
     }
 
-    fun issueLocalEvent(): Timestamp = localEventOrSend()
-
-    fun issueLocalEventPacked(): String = localEventOrSend().encode()
-
-    fun send(): Timestamp = localEventOrSend()
-
-    fun sendPacked(): String = localEventOrSend().encode()
-
-    fun receivePacked(packedTimestamp: String): Timestamp =
-        receive(Timestamp.fromEncoded(packedTimestamp))
-
-    fun receivePackedAndRepack(packedTimestamp: String): String =
-        receive(Timestamp.fromEncoded(packedTimestamp)).encode()
-
     fun receive(incoming: Timestamp): Timestamp {
         val now = config.getPhysicalTime()
         val newLogicalTime =
@@ -85,7 +71,7 @@ class HLC(
         return setTimestamp(newTimestamp, physicalDriftReferenceTime = now)
     }
 
-    private fun localEventOrSend(): Timestamp {
+    fun tick(): Timestamp {
         val now = config.getPhysicalTime()
 
         val newTimestamp =
