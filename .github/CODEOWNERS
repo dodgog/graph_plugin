@@ -1,0 +1,10 @@
+# Global default: dodgog reviews everything unless it's their own PR
+* @dodgog
+
+hlc/src/**/*.kt @thesolarmonk
+hlc/src/**/*.kts @thesolarmonk
+
+coreplugin/lib/**/*.dart @thesolarmonk
+
+coreplugin/android/src/**/*.kt @thesolarmonk
+coreplugin/android/src/**/*.kts @thesolarmonk
