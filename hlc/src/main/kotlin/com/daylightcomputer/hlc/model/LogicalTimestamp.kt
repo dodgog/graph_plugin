@@ -1,43 +1,37 @@
 package com.daylightcomputer.hlc.model
 
 import com.daylightcomputer.hlc.HLCEnvironment
-import java.time.Instant
-import java.time.ZoneOffset
-import java.time.format.DateTimeFormatter
+import kotlinx.datetime.Instant
+import kotlinx.datetime.toInstant
 import kotlin.math.absoluteValue
 
 data class LogicalTimestamp(
     val instant: Instant,
 ) : Comparable<LogicalTimestamp>,
     Packable<LogicalTimestamp> {
-    override fun encode(): String = FORMATTER.format(instant)
+    override fun encode(): String = instant.toString()
 
     override fun compareTo(other: LogicalTimestamp): Int =
         instant.compareTo(other.instant)
 
     fun absDifferenceInMillis(other: LogicalTimestamp): Long =
         (
-            instant.toEpochMilli() -
-                other.instant.toEpochMilli()
+            instant.toEpochMilliseconds() -
+                other.instant.toEpochMilliseconds()
         ).absoluteValue
 
-    internal val millisForTests: Long get() = instant.toEpochMilli()
+    internal val millisForTests: Long get() = instant.toEpochMilliseconds()
 
     companion object : Packable.HelpHelp<LogicalTimestamp> {
         override val encodedLength: Int
             get() = HLCEnvironment.config.logicalTimestampLength
 
         override fun fromEncodedImpl(data: String): LogicalTimestamp =
-            LogicalTimestamp(Instant.from(FORMATTER.parse(data)))
+            LogicalTimestamp(data.toInstant())
 
-        val FORMATTER: DateTimeFormatter =
-            DateTimeFormatter
-                .ISO_INSTANT
-                .withZone(ZoneOffset.UTC)
-
-        fun now(): LogicalTimestamp = LogicalTimestamp(Instant.now())
+        fun now(): LogicalTimestamp = LogicalTimestamp(kotlinx.datetime.Clock.System.now())
 
         internal fun fromMillisForTests(millis: Long): LogicalTimestamp =
-            LogicalTimestamp(Instant.ofEpochMilli(millis))
+            LogicalTimestamp(Instant.fromEpochMilliseconds(millis))
     }
 }

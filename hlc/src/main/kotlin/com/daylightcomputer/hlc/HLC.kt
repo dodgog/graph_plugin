@@ -7,7 +7,7 @@ import com.daylightcomputer.hlc.model.Counter
 import com.daylightcomputer.hlc.model.DistributedNode
 import com.daylightcomputer.hlc.model.LogicalTimestamp
 import com.daylightcomputer.hlc.model.Timestamp
-import java.time.Instant
+import kotlinx.datetime.Instant
 import kotlin.math.max
 
 class HLC(
@@ -30,7 +30,7 @@ class HLC(
         }
 
         _timestamp = previousTimestamp ?: Timestamp(
-            LogicalTimestamp(Instant.ofEpochMilli(0)),
+            LogicalTimestamp(Instant.fromEpochMilliseconds(0)),
             distributedNode,
             Counter(0),
         )
