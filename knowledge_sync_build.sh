@@ -100,13 +100,13 @@ fi
 
 # Step 2: Build Flutter APK
 if confirm_step "Build Flutter example app APK"; then
-    run_command "Flutter APK build" "flutter build apk" "graphplugin/example" "✓ Built Flutter example APK"
+    run_command "Flutter APK build" "flutter build apk" "coreplugin/example" "✓ Built Flutter example APK"
     cd "$SCRIPT_DIR"  # Return to root
 fi
 
 # Step 3: Regenerate JNI bindings
 if confirm_step "Regenerate JNI bindings"; then
-    run_command "JNI bindings regeneration" "flutter pub run jnigen --config jnigen.yaml" "graphplugin" "✓ Regenerated JNI bindings"
+    run_command "JNI bindings regeneration" "flutter pub run jnigen --config jnigen.yaml" "coreplugin" "✓ Regenerated JNI bindings"
     cd "$SCRIPT_DIR"  # Return to root
 fi
 
@@ -117,8 +117,8 @@ if confirm_step "Run HLC tests (Kotlin JUnit tests)"; then
 fi
 
 # Step 5: Run Kotlin library tests
-if confirm_step "Run Kotlin library tests (GraphPlugin unit tests)"; then
-    run_command "Kotlin library tests" "./gradlew test" "graphplugin/android" "✓ Ran Kotlin library tests (GraphPlugin unit tests)"
+if confirm_step "Run Kotlin library tests (coreplugin unit tests)"; then
+    run_command "Kotlin library tests" "./gradlew test" "coreplugin/android" "✓ Ran Kotlin library tests (coreplugin unit tests)"
 fi
 
 # Step 6: Run Kotlin lint
