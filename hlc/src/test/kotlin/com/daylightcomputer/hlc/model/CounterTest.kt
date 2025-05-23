@@ -18,7 +18,7 @@ class CounterTest {
         HLCEnvironment.resetForTests()
         HLCEnvironment.initialize(
             HLCConfig(
-                hexCounterLength = 4,
+                counterLength = 4,
             ),
         )
     }

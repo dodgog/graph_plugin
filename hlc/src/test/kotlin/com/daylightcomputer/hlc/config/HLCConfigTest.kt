@@ -12,8 +12,8 @@ class HLCConfigTest {
     fun `HLCConfig default values are correct`() {
         val config = HLCConfig()
         assertThat(config.maxClockDriftMilliseconds).isEqualTo(3_600_000)
-        assertThat(config.hexCounterLength).isEqualTo(4)
-        assertThat(config.clientNodeLength).isEqualTo(6)
+        assertThat(config.counterLength).isEqualTo(4)
+        assertThat(config.distributedNodeLength).isEqualTo(6)
         assertThat(config.logicalTimestampLength).isEqualTo(27)
     }
 
@@ -22,19 +22,19 @@ class HLCConfigTest {
         val config =
             HLCConfig(
                 maxClockDriftMilliseconds = 1_800_000,
-                hexCounterLength = 2,
-                clientNodeLength = 4,
+                counterLength = 2,
+                distributedNodeLength = 4,
                 logicalTimestampLength = 20,
             )
         assertThat(config.maxClockDriftMilliseconds).isEqualTo(1_800_000)
-        assertThat(config.hexCounterLength).isEqualTo(2)
-        assertThat(config.clientNodeLength).isEqualTo(4)
+        assertThat(config.counterLength).isEqualTo(2)
+        assertThat(config.distributedNodeLength).isEqualTo(4)
         assertThat(config.logicalTimestampLength).isEqualTo(20)
     }
 
     @Test
     fun `HLCConfig maxCount is calculated correctly`() {
-        val config = HLCConfig(hexCounterLength = 2)
+        val config = HLCConfig(counterLength = 2)
         assertThat(config.maxCount).isEqualTo(0xFF)
     }
 
@@ -43,8 +43,8 @@ class HLCConfigTest {
         val original =
             HLCConfig(
                 maxClockDriftMilliseconds = 1_800_000,
-                hexCounterLength = 2,
-                clientNodeLength = 4,
+                counterLength = 2,
+                distributedNodeLength = 4,
                 logicalTimestampLength = 20,
             )
         val packed = original.encode()
@@ -54,11 +54,11 @@ class HLCConfigTest {
             unpacked.maxClockDriftMilliseconds,
         ).isEqualTo(original.maxClockDriftMilliseconds)
         assertThat(
-            unpacked.hexCounterLength,
-        ).isEqualTo(original.hexCounterLength)
+            unpacked.counterLength,
+        ).isEqualTo(original.counterLength)
         assertThat(
-            unpacked.clientNodeLength,
-        ).isEqualTo(original.clientNodeLength)
+            unpacked.distributedNodeLength,
+        ).isEqualTo(original.distributedNodeLength)
         assertThat(
             unpacked.logicalTimestampLength,
         ).isEqualTo(original.logicalTimestampLength)

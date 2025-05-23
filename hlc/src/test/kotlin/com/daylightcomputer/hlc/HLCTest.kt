@@ -304,7 +304,7 @@ class HLCTest {
         HLCEnvironment.initialize(
             HLCConfig(
                 getPhysicalTime = { fixedTime },
-                hexCounterLength = 1,
+                counterLength = 1,
             ),
         )
 

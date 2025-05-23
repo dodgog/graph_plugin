@@ -22,8 +22,8 @@ class TimestampTest {
         HLCEnvironment.initialize(
             HLCConfig(
                 logicalTimestampLength = 27,
-                hexCounterLength = 4,
-                clientNodeLength = 6,
+                counterLength = 4,
+                distributedNodeLength = 6,
             ),
         )
     }

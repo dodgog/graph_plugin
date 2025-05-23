@@ -6,20 +6,20 @@ import com.daylightcomputer.hlc.model.Packable
 
 data class HLCConfig(
     val maxClockDriftMilliseconds: Int = 3_600_000,
-    val hexCounterLength: Int = 4,
-    val clientNodeLength: Int = 6,
+    val counterLength: Int = 4,
+    val distributedNodeLength: Int = 6,
     val logicalTimestampLength: Int = 27,
     val getPhysicalTime: () -> LogicalTimestamp = { LogicalTimestamp.now() },
 ) : Packable<HLCConfig> {
     override fun encode(): String {
         val serialized =
-            "$maxClockDriftMilliseconds|$hexCounterLength|$clientNodeLength|$logicalTimestampLength"
+            "$maxClockDriftMilliseconds|$counterLength|$distributedNodeLength|$logicalTimestampLength"
         return serialized.padEnd(encodedLength, '#')
     }
 
     val maxCount: Int =
         Counter.Companion
-            .computeMaxValue(hexCounterLength)
+            .computeMaxValue(counterLength)
 
     companion object : Packable.HelpHelp<HLCConfig> {
         override val encodedLength: Int = 50
@@ -29,8 +29,8 @@ data class HLCConfig(
             val parts = trimmed.split("|")
             return HLCConfig(
                 maxClockDriftMilliseconds = parts[0].toInt(),
-                hexCounterLength = parts[1].toInt(),
-                clientNodeLength = parts[2].toInt(),
+                counterLength = parts[1].toInt(),
+                distributedNodeLength = parts[2].toInt(),
                 logicalTimestampLength = parts[3].toInt(),
             )
         }
