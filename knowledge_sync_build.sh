@@ -121,6 +121,11 @@ if confirm_step "Run Kotlin library tests (GraphPlugin unit tests)"; then
     run_command "Kotlin library tests" "./gradlew test" "graphplugin/android" "✓ Ran Kotlin library tests (GraphPlugin unit tests)"
 fi
 
+# Step 6: Run Kotlin lint
+if confirm_step "Run Kotlin lint"; then
+    run_command "Kotlin lint" "ktlint -F" "." "✓ Ran Kotlin lint"
+fi
+
 # Final summary
 echo
 if [[ ${#COMPLETED_STEPS[@]} -eq 0 ]]; then
