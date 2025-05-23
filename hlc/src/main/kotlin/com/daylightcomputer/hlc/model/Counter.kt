@@ -8,7 +8,7 @@ data class Counter(
 ) : Comparable<Counter>,
     Packable<Counter> {
     init {
-        if (value > maxValue) {
+        if (value > maxValue || value < 0 ) {
             throw CounterOverflowException(
                 "Counter exceeded the limit of $maxValue",
             )

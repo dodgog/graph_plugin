@@ -6,6 +6,7 @@ import assertk.assertions.isEqualTo
 import assertk.assertions.isLessThan
 import com.daylightcomputer.hlc.HLCConfig
 import com.daylightcomputer.hlc.HLCEnvironment
+import com.daylightcomputer.hlc.exceptions.TimestampFormatException
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 
@@ -33,7 +34,7 @@ class ClientNodeTest {
         assertk
             .assertFailure {
                 DistributedNode("node1")
-            }.hasClass(IllegalArgumentException::class.java)
+            }.hasClass(TimestampFormatException::class.java)
     }
 
     @Test
