@@ -1,8 +1,9 @@
-package com.daylightcomputer.graphplugin.sqldefinitions
+package com.daylightcomputer.graphplugin.database.sqldefinitions
 
 import assertk.assertThat
 import assertk.assertions.isEmpty
 import assertk.assertions.isEqualTo
+import com.daylightcomputer.graphplugin.database.sqldefinitions.Events
 import com.daylightcomputer.hlc.HLC
 import com.daylightcomputer.hlc.HLCConfig
 import com.daylightcomputer.hlc.HLCEnvironment

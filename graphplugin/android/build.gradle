@@ -57,7 +57,7 @@ android {
 sqldelight {
     databases {
         register("Database") {
-            packageName.set("com.daylightcomputer.graphplugin.sqldefinitions")
+            packageName.set("com.daylightcomputer.graphplugin.database.sqldefinitions")
         }
     }
 }

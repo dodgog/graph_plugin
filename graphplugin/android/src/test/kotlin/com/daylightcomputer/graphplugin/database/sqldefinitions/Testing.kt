@@ -1,4 +1,4 @@
-package com.daylightcomputer.graphplugin.sqldefinitions
+package com.daylightcomputer.graphplugin.database.sqldefinitions
 
 import app.cash.sqldelight.driver.jdbc.sqlite.JdbcSqliteDriver
 import kotlinx.coroutines.CoroutineScope
