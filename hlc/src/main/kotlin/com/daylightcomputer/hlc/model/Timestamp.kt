@@ -9,15 +9,15 @@ data class Timestamp(
 ) : Comparable<Timestamp>, Packable<Timestamp> {
 
     companion object : Packable.HelpHelp<Timestamp> {
-        override val numberOfCharactersInRepresentation: Int
-            get() = Counter.numberOfCharactersInRepresentation +
-                    LogicalTimestamp.numberOfCharactersInRepresentation +
-                    ClientNode.numberOfCharactersInRepresentation + 2
+        override val packedLength: Int
+            get() = Counter.packedLength +
+                    LogicalTimestamp.packedLength +
+                    ClientNode.packedLength + 2
 
         override fun fromPackedImpl(data: String): Timestamp {
             try {
-                val timeLength = LogicalTimestamp.numberOfCharactersInRepresentation
-                val counterLength = Counter.numberOfCharactersInRepresentation
+                val timeLength = LogicalTimestamp.packedLength
+                val counterLength = Counter.packedLength
 
                 val timeString = data.substring(0, timeLength)
                 val counterString = data.substring(timeLength + 1, timeLength + 1 + counterLength)

@@ -15,6 +15,7 @@ class HLC(
 ) {
     private val config: HLCConfig get() = HLCEnvironment.config
     private var timestamp: Timestamp
+    val currentTimestamp: Timestamp get() = timestamp
 
     init {
         if (previousTimestamp != null && previousTimestamp.clientNode != clientNode) {
@@ -117,9 +118,7 @@ class HLC(
         return timestamp
     }
 
-    fun getCurrentTimestamp(): Timestamp {
-        return timestamp
-    }
+
 
     companion object {
         /**

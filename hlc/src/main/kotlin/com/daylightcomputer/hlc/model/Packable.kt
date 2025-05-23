@@ -4,7 +4,7 @@ import com.daylightcomputer.hlc.exceptions.TimestampFormatException
 
 interface Packable<T> {
     interface HelpHelp<T> {
-        val numberOfCharactersInRepresentation: Int
+        val packedLength: Int
 
         fun fromPacked(data: String): T {
             validatePackedLength(data)
@@ -14,9 +14,9 @@ interface Packable<T> {
         fun fromPackedImpl(data: String): T
 
         fun validatePackedLength(data: String) {
-            if (data.length != numberOfCharactersInRepresentation) {
+            if (data.length != packedLength) {
                 throw TimestampFormatException(
-                    "Invalid packed data length: expected $numberOfCharactersInRepresentation but got ${data.length}"
+                    "Invalid packed data length: expected $packedLength but got ${data.length}"
                 )
             }
         }
