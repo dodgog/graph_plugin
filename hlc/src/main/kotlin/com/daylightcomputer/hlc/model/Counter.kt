@@ -31,7 +31,7 @@ data class Counter(
             (1 shl (4 * numberOfHexDigits)) - 1
 
         override val encodedLength: Int
-            get() = HLCEnvironment.config.hexCounterLength
+            get() = HLCEnvironment.config.counterLength
 
         override fun fromEncodedImpl(data: String): Counter {
             val value = data.toIntOrNull(16) ?: 0

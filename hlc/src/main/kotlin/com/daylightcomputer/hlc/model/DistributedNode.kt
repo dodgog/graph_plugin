@@ -23,7 +23,7 @@ data class DistributedNode(
 
     companion object : Packable.HelpHelp<DistributedNode> {
         override val encodedLength: Int
-            get() = HLCEnvironment.config.clientNodeLength
+            get() = HLCEnvironment.config.distributedNodeLength
 
         override fun fromEncodedImpl(data: String): DistributedNode =
             DistributedNode(data)
