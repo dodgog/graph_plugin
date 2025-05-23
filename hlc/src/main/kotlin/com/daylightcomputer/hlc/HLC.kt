@@ -1,10 +1,10 @@
 package com.daylightcomputer.hlc
 
-import com.daylightcomputer.hlc.exceptions.DistributedNodeException
 import com.daylightcomputer.hlc.exceptions.ClockDriftException
 import com.daylightcomputer.hlc.exceptions.CounterOverflowException
-import com.daylightcomputer.hlc.model.DistributedNode
+import com.daylightcomputer.hlc.exceptions.DistributedNodeException
 import com.daylightcomputer.hlc.model.Counter
+import com.daylightcomputer.hlc.model.DistributedNode
 import com.daylightcomputer.hlc.model.LogicalTimestamp
 import com.daylightcomputer.hlc.model.Timestamp
 import java.time.Instant
@@ -34,6 +34,33 @@ class HLC(
             distributedNode,
             Counter(0),
         )
+    }
+
+    private fun setAndValidateTimestamp(
+        newTimestamp: Timestamp,
+        physicalDriftReferenceTime: LogicalTimestamp? = null,
+    ): Timestamp {
+        if (newTimestamp.counter.value > config.maxCount) {
+            throw CounterOverflowException(
+                "Counter exceeded the limit of ${config.maxCount}",
+            )
+        }
+
+        if (physicalDriftReferenceTime != null) {
+            val drift =
+                newTimestamp.logicalTime.absDifferenceInMillis(
+                    physicalDriftReferenceTime,
+                )
+
+            if (drift > config.maxClockDriftMilliseconds) {
+                throw ClockDriftException(
+                    "Logical time drifted from physical time by more than ${config.maxClockDriftMilliseconds} ms",
+                )
+            }
+        }
+
+        _timestamp = newTimestamp
+        return _timestamp
     }
 
     fun receive(incoming: Timestamp): Timestamp {
@@ -68,7 +95,10 @@ class HLC(
                 counter = newCounter,
             )
 
-        return setTimestamp(newTimestamp, physicalDriftReferenceTime = now)
+        return setAndValidateTimestamp(
+            newTimestamp,
+            physicalDriftReferenceTime = now,
+        )
     }
 
     fun tick(): Timestamp {
@@ -86,34 +116,10 @@ class HLC(
                 )
             }
 
-        return setTimestamp(newTimestamp, physicalDriftReferenceTime = now)
-    }
-
-    private fun setTimestamp(
-        newTimestamp: Timestamp,
-        physicalDriftReferenceTime: LogicalTimestamp? = null,
-    ): Timestamp {
-        if (newTimestamp.counter.value > config.maxCount) {
-            throw CounterOverflowException(
-                "Counter exceeded the limit of ${config.maxCount}",
-            )
-        }
-
-        if (physicalDriftReferenceTime != null) {
-            val drift =
-                newTimestamp.logicalTime.absDifferenceInMillis(
-                    physicalDriftReferenceTime,
-                )
-
-            if (drift > config.maxClockDriftMilliseconds) {
-                throw ClockDriftException(
-                    "Logical time drifted from physical time by more than ${config.maxClockDriftMilliseconds} ms",
-                )
-            }
-        }
-
-        _timestamp = newTimestamp
-        return _timestamp
+        return setAndValidateTimestamp(
+            newTimestamp,
+            physicalDriftReferenceTime = now,
+        )
     }
 
     companion object {
