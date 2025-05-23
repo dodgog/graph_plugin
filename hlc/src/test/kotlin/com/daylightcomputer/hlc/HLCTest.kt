@@ -35,7 +35,7 @@ class HLCTest {
 
     @AfterEach
     fun tearDown() {
-        HLCEnvironment.resetTest()
+        HLCEnvironment.resetForTests()
     }
 
     @Test
@@ -51,8 +51,8 @@ class HLCTest {
     @Test
     fun `ClientNode packing and unpacking works`() {
         val original = ClientNode("node12")
-        val packed = original.pack()
-        val unpacked = ClientNode.fromPacked(packed)
+        val packed = original.encode()
+        val unpacked = ClientNode.fromEncoded(packed)
 
         assertThat(original.clientNodeId)
             .isEqualTo(unpacked.clientNodeId)
@@ -296,7 +296,7 @@ class HLCTest {
 
     @Test
     fun `Counter overflow throws exception`() {
-        HLCEnvironment.resetTest()
+        HLCEnvironment.resetForTests()
         HLCEnvironment.initialize(
             HLCConfig(
                 getPhysicalTime = { fixedTime },
@@ -351,7 +351,7 @@ class HLCTest {
 
         val receivedEvent =
             hlc.receivePackedAndRepack(
-                "${LogicalTimestamp.now().pack()}-0001-node02",
+                "${LogicalTimestamp.now().encode()}-0001-node02",
             )
 
         val event2 = hlc.issueLocalEventPacked()

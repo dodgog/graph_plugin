@@ -15,7 +15,7 @@ import org.junit.jupiter.api.Test
 class CounterTest {
     @BeforeEach
     fun setup() {
-        HLCEnvironment.resetTest()
+        HLCEnvironment.resetForTests()
         HLCEnvironment.initialize(
             HLCConfig(
                 hexCounterLength = 4,
@@ -74,8 +74,8 @@ class CounterTest {
     @Test
     fun `Counter packing and unpacking works`() {
         val original = Counter(0x1234)
-        val packed = original.pack()
-        val unpacked = Counter.fromPacked(packed)
+        val packed = original.encode()
+        val unpacked = Counter.fromEncoded(packed)
 
         assertThat(original.value).isEqualTo(unpacked.value)
     }
@@ -83,12 +83,12 @@ class CounterTest {
     @Test
     fun `Counter packing maintains correct length`() {
         val counter = Counter(0x1234)
-        assertThat(counter.pack().length).isEqualTo(4)
+        assertThat(counter.encode().length).isEqualTo(4)
     }
 
     @Test
     fun `Counter packing produces correct hex format`() {
         val counter = Counter(0x1234)
-        assertThat(counter.pack()).isEqualTo("1234")
+        assertThat(counter.encode()).isEqualTo("1234")
     }
 }

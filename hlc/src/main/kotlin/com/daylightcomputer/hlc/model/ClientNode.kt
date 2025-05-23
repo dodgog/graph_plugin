@@ -8,23 +8,24 @@ data class ClientNode(
 ) : Comparable<ClientNode>,
     Packable<ClientNode> {
     init {
-        if (clientNodeId.length != packedLength) {
+        if (clientNodeId.length != encodedLength) {
             throw ClientFormatException(
                 "Invalid clientNodeId Length, " +
-                    "got ${clientNodeId.length} expecting $packedLength",
+                    "got ${clientNodeId.length} expecting $encodedLength",
             )
         }
     }
 
-    override fun pack(): String = clientNodeId
+    override fun encode(): String = clientNodeId
 
     override fun compareTo(other: ClientNode): Int =
         clientNodeId.compareTo(other.clientNodeId)
 
     companion object : Packable.HelpHelp<ClientNode> {
-        override val packedLength: Int
+        override val encodedLength: Int
             get() = HLCEnvironment.config.clientNodeLength
 
-        override fun fromPackedImpl(data: String): ClientNode = ClientNode(data)
+        override fun fromEncodedImpl(data: String): ClientNode =
+            ClientNode(data)
     }
 }

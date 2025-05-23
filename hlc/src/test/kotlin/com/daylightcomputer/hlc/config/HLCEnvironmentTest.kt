@@ -45,7 +45,7 @@ class HLCEnvironmentTest {
     fun `HLCEnvironment reset works`() {
         val config = HLCConfig()
         HLCEnvironment.initialize(config)
-        HLCEnvironment.resetTest()
+        HLCEnvironment.resetForTests()
         assertk
             .assertFailure {
                 HLCEnvironment.config

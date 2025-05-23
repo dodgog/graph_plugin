@@ -8,8 +8,8 @@ data class Timestamp(
     val counter: Counter,
 ) : Comparable<Timestamp>,
     Packable<Timestamp> {
-    override fun pack(): String =
-        "${logicalTime.pack()}-${counter.pack()}-${clientNode.pack()}"
+    override fun encode(): String =
+        "${logicalTime.encode()}-${counter.encode()}-${clientNode.encode()}"
 
     override fun compareTo(other: Timestamp): Int {
         val timeCompare = logicalTime.compareTo(other.logicalTime)
@@ -22,16 +22,16 @@ data class Timestamp(
     }
 
     companion object : Packable.HelpHelp<Timestamp> {
-        override val packedLength: Int
+        override val encodedLength: Int
             get() =
-                Counter.packedLength +
-                    LogicalTimestamp.packedLength +
-                    ClientNode.packedLength + 2
+                Counter.encodedLength +
+                    LogicalTimestamp.encodedLength +
+                    ClientNode.encodedLength + 2
 
-        override fun fromPackedImpl(data: String): Timestamp {
+        override fun fromEncodedImpl(data: String): Timestamp {
             try {
-                val timeLength = LogicalTimestamp.packedLength
-                val counterLength = Counter.packedLength
+                val timeLength = LogicalTimestamp.encodedLength
+                val counterLength = Counter.encodedLength
 
                 val timeString = data.substring(0, timeLength)
                 val counterString =
@@ -42,9 +42,9 @@ data class Timestamp(
                 val nodeString =
                     data.substring(timeLength + 1 + counterLength + 1)
 
-                val logicalTime = LogicalTimestamp.fromPacked(timeString)
-                val counter = Counter.fromPacked(counterString)
-                val clientNode = ClientNode.fromPacked(nodeString)
+                val logicalTime = LogicalTimestamp.fromEncoded(timeString)
+                val counter = Counter.fromEncoded(counterString)
+                val clientNode = ClientNode.fromEncoded(nodeString)
 
                 return Timestamp(logicalTime, clientNode, counter)
             } catch (e: Exception) {

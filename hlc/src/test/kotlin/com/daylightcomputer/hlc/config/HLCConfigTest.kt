@@ -47,8 +47,8 @@ class HLCConfigTest {
                 clientNodeLength = 4,
                 logicalTimestampLength = 20,
             )
-        val packed = original.pack()
-        val unpacked = HLCConfig.fromPacked(packed)
+        val packed = original.encode()
+        val unpacked = HLCConfig.fromEncoded(packed)
 
         assertThat(
             unpacked.maxClockDriftMilliseconds,
@@ -67,6 +67,6 @@ class HLCConfigTest {
     @Test
     fun `HLCConfig packing maintains correct length`() {
         val config = HLCConfig()
-        assertThat(config.pack().length).isEqualTo(50)
+        assertThat(config.encode().length).isEqualTo(50)
     }
 }

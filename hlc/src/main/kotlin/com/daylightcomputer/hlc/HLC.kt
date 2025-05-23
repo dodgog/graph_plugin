@@ -38,17 +38,17 @@ class HLC(
 
     fun issueLocalEvent(): Timestamp = localEventOrSend()
 
-    fun issueLocalEventPacked(): String = localEventOrSend().pack()
+    fun issueLocalEventPacked(): String = localEventOrSend().encode()
 
     fun send(): Timestamp = localEventOrSend()
 
-    fun sendPacked(): String = localEventOrSend().pack()
+    fun sendPacked(): String = localEventOrSend().encode()
 
     fun receivePacked(packedTimestamp: String): Timestamp =
-        receive(Timestamp.fromPacked(packedTimestamp))
+        receive(Timestamp.fromEncoded(packedTimestamp))
 
     fun receivePackedAndRepack(packedTimestamp: String): String =
-        receive(Timestamp.fromPacked(packedTimestamp)).pack()
+        receive(Timestamp.fromEncoded(packedTimestamp)).encode()
 
     fun receive(incoming: Timestamp): Timestamp {
         val now = config.getPhysicalTime()
