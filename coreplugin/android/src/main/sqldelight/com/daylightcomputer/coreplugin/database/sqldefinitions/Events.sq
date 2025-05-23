@@ -6,7 +6,7 @@ CREATE TABLE events (
     -- part of the event which exactly matches the attributes table
     entity_id TEXT NOT NULL, -- doesn't always reference an existing node, so references is omitted
     attribute TEXT NOT NULL,
-    value TEXT NOT NULL,
+    attr_value TEXT NOT NULL,
     timestamp TEXT NOT NULL
 );
 
@@ -21,7 +21,7 @@ INSERT OR IGNORE INTO events (
     client_id,
     entity_id,
     attribute,
-    value,
+    attr_value,
     timestamp
 )
 VALUES (
@@ -29,7 +29,7 @@ VALUES (
     :client_id,
     :entity_id,
     :attribute,
-    :value,
+    :attr_value,
     :timestamp
 );
 
@@ -38,7 +38,7 @@ SELECT e.*
 FROM events e
 WHERE e.timestamp > (
   SELECT COALESCE(
-    (SELECT value FROM config WHERE key = 'last_server_issued_timestamp'),
-    (SELECT value FROM config WHERE key = 'hlc_absolute_zero')
+    (SELECT attr_value FROM config WHERE key = 'last_server_issued_timestamp'),
+    (SELECT attr_value FROM config WHERE key = 'hlc_absolute_zero')
   )
 );

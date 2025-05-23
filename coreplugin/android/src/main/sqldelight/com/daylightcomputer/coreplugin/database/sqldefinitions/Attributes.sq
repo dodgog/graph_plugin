@@ -1,7 +1,7 @@
 CREATE TABLE attributes (
     entity_id TEXT NOT NULL, -- for now means node
     attribute TEXT,
-    value TEXT, -- for now string
+    attr_value TEXT, -- for now string
     timestamp TEXT NOT NULL
 );
 -- TODO index for entity_id?
@@ -20,7 +20,7 @@ WHERE entity_id = :entity_id;
 
 upsertEventIntoAttributes{
 UPDATE attributes
-    SET value = :value,
+    SET attr_value = :attr_value,
         timestamp = :timestamp
     WHERE entity_id = :entity_id
       AND attribute = :attribute
@@ -28,11 +28,11 @@ UPDATE attributes
 
     -- If no rows were updated by the above (meaning either the row didn't exist,
     -- or it existed but the new timestamp wasn't greater), then try to insert.
-    INSERT OR IGNORE INTO attributes (entity_id, attribute, value, timestamp)
+    INSERT OR IGNORE INTO attributes (entity_id, attribute, attr_value, timestamp)
     VALUES (
         :entity_id,
         :attribute,
-        :value,
+        :attr_value,
         :timestamp
     );
 }
@@ -42,12 +42,12 @@ DELETE FROM attributes;
 
 insertAllEventsIntoAttributes:
 -- Use INSERT OR REPLACE to handle conflicts with the unique index on (entity_id, attribute)
-INSERT OR REPLACE INTO attributes (entity_id, attribute, value, timestamp)
+INSERT OR REPLACE INTO attributes (entity_id, attribute, attr_value, timestamp)
 -- Select only the latest events that should become attributes
-SELECT e1.entity_id, e1.attribute, e1.value, e1.timestamp
+SELECT e1.entity_id, e1.attribute, e1.attr_value, e1.timestamp
 FROM events e1
 -- Self-join to find any newer events for the same entity/attribute pair
--- If a newer event exists, e2 will have a value; if this is the newest event, e2 will be NULL
+-- If a newer event exists, e2 will have a attr_value; if this is the newest event, e2 will be NULL
 LEFT OUTER JOIN events e2 ON
   e1.entity_id = e2.entity_id AND
   e1.attribute = e2.attribute AND
@@ -55,7 +55,7 @@ LEFT OUTER JOIN events e2 ON
 -- Only select events where:
 -- 1. This is the newest event (no newer events exist in e2)
 WHERE e2.entity_id IS NULL
--- 2. And there isn't already a newer value in the attributes table
+-- 2. And there isn't already a newer attr_value in the attributes table
 AND NOT EXISTS (
   SELECT 1 FROM attributes a
   WHERE a.entity_id = e1.entity_id
