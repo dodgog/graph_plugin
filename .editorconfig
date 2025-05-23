@@ -15,3 +15,10 @@ max_line_length = 80
 ktlint_code_style = ktlint_official
 ij_kotlin_allow_trailing_comma = true
 ij_kotlin_allow_trailing_comma_on_call_site = true
+
+[{**/generated/**,**/build/**,**/*.generated.*,**/gen/**,**/target/**}]
+max_line_length = off
+indent_style = unset
+trim_trailing_whitespace = false
+insert_final_newline = false
+ktlint_standard_no-line-break-before-assignment = disabled
