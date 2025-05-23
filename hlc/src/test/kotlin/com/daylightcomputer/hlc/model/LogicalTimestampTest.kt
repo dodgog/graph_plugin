@@ -3,10 +3,10 @@ package com.daylightcomputer.hlc.model
 import assertk.assertThat
 import assertk.assertions.isEqualTo
 import assertk.assertions.isLessThan
+import com.daylightcomputer.hlc.HLCConfig
+import com.daylightcomputer.hlc.HLCEnvironment
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
-import com.daylightcomputer.hlc.HLCEnvironment
-import com.daylightcomputer.hlc.HLCConfig
 import java.time.Instant
 
 // AIUSE: AI generated tests
@@ -16,11 +16,11 @@ class LogicalTimestampTest {
 
     @BeforeEach
     fun setup() {
-        HLCEnvironment.resetForTests()
+        HLCEnvironment.resetTest()
         HLCEnvironment.initialize(
             HLCConfig(
-                logicalTimestampLength = 27
-            )
+                logicalTimestampLength = 27,
+            ),
         )
     }
 
@@ -32,8 +32,11 @@ class LogicalTimestampTest {
 
     @Test
     fun `LogicalTimestamp fromMillis works`() {
-        val timestamp = LogicalTimestamp.fromMillis(fixedTime.toEpochMilli())
-        assertThat(timestamp.millis).isEqualTo(fixedTime.toEpochMilli())
+        val timestamp =
+            LogicalTimestamp.fromMillisForTests(
+                fixedTime.toEpochMilli(),
+            )
+        assertThat(timestamp.millisForTests).isEqualTo(fixedTime.toEpochMilli())
     }
 
     @Test
@@ -75,4 +78,4 @@ class LogicalTimestampTest {
         val timestamp = LogicalTimestamp(fixedTime)
         assertThat(timestamp.pack()).isEqualTo("2024-01-01T00:00:00.123456Z")
     }
-} 
+}

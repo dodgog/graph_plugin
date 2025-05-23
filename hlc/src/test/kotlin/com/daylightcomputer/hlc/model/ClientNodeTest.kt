@@ -4,21 +4,21 @@ import assertk.assertThat
 import assertk.assertions.hasClass
 import assertk.assertions.isEqualTo
 import assertk.assertions.isLessThan
+import com.daylightcomputer.hlc.HLCConfig
+import com.daylightcomputer.hlc.HLCEnvironment
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
-import com.daylightcomputer.hlc.HLCEnvironment
-import com.daylightcomputer.hlc.HLCConfig
 
 // AIUSE: AI generated tests
 
 class ClientNodeTest {
     @BeforeEach
     fun setup() {
-        HLCEnvironment.resetForTests()
+        HLCEnvironment.resetTest()
         HLCEnvironment.initialize(
             HLCConfig(
-                clientNodeLength = 6
-            )
+                clientNodeLength = 6,
+            ),
         )
     }
 
@@ -30,9 +30,10 @@ class ClientNodeTest {
 
     @Test
     fun `ClientNode initialization with invalid length throws exception`() {
-        assertk.assertFailure {
-            ClientNode("node1")
-        }.hasClass(IllegalArgumentException::class.java)
+        assertk
+            .assertFailure {
+                ClientNode("node1")
+            }.hasClass(IllegalArgumentException::class.java)
     }
 
     @Test
@@ -59,4 +60,4 @@ class ClientNodeTest {
         val node = ClientNode("node12")
         assertThat(node.pack().length).isEqualTo(6)
     }
-} 
+}

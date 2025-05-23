@@ -31,8 +31,12 @@ android {
 
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
+
+        main.java.srcDirs += '../../hlc/src/main/kotlin'
+
         // THINK: Removed because of the double declaration when using tests.
         // Confusingly, there are two build folders now with the refactor
+        // one for tests and one for the executable part
         // main.java.srcDirs += '../example/build/graphplugin/generated/sqldelight/code/Database/release/com/daylightcomputer/graphplugin/dbdb'
     }
 

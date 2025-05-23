@@ -1,5 +1,5 @@
 package com.daylightcomputer.hlc.exceptions
 
-class CounterOverflowException(
+class ClientFormatException(
     message: String,
 ) : Exception(message)

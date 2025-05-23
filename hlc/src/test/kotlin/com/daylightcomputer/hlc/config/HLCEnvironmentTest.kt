@@ -13,7 +13,7 @@ import org.junit.jupiter.api.Test
 class HLCEnvironmentTest {
     @AfterEach
     fun tearDown() {
-        HLCEnvironment.resetForTests()
+        HLCEnvironment.resetTest()
     }
 
     @Test
@@ -27,25 +27,28 @@ class HLCEnvironmentTest {
     fun `HLCEnvironment double initialization throws exception`() {
         val config = HLCConfig()
         HLCEnvironment.initialize(config)
-        assertk.assertFailure {
-            HLCEnvironment.initialize(config)
-        }.hasClass(IllegalStateException::class.java)
+        assertk
+            .assertFailure {
+                HLCEnvironment.initialize(config)
+            }.hasClass(IllegalStateException::class.java)
     }
 
     @Test
     fun `HLCEnvironment access before initialization throws exception`() {
-        assertk.assertFailure {
-            HLCEnvironment.config
-        }.hasClass(IllegalStateException::class.java)
+        assertk
+            .assertFailure {
+                HLCEnvironment.config
+            }.hasClass(IllegalStateException::class.java)
     }
 
     @Test
     fun `HLCEnvironment reset works`() {
         val config = HLCConfig()
         HLCEnvironment.initialize(config)
-        HLCEnvironment.resetForTests()
-        assertk.assertFailure {
-            HLCEnvironment.config
-        }.hasClass(IllegalStateException::class.java)
+        HLCEnvironment.resetTest()
+        assertk
+            .assertFailure {
+                HLCEnvironment.config
+            }.hasClass(IllegalStateException::class.java)
     }
-} 
+}
