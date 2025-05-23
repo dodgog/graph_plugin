@@ -18,14 +18,14 @@ import com.daylightcomputer.hlc.model.Timestamp
 import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
-import java.time.Instant
+import kotlinx.datetime.Clock
 
 // AIUSE: tests handwritten in dart, converted to kotlin with AI
 
 class HLCTest {
     private val fixedTime =
         LogicalTimestamp.fromMillisForTests(
-            Instant.now().toEpochMilli(),
+            Clock.System.now().toEpochMilliseconds(),
         )
 
     @BeforeEach
