@@ -37,3 +37,9 @@ flutter pub run jnigen --config jnigen.yaml
 
 The `jnigen.yaml` file contains the option `suspend_fun_to_async: true`, which
 generates `async` method bindings from Kotlin's `suspend fun`s.
+
+# Interactive mode (asks for confirmation at each step)
+./knowledge_sync_build.sh
+
+# Silent mode (runs everything automatically)
+./knowledge_sync_build.sh --accept
