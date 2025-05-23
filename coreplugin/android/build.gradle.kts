@@ -51,6 +51,10 @@ dependencies {
     implementation("com.daylightcomputer.hlc:hlc:1.0-SNAPSHOT")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
+
+    // TODO: Needed for kotlinx datetime, otherwise R8 proguard screams
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-core:1.6.3")
+
     implementation("androidx.annotation:annotation:1.9.1")
     implementation("app.cash.sqldelight:android-driver:2.0.2")
 

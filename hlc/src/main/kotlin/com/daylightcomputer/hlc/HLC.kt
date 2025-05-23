@@ -64,7 +64,7 @@ class HLC(
     }
 
     fun receive(incoming: Timestamp): Timestamp {
-        val now = config.getPhysicalTime()
+        val now = LogicalTimestamp.now()
         val newLogicalTime =
             maxOf(now, incoming.logicalTime, _timestamp.logicalTime)
 
@@ -102,10 +102,10 @@ class HLC(
     }
 
     fun tick(): Timestamp {
-        val now = config.getPhysicalTime()
+        val now = LogicalTimestamp.now()
 
         val newTimestamp =
-            if (_timestamp.logicalTime > now) {
+            if (_timestamp.logicalTime >= now) {
                 _timestamp.copy(
                     counter = _timestamp.counter.increment(),
                 )

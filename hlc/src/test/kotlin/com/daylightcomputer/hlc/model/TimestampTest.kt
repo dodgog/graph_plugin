@@ -7,9 +7,9 @@ import assertk.assertions.isLessThan
 import com.daylightcomputer.hlc.HLCConfig
 import com.daylightcomputer.hlc.HLCEnvironment
 import com.daylightcomputer.hlc.exceptions.TimestampFormatException
+import kotlinx.datetime.Instant
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
-import kotlinx.datetime.Instant
 
 // AIUSE: AI generated tests
 
@@ -51,7 +51,11 @@ class TimestampTest {
             )
         val t2 =
             Timestamp(
-                LogicalTimestamp(Instant.fromEpochMilliseconds(fixedTime.toEpochMilliseconds() + 1000)),
+                LogicalTimestamp(
+                    Instant.fromEpochMilliseconds(
+                        fixedTime.toEpochMilliseconds() + 1000,
+                    ),
+                ),
                 DistributedNode("node01"),
                 Counter(0),
             )
