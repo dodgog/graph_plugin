@@ -32,21 +32,24 @@ application {
     mainClass = 'com.hlc.demo.HLCDemoKt'
 }
 
-// Make the demo executable as a jar
+// Thin jar which doesnt bundle dependencies
 jar {
+
+}
+
+// Fat jar which bundles dependencies
+task fatJar(type: Jar) {
     manifest {
         attributes 'Main-Class': 'com.hlc.demo.HLCDemoKt'
     }
-
-    // Include all dependencies
+    archiveClassifier = 'fat'
     from {
         configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
     }
-
+    with jar
     duplicatesStrategy = DuplicatesStrategy.EXCLUDE
 }
 
-// Add publishing configuration
 publishing {
     publications {
         maven(MavenPublication) {
