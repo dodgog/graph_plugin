@@ -1,5 +1,3 @@
-// The Android Gradle Plugin builds the native code with the Android NDK.
-
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
@@ -22,12 +20,12 @@ android {
     compileSdk = 35
 
     sourceSets {
-        main.java.srcDirs += 'src/main/kotlin'
+        getByName("main").java.srcDirs("src/main/kotlin")
     }
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_17
-        targetCompatibility JavaVersion.VERSION_17
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
 
     kotlinOptions {
@@ -35,13 +33,13 @@ android {
     }
 
     defaultConfig {
-        minSdkVersion 16
+        minSdk = 16
     }
 }
 
 sqldelight {
     databases {
-        register("Database") {
+        create("Database") {
             packageName.set("com.daylightcomputer.graphplugin.database.sqldefinitions")
         }
     }
@@ -50,19 +48,17 @@ sqldelight {
 dependencies {
     implementation("com.daylightcomputer.hlc:hlc:1.0-SNAPSHOT")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3"
-    implementation "androidx.annotation:annotation:1.9.1"
-    implementation "app.cash.sqldelight:android-driver:2.0.2"
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
+    implementation("androidx.annotation:annotation:1.9.1")
+    implementation("app.cash.sqldelight:android-driver:2.0.2")
+    
     testImplementation("androidx.test:core:1.6.1")
     testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.1")
     testImplementation("app.cash.sqldelight:sqlite-driver:2.0.2")
-    testImplementation 'org.testng:testng:6.9.6'
+    testImplementation("org.testng:testng:6.9.6")
     testImplementation("com.willowtreeapps.assertk:assertk:0.28.1")
-
-    // Override somehow for tests
-    testImplementation('org.xerial:sqlite-jdbc') {
-        // Override the version of sqlite used by device to match jagar 3.32a
-        // https://developer.android.com/reference/android/database/sqlite/package-summary
-        version { strictly('3.32.3.3') }
+    
+    testImplementation("org.xerial:sqlite-jdbc") {
+        version { strictly("3.32.3.3") }
     }
 }
