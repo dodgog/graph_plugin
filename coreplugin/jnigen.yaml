@@ -13,4 +13,4 @@ output:
 log_level: all
 
 classes:
-  - 'Example'
+  - 'com.daylightcomputer.coreplugin.database'

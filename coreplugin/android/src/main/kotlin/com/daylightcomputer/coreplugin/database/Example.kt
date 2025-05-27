@@ -1,3 +1,5 @@
+package com.daylightcomputer.coreplugin.database
+
 import androidx.annotation.Keep
 import com.daylightcomputer.hlc.HLC
 import com.daylightcomputer.hlc.HLCConfig
