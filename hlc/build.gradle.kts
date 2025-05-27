@@ -13,7 +13,7 @@ repositories {
 
 dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib")
-    implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.5.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.6.2")
 
     // JUnit 5 for testing
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.9.2")
