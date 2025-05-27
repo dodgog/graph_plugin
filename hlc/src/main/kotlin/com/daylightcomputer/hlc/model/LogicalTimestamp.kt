@@ -21,7 +21,7 @@ data class LogicalTimestamp(
         (
             instant.toEpochMilliseconds() -
                 other.instant.toEpochMilliseconds()
-            ).absoluteValue
+        ).absoluteValue
 
     internal val millisForTests: Long get() = instant.toEpochMilliseconds()
 
@@ -35,18 +35,19 @@ data class LogicalTimestamp(
         fun now(): LogicalTimestamp =
             LogicalTimestamp(HLCEnvironment.config.getPhysicalTime())
 
-        private val FIXED_MICROSECOND_FORMAT = DateTimeComponents.Format {
-            date(LocalDate.Formats.ISO)
-            char('T')
-            hour()
-            char(':')
-            minute()
-            char(':')
-            second()
-            char('.')
-            secondFraction(fixedLength = 6) // Always 6 digits for microseconds
-            char('Z')
-        }
+        private val FIXED_MICROSECOND_FORMAT =
+            DateTimeComponents.Format {
+                date(LocalDate.Formats.ISO)
+                char('T')
+                hour()
+                char(':')
+                minute()
+                char(':')
+                second()
+                char('.')
+                secondFraction(fixedLength = 6) // microsecond
+                char('Z')
+            }
 
         internal fun fromMillisForTests(millis: Long): LogicalTimestamp =
             LogicalTimestamp(Instant.fromEpochMilliseconds(millis))
