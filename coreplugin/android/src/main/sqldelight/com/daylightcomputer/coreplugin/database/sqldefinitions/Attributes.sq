@@ -1,6 +1,6 @@
 CREATE TABLE attributes (
     entity_id TEXT NOT NULL, -- for now means node
-    attribute TEXT,
+    attribute TEXT NOT NULL,
     attr_value TEXT, -- for now string
     timestamp TEXT NOT NULL
 );

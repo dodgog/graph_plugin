@@ -338,12 +338,6 @@ class AttributesTableStressTests {
                 timestamp = "2024-01-01T00:00:00Z",
             )
 
-            val initial =
-                db.attributesQueries
-                    .getAttributes()
-                    .executeAsList()
-                    .first()
-
             // Update with newer timestamp
             db.attributesQueries.upsertEventIntoAttributes(
                 entity_id = "test_entity",
