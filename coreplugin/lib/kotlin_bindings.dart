@@ -431,12 +431,12 @@ class Attributes extends jni$_.JObject {
   /// The returned object must be released after use, by calling the [release] method.
   factory Attributes(
     jni$_.JString string,
-    jni$_.JString? string1,
+    jni$_.JString string1,
     jni$_.JString? string2,
     jni$_.JString string3,
   ) {
     final _$string = string.reference;
-    final _$string1 = string1?.reference ?? jni$_.jNullReference;
+    final _$string1 = string1.reference;
     final _$string2 = string2?.reference ?? jni$_.jNullReference;
     final _$string3 = string3.reference;
     return Attributes.fromReference(_new$(
@@ -493,10 +493,10 @@ class Attributes extends jni$_.JObject {
 
   /// from: `public final java.lang.String getAttribute()`
   /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JString? getAttribute() {
+  jni$_.JString getAttribute() {
     return _getAttribute(
             reference.pointer, _id_getAttribute as jni$_.JMethodIDPtr)
-        .object<jni$_.JString?>(const jni$_.JStringNullableType());
+        .object<jni$_.JString>(const jni$_.JStringType());
   }
 
   static final _id_getAttr_value = _class.instanceMethodId(
@@ -592,9 +592,9 @@ class Attributes extends jni$_.JObject {
 
   /// from: `public final java.lang.String component2()`
   /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JString? component2() {
+  jni$_.JString component2() {
     return _component2(reference.pointer, _id_component2 as jni$_.JMethodIDPtr)
-        .object<jni$_.JString?>(const jni$_.JStringNullableType());
+        .object<jni$_.JString>(const jni$_.JStringType());
   }
 
   static final _id_component3 = _class.instanceMethodId(
@@ -675,12 +675,12 @@ class Attributes extends jni$_.JObject {
   /// The returned object must be released after use, by calling the [release] method.
   Attributes copy(
     jni$_.JString string,
-    jni$_.JString? string1,
+    jni$_.JString string1,
     jni$_.JString? string2,
     jni$_.JString string3,
   ) {
     final _$string = string.reference;
-    final _$string1 = string1?.reference ?? jni$_.jNullReference;
+    final _$string1 = string1.reference;
     final _$string2 = string2?.reference ?? jni$_.jNullReference;
     final _$string3 = string3.reference;
     return _copy(
@@ -1087,12 +1087,12 @@ class AttributesQueries extends jni$_.JObject {
     jni$_.JString? string,
     jni$_.JString string1,
     jni$_.JString string2,
-    jni$_.JString? string3,
+    jni$_.JString string3,
   ) {
     final _$string = string?.reference ?? jni$_.jNullReference;
     final _$string1 = string1.reference;
     final _$string2 = string2.reference;
-    final _$string3 = string3?.reference ?? jni$_.jNullReference;
+    final _$string3 = string3.reference;
     _upsertEventIntoAttributes(
             reference.pointer,
             _id_upsertEventIntoAttributes as jni$_.JMethodIDPtr,
