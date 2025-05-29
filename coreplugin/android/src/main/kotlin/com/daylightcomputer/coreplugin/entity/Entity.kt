@@ -2,7 +2,7 @@ package com.daylightcomputer.coreplugin.entity
 
 import com.daylightcomputer.coreplugin.database.sqldefinitions.Attributes
 
-class Entity(
+data class Entity(
     val id: String,
     val attributes: Map<String, AttributeValue>,
 ) {
