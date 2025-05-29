@@ -1,5 +1,6 @@
 package com.daylightcomputer.coreplugin.entity.node
 
+import com.daylightcomputer.coreplugin.entity.AttributeValue
 import com.daylightcomputer.coreplugin.entity.Entity
 
 open class Node(
@@ -31,12 +32,38 @@ open class Node(
         val unknown = getUnknownAttributes()
         if (unknown.isNotEmpty()) {
             throw IllegalStateException(
-                "Node has unknown attributes: ${unknown.joinToString(
-                    ", ",
-                ) { "`$it`" }}",
+                "Node has unknown attributes: ${
+                    unknown.joinToString(
+                        ", ",
+                    ) { "`$it`" }
+                }",
             )
         }
     }
+
+    fun <T : Node> mutateSingleAttribute(
+        name: String,
+        value: String,
+    ): Pair<Pair<String, AttributeValue>, T> {
+        val timestamp = "time TODO"
+        val attributeValue = (name to AttributeValue(value, timestamp))
+        val newEntity =
+            entity.copy(
+                attributes =
+                    entity.attributes + attributeValue,
+            )
+
+        val newNode =
+            NodeTypes.createNodeFromEntity<T>(newEntity)
+                ?: throw IllegalStateException(
+                    "Failed to create node from entity",
+                )
+
+        return Pair(attributeValue, newNode)
+    }
+
+    fun <T : Node> delete(): Pair<Pair<String, AttributeValue>, T> =
+        mutateSingleAttribute("isDeleted", "true")
 
     val type: NodeTypes =
         NodeTypes.fromString(
