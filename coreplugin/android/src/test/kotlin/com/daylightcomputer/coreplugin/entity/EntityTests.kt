@@ -31,9 +31,9 @@ class EntityTests {
     fun `should create entity with valid parameters`() {
         val attributes =
             mapOf(
-                "title" to AttributeValue("Test Title", "2024-01-01"),
+                "title" to AttributeValueRecord("Test Title", "2024-01-01"),
                 "description" to
-                    AttributeValue("Test Description", "2024-01-02"),
+                    AttributeValueRecord("Test Description", "2024-01-02"),
             )
 
         val entity = Entity("test-id", attributes)
@@ -58,9 +58,9 @@ class EntityTests {
     fun `should handle null attribute values in constructor`() {
         val attributes =
             mapOf(
-                "title" to AttributeValue(null, "2024-01-01"),
+                "title" to AttributeValueRecord(null, "2024-01-01"),
                 "description" to
-                    AttributeValue("Valid Description", "2024-01-02"),
+                    AttributeValueRecord("Valid Description", "2024-01-02"),
             )
 
         val entity = Entity("test-id", attributes)

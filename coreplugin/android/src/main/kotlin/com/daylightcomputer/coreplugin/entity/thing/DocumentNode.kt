@@ -1,10 +1,10 @@
-package com.daylightcomputer.coreplugin.entity.node
+package com.daylightcomputer.coreplugin.entity.thing
 
 import com.daylightcomputer.coreplugin.entity.Entity
 
 class DocumentNode(
     entity: Entity,
-) : Node(entity) {
+) : Thing(entity) {
     override fun getKnownFields(): Set<String> = super.getKnownFields() + setOf("title", "author")
 
     val title: String = getRequiredAttribute("title")
