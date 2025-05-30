@@ -35,1820 +35,24 @@ import 'dart:core' as core$_;
 import 'package:jni/_internal.dart' as jni$_;
 import 'package:jni/jni.dart' as jni$_;
 
-/// from: `com.daylightcomputer.coreplugin.database.EventsAttributesDatabase`
-class EventsAttributesDatabase extends jni$_.JObject {
+/// from: `com.daylightcomputer.coreplugin.entity.AttributeValue`
+class AttributeValue extends jni$_.JObject {
   @jni$_.internal
   @core$_.override
-  final jni$_.JObjType<EventsAttributesDatabase> $type;
+  final jni$_.JObjType<AttributeValue> $type;
 
   @jni$_.internal
-  EventsAttributesDatabase.fromReference(
+  AttributeValue.fromReference(
     jni$_.JReference reference,
   )   : $type = type,
         super.fromReference(reference);
 
   static final _class = jni$_.JClass.forName(
-      r'com/daylightcomputer/coreplugin/database/EventsAttributesDatabase');
+      r'com/daylightcomputer/coreplugin/entity/AttributeValue');
 
   /// The type which includes information such as the signature of this class.
-  static const nullableType = $EventsAttributesDatabase$NullableType();
-  static const type = $EventsAttributesDatabase$Type();
-  static final _id_INSTANCE = _class.staticFieldId(
-    r'INSTANCE',
-    r'Lcom/daylightcomputer/coreplugin/database/EventsAttributesDatabase;',
-  );
-
-  /// from: `static public final com.daylightcomputer.coreplugin.database.EventsAttributesDatabase INSTANCE`
-  /// The returned object must be released after use, by calling the [release] method.
-  static EventsAttributesDatabase get INSTANCE =>
-      _id_INSTANCE.get(_class, const $EventsAttributesDatabase$Type());
-
-  static final _id_getHlc = _class.instanceMethodId(
-    r'getHlc',
-    r'()Lcom/daylightcomputer/hlc/HLC;',
-  );
-
-  static final _getHlc = jni$_.ProtectedJniExtensions.lookup<
-          jni$_.NativeFunction<
-              jni$_.JniResult Function(
-                jni$_.Pointer<jni$_.Void>,
-                jni$_.JMethodIDPtr,
-              )>>('globalEnv_CallObjectMethod')
-      .asFunction<
-          jni$_.JniResult Function(
-            jni$_.Pointer<jni$_.Void>,
-            jni$_.JMethodIDPtr,
-          )>();
-
-  /// from: `public final com.daylightcomputer.hlc.HLC getHlc()`
-  /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JObject getHlc() {
-    return _getHlc(reference.pointer, _id_getHlc as jni$_.JMethodIDPtr)
-        .object<jni$_.JObject>(const jni$_.JObjectType());
-  }
-
-  static final _id_getDb = _class.instanceMethodId(
-    r'getDb',
-    r'()Lcom/daylightcomputer/coreplugin/database/sqldefinitions/Database;',
-  );
-
-  static final _getDb = jni$_.ProtectedJniExtensions.lookup<
-          jni$_.NativeFunction<
-              jni$_.JniResult Function(
-                jni$_.Pointer<jni$_.Void>,
-                jni$_.JMethodIDPtr,
-              )>>('globalEnv_CallObjectMethod')
-      .asFunction<
-          jni$_.JniResult Function(
-            jni$_.Pointer<jni$_.Void>,
-            jni$_.JMethodIDPtr,
-          )>();
-
-  /// from: `public final com.daylightcomputer.coreplugin.database.sqldefinitions.Database getDb()`
-  /// The returned object must be released after use, by calling the [release] method.
-  Database getDb() {
-    return _getDb(reference.pointer, _id_getDb as jni$_.JMethodIDPtr)
-        .object<Database>(const $Database$Type());
-  }
-
-  static final _id_initialize = _class.instanceMethodId(
-    r'initialize',
-    r'(Lapp/cash/sqldelight/db/SqlDriver;Ljava/lang/String;)V',
-  );
-
-  static final _initialize = jni$_.ProtectedJniExtensions.lookup<
-          jni$_.NativeFunction<
-              jni$_.JThrowablePtr Function(
-                  jni$_.Pointer<jni$_.Void>,
-                  jni$_.JMethodIDPtr,
-                  jni$_.VarArgs<
-                      (
-                        jni$_.Pointer<jni$_.Void>,
-                        jni$_.Pointer<jni$_.Void>
-                      )>)>>('globalEnv_CallVoidMethod')
-      .asFunction<
-          jni$_.JThrowablePtr Function(
-              jni$_.Pointer<jni$_.Void>,
-              jni$_.JMethodIDPtr,
-              jni$_.Pointer<jni$_.Void>,
-              jni$_.Pointer<jni$_.Void>)>();
-
-  /// from: `public final void initialize(app.cash.sqldelight.db.SqlDriver sqlDriver, java.lang.String string)`
-  void initialize(
-    jni$_.JObject sqlDriver,
-    jni$_.JString string,
-  ) {
-    final _$sqlDriver = sqlDriver.reference;
-    final _$string = string.reference;
-    _initialize(reference.pointer, _id_initialize as jni$_.JMethodIDPtr,
-            _$sqlDriver.pointer, _$string.pointer)
-        .check();
-  }
-}
-
-final class $EventsAttributesDatabase$NullableType
-    extends jni$_.JObjType<EventsAttributesDatabase?> {
-  @jni$_.internal
-  const $EventsAttributesDatabase$NullableType();
-
-  @jni$_.internal
-  @core$_.override
-  String get signature =>
-      r'Lcom/daylightcomputer/coreplugin/database/EventsAttributesDatabase;';
-
-  @jni$_.internal
-  @core$_.override
-  EventsAttributesDatabase? fromReference(jni$_.JReference reference) =>
-      reference.isNull
-          ? null
-          : EventsAttributesDatabase.fromReference(
-              reference,
-            );
-  @jni$_.internal
-  @core$_.override
-  jni$_.JObjType get superType => const jni$_.JObjectType();
-
-  @jni$_.internal
-  @core$_.override
-  jni$_.JObjType<EventsAttributesDatabase?> get nullableType => this;
-
-  @jni$_.internal
-  @core$_.override
-  final superCount = 1;
-
-  @core$_.override
-  int get hashCode => ($EventsAttributesDatabase$NullableType).hashCode;
-
-  @core$_.override
-  bool operator ==(Object other) {
-    return other.runtimeType == ($EventsAttributesDatabase$NullableType) &&
-        other is $EventsAttributesDatabase$NullableType;
-  }
-}
-
-final class $EventsAttributesDatabase$Type
-    extends jni$_.JObjType<EventsAttributesDatabase> {
-  @jni$_.internal
-  const $EventsAttributesDatabase$Type();
-
-  @jni$_.internal
-  @core$_.override
-  String get signature =>
-      r'Lcom/daylightcomputer/coreplugin/database/EventsAttributesDatabase;';
-
-  @jni$_.internal
-  @core$_.override
-  EventsAttributesDatabase fromReference(jni$_.JReference reference) =>
-      EventsAttributesDatabase.fromReference(
-        reference,
-      );
-  @jni$_.internal
-  @core$_.override
-  jni$_.JObjType get superType => const jni$_.JObjectType();
-
-  @jni$_.internal
-  @core$_.override
-  jni$_.JObjType<EventsAttributesDatabase?> get nullableType =>
-      const $EventsAttributesDatabase$NullableType();
-
-  @jni$_.internal
-  @core$_.override
-  final superCount = 1;
-
-  @core$_.override
-  int get hashCode => ($EventsAttributesDatabase$Type).hashCode;
-
-  @core$_.override
-  bool operator ==(Object other) {
-    return other.runtimeType == ($EventsAttributesDatabase$Type) &&
-        other is $EventsAttributesDatabase$Type;
-  }
-}
-
-/// from: `com.daylightcomputer.coreplugin.database.Example`
-class Example extends jni$_.JObject {
-  @jni$_.internal
-  @core$_.override
-  final jni$_.JObjType<Example> $type;
-
-  @jni$_.internal
-  Example.fromReference(
-    jni$_.JReference reference,
-  )   : $type = type,
-        super.fromReference(reference);
-
-  static final _class =
-      jni$_.JClass.forName(r'com/daylightcomputer/coreplugin/database/Example');
-
-  /// The type which includes information such as the signature of this class.
-  static const nullableType = $Example$NullableType();
-  static const type = $Example$Type();
-  static final _id_new$ = _class.constructorId(
-    r'()V',
-  );
-
-  static final _new$ = jni$_.ProtectedJniExtensions.lookup<
-          jni$_.NativeFunction<
-              jni$_.JniResult Function(
-                jni$_.Pointer<jni$_.Void>,
-                jni$_.JMethodIDPtr,
-              )>>('globalEnv_NewObject')
-      .asFunction<
-          jni$_.JniResult Function(
-            jni$_.Pointer<jni$_.Void>,
-            jni$_.JMethodIDPtr,
-          )>();
-
-  /// from: `public void <init>()`
-  /// The returned object must be released after use, by calling the [release] method.
-  factory Example() {
-    return Example.fromReference(
-        _new$(_class.reference.pointer, _id_new$ as jni$_.JMethodIDPtr)
-            .reference);
-  }
-
-  static final _id_thinkBeforeAnswering = _class.instanceMethodId(
-    r'thinkBeforeAnswering',
-    r'(Lkotlin/coroutines/Continuation;)Ljava/lang/Object;',
-  );
-
-  static final _thinkBeforeAnswering = jni$_.ProtectedJniExtensions.lookup<
-              jni$_.NativeFunction<
-                  jni$_.JniResult Function(
-                      jni$_.Pointer<jni$_.Void>,
-                      jni$_.JMethodIDPtr,
-                      jni$_.VarArgs<(jni$_.Pointer<jni$_.Void>,)>)>>(
-          'globalEnv_CallObjectMethod')
-      .asFunction<
-          jni$_.JniResult Function(jni$_.Pointer<jni$_.Void>,
-              jni$_.JMethodIDPtr, jni$_.Pointer<jni$_.Void>)>();
-
-  /// from: `public final java.lang.Object thinkBeforeAnswering(kotlin.coroutines.Continuation continuation)`
-  /// The returned object must be released after use, by calling the [release] method.
-  core$_.Future<jni$_.JString> thinkBeforeAnswering() async {
-    final $p = jni$_.ReceivePort();
-    final _$continuation = jni$_.ProtectedJniExtensions.newPortContinuation($p);
-
-    final $r = _thinkBeforeAnswering(
-            reference.pointer,
-            _id_thinkBeforeAnswering as jni$_.JMethodIDPtr,
-            _$continuation.pointer)
-        .object<jni$_.JObject>(const jni$_.JObjectType());
-    _$continuation.release();
-    final jni$_.JObject $o;
-    if ($r.isInstanceOf(jni$_.coroutineSingletonsClass)) {
-      $r.release();
-      $o = jni$_.JObject.fromReference(
-          jni$_.JGlobalReference(jni$_.JObjectPtr.fromAddress(await $p.first)));
-      if ($o.isInstanceOf(jni$_.result$FailureClass)) {
-        final $e =
-            jni$_.failureExceptionField.get($o, const jni$_.JObjectType());
-        $o.release();
-        jni$_.Jni.throwException($e.reference.toPointer());
-      }
-    } else {
-      $o = $r;
-    }
-    return $o.as(const jni$_.JStringType(), releaseOriginal: true);
-  }
-}
-
-final class $Example$NullableType extends jni$_.JObjType<Example?> {
-  @jni$_.internal
-  const $Example$NullableType();
-
-  @jni$_.internal
-  @core$_.override
-  String get signature => r'Lcom/daylightcomputer/coreplugin/database/Example;';
-
-  @jni$_.internal
-  @core$_.override
-  Example? fromReference(jni$_.JReference reference) => reference.isNull
-      ? null
-      : Example.fromReference(
-          reference,
-        );
-  @jni$_.internal
-  @core$_.override
-  jni$_.JObjType get superType => const jni$_.JObjectType();
-
-  @jni$_.internal
-  @core$_.override
-  jni$_.JObjType<Example?> get nullableType => this;
-
-  @jni$_.internal
-  @core$_.override
-  final superCount = 1;
-
-  @core$_.override
-  int get hashCode => ($Example$NullableType).hashCode;
-
-  @core$_.override
-  bool operator ==(Object other) {
-    return other.runtimeType == ($Example$NullableType) &&
-        other is $Example$NullableType;
-  }
-}
-
-final class $Example$Type extends jni$_.JObjType<Example> {
-  @jni$_.internal
-  const $Example$Type();
-
-  @jni$_.internal
-  @core$_.override
-  String get signature => r'Lcom/daylightcomputer/coreplugin/database/Example;';
-
-  @jni$_.internal
-  @core$_.override
-  Example fromReference(jni$_.JReference reference) => Example.fromReference(
-        reference,
-      );
-  @jni$_.internal
-  @core$_.override
-  jni$_.JObjType get superType => const jni$_.JObjectType();
-
-  @jni$_.internal
-  @core$_.override
-  jni$_.JObjType<Example?> get nullableType => const $Example$NullableType();
-
-  @jni$_.internal
-  @core$_.override
-  final superCount = 1;
-
-  @core$_.override
-  int get hashCode => ($Example$Type).hashCode;
-
-  @core$_.override
-  bool operator ==(Object other) {
-    return other.runtimeType == ($Example$Type) && other is $Example$Type;
-  }
-}
-<<<<<<< Updated upstream
-=======
-
-/// from: `com.daylightcomputer.coreplugin.database.sqldefinitions.Attributes`
-class Attributes extends jni$_.JObject {
-  @jni$_.internal
-  @core$_.override
-  final jni$_.JObjType<Attributes> $type;
-
-  @jni$_.internal
-  Attributes.fromReference(
-    jni$_.JReference reference,
-  )   : $type = type,
-        super.fromReference(reference);
-
-  static final _class = jni$_.JClass.forName(
-      r'com/daylightcomputer/coreplugin/database/sqldefinitions/Attributes');
-
-  /// The type which includes information such as the signature of this class.
-  static const nullableType = $Attributes$NullableType();
-  static const type = $Attributes$Type();
-  static final _id_new$ = _class.constructorId(
-    r'(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V',
-  );
-
-  static final _new$ = jni$_.ProtectedJniExtensions.lookup<
-          jni$_.NativeFunction<
-              jni$_.JniResult Function(
-                  jni$_.Pointer<jni$_.Void>,
-                  jni$_.JMethodIDPtr,
-                  jni$_.VarArgs<
-                      (
-                        jni$_.Pointer<jni$_.Void>,
-                        jni$_.Pointer<jni$_.Void>,
-                        jni$_.Pointer<jni$_.Void>,
-                        jni$_.Pointer<jni$_.Void>
-                      )>)>>('globalEnv_NewObject')
-      .asFunction<
-          jni$_.JniResult Function(
-              jni$_.Pointer<jni$_.Void>,
-              jni$_.JMethodIDPtr,
-              jni$_.Pointer<jni$_.Void>,
-              jni$_.Pointer<jni$_.Void>,
-              jni$_.Pointer<jni$_.Void>,
-              jni$_.Pointer<jni$_.Void>)>();
-
-  /// from: `public void <init>(java.lang.String string, java.lang.String string1, java.lang.String string2, java.lang.String string3)`
-  /// The returned object must be released after use, by calling the [release] method.
-  factory Attributes(
-    jni$_.JString string,
-    jni$_.JString string1,
-    jni$_.JString? string2,
-    jni$_.JString string3,
-  ) {
-    final _$string = string.reference;
-    final _$string1 = string1.reference;
-    final _$string2 = string2?.reference ?? jni$_.jNullReference;
-    final _$string3 = string3.reference;
-    return Attributes.fromReference(_new$(
-            _class.reference.pointer,
-            _id_new$ as jni$_.JMethodIDPtr,
-            _$string.pointer,
-            _$string1.pointer,
-            _$string2.pointer,
-            _$string3.pointer)
-        .reference);
-  }
-
-  static final _id_getEntity_id = _class.instanceMethodId(
-    r'getEntity_id',
-    r'()Ljava/lang/String;',
-  );
-
-  static final _getEntity_id = jni$_.ProtectedJniExtensions.lookup<
-          jni$_.NativeFunction<
-              jni$_.JniResult Function(
-                jni$_.Pointer<jni$_.Void>,
-                jni$_.JMethodIDPtr,
-              )>>('globalEnv_CallObjectMethod')
-      .asFunction<
-          jni$_.JniResult Function(
-            jni$_.Pointer<jni$_.Void>,
-            jni$_.JMethodIDPtr,
-          )>();
-
-  /// from: `public final java.lang.String getEntity_id()`
-  /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JString getEntity_id() {
-    return _getEntity_id(
-            reference.pointer, _id_getEntity_id as jni$_.JMethodIDPtr)
-        .object<jni$_.JString>(const jni$_.JStringType());
-  }
-
-  static final _id_getAttribute = _class.instanceMethodId(
-    r'getAttribute',
-    r'()Ljava/lang/String;',
-  );
-
-  static final _getAttribute = jni$_.ProtectedJniExtensions.lookup<
-          jni$_.NativeFunction<
-              jni$_.JniResult Function(
-                jni$_.Pointer<jni$_.Void>,
-                jni$_.JMethodIDPtr,
-              )>>('globalEnv_CallObjectMethod')
-      .asFunction<
-          jni$_.JniResult Function(
-            jni$_.Pointer<jni$_.Void>,
-            jni$_.JMethodIDPtr,
-          )>();
-
-  /// from: `public final java.lang.String getAttribute()`
-  /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JString getAttribute() {
-    return _getAttribute(
-            reference.pointer, _id_getAttribute as jni$_.JMethodIDPtr)
-        .object<jni$_.JString>(const jni$_.JStringType());
-  }
-
-  static final _id_getAttr_value = _class.instanceMethodId(
-    r'getAttr_value',
-    r'()Ljava/lang/String;',
-  );
-
-  static final _getAttr_value = jni$_.ProtectedJniExtensions.lookup<
-          jni$_.NativeFunction<
-              jni$_.JniResult Function(
-                jni$_.Pointer<jni$_.Void>,
-                jni$_.JMethodIDPtr,
-              )>>('globalEnv_CallObjectMethod')
-      .asFunction<
-          jni$_.JniResult Function(
-            jni$_.Pointer<jni$_.Void>,
-            jni$_.JMethodIDPtr,
-          )>();
-
-  /// from: `public final java.lang.String getAttr_value()`
-  /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JString? getAttr_value() {
-    return _getAttr_value(
-            reference.pointer, _id_getAttr_value as jni$_.JMethodIDPtr)
-        .object<jni$_.JString?>(const jni$_.JStringNullableType());
-  }
-
-  static final _id_getTimestamp = _class.instanceMethodId(
-    r'getTimestamp',
-    r'()Ljava/lang/String;',
-  );
-
-  static final _getTimestamp = jni$_.ProtectedJniExtensions.lookup<
-          jni$_.NativeFunction<
-              jni$_.JniResult Function(
-                jni$_.Pointer<jni$_.Void>,
-                jni$_.JMethodIDPtr,
-              )>>('globalEnv_CallObjectMethod')
-      .asFunction<
-          jni$_.JniResult Function(
-            jni$_.Pointer<jni$_.Void>,
-            jni$_.JMethodIDPtr,
-          )>();
-
-  /// from: `public final java.lang.String getTimestamp()`
-  /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JString getTimestamp() {
-    return _getTimestamp(
-            reference.pointer, _id_getTimestamp as jni$_.JMethodIDPtr)
-        .object<jni$_.JString>(const jni$_.JStringType());
-  }
-
-  static final _id_component1 = _class.instanceMethodId(
-    r'component1',
-    r'()Ljava/lang/String;',
-  );
-
-  static final _component1 = jni$_.ProtectedJniExtensions.lookup<
-          jni$_.NativeFunction<
-              jni$_.JniResult Function(
-                jni$_.Pointer<jni$_.Void>,
-                jni$_.JMethodIDPtr,
-              )>>('globalEnv_CallObjectMethod')
-      .asFunction<
-          jni$_.JniResult Function(
-            jni$_.Pointer<jni$_.Void>,
-            jni$_.JMethodIDPtr,
-          )>();
-
-  /// from: `public final java.lang.String component1()`
-  /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JString component1() {
-    return _component1(reference.pointer, _id_component1 as jni$_.JMethodIDPtr)
-        .object<jni$_.JString>(const jni$_.JStringType());
-  }
-
-  static final _id_component2 = _class.instanceMethodId(
-    r'component2',
-    r'()Ljava/lang/String;',
-  );
-
-  static final _component2 = jni$_.ProtectedJniExtensions.lookup<
-          jni$_.NativeFunction<
-              jni$_.JniResult Function(
-                jni$_.Pointer<jni$_.Void>,
-                jni$_.JMethodIDPtr,
-              )>>('globalEnv_CallObjectMethod')
-      .asFunction<
-          jni$_.JniResult Function(
-            jni$_.Pointer<jni$_.Void>,
-            jni$_.JMethodIDPtr,
-          )>();
-
-  /// from: `public final java.lang.String component2()`
-  /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JString component2() {
-    return _component2(reference.pointer, _id_component2 as jni$_.JMethodIDPtr)
-        .object<jni$_.JString>(const jni$_.JStringType());
-  }
-
-  static final _id_component3 = _class.instanceMethodId(
-    r'component3',
-    r'()Ljava/lang/String;',
-  );
-
-  static final _component3 = jni$_.ProtectedJniExtensions.lookup<
-          jni$_.NativeFunction<
-              jni$_.JniResult Function(
-                jni$_.Pointer<jni$_.Void>,
-                jni$_.JMethodIDPtr,
-              )>>('globalEnv_CallObjectMethod')
-      .asFunction<
-          jni$_.JniResult Function(
-            jni$_.Pointer<jni$_.Void>,
-            jni$_.JMethodIDPtr,
-          )>();
-
-  /// from: `public final java.lang.String component3()`
-  /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JString? component3() {
-    return _component3(reference.pointer, _id_component3 as jni$_.JMethodIDPtr)
-        .object<jni$_.JString?>(const jni$_.JStringNullableType());
-  }
-
-  static final _id_component4 = _class.instanceMethodId(
-    r'component4',
-    r'()Ljava/lang/String;',
-  );
-
-  static final _component4 = jni$_.ProtectedJniExtensions.lookup<
-          jni$_.NativeFunction<
-              jni$_.JniResult Function(
-                jni$_.Pointer<jni$_.Void>,
-                jni$_.JMethodIDPtr,
-              )>>('globalEnv_CallObjectMethod')
-      .asFunction<
-          jni$_.JniResult Function(
-            jni$_.Pointer<jni$_.Void>,
-            jni$_.JMethodIDPtr,
-          )>();
-
-  /// from: `public final java.lang.String component4()`
-  /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JString component4() {
-    return _component4(reference.pointer, _id_component4 as jni$_.JMethodIDPtr)
-        .object<jni$_.JString>(const jni$_.JStringType());
-  }
-
-  static final _id_copy = _class.instanceMethodId(
-    r'copy',
-    r'(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lcom/daylightcomputer/coreplugin/database/sqldefinitions/Attributes;',
-  );
-
-  static final _copy = jni$_.ProtectedJniExtensions.lookup<
-          jni$_.NativeFunction<
-              jni$_.JniResult Function(
-                  jni$_.Pointer<jni$_.Void>,
-                  jni$_.JMethodIDPtr,
-                  jni$_.VarArgs<
-                      (
-                        jni$_.Pointer<jni$_.Void>,
-                        jni$_.Pointer<jni$_.Void>,
-                        jni$_.Pointer<jni$_.Void>,
-                        jni$_.Pointer<jni$_.Void>
-                      )>)>>('globalEnv_CallObjectMethod')
-      .asFunction<
-          jni$_.JniResult Function(
-              jni$_.Pointer<jni$_.Void>,
-              jni$_.JMethodIDPtr,
-              jni$_.Pointer<jni$_.Void>,
-              jni$_.Pointer<jni$_.Void>,
-              jni$_.Pointer<jni$_.Void>,
-              jni$_.Pointer<jni$_.Void>)>();
-
-  /// from: `public final com.daylightcomputer.coreplugin.database.sqldefinitions.Attributes copy(java.lang.String string, java.lang.String string1, java.lang.String string2, java.lang.String string3)`
-  /// The returned object must be released after use, by calling the [release] method.
-  Attributes copy(
-    jni$_.JString string,
-    jni$_.JString string1,
-    jni$_.JString? string2,
-    jni$_.JString string3,
-  ) {
-    final _$string = string.reference;
-    final _$string1 = string1.reference;
-    final _$string2 = string2?.reference ?? jni$_.jNullReference;
-    final _$string3 = string3.reference;
-    return _copy(
-            reference.pointer,
-            _id_copy as jni$_.JMethodIDPtr,
-            _$string.pointer,
-            _$string1.pointer,
-            _$string2.pointer,
-            _$string3.pointer)
-        .object<Attributes>(const $Attributes$Type());
-  }
-
-  static final _id_toString$1 = _class.instanceMethodId(
-    r'toString',
-    r'()Ljava/lang/String;',
-  );
-
-  static final _toString$1 = jni$_.ProtectedJniExtensions.lookup<
-          jni$_.NativeFunction<
-              jni$_.JniResult Function(
-                jni$_.Pointer<jni$_.Void>,
-                jni$_.JMethodIDPtr,
-              )>>('globalEnv_CallObjectMethod')
-      .asFunction<
-          jni$_.JniResult Function(
-            jni$_.Pointer<jni$_.Void>,
-            jni$_.JMethodIDPtr,
-          )>();
-
-  /// from: `public java.lang.String toString()`
-  /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JString toString$1() {
-    return _toString$1(reference.pointer, _id_toString$1 as jni$_.JMethodIDPtr)
-        .object<jni$_.JString>(const jni$_.JStringType());
-  }
-
-  static final _id_hashCode$1 = _class.instanceMethodId(
-    r'hashCode',
-    r'()I',
-  );
-
-  static final _hashCode$1 = jni$_.ProtectedJniExtensions.lookup<
-          jni$_.NativeFunction<
-              jni$_.JniResult Function(
-                jni$_.Pointer<jni$_.Void>,
-                jni$_.JMethodIDPtr,
-              )>>('globalEnv_CallIntMethod')
-      .asFunction<
-          jni$_.JniResult Function(
-            jni$_.Pointer<jni$_.Void>,
-            jni$_.JMethodIDPtr,
-          )>();
-
-  /// from: `public int hashCode()`
-  int hashCode$1() {
-    return _hashCode$1(reference.pointer, _id_hashCode$1 as jni$_.JMethodIDPtr)
-        .integer;
-  }
-
-  static final _id_equals = _class.instanceMethodId(
-    r'equals',
-    r'(Ljava/lang/Object;)Z',
-  );
-
-  static final _equals = jni$_.ProtectedJniExtensions.lookup<
-              jni$_.NativeFunction<
-                  jni$_.JniResult Function(
-                      jni$_.Pointer<jni$_.Void>,
-                      jni$_.JMethodIDPtr,
-                      jni$_.VarArgs<(jni$_.Pointer<jni$_.Void>,)>)>>(
-          'globalEnv_CallBooleanMethod')
-      .asFunction<
-          jni$_.JniResult Function(jni$_.Pointer<jni$_.Void>,
-              jni$_.JMethodIDPtr, jni$_.Pointer<jni$_.Void>)>();
-
-  /// from: `public boolean equals(java.lang.Object object)`
-  bool equals(
-    jni$_.JObject? object,
-  ) {
-    final _$object = object?.reference ?? jni$_.jNullReference;
-    return _equals(reference.pointer, _id_equals as jni$_.JMethodIDPtr,
-            _$object.pointer)
-        .boolean;
-  }
-}
-
-final class $Attributes$NullableType extends jni$_.JObjType<Attributes?> {
-  @jni$_.internal
-  const $Attributes$NullableType();
-
-  @jni$_.internal
-  @core$_.override
-  String get signature =>
-      r'Lcom/daylightcomputer/coreplugin/database/sqldefinitions/Attributes;';
-
-  @jni$_.internal
-  @core$_.override
-  Attributes? fromReference(jni$_.JReference reference) => reference.isNull
-      ? null
-      : Attributes.fromReference(
-          reference,
-        );
-  @jni$_.internal
-  @core$_.override
-  jni$_.JObjType get superType => const jni$_.JObjectType();
-
-  @jni$_.internal
-  @core$_.override
-  jni$_.JObjType<Attributes?> get nullableType => this;
-
-  @jni$_.internal
-  @core$_.override
-  final superCount = 1;
-
-  @core$_.override
-  int get hashCode => ($Attributes$NullableType).hashCode;
-
-  @core$_.override
-  bool operator ==(Object other) {
-    return other.runtimeType == ($Attributes$NullableType) &&
-        other is $Attributes$NullableType;
-  }
-}
-
-final class $Attributes$Type extends jni$_.JObjType<Attributes> {
-  @jni$_.internal
-  const $Attributes$Type();
-
-  @jni$_.internal
-  @core$_.override
-  String get signature =>
-      r'Lcom/daylightcomputer/coreplugin/database/sqldefinitions/Attributes;';
-
-  @jni$_.internal
-  @core$_.override
-  Attributes fromReference(jni$_.JReference reference) =>
-      Attributes.fromReference(
-        reference,
-      );
-  @jni$_.internal
-  @core$_.override
-  jni$_.JObjType get superType => const jni$_.JObjectType();
-
-  @jni$_.internal
-  @core$_.override
-  jni$_.JObjType<Attributes?> get nullableType =>
-      const $Attributes$NullableType();
-
-  @jni$_.internal
-  @core$_.override
-  final superCount = 1;
-
-  @core$_.override
-  int get hashCode => ($Attributes$Type).hashCode;
-
-  @core$_.override
-  bool operator ==(Object other) {
-    return other.runtimeType == ($Attributes$Type) && other is $Attributes$Type;
-  }
-}
-
-/// from: `com.daylightcomputer.coreplugin.database.sqldefinitions.AttributesQueries`
-class AttributesQueries extends jni$_.JObject {
-  @jni$_.internal
-  @core$_.override
-  final jni$_.JObjType<AttributesQueries> $type;
-
-  @jni$_.internal
-  AttributesQueries.fromReference(
-    jni$_.JReference reference,
-  )   : $type = type,
-        super.fromReference(reference);
-
-  static final _class = jni$_.JClass.forName(
-      r'com/daylightcomputer/coreplugin/database/sqldefinitions/AttributesQueries');
-
-  /// The type which includes information such as the signature of this class.
-  static const nullableType = $AttributesQueries$NullableType();
-  static const type = $AttributesQueries$Type();
-  static final _id_new$ = _class.constructorId(
-    r'(Lapp/cash/sqldelight/db/SqlDriver;)V',
-  );
-
-  static final _new$ = jni$_.ProtectedJniExtensions.lookup<
-              jni$_.NativeFunction<
-                  jni$_.JniResult Function(
-                      jni$_.Pointer<jni$_.Void>,
-                      jni$_.JMethodIDPtr,
-                      jni$_.VarArgs<(jni$_.Pointer<jni$_.Void>,)>)>>(
-          'globalEnv_NewObject')
-      .asFunction<
-          jni$_.JniResult Function(jni$_.Pointer<jni$_.Void>,
-              jni$_.JMethodIDPtr, jni$_.Pointer<jni$_.Void>)>();
-
-  /// from: `public void <init>(app.cash.sqldelight.db.SqlDriver sqlDriver)`
-  /// The returned object must be released after use, by calling the [release] method.
-  factory AttributesQueries(
-    jni$_.JObject sqlDriver,
-  ) {
-    final _$sqlDriver = sqlDriver.reference;
-    return AttributesQueries.fromReference(_new$(_class.reference.pointer,
-            _id_new$ as jni$_.JMethodIDPtr, _$sqlDriver.pointer)
-        .reference);
-  }
-
-  static final _id_getAttributes = _class.instanceMethodId(
-    r'getAttributes',
-    r'(Lkotlin/jvm/functions/Function4;)Lapp/cash/sqldelight/Query;',
-  );
-
-  static final _getAttributes = jni$_.ProtectedJniExtensions.lookup<
-              jni$_.NativeFunction<
-                  jni$_.JniResult Function(
-                      jni$_.Pointer<jni$_.Void>,
-                      jni$_.JMethodIDPtr,
-                      jni$_.VarArgs<(jni$_.Pointer<jni$_.Void>,)>)>>(
-          'globalEnv_CallObjectMethod')
-      .asFunction<
-          jni$_.JniResult Function(jni$_.Pointer<jni$_.Void>,
-              jni$_.JMethodIDPtr, jni$_.Pointer<jni$_.Void>)>();
-
-  /// from: `public final app.cash.sqldelight.Query getAttributes(kotlin.jvm.functions.Function4 function4)`
-  /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JObject getAttributes<$T extends jni$_.JObject>(
-    jni$_.JObject function4, {
-    required jni$_.JObjType<$T> T,
-  }) {
-    final _$function4 = function4.reference;
-    return _getAttributes(reference.pointer,
-            _id_getAttributes as jni$_.JMethodIDPtr, _$function4.pointer)
-        .object<jni$_.JObject>(const jni$_.JObjectType());
-  }
-
-  static final _id_getAttributes$1 = _class.instanceMethodId(
-    r'getAttributes',
-    r'()Lapp/cash/sqldelight/Query;',
-  );
-
-  static final _getAttributes$1 = jni$_.ProtectedJniExtensions.lookup<
-          jni$_.NativeFunction<
-              jni$_.JniResult Function(
-                jni$_.Pointer<jni$_.Void>,
-                jni$_.JMethodIDPtr,
-              )>>('globalEnv_CallObjectMethod')
-      .asFunction<
-          jni$_.JniResult Function(
-            jni$_.Pointer<jni$_.Void>,
-            jni$_.JMethodIDPtr,
-          )>();
-
-  /// from: `public final app.cash.sqldelight.Query getAttributes()`
-  /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JObject getAttributes$1() {
-    return _getAttributes$1(
-            reference.pointer, _id_getAttributes$1 as jni$_.JMethodIDPtr)
-        .object<jni$_.JObject>(const jni$_.JObjectType());
-  }
-
-  static final _id_getAttributesForEntity = _class.instanceMethodId(
-    r'getAttributesForEntity',
-    r'(Ljava/lang/String;Lkotlin/jvm/functions/Function4;)Lapp/cash/sqldelight/Query;',
-  );
-
-  static final _getAttributesForEntity = jni$_.ProtectedJniExtensions.lookup<
-          jni$_.NativeFunction<
-              jni$_.JniResult Function(
-                  jni$_.Pointer<jni$_.Void>,
-                  jni$_.JMethodIDPtr,
-                  jni$_.VarArgs<
-                      (
-                        jni$_.Pointer<jni$_.Void>,
-                        jni$_.Pointer<jni$_.Void>
-                      )>)>>('globalEnv_CallObjectMethod')
-      .asFunction<
-          jni$_.JniResult Function(
-              jni$_.Pointer<jni$_.Void>,
-              jni$_.JMethodIDPtr,
-              jni$_.Pointer<jni$_.Void>,
-              jni$_.Pointer<jni$_.Void>)>();
-
-  /// from: `public final app.cash.sqldelight.Query getAttributesForEntity(java.lang.String string, kotlin.jvm.functions.Function4 function4)`
-  /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JObject getAttributesForEntity<$T extends jni$_.JObject>(
-    jni$_.JString string,
-    jni$_.JObject function4, {
-    required jni$_.JObjType<$T> T,
-  }) {
-    final _$string = string.reference;
-    final _$function4 = function4.reference;
-    return _getAttributesForEntity(
-            reference.pointer,
-            _id_getAttributesForEntity as jni$_.JMethodIDPtr,
-            _$string.pointer,
-            _$function4.pointer)
-        .object<jni$_.JObject>(const jni$_.JObjectType());
-  }
-
-  static final _id_getAttributesForEntity$1 = _class.instanceMethodId(
-    r'getAttributesForEntity',
-    r'(Ljava/lang/String;)Lapp/cash/sqldelight/Query;',
-  );
-
-  static final _getAttributesForEntity$1 = jni$_.ProtectedJniExtensions.lookup<
-              jni$_.NativeFunction<
-                  jni$_.JniResult Function(
-                      jni$_.Pointer<jni$_.Void>,
-                      jni$_.JMethodIDPtr,
-                      jni$_.VarArgs<(jni$_.Pointer<jni$_.Void>,)>)>>(
-          'globalEnv_CallObjectMethod')
-      .asFunction<
-          jni$_.JniResult Function(jni$_.Pointer<jni$_.Void>,
-              jni$_.JMethodIDPtr, jni$_.Pointer<jni$_.Void>)>();
-
-  /// from: `public final app.cash.sqldelight.Query getAttributesForEntity(java.lang.String string)`
-  /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JObject getAttributesForEntity$1(
-    jni$_.JString string,
-  ) {
-    final _$string = string.reference;
-    return _getAttributesForEntity$1(
-            reference.pointer,
-            _id_getAttributesForEntity$1 as jni$_.JMethodIDPtr,
-            _$string.pointer)
-        .object<jni$_.JObject>(const jni$_.JObjectType());
-  }
-
-  static final _id_cleanAttributesTable = _class.instanceMethodId(
-    r'cleanAttributesTable',
-    r'()V',
-  );
-
-  static final _cleanAttributesTable = jni$_.ProtectedJniExtensions.lookup<
-          jni$_.NativeFunction<
-              jni$_.JThrowablePtr Function(
-                jni$_.Pointer<jni$_.Void>,
-                jni$_.JMethodIDPtr,
-              )>>('globalEnv_CallVoidMethod')
-      .asFunction<
-          jni$_.JThrowablePtr Function(
-            jni$_.Pointer<jni$_.Void>,
-            jni$_.JMethodIDPtr,
-          )>();
-
-  /// from: `public final void cleanAttributesTable()`
-  void cleanAttributesTable() {
-    _cleanAttributesTable(
-            reference.pointer, _id_cleanAttributesTable as jni$_.JMethodIDPtr)
-        .check();
-  }
-
-  static final _id_insertAllEventsIntoAttributes = _class.instanceMethodId(
-    r'insertAllEventsIntoAttributes',
-    r'()V',
-  );
-
-  static final _insertAllEventsIntoAttributes =
-      jni$_.ProtectedJniExtensions.lookup<
-              jni$_.NativeFunction<
-                  jni$_.JThrowablePtr Function(
-                    jni$_.Pointer<jni$_.Void>,
-                    jni$_.JMethodIDPtr,
-                  )>>('globalEnv_CallVoidMethod')
-          .asFunction<
-              jni$_.JThrowablePtr Function(
-                jni$_.Pointer<jni$_.Void>,
-                jni$_.JMethodIDPtr,
-              )>();
-
-  /// from: `public final void insertAllEventsIntoAttributes()`
-  void insertAllEventsIntoAttributes() {
-    _insertAllEventsIntoAttributes(reference.pointer,
-            _id_insertAllEventsIntoAttributes as jni$_.JMethodIDPtr)
-        .check();
-  }
-
-  static final _id_upsertEventIntoAttributes = _class.instanceMethodId(
-    r'upsertEventIntoAttributes',
-    r'(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V',
-  );
-
-  static final _upsertEventIntoAttributes = jni$_.ProtectedJniExtensions.lookup<
-          jni$_.NativeFunction<
-              jni$_.JThrowablePtr Function(
-                  jni$_.Pointer<jni$_.Void>,
-                  jni$_.JMethodIDPtr,
-                  jni$_.VarArgs<
-                      (
-                        jni$_.Pointer<jni$_.Void>,
-                        jni$_.Pointer<jni$_.Void>,
-                        jni$_.Pointer<jni$_.Void>,
-                        jni$_.Pointer<jni$_.Void>
-                      )>)>>('globalEnv_CallVoidMethod')
-      .asFunction<
-          jni$_.JThrowablePtr Function(
-              jni$_.Pointer<jni$_.Void>,
-              jni$_.JMethodIDPtr,
-              jni$_.Pointer<jni$_.Void>,
-              jni$_.Pointer<jni$_.Void>,
-              jni$_.Pointer<jni$_.Void>,
-              jni$_.Pointer<jni$_.Void>)>();
-
-  /// from: `public final void upsertEventIntoAttributes(java.lang.String string, java.lang.String string1, java.lang.String string2, java.lang.String string3)`
-  void upsertEventIntoAttributes(
-    jni$_.JString? string,
-    jni$_.JString string1,
-    jni$_.JString string2,
-    jni$_.JString string3,
-  ) {
-    final _$string = string?.reference ?? jni$_.jNullReference;
-    final _$string1 = string1.reference;
-    final _$string2 = string2.reference;
-    final _$string3 = string3.reference;
-    _upsertEventIntoAttributes(
-            reference.pointer,
-            _id_upsertEventIntoAttributes as jni$_.JMethodIDPtr,
-            _$string.pointer,
-            _$string1.pointer,
-            _$string2.pointer,
-            _$string3.pointer)
-        .check();
-  }
-}
-
-final class $AttributesQueries$NullableType
-    extends jni$_.JObjType<AttributesQueries?> {
-  @jni$_.internal
-  const $AttributesQueries$NullableType();
-
-  @jni$_.internal
-  @core$_.override
-  String get signature =>
-      r'Lcom/daylightcomputer/coreplugin/database/sqldefinitions/AttributesQueries;';
-
-  @jni$_.internal
-  @core$_.override
-  AttributesQueries? fromReference(jni$_.JReference reference) =>
-      reference.isNull
-          ? null
-          : AttributesQueries.fromReference(
-              reference,
-            );
-  @jni$_.internal
-  @core$_.override
-  jni$_.JObjType get superType => const jni$_.JObjectType();
-
-  @jni$_.internal
-  @core$_.override
-  jni$_.JObjType<AttributesQueries?> get nullableType => this;
-
-  @jni$_.internal
-  @core$_.override
-  final superCount = 1;
-
-  @core$_.override
-  int get hashCode => ($AttributesQueries$NullableType).hashCode;
-
-  @core$_.override
-  bool operator ==(Object other) {
-    return other.runtimeType == ($AttributesQueries$NullableType) &&
-        other is $AttributesQueries$NullableType;
-  }
-}
-
-final class $AttributesQueries$Type extends jni$_.JObjType<AttributesQueries> {
-  @jni$_.internal
-  const $AttributesQueries$Type();
-
-  @jni$_.internal
-  @core$_.override
-  String get signature =>
-      r'Lcom/daylightcomputer/coreplugin/database/sqldefinitions/AttributesQueries;';
-
-  @jni$_.internal
-  @core$_.override
-  AttributesQueries fromReference(jni$_.JReference reference) =>
-      AttributesQueries.fromReference(
-        reference,
-      );
-  @jni$_.internal
-  @core$_.override
-  jni$_.JObjType get superType => const jni$_.JObjectType();
-
-  @jni$_.internal
-  @core$_.override
-  jni$_.JObjType<AttributesQueries?> get nullableType =>
-      const $AttributesQueries$NullableType();
-
-  @jni$_.internal
-  @core$_.override
-  final superCount = 1;
-
-  @core$_.override
-  int get hashCode => ($AttributesQueries$Type).hashCode;
-
-  @core$_.override
-  bool operator ==(Object other) {
-    return other.runtimeType == ($AttributesQueries$Type) &&
-        other is $AttributesQueries$Type;
-  }
-}
-
-/// from: `com.daylightcomputer.coreplugin.database.sqldefinitions.Bundles`
-class Bundles extends jni$_.JObject {
-  @jni$_.internal
-  @core$_.override
-  final jni$_.JObjType<Bundles> $type;
-
-  @jni$_.internal
-  Bundles.fromReference(
-    jni$_.JReference reference,
-  )   : $type = type,
-        super.fromReference(reference);
-
-  static final _class = jni$_.JClass.forName(
-      r'com/daylightcomputer/coreplugin/database/sqldefinitions/Bundles');
-
-  /// The type which includes information such as the signature of this class.
-  static const nullableType = $Bundles$NullableType();
-  static const type = $Bundles$Type();
-  static final _id_new$ = _class.constructorId(
-    r'(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V',
-  );
-
-  static final _new$ = jni$_.ProtectedJniExtensions.lookup<
-          jni$_.NativeFunction<
-              jni$_.JniResult Function(
-                  jni$_.Pointer<jni$_.Void>,
-                  jni$_.JMethodIDPtr,
-                  jni$_.VarArgs<
-                      (
-                        jni$_.Pointer<jni$_.Void>,
-                        jni$_.Pointer<jni$_.Void>,
-                        jni$_.Pointer<jni$_.Void>,
-                        jni$_.Pointer<jni$_.Void>
-                      )>)>>('globalEnv_NewObject')
-      .asFunction<
-          jni$_.JniResult Function(
-              jni$_.Pointer<jni$_.Void>,
-              jni$_.JMethodIDPtr,
-              jni$_.Pointer<jni$_.Void>,
-              jni$_.Pointer<jni$_.Void>,
-              jni$_.Pointer<jni$_.Void>,
-              jni$_.Pointer<jni$_.Void>)>();
-
-  /// from: `public void <init>(java.lang.String string, java.lang.String string1, java.lang.String string2, java.lang.String string3)`
-  /// The returned object must be released after use, by calling the [release] method.
-  factory Bundles(
-    jni$_.JString string,
-    jni$_.JString string1,
-    jni$_.JString string2,
-    jni$_.JString? string3,
-  ) {
-    final _$string = string.reference;
-    final _$string1 = string1.reference;
-    final _$string2 = string2.reference;
-    final _$string3 = string3?.reference ?? jni$_.jNullReference;
-    return Bundles.fromReference(_new$(
-            _class.reference.pointer,
-            _id_new$ as jni$_.JMethodIDPtr,
-            _$string.pointer,
-            _$string1.pointer,
-            _$string2.pointer,
-            _$string3.pointer)
-        .reference);
-  }
-
-  static final _id_getId = _class.instanceMethodId(
-    r'getId',
-    r'()Ljava/lang/String;',
-  );
-
-  static final _getId = jni$_.ProtectedJniExtensions.lookup<
-          jni$_.NativeFunction<
-              jni$_.JniResult Function(
-                jni$_.Pointer<jni$_.Void>,
-                jni$_.JMethodIDPtr,
-              )>>('globalEnv_CallObjectMethod')
-      .asFunction<
-          jni$_.JniResult Function(
-            jni$_.Pointer<jni$_.Void>,
-            jni$_.JMethodIDPtr,
-          )>();
-
-  /// from: `public final java.lang.String getId()`
-  /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JString getId() {
-    return _getId(reference.pointer, _id_getId as jni$_.JMethodIDPtr)
-        .object<jni$_.JString>(const jni$_.JStringType());
-  }
-
-  static final _id_getUser_id = _class.instanceMethodId(
-    r'getUser_id',
-    r'()Ljava/lang/String;',
-  );
-
-  static final _getUser_id = jni$_.ProtectedJniExtensions.lookup<
-          jni$_.NativeFunction<
-              jni$_.JniResult Function(
-                jni$_.Pointer<jni$_.Void>,
-                jni$_.JMethodIDPtr,
-              )>>('globalEnv_CallObjectMethod')
-      .asFunction<
-          jni$_.JniResult Function(
-            jni$_.Pointer<jni$_.Void>,
-            jni$_.JMethodIDPtr,
-          )>();
-
-  /// from: `public final java.lang.String getUser_id()`
-  /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JString getUser_id() {
-    return _getUser_id(reference.pointer, _id_getUser_id as jni$_.JMethodIDPtr)
-        .object<jni$_.JString>(const jni$_.JStringType());
-  }
-
-  static final _id_getTimestamp = _class.instanceMethodId(
-    r'getTimestamp',
-    r'()Ljava/lang/String;',
-  );
-
-  static final _getTimestamp = jni$_.ProtectedJniExtensions.lookup<
-          jni$_.NativeFunction<
-              jni$_.JniResult Function(
-                jni$_.Pointer<jni$_.Void>,
-                jni$_.JMethodIDPtr,
-              )>>('globalEnv_CallObjectMethod')
-      .asFunction<
-          jni$_.JniResult Function(
-            jni$_.Pointer<jni$_.Void>,
-            jni$_.JMethodIDPtr,
-          )>();
-
-  /// from: `public final java.lang.String getTimestamp()`
-  /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JString getTimestamp() {
-    return _getTimestamp(
-            reference.pointer, _id_getTimestamp as jni$_.JMethodIDPtr)
-        .object<jni$_.JString>(const jni$_.JStringType());
-  }
-
-  static final _id_getPayload = _class.instanceMethodId(
-    r'getPayload',
-    r'()Ljava/lang/String;',
-  );
-
-  static final _getPayload = jni$_.ProtectedJniExtensions.lookup<
-          jni$_.NativeFunction<
-              jni$_.JniResult Function(
-                jni$_.Pointer<jni$_.Void>,
-                jni$_.JMethodIDPtr,
-              )>>('globalEnv_CallObjectMethod')
-      .asFunction<
-          jni$_.JniResult Function(
-            jni$_.Pointer<jni$_.Void>,
-            jni$_.JMethodIDPtr,
-          )>();
-
-  /// from: `public final java.lang.String getPayload()`
-  /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JString? getPayload() {
-    return _getPayload(reference.pointer, _id_getPayload as jni$_.JMethodIDPtr)
-        .object<jni$_.JString?>(const jni$_.JStringNullableType());
-  }
-
-  static final _id_component1 = _class.instanceMethodId(
-    r'component1',
-    r'()Ljava/lang/String;',
-  );
-
-  static final _component1 = jni$_.ProtectedJniExtensions.lookup<
-          jni$_.NativeFunction<
-              jni$_.JniResult Function(
-                jni$_.Pointer<jni$_.Void>,
-                jni$_.JMethodIDPtr,
-              )>>('globalEnv_CallObjectMethod')
-      .asFunction<
-          jni$_.JniResult Function(
-            jni$_.Pointer<jni$_.Void>,
-            jni$_.JMethodIDPtr,
-          )>();
-
-  /// from: `public final java.lang.String component1()`
-  /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JString component1() {
-    return _component1(reference.pointer, _id_component1 as jni$_.JMethodIDPtr)
-        .object<jni$_.JString>(const jni$_.JStringType());
-  }
-
-  static final _id_component2 = _class.instanceMethodId(
-    r'component2',
-    r'()Ljava/lang/String;',
-  );
-
-  static final _component2 = jni$_.ProtectedJniExtensions.lookup<
-          jni$_.NativeFunction<
-              jni$_.JniResult Function(
-                jni$_.Pointer<jni$_.Void>,
-                jni$_.JMethodIDPtr,
-              )>>('globalEnv_CallObjectMethod')
-      .asFunction<
-          jni$_.JniResult Function(
-            jni$_.Pointer<jni$_.Void>,
-            jni$_.JMethodIDPtr,
-          )>();
-
-  /// from: `public final java.lang.String component2()`
-  /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JString component2() {
-    return _component2(reference.pointer, _id_component2 as jni$_.JMethodIDPtr)
-        .object<jni$_.JString>(const jni$_.JStringType());
-  }
-
-  static final _id_component3 = _class.instanceMethodId(
-    r'component3',
-    r'()Ljava/lang/String;',
-  );
-
-  static final _component3 = jni$_.ProtectedJniExtensions.lookup<
-          jni$_.NativeFunction<
-              jni$_.JniResult Function(
-                jni$_.Pointer<jni$_.Void>,
-                jni$_.JMethodIDPtr,
-              )>>('globalEnv_CallObjectMethod')
-      .asFunction<
-          jni$_.JniResult Function(
-            jni$_.Pointer<jni$_.Void>,
-            jni$_.JMethodIDPtr,
-          )>();
-
-  /// from: `public final java.lang.String component3()`
-  /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JString component3() {
-    return _component3(reference.pointer, _id_component3 as jni$_.JMethodIDPtr)
-        .object<jni$_.JString>(const jni$_.JStringType());
-  }
-
-  static final _id_component4 = _class.instanceMethodId(
-    r'component4',
-    r'()Ljava/lang/String;',
-  );
-
-  static final _component4 = jni$_.ProtectedJniExtensions.lookup<
-          jni$_.NativeFunction<
-              jni$_.JniResult Function(
-                jni$_.Pointer<jni$_.Void>,
-                jni$_.JMethodIDPtr,
-              )>>('globalEnv_CallObjectMethod')
-      .asFunction<
-          jni$_.JniResult Function(
-            jni$_.Pointer<jni$_.Void>,
-            jni$_.JMethodIDPtr,
-          )>();
-
-  /// from: `public final java.lang.String component4()`
-  /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JString? component4() {
-    return _component4(reference.pointer, _id_component4 as jni$_.JMethodIDPtr)
-        .object<jni$_.JString?>(const jni$_.JStringNullableType());
-  }
-
-  static final _id_copy = _class.instanceMethodId(
-    r'copy',
-    r'(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lcom/daylightcomputer/coreplugin/database/sqldefinitions/Bundles;',
-  );
-
-  static final _copy = jni$_.ProtectedJniExtensions.lookup<
-          jni$_.NativeFunction<
-              jni$_.JniResult Function(
-                  jni$_.Pointer<jni$_.Void>,
-                  jni$_.JMethodIDPtr,
-                  jni$_.VarArgs<
-                      (
-                        jni$_.Pointer<jni$_.Void>,
-                        jni$_.Pointer<jni$_.Void>,
-                        jni$_.Pointer<jni$_.Void>,
-                        jni$_.Pointer<jni$_.Void>
-                      )>)>>('globalEnv_CallObjectMethod')
-      .asFunction<
-          jni$_.JniResult Function(
-              jni$_.Pointer<jni$_.Void>,
-              jni$_.JMethodIDPtr,
-              jni$_.Pointer<jni$_.Void>,
-              jni$_.Pointer<jni$_.Void>,
-              jni$_.Pointer<jni$_.Void>,
-              jni$_.Pointer<jni$_.Void>)>();
-
-  /// from: `public final com.daylightcomputer.coreplugin.database.sqldefinitions.Bundles copy(java.lang.String string, java.lang.String string1, java.lang.String string2, java.lang.String string3)`
-  /// The returned object must be released after use, by calling the [release] method.
-  Bundles copy(
-    jni$_.JString string,
-    jni$_.JString string1,
-    jni$_.JString string2,
-    jni$_.JString? string3,
-  ) {
-    final _$string = string.reference;
-    final _$string1 = string1.reference;
-    final _$string2 = string2.reference;
-    final _$string3 = string3?.reference ?? jni$_.jNullReference;
-    return _copy(
-            reference.pointer,
-            _id_copy as jni$_.JMethodIDPtr,
-            _$string.pointer,
-            _$string1.pointer,
-            _$string2.pointer,
-            _$string3.pointer)
-        .object<Bundles>(const $Bundles$Type());
-  }
-
-  static final _id_toString$1 = _class.instanceMethodId(
-    r'toString',
-    r'()Ljava/lang/String;',
-  );
-
-  static final _toString$1 = jni$_.ProtectedJniExtensions.lookup<
-          jni$_.NativeFunction<
-              jni$_.JniResult Function(
-                jni$_.Pointer<jni$_.Void>,
-                jni$_.JMethodIDPtr,
-              )>>('globalEnv_CallObjectMethod')
-      .asFunction<
-          jni$_.JniResult Function(
-            jni$_.Pointer<jni$_.Void>,
-            jni$_.JMethodIDPtr,
-          )>();
-
-  /// from: `public java.lang.String toString()`
-  /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JString toString$1() {
-    return _toString$1(reference.pointer, _id_toString$1 as jni$_.JMethodIDPtr)
-        .object<jni$_.JString>(const jni$_.JStringType());
-  }
-
-  static final _id_hashCode$1 = _class.instanceMethodId(
-    r'hashCode',
-    r'()I',
-  );
-
-  static final _hashCode$1 = jni$_.ProtectedJniExtensions.lookup<
-          jni$_.NativeFunction<
-              jni$_.JniResult Function(
-                jni$_.Pointer<jni$_.Void>,
-                jni$_.JMethodIDPtr,
-              )>>('globalEnv_CallIntMethod')
-      .asFunction<
-          jni$_.JniResult Function(
-            jni$_.Pointer<jni$_.Void>,
-            jni$_.JMethodIDPtr,
-          )>();
-
-  /// from: `public int hashCode()`
-  int hashCode$1() {
-    return _hashCode$1(reference.pointer, _id_hashCode$1 as jni$_.JMethodIDPtr)
-        .integer;
-  }
-
-  static final _id_equals = _class.instanceMethodId(
-    r'equals',
-    r'(Ljava/lang/Object;)Z',
-  );
-
-  static final _equals = jni$_.ProtectedJniExtensions.lookup<
-              jni$_.NativeFunction<
-                  jni$_.JniResult Function(
-                      jni$_.Pointer<jni$_.Void>,
-                      jni$_.JMethodIDPtr,
-                      jni$_.VarArgs<(jni$_.Pointer<jni$_.Void>,)>)>>(
-          'globalEnv_CallBooleanMethod')
-      .asFunction<
-          jni$_.JniResult Function(jni$_.Pointer<jni$_.Void>,
-              jni$_.JMethodIDPtr, jni$_.Pointer<jni$_.Void>)>();
-
-  /// from: `public boolean equals(java.lang.Object object)`
-  bool equals(
-    jni$_.JObject? object,
-  ) {
-    final _$object = object?.reference ?? jni$_.jNullReference;
-    return _equals(reference.pointer, _id_equals as jni$_.JMethodIDPtr,
-            _$object.pointer)
-        .boolean;
-  }
-}
-
-final class $Bundles$NullableType extends jni$_.JObjType<Bundles?> {
-  @jni$_.internal
-  const $Bundles$NullableType();
-
-  @jni$_.internal
-  @core$_.override
-  String get signature =>
-      r'Lcom/daylightcomputer/coreplugin/database/sqldefinitions/Bundles;';
-
-  @jni$_.internal
-  @core$_.override
-  Bundles? fromReference(jni$_.JReference reference) => reference.isNull
-      ? null
-      : Bundles.fromReference(
-          reference,
-        );
-  @jni$_.internal
-  @core$_.override
-  jni$_.JObjType get superType => const jni$_.JObjectType();
-
-  @jni$_.internal
-  @core$_.override
-  jni$_.JObjType<Bundles?> get nullableType => this;
-
-  @jni$_.internal
-  @core$_.override
-  final superCount = 1;
-
-  @core$_.override
-  int get hashCode => ($Bundles$NullableType).hashCode;
-
-  @core$_.override
-  bool operator ==(Object other) {
-    return other.runtimeType == ($Bundles$NullableType) &&
-        other is $Bundles$NullableType;
-  }
-}
-
-final class $Bundles$Type extends jni$_.JObjType<Bundles> {
-  @jni$_.internal
-  const $Bundles$Type();
-
-  @jni$_.internal
-  @core$_.override
-  String get signature =>
-      r'Lcom/daylightcomputer/coreplugin/database/sqldefinitions/Bundles;';
-
-  @jni$_.internal
-  @core$_.override
-  Bundles fromReference(jni$_.JReference reference) => Bundles.fromReference(
-        reference,
-      );
-  @jni$_.internal
-  @core$_.override
-  jni$_.JObjType get superType => const jni$_.JObjectType();
-
-  @jni$_.internal
-  @core$_.override
-  jni$_.JObjType<Bundles?> get nullableType => const $Bundles$NullableType();
-
-  @jni$_.internal
-  @core$_.override
-  final superCount = 1;
-
-  @core$_.override
-  int get hashCode => ($Bundles$Type).hashCode;
-
-  @core$_.override
-  bool operator ==(Object other) {
-    return other.runtimeType == ($Bundles$Type) && other is $Bundles$Type;
-  }
-}
-
-/// from: `com.daylightcomputer.coreplugin.database.sqldefinitions.BundlesQueries`
-class BundlesQueries extends jni$_.JObject {
-  @jni$_.internal
-  @core$_.override
-  final jni$_.JObjType<BundlesQueries> $type;
-
-  @jni$_.internal
-  BundlesQueries.fromReference(
-    jni$_.JReference reference,
-  )   : $type = type,
-        super.fromReference(reference);
-
-  static final _class = jni$_.JClass.forName(
-      r'com/daylightcomputer/coreplugin/database/sqldefinitions/BundlesQueries');
-
-  /// The type which includes information such as the signature of this class.
-  static const nullableType = $BundlesQueries$NullableType();
-  static const type = $BundlesQueries$Type();
-  static final _id_new$ = _class.constructorId(
-    r'(Lapp/cash/sqldelight/db/SqlDriver;)V',
-  );
-
-  static final _new$ = jni$_.ProtectedJniExtensions.lookup<
-              jni$_.NativeFunction<
-                  jni$_.JniResult Function(
-                      jni$_.Pointer<jni$_.Void>,
-                      jni$_.JMethodIDPtr,
-                      jni$_.VarArgs<(jni$_.Pointer<jni$_.Void>,)>)>>(
-          'globalEnv_NewObject')
-      .asFunction<
-          jni$_.JniResult Function(jni$_.Pointer<jni$_.Void>,
-              jni$_.JMethodIDPtr, jni$_.Pointer<jni$_.Void>)>();
-
-  /// from: `public void <init>(app.cash.sqldelight.db.SqlDriver sqlDriver)`
-  /// The returned object must be released after use, by calling the [release] method.
-  factory BundlesQueries(
-    jni$_.JObject sqlDriver,
-  ) {
-    final _$sqlDriver = sqlDriver.reference;
-    return BundlesQueries.fromReference(_new$(_class.reference.pointer,
-            _id_new$ as jni$_.JMethodIDPtr, _$sqlDriver.pointer)
-        .reference);
-  }
-
-  static final _id_getAllBundleIds = _class.instanceMethodId(
-    r'getAllBundleIds',
-    r'()Lapp/cash/sqldelight/Query;',
-  );
-
-  static final _getAllBundleIds = jni$_.ProtectedJniExtensions.lookup<
-          jni$_.NativeFunction<
-              jni$_.JniResult Function(
-                jni$_.Pointer<jni$_.Void>,
-                jni$_.JMethodIDPtr,
-              )>>('globalEnv_CallObjectMethod')
-      .asFunction<
-          jni$_.JniResult Function(
-            jni$_.Pointer<jni$_.Void>,
-            jni$_.JMethodIDPtr,
-          )>();
-
-  /// from: `public final app.cash.sqldelight.Query getAllBundleIds()`
-  /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JObject getAllBundleIds() {
-    return _getAllBundleIds(
-            reference.pointer, _id_getAllBundleIds as jni$_.JMethodIDPtr)
-        .object<jni$_.JObject>(const jni$_.JObjectType());
-  }
-
-  static final _id_insertBundle = _class.instanceMethodId(
-    r'insertBundle',
-    r'(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V',
-  );
-
-  static final _insertBundle = jni$_.ProtectedJniExtensions.lookup<
-          jni$_.NativeFunction<
-              jni$_.JThrowablePtr Function(
-                  jni$_.Pointer<jni$_.Void>,
-                  jni$_.JMethodIDPtr,
-                  jni$_.VarArgs<
-                      (
-                        jni$_.Pointer<jni$_.Void>,
-                        jni$_.Pointer<jni$_.Void>,
-                        jni$_.Pointer<jni$_.Void>,
-                        jni$_.Pointer<jni$_.Void>
-                      )>)>>('globalEnv_CallVoidMethod')
-      .asFunction<
-          jni$_.JThrowablePtr Function(
-              jni$_.Pointer<jni$_.Void>,
-              jni$_.JMethodIDPtr,
-              jni$_.Pointer<jni$_.Void>,
-              jni$_.Pointer<jni$_.Void>,
-              jni$_.Pointer<jni$_.Void>,
-              jni$_.Pointer<jni$_.Void>)>();
-
-  /// from: `public final void insertBundle(java.lang.String string, java.lang.String string1, java.lang.String string2, java.lang.String string3)`
-  void insertBundle(
-    jni$_.JString string,
-    jni$_.JString string1,
-    jni$_.JString string2,
-    jni$_.JString? string3,
-  ) {
-    final _$string = string.reference;
-    final _$string1 = string1.reference;
-    final _$string2 = string2.reference;
-    final _$string3 = string3?.reference ?? jni$_.jNullReference;
-    _insertBundle(
-            reference.pointer,
-            _id_insertBundle as jni$_.JMethodIDPtr,
-            _$string.pointer,
-            _$string1.pointer,
-            _$string2.pointer,
-            _$string3.pointer)
-        .check();
-  }
-}
-
-final class $BundlesQueries$NullableType
-    extends jni$_.JObjType<BundlesQueries?> {
-  @jni$_.internal
-  const $BundlesQueries$NullableType();
-
-  @jni$_.internal
-  @core$_.override
-  String get signature =>
-      r'Lcom/daylightcomputer/coreplugin/database/sqldefinitions/BundlesQueries;';
-
-  @jni$_.internal
-  @core$_.override
-  BundlesQueries? fromReference(jni$_.JReference reference) => reference.isNull
-      ? null
-      : BundlesQueries.fromReference(
-          reference,
-        );
-  @jni$_.internal
-  @core$_.override
-  jni$_.JObjType get superType => const jni$_.JObjectType();
-
-  @jni$_.internal
-  @core$_.override
-  jni$_.JObjType<BundlesQueries?> get nullableType => this;
-
-  @jni$_.internal
-  @core$_.override
-  final superCount = 1;
-
-  @core$_.override
-  int get hashCode => ($BundlesQueries$NullableType).hashCode;
-
-  @core$_.override
-  bool operator ==(Object other) {
-    return other.runtimeType == ($BundlesQueries$NullableType) &&
-        other is $BundlesQueries$NullableType;
-  }
-}
-
-final class $BundlesQueries$Type extends jni$_.JObjType<BundlesQueries> {
-  @jni$_.internal
-  const $BundlesQueries$Type();
-
-  @jni$_.internal
-  @core$_.override
-  String get signature =>
-      r'Lcom/daylightcomputer/coreplugin/database/sqldefinitions/BundlesQueries;';
-
-  @jni$_.internal
-  @core$_.override
-  BundlesQueries fromReference(jni$_.JReference reference) =>
-      BundlesQueries.fromReference(
-        reference,
-      );
-  @jni$_.internal
-  @core$_.override
-  jni$_.JObjType get superType => const jni$_.JObjectType();
-
-  @jni$_.internal
-  @core$_.override
-  jni$_.JObjType<BundlesQueries?> get nullableType =>
-      const $BundlesQueries$NullableType();
-
-  @jni$_.internal
-  @core$_.override
-  final superCount = 1;
-
-  @core$_.override
-  int get hashCode => ($BundlesQueries$Type).hashCode;
-
-  @core$_.override
-  bool operator ==(Object other) {
-    return other.runtimeType == ($BundlesQueries$Type) &&
-        other is $BundlesQueries$Type;
-  }
-}
-
-/// from: `com.daylightcomputer.coreplugin.database.sqldefinitions.Clients`
-class Clients extends jni$_.JObject {
-  @jni$_.internal
-  @core$_.override
-  final jni$_.JObjType<Clients> $type;
-
-  @jni$_.internal
-  Clients.fromReference(
-    jni$_.JReference reference,
-  )   : $type = type,
-        super.fromReference(reference);
-
-  static final _class = jni$_.JClass.forName(
-      r'com/daylightcomputer/coreplugin/database/sqldefinitions/Clients');
-
-  /// The type which includes information such as the signature of this class.
-  static const nullableType = $Clients$NullableType();
-  static const type = $Clients$Type();
+  static const nullableType = $AttributeValue$NullableType();
+  static const type = $AttributeValue$Type();
   static final _id_new$ = _class.constructorId(
     r'(Ljava/lang/String;Ljava/lang/String;)V',
   );
@@ -1872,23 +76,23 @@ class Clients extends jni$_.JObject {
 
   /// from: `public void <init>(java.lang.String string, java.lang.String string1)`
   /// The returned object must be released after use, by calling the [release] method.
-  factory Clients(
-    jni$_.JString string,
-    jni$_.JString? string1,
+  factory AttributeValue(
+    jni$_.JString? string,
+    jni$_.JString string1,
   ) {
-    final _$string = string.reference;
-    final _$string1 = string1?.reference ?? jni$_.jNullReference;
-    return Clients.fromReference(_new$(_class.reference.pointer,
+    final _$string = string?.reference ?? jni$_.jNullReference;
+    final _$string1 = string1.reference;
+    return AttributeValue.fromReference(_new$(_class.reference.pointer,
             _id_new$ as jni$_.JMethodIDPtr, _$string.pointer, _$string1.pointer)
         .reference);
   }
 
-  static final _id_getId = _class.instanceMethodId(
-    r'getId',
+  static final _id_getValue = _class.instanceMethodId(
+    r'getValue',
     r'()Ljava/lang/String;',
   );
 
-  static final _getId = jni$_.ProtectedJniExtensions.lookup<
+  static final _getValue = jni$_.ProtectedJniExtensions.lookup<
           jni$_.NativeFunction<
               jni$_.JniResult Function(
                 jni$_.Pointer<jni$_.Void>,
@@ -1900,1955 +104,11 @@ class Clients extends jni$_.JObject {
             jni$_.JMethodIDPtr,
           )>();
 
-  /// from: `public final java.lang.String getId()`
+  /// from: `public final java.lang.String getValue()`
   /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JString getId() {
-    return _getId(reference.pointer, _id_getId as jni$_.JMethodIDPtr)
-        .object<jni$_.JString>(const jni$_.JStringType());
-  }
-
-  static final _id_getUser_id = _class.instanceMethodId(
-    r'getUser_id',
-    r'()Ljava/lang/String;',
-  );
-
-  static final _getUser_id = jni$_.ProtectedJniExtensions.lookup<
-          jni$_.NativeFunction<
-              jni$_.JniResult Function(
-                jni$_.Pointer<jni$_.Void>,
-                jni$_.JMethodIDPtr,
-              )>>('globalEnv_CallObjectMethod')
-      .asFunction<
-          jni$_.JniResult Function(
-            jni$_.Pointer<jni$_.Void>,
-            jni$_.JMethodIDPtr,
-          )>();
-
-  /// from: `public final java.lang.String getUser_id()`
-  /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JString? getUser_id() {
-    return _getUser_id(reference.pointer, _id_getUser_id as jni$_.JMethodIDPtr)
+  jni$_.JString? getValue() {
+    return _getValue(reference.pointer, _id_getValue as jni$_.JMethodIDPtr)
         .object<jni$_.JString?>(const jni$_.JStringNullableType());
-  }
-
-  static final _id_component1 = _class.instanceMethodId(
-    r'component1',
-    r'()Ljava/lang/String;',
-  );
-
-  static final _component1 = jni$_.ProtectedJniExtensions.lookup<
-          jni$_.NativeFunction<
-              jni$_.JniResult Function(
-                jni$_.Pointer<jni$_.Void>,
-                jni$_.JMethodIDPtr,
-              )>>('globalEnv_CallObjectMethod')
-      .asFunction<
-          jni$_.JniResult Function(
-            jni$_.Pointer<jni$_.Void>,
-            jni$_.JMethodIDPtr,
-          )>();
-
-  /// from: `public final java.lang.String component1()`
-  /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JString component1() {
-    return _component1(reference.pointer, _id_component1 as jni$_.JMethodIDPtr)
-        .object<jni$_.JString>(const jni$_.JStringType());
-  }
-
-  static final _id_component2 = _class.instanceMethodId(
-    r'component2',
-    r'()Ljava/lang/String;',
-  );
-
-  static final _component2 = jni$_.ProtectedJniExtensions.lookup<
-          jni$_.NativeFunction<
-              jni$_.JniResult Function(
-                jni$_.Pointer<jni$_.Void>,
-                jni$_.JMethodIDPtr,
-              )>>('globalEnv_CallObjectMethod')
-      .asFunction<
-          jni$_.JniResult Function(
-            jni$_.Pointer<jni$_.Void>,
-            jni$_.JMethodIDPtr,
-          )>();
-
-  /// from: `public final java.lang.String component2()`
-  /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JString? component2() {
-    return _component2(reference.pointer, _id_component2 as jni$_.JMethodIDPtr)
-        .object<jni$_.JString?>(const jni$_.JStringNullableType());
-  }
-
-  static final _id_copy = _class.instanceMethodId(
-    r'copy',
-    r'(Ljava/lang/String;Ljava/lang/String;)Lcom/daylightcomputer/coreplugin/database/sqldefinitions/Clients;',
-  );
-
-  static final _copy = jni$_.ProtectedJniExtensions.lookup<
-          jni$_.NativeFunction<
-              jni$_.JniResult Function(
-                  jni$_.Pointer<jni$_.Void>,
-                  jni$_.JMethodIDPtr,
-                  jni$_.VarArgs<
-                      (
-                        jni$_.Pointer<jni$_.Void>,
-                        jni$_.Pointer<jni$_.Void>
-                      )>)>>('globalEnv_CallObjectMethod')
-      .asFunction<
-          jni$_.JniResult Function(
-              jni$_.Pointer<jni$_.Void>,
-              jni$_.JMethodIDPtr,
-              jni$_.Pointer<jni$_.Void>,
-              jni$_.Pointer<jni$_.Void>)>();
-
-  /// from: `public final com.daylightcomputer.coreplugin.database.sqldefinitions.Clients copy(java.lang.String string, java.lang.String string1)`
-  /// The returned object must be released after use, by calling the [release] method.
-  Clients copy(
-    jni$_.JString string,
-    jni$_.JString? string1,
-  ) {
-    final _$string = string.reference;
-    final _$string1 = string1?.reference ?? jni$_.jNullReference;
-    return _copy(reference.pointer, _id_copy as jni$_.JMethodIDPtr,
-            _$string.pointer, _$string1.pointer)
-        .object<Clients>(const $Clients$Type());
-  }
-
-  static final _id_toString$1 = _class.instanceMethodId(
-    r'toString',
-    r'()Ljava/lang/String;',
-  );
-
-  static final _toString$1 = jni$_.ProtectedJniExtensions.lookup<
-          jni$_.NativeFunction<
-              jni$_.JniResult Function(
-                jni$_.Pointer<jni$_.Void>,
-                jni$_.JMethodIDPtr,
-              )>>('globalEnv_CallObjectMethod')
-      .asFunction<
-          jni$_.JniResult Function(
-            jni$_.Pointer<jni$_.Void>,
-            jni$_.JMethodIDPtr,
-          )>();
-
-  /// from: `public java.lang.String toString()`
-  /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JString toString$1() {
-    return _toString$1(reference.pointer, _id_toString$1 as jni$_.JMethodIDPtr)
-        .object<jni$_.JString>(const jni$_.JStringType());
-  }
-
-  static final _id_hashCode$1 = _class.instanceMethodId(
-    r'hashCode',
-    r'()I',
-  );
-
-  static final _hashCode$1 = jni$_.ProtectedJniExtensions.lookup<
-          jni$_.NativeFunction<
-              jni$_.JniResult Function(
-                jni$_.Pointer<jni$_.Void>,
-                jni$_.JMethodIDPtr,
-              )>>('globalEnv_CallIntMethod')
-      .asFunction<
-          jni$_.JniResult Function(
-            jni$_.Pointer<jni$_.Void>,
-            jni$_.JMethodIDPtr,
-          )>();
-
-  /// from: `public int hashCode()`
-  int hashCode$1() {
-    return _hashCode$1(reference.pointer, _id_hashCode$1 as jni$_.JMethodIDPtr)
-        .integer;
-  }
-
-  static final _id_equals = _class.instanceMethodId(
-    r'equals',
-    r'(Ljava/lang/Object;)Z',
-  );
-
-  static final _equals = jni$_.ProtectedJniExtensions.lookup<
-              jni$_.NativeFunction<
-                  jni$_.JniResult Function(
-                      jni$_.Pointer<jni$_.Void>,
-                      jni$_.JMethodIDPtr,
-                      jni$_.VarArgs<(jni$_.Pointer<jni$_.Void>,)>)>>(
-          'globalEnv_CallBooleanMethod')
-      .asFunction<
-          jni$_.JniResult Function(jni$_.Pointer<jni$_.Void>,
-              jni$_.JMethodIDPtr, jni$_.Pointer<jni$_.Void>)>();
-
-  /// from: `public boolean equals(java.lang.Object object)`
-  bool equals(
-    jni$_.JObject? object,
-  ) {
-    final _$object = object?.reference ?? jni$_.jNullReference;
-    return _equals(reference.pointer, _id_equals as jni$_.JMethodIDPtr,
-            _$object.pointer)
-        .boolean;
-  }
-}
-
-final class $Clients$NullableType extends jni$_.JObjType<Clients?> {
-  @jni$_.internal
-  const $Clients$NullableType();
-
-  @jni$_.internal
-  @core$_.override
-  String get signature =>
-      r'Lcom/daylightcomputer/coreplugin/database/sqldefinitions/Clients;';
-
-  @jni$_.internal
-  @core$_.override
-  Clients? fromReference(jni$_.JReference reference) => reference.isNull
-      ? null
-      : Clients.fromReference(
-          reference,
-        );
-  @jni$_.internal
-  @core$_.override
-  jni$_.JObjType get superType => const jni$_.JObjectType();
-
-  @jni$_.internal
-  @core$_.override
-  jni$_.JObjType<Clients?> get nullableType => this;
-
-  @jni$_.internal
-  @core$_.override
-  final superCount = 1;
-
-  @core$_.override
-  int get hashCode => ($Clients$NullableType).hashCode;
-
-  @core$_.override
-  bool operator ==(Object other) {
-    return other.runtimeType == ($Clients$NullableType) &&
-        other is $Clients$NullableType;
-  }
-}
-
-final class $Clients$Type extends jni$_.JObjType<Clients> {
-  @jni$_.internal
-  const $Clients$Type();
-
-  @jni$_.internal
-  @core$_.override
-  String get signature =>
-      r'Lcom/daylightcomputer/coreplugin/database/sqldefinitions/Clients;';
-
-  @jni$_.internal
-  @core$_.override
-  Clients fromReference(jni$_.JReference reference) => Clients.fromReference(
-        reference,
-      );
-  @jni$_.internal
-  @core$_.override
-  jni$_.JObjType get superType => const jni$_.JObjectType();
-
-  @jni$_.internal
-  @core$_.override
-  jni$_.JObjType<Clients?> get nullableType => const $Clients$NullableType();
-
-  @jni$_.internal
-  @core$_.override
-  final superCount = 1;
-
-  @core$_.override
-  int get hashCode => ($Clients$Type).hashCode;
-
-  @core$_.override
-  bool operator ==(Object other) {
-    return other.runtimeType == ($Clients$Type) && other is $Clients$Type;
-  }
-}
-
-/// from: `com.daylightcomputer.coreplugin.database.sqldefinitions.Config`
-class Config extends jni$_.JObject {
-  @jni$_.internal
-  @core$_.override
-  final jni$_.JObjType<Config> $type;
-
-  @jni$_.internal
-  Config.fromReference(
-    jni$_.JReference reference,
-  )   : $type = type,
-        super.fromReference(reference);
-
-  static final _class = jni$_.JClass.forName(
-      r'com/daylightcomputer/coreplugin/database/sqldefinitions/Config');
-
-  /// The type which includes information such as the signature of this class.
-  static const nullableType = $Config$NullableType();
-  static const type = $Config$Type();
-  static final _id_new$ = _class.constructorId(
-    r'(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V',
-  );
-
-  static final _new$ = jni$_.ProtectedJniExtensions.lookup<
-          jni$_.NativeFunction<
-              jni$_.JniResult Function(
-                  jni$_.Pointer<jni$_.Void>,
-                  jni$_.JMethodIDPtr,
-                  jni$_.VarArgs<
-                      (
-                        jni$_.Pointer<jni$_.Void>,
-                        jni$_.Pointer<jni$_.Void>,
-                        jni$_.Pointer<jni$_.Void>
-                      )>)>>('globalEnv_NewObject')
-      .asFunction<
-          jni$_.JniResult Function(
-              jni$_.Pointer<jni$_.Void>,
-              jni$_.JMethodIDPtr,
-              jni$_.Pointer<jni$_.Void>,
-              jni$_.Pointer<jni$_.Void>,
-              jni$_.Pointer<jni$_.Void>)>();
-
-  /// from: `public void <init>(java.lang.String string, java.lang.String string1, java.lang.String string2)`
-  /// The returned object must be released after use, by calling the [release] method.
-  factory Config(
-    jni$_.JString string,
-    jni$_.JString? string1,
-    jni$_.JString? string2,
-  ) {
-    final _$string = string.reference;
-    final _$string1 = string1?.reference ?? jni$_.jNullReference;
-    final _$string2 = string2?.reference ?? jni$_.jNullReference;
-    return Config.fromReference(_new$(
-            _class.reference.pointer,
-            _id_new$ as jni$_.JMethodIDPtr,
-            _$string.pointer,
-            _$string1.pointer,
-            _$string2.pointer)
-        .reference);
-  }
-
-  static final _id_getKey = _class.instanceMethodId(
-    r'getKey',
-    r'()Ljava/lang/String;',
-  );
-
-  static final _getKey = jni$_.ProtectedJniExtensions.lookup<
-          jni$_.NativeFunction<
-              jni$_.JniResult Function(
-                jni$_.Pointer<jni$_.Void>,
-                jni$_.JMethodIDPtr,
-              )>>('globalEnv_CallObjectMethod')
-      .asFunction<
-          jni$_.JniResult Function(
-            jni$_.Pointer<jni$_.Void>,
-            jni$_.JMethodIDPtr,
-          )>();
-
-  /// from: `public final java.lang.String getKey()`
-  /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JString getKey() {
-    return _getKey(reference.pointer, _id_getKey as jni$_.JMethodIDPtr)
-        .object<jni$_.JString>(const jni$_.JStringType());
-  }
-
-  static final _id_getConf_value = _class.instanceMethodId(
-    r'getConf_value',
-    r'()Ljava/lang/String;',
-  );
-
-  static final _getConf_value = jni$_.ProtectedJniExtensions.lookup<
-          jni$_.NativeFunction<
-              jni$_.JniResult Function(
-                jni$_.Pointer<jni$_.Void>,
-                jni$_.JMethodIDPtr,
-              )>>('globalEnv_CallObjectMethod')
-      .asFunction<
-          jni$_.JniResult Function(
-            jni$_.Pointer<jni$_.Void>,
-            jni$_.JMethodIDPtr,
-          )>();
-
-  /// from: `public final java.lang.String getConf_value()`
-  /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JString? getConf_value() {
-    return _getConf_value(
-            reference.pointer, _id_getConf_value as jni$_.JMethodIDPtr)
-        .object<jni$_.JString?>(const jni$_.JStringNullableType());
-  }
-
-  static final _id_getTime_modified = _class.instanceMethodId(
-    r'getTime_modified',
-    r'()Ljava/lang/String;',
-  );
-
-  static final _getTime_modified = jni$_.ProtectedJniExtensions.lookup<
-          jni$_.NativeFunction<
-              jni$_.JniResult Function(
-                jni$_.Pointer<jni$_.Void>,
-                jni$_.JMethodIDPtr,
-              )>>('globalEnv_CallObjectMethod')
-      .asFunction<
-          jni$_.JniResult Function(
-            jni$_.Pointer<jni$_.Void>,
-            jni$_.JMethodIDPtr,
-          )>();
-
-  /// from: `public final java.lang.String getTime_modified()`
-  /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JString? getTime_modified() {
-    return _getTime_modified(
-            reference.pointer, _id_getTime_modified as jni$_.JMethodIDPtr)
-        .object<jni$_.JString?>(const jni$_.JStringNullableType());
-  }
-
-  static final _id_component1 = _class.instanceMethodId(
-    r'component1',
-    r'()Ljava/lang/String;',
-  );
-
-  static final _component1 = jni$_.ProtectedJniExtensions.lookup<
-          jni$_.NativeFunction<
-              jni$_.JniResult Function(
-                jni$_.Pointer<jni$_.Void>,
-                jni$_.JMethodIDPtr,
-              )>>('globalEnv_CallObjectMethod')
-      .asFunction<
-          jni$_.JniResult Function(
-            jni$_.Pointer<jni$_.Void>,
-            jni$_.JMethodIDPtr,
-          )>();
-
-  /// from: `public final java.lang.String component1()`
-  /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JString component1() {
-    return _component1(reference.pointer, _id_component1 as jni$_.JMethodIDPtr)
-        .object<jni$_.JString>(const jni$_.JStringType());
-  }
-
-  static final _id_component2 = _class.instanceMethodId(
-    r'component2',
-    r'()Ljava/lang/String;',
-  );
-
-  static final _component2 = jni$_.ProtectedJniExtensions.lookup<
-          jni$_.NativeFunction<
-              jni$_.JniResult Function(
-                jni$_.Pointer<jni$_.Void>,
-                jni$_.JMethodIDPtr,
-              )>>('globalEnv_CallObjectMethod')
-      .asFunction<
-          jni$_.JniResult Function(
-            jni$_.Pointer<jni$_.Void>,
-            jni$_.JMethodIDPtr,
-          )>();
-
-  /// from: `public final java.lang.String component2()`
-  /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JString? component2() {
-    return _component2(reference.pointer, _id_component2 as jni$_.JMethodIDPtr)
-        .object<jni$_.JString?>(const jni$_.JStringNullableType());
-  }
-
-  static final _id_component3 = _class.instanceMethodId(
-    r'component3',
-    r'()Ljava/lang/String;',
-  );
-
-  static final _component3 = jni$_.ProtectedJniExtensions.lookup<
-          jni$_.NativeFunction<
-              jni$_.JniResult Function(
-                jni$_.Pointer<jni$_.Void>,
-                jni$_.JMethodIDPtr,
-              )>>('globalEnv_CallObjectMethod')
-      .asFunction<
-          jni$_.JniResult Function(
-            jni$_.Pointer<jni$_.Void>,
-            jni$_.JMethodIDPtr,
-          )>();
-
-  /// from: `public final java.lang.String component3()`
-  /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JString? component3() {
-    return _component3(reference.pointer, _id_component3 as jni$_.JMethodIDPtr)
-        .object<jni$_.JString?>(const jni$_.JStringNullableType());
-  }
-
-  static final _id_copy = _class.instanceMethodId(
-    r'copy',
-    r'(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lcom/daylightcomputer/coreplugin/database/sqldefinitions/Config;',
-  );
-
-  static final _copy = jni$_.ProtectedJniExtensions.lookup<
-          jni$_.NativeFunction<
-              jni$_.JniResult Function(
-                  jni$_.Pointer<jni$_.Void>,
-                  jni$_.JMethodIDPtr,
-                  jni$_.VarArgs<
-                      (
-                        jni$_.Pointer<jni$_.Void>,
-                        jni$_.Pointer<jni$_.Void>,
-                        jni$_.Pointer<jni$_.Void>
-                      )>)>>('globalEnv_CallObjectMethod')
-      .asFunction<
-          jni$_.JniResult Function(
-              jni$_.Pointer<jni$_.Void>,
-              jni$_.JMethodIDPtr,
-              jni$_.Pointer<jni$_.Void>,
-              jni$_.Pointer<jni$_.Void>,
-              jni$_.Pointer<jni$_.Void>)>();
-
-  /// from: `public final com.daylightcomputer.coreplugin.database.sqldefinitions.Config copy(java.lang.String string, java.lang.String string1, java.lang.String string2)`
-  /// The returned object must be released after use, by calling the [release] method.
-  Config copy(
-    jni$_.JString string,
-    jni$_.JString? string1,
-    jni$_.JString? string2,
-  ) {
-    final _$string = string.reference;
-    final _$string1 = string1?.reference ?? jni$_.jNullReference;
-    final _$string2 = string2?.reference ?? jni$_.jNullReference;
-    return _copy(reference.pointer, _id_copy as jni$_.JMethodIDPtr,
-            _$string.pointer, _$string1.pointer, _$string2.pointer)
-        .object<Config>(const $Config$Type());
-  }
-
-  static final _id_toString$1 = _class.instanceMethodId(
-    r'toString',
-    r'()Ljava/lang/String;',
-  );
-
-  static final _toString$1 = jni$_.ProtectedJniExtensions.lookup<
-          jni$_.NativeFunction<
-              jni$_.JniResult Function(
-                jni$_.Pointer<jni$_.Void>,
-                jni$_.JMethodIDPtr,
-              )>>('globalEnv_CallObjectMethod')
-      .asFunction<
-          jni$_.JniResult Function(
-            jni$_.Pointer<jni$_.Void>,
-            jni$_.JMethodIDPtr,
-          )>();
-
-  /// from: `public java.lang.String toString()`
-  /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JString toString$1() {
-    return _toString$1(reference.pointer, _id_toString$1 as jni$_.JMethodIDPtr)
-        .object<jni$_.JString>(const jni$_.JStringType());
-  }
-
-  static final _id_hashCode$1 = _class.instanceMethodId(
-    r'hashCode',
-    r'()I',
-  );
-
-  static final _hashCode$1 = jni$_.ProtectedJniExtensions.lookup<
-          jni$_.NativeFunction<
-              jni$_.JniResult Function(
-                jni$_.Pointer<jni$_.Void>,
-                jni$_.JMethodIDPtr,
-              )>>('globalEnv_CallIntMethod')
-      .asFunction<
-          jni$_.JniResult Function(
-            jni$_.Pointer<jni$_.Void>,
-            jni$_.JMethodIDPtr,
-          )>();
-
-  /// from: `public int hashCode()`
-  int hashCode$1() {
-    return _hashCode$1(reference.pointer, _id_hashCode$1 as jni$_.JMethodIDPtr)
-        .integer;
-  }
-
-  static final _id_equals = _class.instanceMethodId(
-    r'equals',
-    r'(Ljava/lang/Object;)Z',
-  );
-
-  static final _equals = jni$_.ProtectedJniExtensions.lookup<
-              jni$_.NativeFunction<
-                  jni$_.JniResult Function(
-                      jni$_.Pointer<jni$_.Void>,
-                      jni$_.JMethodIDPtr,
-                      jni$_.VarArgs<(jni$_.Pointer<jni$_.Void>,)>)>>(
-          'globalEnv_CallBooleanMethod')
-      .asFunction<
-          jni$_.JniResult Function(jni$_.Pointer<jni$_.Void>,
-              jni$_.JMethodIDPtr, jni$_.Pointer<jni$_.Void>)>();
-
-  /// from: `public boolean equals(java.lang.Object object)`
-  bool equals(
-    jni$_.JObject? object,
-  ) {
-    final _$object = object?.reference ?? jni$_.jNullReference;
-    return _equals(reference.pointer, _id_equals as jni$_.JMethodIDPtr,
-            _$object.pointer)
-        .boolean;
-  }
-}
-
-final class $Config$NullableType extends jni$_.JObjType<Config?> {
-  @jni$_.internal
-  const $Config$NullableType();
-
-  @jni$_.internal
-  @core$_.override
-  String get signature =>
-      r'Lcom/daylightcomputer/coreplugin/database/sqldefinitions/Config;';
-
-  @jni$_.internal
-  @core$_.override
-  Config? fromReference(jni$_.JReference reference) => reference.isNull
-      ? null
-      : Config.fromReference(
-          reference,
-        );
-  @jni$_.internal
-  @core$_.override
-  jni$_.JObjType get superType => const jni$_.JObjectType();
-
-  @jni$_.internal
-  @core$_.override
-  jni$_.JObjType<Config?> get nullableType => this;
-
-  @jni$_.internal
-  @core$_.override
-  final superCount = 1;
-
-  @core$_.override
-  int get hashCode => ($Config$NullableType).hashCode;
-
-  @core$_.override
-  bool operator ==(Object other) {
-    return other.runtimeType == ($Config$NullableType) &&
-        other is $Config$NullableType;
-  }
-}
-
-final class $Config$Type extends jni$_.JObjType<Config> {
-  @jni$_.internal
-  const $Config$Type();
-
-  @jni$_.internal
-  @core$_.override
-  String get signature =>
-      r'Lcom/daylightcomputer/coreplugin/database/sqldefinitions/Config;';
-
-  @jni$_.internal
-  @core$_.override
-  Config fromReference(jni$_.JReference reference) => Config.fromReference(
-        reference,
-      );
-  @jni$_.internal
-  @core$_.override
-  jni$_.JObjType get superType => const jni$_.JObjectType();
-
-  @jni$_.internal
-  @core$_.override
-  jni$_.JObjType<Config?> get nullableType => const $Config$NullableType();
-
-  @jni$_.internal
-  @core$_.override
-  final superCount = 1;
-
-  @core$_.override
-  int get hashCode => ($Config$Type).hashCode;
-
-  @core$_.override
-  bool operator ==(Object other) {
-    return other.runtimeType == ($Config$Type) && other is $Config$Type;
-  }
-}
-
-/// from: `com.daylightcomputer.coreplugin.database.sqldefinitions.ConfigQueries`
-class ConfigQueries extends jni$_.JObject {
-  @jni$_.internal
-  @core$_.override
-  final jni$_.JObjType<ConfigQueries> $type;
-
-  @jni$_.internal
-  ConfigQueries.fromReference(
-    jni$_.JReference reference,
-  )   : $type = type,
-        super.fromReference(reference);
-
-  static final _class = jni$_.JClass.forName(
-      r'com/daylightcomputer/coreplugin/database/sqldefinitions/ConfigQueries');
-
-  /// The type which includes information such as the signature of this class.
-  static const nullableType = $ConfigQueries$NullableType();
-  static const type = $ConfigQueries$Type();
-  static final _id_new$ = _class.constructorId(
-    r'(Lapp/cash/sqldelight/db/SqlDriver;)V',
-  );
-
-  static final _new$ = jni$_.ProtectedJniExtensions.lookup<
-              jni$_.NativeFunction<
-                  jni$_.JniResult Function(
-                      jni$_.Pointer<jni$_.Void>,
-                      jni$_.JMethodIDPtr,
-                      jni$_.VarArgs<(jni$_.Pointer<jni$_.Void>,)>)>>(
-          'globalEnv_NewObject')
-      .asFunction<
-          jni$_.JniResult Function(jni$_.Pointer<jni$_.Void>,
-              jni$_.JMethodIDPtr, jni$_.Pointer<jni$_.Void>)>();
-
-  /// from: `public void <init>(app.cash.sqldelight.db.SqlDriver sqlDriver)`
-  /// The returned object must be released after use, by calling the [release] method.
-  factory ConfigQueries(
-    jni$_.JObject sqlDriver,
-  ) {
-    final _$sqlDriver = sqlDriver.reference;
-    return ConfigQueries.fromReference(_new$(_class.reference.pointer,
-            _id_new$ as jni$_.JMethodIDPtr, _$sqlDriver.pointer)
-        .reference);
-  }
-
-  static final _id_getValueForKey = _class.instanceMethodId(
-    r'getValueForKey',
-    r'(Ljava/lang/String;Lkotlin/jvm/functions/Function1;)Lapp/cash/sqldelight/Query;',
-  );
-
-  static final _getValueForKey = jni$_.ProtectedJniExtensions.lookup<
-          jni$_.NativeFunction<
-              jni$_.JniResult Function(
-                  jni$_.Pointer<jni$_.Void>,
-                  jni$_.JMethodIDPtr,
-                  jni$_.VarArgs<
-                      (
-                        jni$_.Pointer<jni$_.Void>,
-                        jni$_.Pointer<jni$_.Void>
-                      )>)>>('globalEnv_CallObjectMethod')
-      .asFunction<
-          jni$_.JniResult Function(
-              jni$_.Pointer<jni$_.Void>,
-              jni$_.JMethodIDPtr,
-              jni$_.Pointer<jni$_.Void>,
-              jni$_.Pointer<jni$_.Void>)>();
-
-  /// from: `public final app.cash.sqldelight.Query getValueForKey(java.lang.String string, kotlin.jvm.functions.Function1 function1)`
-  /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JObject getValueForKey<$T extends jni$_.JObject>(
-    jni$_.JString string,
-    jni$_.JObject function1, {
-    required jni$_.JObjType<$T> T,
-  }) {
-    final _$string = string.reference;
-    final _$function1 = function1.reference;
-    return _getValueForKey(
-            reference.pointer,
-            _id_getValueForKey as jni$_.JMethodIDPtr,
-            _$string.pointer,
-            _$function1.pointer)
-        .object<jni$_.JObject>(const jni$_.JObjectType());
-  }
-
-  static final _id_getValueForKey$1 = _class.instanceMethodId(
-    r'getValueForKey',
-    r'(Ljava/lang/String;)Lapp/cash/sqldelight/Query;',
-  );
-
-  static final _getValueForKey$1 = jni$_.ProtectedJniExtensions.lookup<
-              jni$_.NativeFunction<
-                  jni$_.JniResult Function(
-                      jni$_.Pointer<jni$_.Void>,
-                      jni$_.JMethodIDPtr,
-                      jni$_.VarArgs<(jni$_.Pointer<jni$_.Void>,)>)>>(
-          'globalEnv_CallObjectMethod')
-      .asFunction<
-          jni$_.JniResult Function(jni$_.Pointer<jni$_.Void>,
-              jni$_.JMethodIDPtr, jni$_.Pointer<jni$_.Void>)>();
-
-  /// from: `public final app.cash.sqldelight.Query getValueForKey(java.lang.String string)`
-  /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JObject getValueForKey$1(
-    jni$_.JString string,
-  ) {
-    final _$string = string.reference;
-    return _getValueForKey$1(reference.pointer,
-            _id_getValueForKey$1 as jni$_.JMethodIDPtr, _$string.pointer)
-        .object<jni$_.JObject>(const jni$_.JObjectType());
-  }
-
-  static final _id_getAllConfigValues = _class.instanceMethodId(
-    r'getAllConfigValues',
-    r'(Lkotlin/jvm/functions/Function3;)Lapp/cash/sqldelight/Query;',
-  );
-
-  static final _getAllConfigValues = jni$_.ProtectedJniExtensions.lookup<
-              jni$_.NativeFunction<
-                  jni$_.JniResult Function(
-                      jni$_.Pointer<jni$_.Void>,
-                      jni$_.JMethodIDPtr,
-                      jni$_.VarArgs<(jni$_.Pointer<jni$_.Void>,)>)>>(
-          'globalEnv_CallObjectMethod')
-      .asFunction<
-          jni$_.JniResult Function(jni$_.Pointer<jni$_.Void>,
-              jni$_.JMethodIDPtr, jni$_.Pointer<jni$_.Void>)>();
-
-  /// from: `public final app.cash.sqldelight.Query getAllConfigValues(kotlin.jvm.functions.Function3 function3)`
-  /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JObject getAllConfigValues<$T extends jni$_.JObject>(
-    jni$_.JObject function3, {
-    required jni$_.JObjType<$T> T,
-  }) {
-    final _$function3 = function3.reference;
-    return _getAllConfigValues(reference.pointer,
-            _id_getAllConfigValues as jni$_.JMethodIDPtr, _$function3.pointer)
-        .object<jni$_.JObject>(const jni$_.JObjectType());
-  }
-
-  static final _id_getAllConfigValues$1 = _class.instanceMethodId(
-    r'getAllConfigValues',
-    r'()Lapp/cash/sqldelight/Query;',
-  );
-
-  static final _getAllConfigValues$1 = jni$_.ProtectedJniExtensions.lookup<
-          jni$_.NativeFunction<
-              jni$_.JniResult Function(
-                jni$_.Pointer<jni$_.Void>,
-                jni$_.JMethodIDPtr,
-              )>>('globalEnv_CallObjectMethod')
-      .asFunction<
-          jni$_.JniResult Function(
-            jni$_.Pointer<jni$_.Void>,
-            jni$_.JMethodIDPtr,
-          )>();
-
-  /// from: `public final app.cash.sqldelight.Query getAllConfigValues()`
-  /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JObject getAllConfigValues$1() {
-    return _getAllConfigValues$1(
-            reference.pointer, _id_getAllConfigValues$1 as jni$_.JMethodIDPtr)
-        .object<jni$_.JObject>(const jni$_.JObjectType());
-  }
-
-  static final _id_getCurrentClient = _class.instanceMethodId(
-    r'getCurrentClient',
-    r'(Lkotlin/jvm/functions/Function2;)Lapp/cash/sqldelight/Query;',
-  );
-
-  static final _getCurrentClient = jni$_.ProtectedJniExtensions.lookup<
-              jni$_.NativeFunction<
-                  jni$_.JniResult Function(
-                      jni$_.Pointer<jni$_.Void>,
-                      jni$_.JMethodIDPtr,
-                      jni$_.VarArgs<(jni$_.Pointer<jni$_.Void>,)>)>>(
-          'globalEnv_CallObjectMethod')
-      .asFunction<
-          jni$_.JniResult Function(jni$_.Pointer<jni$_.Void>,
-              jni$_.JMethodIDPtr, jni$_.Pointer<jni$_.Void>)>();
-
-  /// from: `public final app.cash.sqldelight.Query getCurrentClient(kotlin.jvm.functions.Function2 function2)`
-  /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JObject getCurrentClient<$T extends jni$_.JObject>(
-    jni$_.JObject function2, {
-    required jni$_.JObjType<$T> T,
-  }) {
-    final _$function2 = function2.reference;
-    return _getCurrentClient(reference.pointer,
-            _id_getCurrentClient as jni$_.JMethodIDPtr, _$function2.pointer)
-        .object<jni$_.JObject>(const jni$_.JObjectType());
-  }
-
-  static final _id_getCurrentClient$1 = _class.instanceMethodId(
-    r'getCurrentClient',
-    r'()Lapp/cash/sqldelight/Query;',
-  );
-
-  static final _getCurrentClient$1 = jni$_.ProtectedJniExtensions.lookup<
-          jni$_.NativeFunction<
-              jni$_.JniResult Function(
-                jni$_.Pointer<jni$_.Void>,
-                jni$_.JMethodIDPtr,
-              )>>('globalEnv_CallObjectMethod')
-      .asFunction<
-          jni$_.JniResult Function(
-            jni$_.Pointer<jni$_.Void>,
-            jni$_.JMethodIDPtr,
-          )>();
-
-  /// from: `public final app.cash.sqldelight.Query getCurrentClient()`
-  /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JObject getCurrentClient$1() {
-    return _getCurrentClient$1(
-            reference.pointer, _id_getCurrentClient$1 as jni$_.JMethodIDPtr)
-        .object<jni$_.JObject>(const jni$_.JObjectType());
-  }
-
-  static final _id_getCurrentUser = _class.instanceMethodId(
-    r'getCurrentUser',
-    r'(Lkotlin/jvm/functions/Function2;)Lapp/cash/sqldelight/Query;',
-  );
-
-  static final _getCurrentUser = jni$_.ProtectedJniExtensions.lookup<
-              jni$_.NativeFunction<
-                  jni$_.JniResult Function(
-                      jni$_.Pointer<jni$_.Void>,
-                      jni$_.JMethodIDPtr,
-                      jni$_.VarArgs<(jni$_.Pointer<jni$_.Void>,)>)>>(
-          'globalEnv_CallObjectMethod')
-      .asFunction<
-          jni$_.JniResult Function(jni$_.Pointer<jni$_.Void>,
-              jni$_.JMethodIDPtr, jni$_.Pointer<jni$_.Void>)>();
-
-  /// from: `public final app.cash.sqldelight.Query getCurrentUser(kotlin.jvm.functions.Function2 function2)`
-  /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JObject getCurrentUser<$T extends jni$_.JObject>(
-    jni$_.JObject function2, {
-    required jni$_.JObjType<$T> T,
-  }) {
-    final _$function2 = function2.reference;
-    return _getCurrentUser(reference.pointer,
-            _id_getCurrentUser as jni$_.JMethodIDPtr, _$function2.pointer)
-        .object<jni$_.JObject>(const jni$_.JObjectType());
-  }
-
-  static final _id_getCurrentUser$1 = _class.instanceMethodId(
-    r'getCurrentUser',
-    r'()Lapp/cash/sqldelight/Query;',
-  );
-
-  static final _getCurrentUser$1 = jni$_.ProtectedJniExtensions.lookup<
-          jni$_.NativeFunction<
-              jni$_.JniResult Function(
-                jni$_.Pointer<jni$_.Void>,
-                jni$_.JMethodIDPtr,
-              )>>('globalEnv_CallObjectMethod')
-      .asFunction<
-          jni$_.JniResult Function(
-            jni$_.Pointer<jni$_.Void>,
-            jni$_.JMethodIDPtr,
-          )>();
-
-  /// from: `public final app.cash.sqldelight.Query getCurrentUser()`
-  /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JObject getCurrentUser$1() {
-    return _getCurrentUser$1(
-            reference.pointer, _id_getCurrentUser$1 as jni$_.JMethodIDPtr)
-        .object<jni$_.JObject>(const jni$_.JObjectType());
-  }
-
-  static final _id_initializeConfig = _class.instanceMethodId(
-    r'initializeConfig',
-    r'()V',
-  );
-
-  static final _initializeConfig = jni$_.ProtectedJniExtensions.lookup<
-          jni$_.NativeFunction<
-              jni$_.JThrowablePtr Function(
-                jni$_.Pointer<jni$_.Void>,
-                jni$_.JMethodIDPtr,
-              )>>('globalEnv_CallVoidMethod')
-      .asFunction<
-          jni$_.JThrowablePtr Function(
-            jni$_.Pointer<jni$_.Void>,
-            jni$_.JMethodIDPtr,
-          )>();
-
-  /// from: `public final void initializeConfig()`
-  void initializeConfig() {
-    _initializeConfig(
-            reference.pointer, _id_initializeConfig as jni$_.JMethodIDPtr)
-        .check();
-  }
-
-  static final _id_setValueForKey = _class.instanceMethodId(
-    r'setValueForKey',
-    r'(Ljava/lang/String;Ljava/lang/String;)V',
-  );
-
-  static final _setValueForKey = jni$_.ProtectedJniExtensions.lookup<
-          jni$_.NativeFunction<
-              jni$_.JThrowablePtr Function(
-                  jni$_.Pointer<jni$_.Void>,
-                  jni$_.JMethodIDPtr,
-                  jni$_.VarArgs<
-                      (
-                        jni$_.Pointer<jni$_.Void>,
-                        jni$_.Pointer<jni$_.Void>
-                      )>)>>('globalEnv_CallVoidMethod')
-      .asFunction<
-          jni$_.JThrowablePtr Function(
-              jni$_.Pointer<jni$_.Void>,
-              jni$_.JMethodIDPtr,
-              jni$_.Pointer<jni$_.Void>,
-              jni$_.Pointer<jni$_.Void>)>();
-
-  /// from: `public final void setValueForKey(java.lang.String string, java.lang.String string1)`
-  void setValueForKey(
-    jni$_.JString string,
-    jni$_.JString? string1,
-  ) {
-    final _$string = string.reference;
-    final _$string1 = string1?.reference ?? jni$_.jNullReference;
-    _setValueForKey(reference.pointer, _id_setValueForKey as jni$_.JMethodIDPtr,
-            _$string.pointer, _$string1.pointer)
-        .check();
-  }
-
-  static final _id_setLastSyncTime = _class.instanceMethodId(
-    r'setLastSyncTime',
-    r'(Ljava/lang/String;)V',
-  );
-
-  static final _setLastSyncTime = jni$_.ProtectedJniExtensions.lookup<
-              jni$_.NativeFunction<
-                  jni$_.JThrowablePtr Function(
-                      jni$_.Pointer<jni$_.Void>,
-                      jni$_.JMethodIDPtr,
-                      jni$_.VarArgs<(jni$_.Pointer<jni$_.Void>,)>)>>(
-          'globalEnv_CallVoidMethod')
-      .asFunction<
-          jni$_.JThrowablePtr Function(jni$_.Pointer<jni$_.Void>,
-              jni$_.JMethodIDPtr, jni$_.Pointer<jni$_.Void>)>();
-
-  /// from: `public final void setLastSyncTime(java.lang.String string)`
-  void setLastSyncTime(
-    jni$_.JString? string,
-  ) {
-    final _$string = string?.reference ?? jni$_.jNullReference;
-    _setLastSyncTime(reference.pointer,
-            _id_setLastSyncTime as jni$_.JMethodIDPtr, _$string.pointer)
-        .check();
-  }
-
-  static final _id_setClientId = _class.instanceMethodId(
-    r'setClientId',
-    r'(Ljava/lang/String;)V',
-  );
-
-  static final _setClientId = jni$_.ProtectedJniExtensions.lookup<
-              jni$_.NativeFunction<
-                  jni$_.JThrowablePtr Function(
-                      jni$_.Pointer<jni$_.Void>,
-                      jni$_.JMethodIDPtr,
-                      jni$_.VarArgs<(jni$_.Pointer<jni$_.Void>,)>)>>(
-          'globalEnv_CallVoidMethod')
-      .asFunction<
-          jni$_.JThrowablePtr Function(jni$_.Pointer<jni$_.Void>,
-              jni$_.JMethodIDPtr, jni$_.Pointer<jni$_.Void>)>();
-
-  /// from: `public final void setClientId(java.lang.String string)`
-  void setClientId(
-    jni$_.JString? string,
-  ) {
-    final _$string = string?.reference ?? jni$_.jNullReference;
-    _setClientId(reference.pointer, _id_setClientId as jni$_.JMethodIDPtr,
-            _$string.pointer)
-        .check();
-  }
-
-  static final _id_setUserId = _class.instanceMethodId(
-    r'setUserId',
-    r'(Ljava/lang/String;)V',
-  );
-
-  static final _setUserId = jni$_.ProtectedJniExtensions.lookup<
-              jni$_.NativeFunction<
-                  jni$_.JThrowablePtr Function(
-                      jni$_.Pointer<jni$_.Void>,
-                      jni$_.JMethodIDPtr,
-                      jni$_.VarArgs<(jni$_.Pointer<jni$_.Void>,)>)>>(
-          'globalEnv_CallVoidMethod')
-      .asFunction<
-          jni$_.JThrowablePtr Function(jni$_.Pointer<jni$_.Void>,
-              jni$_.JMethodIDPtr, jni$_.Pointer<jni$_.Void>)>();
-
-  /// from: `public final void setUserId(java.lang.String string)`
-  void setUserId(
-    jni$_.JString? string,
-  ) {
-    final _$string = string?.reference ?? jni$_.jNullReference;
-    _setUserId(reference.pointer, _id_setUserId as jni$_.JMethodIDPtr,
-            _$string.pointer)
-        .check();
-  }
-
-  static final _id_setUserToken = _class.instanceMethodId(
-    r'setUserToken',
-    r'(Ljava/lang/String;)V',
-  );
-
-  static final _setUserToken = jni$_.ProtectedJniExtensions.lookup<
-              jni$_.NativeFunction<
-                  jni$_.JThrowablePtr Function(
-                      jni$_.Pointer<jni$_.Void>,
-                      jni$_.JMethodIDPtr,
-                      jni$_.VarArgs<(jni$_.Pointer<jni$_.Void>,)>)>>(
-          'globalEnv_CallVoidMethod')
-      .asFunction<
-          jni$_.JThrowablePtr Function(jni$_.Pointer<jni$_.Void>,
-              jni$_.JMethodIDPtr, jni$_.Pointer<jni$_.Void>)>();
-
-  /// from: `public final void setUserToken(java.lang.String string)`
-  void setUserToken(
-    jni$_.JString? string,
-  ) {
-    final _$string = string?.reference ?? jni$_.jNullReference;
-    _setUserToken(reference.pointer, _id_setUserToken as jni$_.JMethodIDPtr,
-            _$string.pointer)
-        .check();
-  }
-}
-
-final class $ConfigQueries$NullableType extends jni$_.JObjType<ConfigQueries?> {
-  @jni$_.internal
-  const $ConfigQueries$NullableType();
-
-  @jni$_.internal
-  @core$_.override
-  String get signature =>
-      r'Lcom/daylightcomputer/coreplugin/database/sqldefinitions/ConfigQueries;';
-
-  @jni$_.internal
-  @core$_.override
-  ConfigQueries? fromReference(jni$_.JReference reference) => reference.isNull
-      ? null
-      : ConfigQueries.fromReference(
-          reference,
-        );
-  @jni$_.internal
-  @core$_.override
-  jni$_.JObjType get superType => const jni$_.JObjectType();
-
-  @jni$_.internal
-  @core$_.override
-  jni$_.JObjType<ConfigQueries?> get nullableType => this;
-
-  @jni$_.internal
-  @core$_.override
-  final superCount = 1;
-
-  @core$_.override
-  int get hashCode => ($ConfigQueries$NullableType).hashCode;
-
-  @core$_.override
-  bool operator ==(Object other) {
-    return other.runtimeType == ($ConfigQueries$NullableType) &&
-        other is $ConfigQueries$NullableType;
-  }
-}
-
-final class $ConfigQueries$Type extends jni$_.JObjType<ConfigQueries> {
-  @jni$_.internal
-  const $ConfigQueries$Type();
-
-  @jni$_.internal
-  @core$_.override
-  String get signature =>
-      r'Lcom/daylightcomputer/coreplugin/database/sqldefinitions/ConfigQueries;';
-
-  @jni$_.internal
-  @core$_.override
-  ConfigQueries fromReference(jni$_.JReference reference) =>
-      ConfigQueries.fromReference(
-        reference,
-      );
-  @jni$_.internal
-  @core$_.override
-  jni$_.JObjType get superType => const jni$_.JObjectType();
-
-  @jni$_.internal
-  @core$_.override
-  jni$_.JObjType<ConfigQueries?> get nullableType =>
-      const $ConfigQueries$NullableType();
-
-  @jni$_.internal
-  @core$_.override
-  final superCount = 1;
-
-  @core$_.override
-  int get hashCode => ($ConfigQueries$Type).hashCode;
-
-  @core$_.override
-  bool operator ==(Object other) {
-    return other.runtimeType == ($ConfigQueries$Type) &&
-        other is $ConfigQueries$Type;
-  }
-}
-
-/// from: `com.daylightcomputer.coreplugin.database.sqldefinitions.Database$Companion`
-class Database$Companion extends jni$_.JObject {
-  @jni$_.internal
-  @core$_.override
-  final jni$_.JObjType<Database$Companion> $type;
-
-  @jni$_.internal
-  Database$Companion.fromReference(
-    jni$_.JReference reference,
-  )   : $type = type,
-        super.fromReference(reference);
-
-  static final _class = jni$_.JClass.forName(
-      r'com/daylightcomputer/coreplugin/database/sqldefinitions/Database$Companion');
-
-  /// The type which includes information such as the signature of this class.
-  static const nullableType = $Database$Companion$NullableType();
-  static const type = $Database$Companion$Type();
-  static final _id_getSchema = _class.instanceMethodId(
-    r'getSchema',
-    r'()Lapp/cash/sqldelight/db/SqlSchema;',
-  );
-
-  static final _getSchema = jni$_.ProtectedJniExtensions.lookup<
-          jni$_.NativeFunction<
-              jni$_.JniResult Function(
-                jni$_.Pointer<jni$_.Void>,
-                jni$_.JMethodIDPtr,
-              )>>('globalEnv_CallObjectMethod')
-      .asFunction<
-          jni$_.JniResult Function(
-            jni$_.Pointer<jni$_.Void>,
-            jni$_.JMethodIDPtr,
-          )>();
-
-  /// from: `public final app.cash.sqldelight.db.SqlSchema getSchema()`
-  /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JObject getSchema() {
-    return _getSchema(reference.pointer, _id_getSchema as jni$_.JMethodIDPtr)
-        .object<jni$_.JObject>(const jni$_.JObjectType());
-  }
-
-  static final _id_invoke = _class.instanceMethodId(
-    r'invoke',
-    r'(Lapp/cash/sqldelight/db/SqlDriver;)Lcom/daylightcomputer/coreplugin/database/sqldefinitions/Database;',
-  );
-
-  static final _invoke = jni$_.ProtectedJniExtensions.lookup<
-              jni$_.NativeFunction<
-                  jni$_.JniResult Function(
-                      jni$_.Pointer<jni$_.Void>,
-                      jni$_.JMethodIDPtr,
-                      jni$_.VarArgs<(jni$_.Pointer<jni$_.Void>,)>)>>(
-          'globalEnv_CallObjectMethod')
-      .asFunction<
-          jni$_.JniResult Function(jni$_.Pointer<jni$_.Void>,
-              jni$_.JMethodIDPtr, jni$_.Pointer<jni$_.Void>)>();
-
-  /// from: `public final com.daylightcomputer.coreplugin.database.sqldefinitions.Database invoke(app.cash.sqldelight.db.SqlDriver sqlDriver)`
-  /// The returned object must be released after use, by calling the [release] method.
-  Database invoke(
-    jni$_.JObject sqlDriver,
-  ) {
-    final _$sqlDriver = sqlDriver.reference;
-    return _invoke(reference.pointer, _id_invoke as jni$_.JMethodIDPtr,
-            _$sqlDriver.pointer)
-        .object<Database>(const $Database$Type());
-  }
-}
-
-final class $Database$Companion$NullableType
-    extends jni$_.JObjType<Database$Companion?> {
-  @jni$_.internal
-  const $Database$Companion$NullableType();
-
-  @jni$_.internal
-  @core$_.override
-  String get signature =>
-      r'Lcom/daylightcomputer/coreplugin/database/sqldefinitions/Database$Companion;';
-
-  @jni$_.internal
-  @core$_.override
-  Database$Companion? fromReference(jni$_.JReference reference) =>
-      reference.isNull
-          ? null
-          : Database$Companion.fromReference(
-              reference,
-            );
-  @jni$_.internal
-  @core$_.override
-  jni$_.JObjType get superType => const jni$_.JObjectType();
-
-  @jni$_.internal
-  @core$_.override
-  jni$_.JObjType<Database$Companion?> get nullableType => this;
-
-  @jni$_.internal
-  @core$_.override
-  final superCount = 1;
-
-  @core$_.override
-  int get hashCode => ($Database$Companion$NullableType).hashCode;
-
-  @core$_.override
-  bool operator ==(Object other) {
-    return other.runtimeType == ($Database$Companion$NullableType) &&
-        other is $Database$Companion$NullableType;
-  }
-}
-
-final class $Database$Companion$Type
-    extends jni$_.JObjType<Database$Companion> {
-  @jni$_.internal
-  const $Database$Companion$Type();
-
-  @jni$_.internal
-  @core$_.override
-  String get signature =>
-      r'Lcom/daylightcomputer/coreplugin/database/sqldefinitions/Database$Companion;';
-
-  @jni$_.internal
-  @core$_.override
-  Database$Companion fromReference(jni$_.JReference reference) =>
-      Database$Companion.fromReference(
-        reference,
-      );
-  @jni$_.internal
-  @core$_.override
-  jni$_.JObjType get superType => const jni$_.JObjectType();
-
-  @jni$_.internal
-  @core$_.override
-  jni$_.JObjType<Database$Companion?> get nullableType =>
-      const $Database$Companion$NullableType();
-
-  @jni$_.internal
-  @core$_.override
-  final superCount = 1;
-
-  @core$_.override
-  int get hashCode => ($Database$Companion$Type).hashCode;
-
-  @core$_.override
-  bool operator ==(Object other) {
-    return other.runtimeType == ($Database$Companion$Type) &&
-        other is $Database$Companion$Type;
-  }
-}
-
-/// from: `com.daylightcomputer.coreplugin.database.sqldefinitions.Database`
-class Database extends jni$_.JObject {
-  @jni$_.internal
-  @core$_.override
-  final jni$_.JObjType<Database> $type;
-
-  @jni$_.internal
-  Database.fromReference(
-    jni$_.JReference reference,
-  )   : $type = type,
-        super.fromReference(reference);
-
-  static final _class = jni$_.JClass.forName(
-      r'com/daylightcomputer/coreplugin/database/sqldefinitions/Database');
-
-  /// The type which includes information such as the signature of this class.
-  static const nullableType = $Database$NullableType();
-  static const type = $Database$Type();
-  static final _id_Companion = _class.staticFieldId(
-    r'Companion',
-    r'Lcom/daylightcomputer/coreplugin/database/sqldefinitions/Database$Companion;',
-  );
-
-  /// from: `static public final com.daylightcomputer.coreplugin.database.sqldefinitions.Database$Companion Companion`
-  /// The returned object must be released after use, by calling the [release] method.
-  static Database$Companion get Companion =>
-      _id_Companion.get(_class, const $Database$Companion$Type());
-
-  static final _id_getAttributesQueries = _class.instanceMethodId(
-    r'getAttributesQueries',
-    r'()Lcom/daylightcomputer/coreplugin/database/sqldefinitions/AttributesQueries;',
-  );
-
-  static final _getAttributesQueries = jni$_.ProtectedJniExtensions.lookup<
-          jni$_.NativeFunction<
-              jni$_.JniResult Function(
-                jni$_.Pointer<jni$_.Void>,
-                jni$_.JMethodIDPtr,
-              )>>('globalEnv_CallObjectMethod')
-      .asFunction<
-          jni$_.JniResult Function(
-            jni$_.Pointer<jni$_.Void>,
-            jni$_.JMethodIDPtr,
-          )>();
-
-  /// from: `public abstract com.daylightcomputer.coreplugin.database.sqldefinitions.AttributesQueries getAttributesQueries()`
-  /// The returned object must be released after use, by calling the [release] method.
-  AttributesQueries getAttributesQueries() {
-    return _getAttributesQueries(
-            reference.pointer, _id_getAttributesQueries as jni$_.JMethodIDPtr)
-        .object<AttributesQueries>(const $AttributesQueries$Type());
-  }
-
-  static final _id_getBundlesQueries = _class.instanceMethodId(
-    r'getBundlesQueries',
-    r'()Lcom/daylightcomputer/coreplugin/database/sqldefinitions/BundlesQueries;',
-  );
-
-  static final _getBundlesQueries = jni$_.ProtectedJniExtensions.lookup<
-          jni$_.NativeFunction<
-              jni$_.JniResult Function(
-                jni$_.Pointer<jni$_.Void>,
-                jni$_.JMethodIDPtr,
-              )>>('globalEnv_CallObjectMethod')
-      .asFunction<
-          jni$_.JniResult Function(
-            jni$_.Pointer<jni$_.Void>,
-            jni$_.JMethodIDPtr,
-          )>();
-
-  /// from: `public abstract com.daylightcomputer.coreplugin.database.sqldefinitions.BundlesQueries getBundlesQueries()`
-  /// The returned object must be released after use, by calling the [release] method.
-  BundlesQueries getBundlesQueries() {
-    return _getBundlesQueries(
-            reference.pointer, _id_getBundlesQueries as jni$_.JMethodIDPtr)
-        .object<BundlesQueries>(const $BundlesQueries$Type());
-  }
-
-  static final _id_getConfigQueries = _class.instanceMethodId(
-    r'getConfigQueries',
-    r'()Lcom/daylightcomputer/coreplugin/database/sqldefinitions/ConfigQueries;',
-  );
-
-  static final _getConfigQueries = jni$_.ProtectedJniExtensions.lookup<
-          jni$_.NativeFunction<
-              jni$_.JniResult Function(
-                jni$_.Pointer<jni$_.Void>,
-                jni$_.JMethodIDPtr,
-              )>>('globalEnv_CallObjectMethod')
-      .asFunction<
-          jni$_.JniResult Function(
-            jni$_.Pointer<jni$_.Void>,
-            jni$_.JMethodIDPtr,
-          )>();
-
-  /// from: `public abstract com.daylightcomputer.coreplugin.database.sqldefinitions.ConfigQueries getConfigQueries()`
-  /// The returned object must be released after use, by calling the [release] method.
-  ConfigQueries getConfigQueries() {
-    return _getConfigQueries(
-            reference.pointer, _id_getConfigQueries as jni$_.JMethodIDPtr)
-        .object<ConfigQueries>(const $ConfigQueries$Type());
-  }
-
-  static final _id_getEventsQueries = _class.instanceMethodId(
-    r'getEventsQueries',
-    r'()Lcom/daylightcomputer/coreplugin/database/sqldefinitions/EventsQueries;',
-  );
-
-  static final _getEventsQueries = jni$_.ProtectedJniExtensions.lookup<
-          jni$_.NativeFunction<
-              jni$_.JniResult Function(
-                jni$_.Pointer<jni$_.Void>,
-                jni$_.JMethodIDPtr,
-              )>>('globalEnv_CallObjectMethod')
-      .asFunction<
-          jni$_.JniResult Function(
-            jni$_.Pointer<jni$_.Void>,
-            jni$_.JMethodIDPtr,
-          )>();
-
-  /// from: `public abstract com.daylightcomputer.coreplugin.database.sqldefinitions.EventsQueries getEventsQueries()`
-  /// The returned object must be released after use, by calling the [release] method.
-  EventsQueries getEventsQueries() {
-    return _getEventsQueries(
-            reference.pointer, _id_getEventsQueries as jni$_.JMethodIDPtr)
-        .object<EventsQueries>(const $EventsQueries$Type());
-  }
-
-  static final _id_getTestingQueries = _class.instanceMethodId(
-    r'getTestingQueries',
-    r'()Lcom/daylightcomputer/coreplugin/database/sqldefinitions/TestingQueries;',
-  );
-
-  static final _getTestingQueries = jni$_.ProtectedJniExtensions.lookup<
-          jni$_.NativeFunction<
-              jni$_.JniResult Function(
-                jni$_.Pointer<jni$_.Void>,
-                jni$_.JMethodIDPtr,
-              )>>('globalEnv_CallObjectMethod')
-      .asFunction<
-          jni$_.JniResult Function(
-            jni$_.Pointer<jni$_.Void>,
-            jni$_.JMethodIDPtr,
-          )>();
-
-  /// from: `public abstract com.daylightcomputer.coreplugin.database.sqldefinitions.TestingQueries getTestingQueries()`
-  /// The returned object must be released after use, by calling the [release] method.
-  TestingQueries getTestingQueries() {
-    return _getTestingQueries(
-            reference.pointer, _id_getTestingQueries as jni$_.JMethodIDPtr)
-        .object<TestingQueries>(const $TestingQueries$Type());
-  }
-
-  static final _id_getUsersClientsQueries = _class.instanceMethodId(
-    r'getUsersClientsQueries',
-    r'()Lcom/daylightcomputer/coreplugin/database/sqldefinitions/UsersClientsQueries;',
-  );
-
-  static final _getUsersClientsQueries = jni$_.ProtectedJniExtensions.lookup<
-          jni$_.NativeFunction<
-              jni$_.JniResult Function(
-                jni$_.Pointer<jni$_.Void>,
-                jni$_.JMethodIDPtr,
-              )>>('globalEnv_CallObjectMethod')
-      .asFunction<
-          jni$_.JniResult Function(
-            jni$_.Pointer<jni$_.Void>,
-            jni$_.JMethodIDPtr,
-          )>();
-
-  /// from: `public abstract com.daylightcomputer.coreplugin.database.sqldefinitions.UsersClientsQueries getUsersClientsQueries()`
-  /// The returned object must be released after use, by calling the [release] method.
-  UsersClientsQueries getUsersClientsQueries() {
-    return _getUsersClientsQueries(
-            reference.pointer, _id_getUsersClientsQueries as jni$_.JMethodIDPtr)
-        .object<UsersClientsQueries>(const $UsersClientsQueries$Type());
-  }
-
-  /// Maps a specific port to the implemented interface.
-  static final core$_.Map<int, $Database> _$impls = {};
-  static jni$_.JObjectPtr _$invoke(
-    int port,
-    jni$_.JObjectPtr descriptor,
-    jni$_.JObjectPtr args,
-  ) {
-    return _$invokeMethod(
-      port,
-      jni$_.MethodInvocation.fromAddresses(
-        0,
-        descriptor.address,
-        args.address,
-      ),
-    );
-  }
-
-  static final jni$_.Pointer<
-          jni$_.NativeFunction<
-              jni$_.JObjectPtr Function(
-                  jni$_.Int64, jni$_.JObjectPtr, jni$_.JObjectPtr)>>
-      _$invokePointer = jni$_.Pointer.fromFunction(_$invoke);
-
-  static jni$_.Pointer<jni$_.Void> _$invokeMethod(
-    int $p,
-    jni$_.MethodInvocation $i,
-  ) {
-    try {
-      final $d = $i.methodDescriptor.toDartString(releaseOriginal: true);
-      final $a = $i.args;
-      if ($d ==
-          r'getAttributesQueries()Lcom/daylightcomputer/coreplugin/database/sqldefinitions/AttributesQueries;') {
-        final $r = _$impls[$p]!.getAttributesQueries();
-        return ($r as jni$_.JObject?)
-                ?.as(const jni$_.JObjectType())
-                .reference
-                .toPointer() ??
-            jni$_.nullptr;
-      }
-      if ($d ==
-          r'getBundlesQueries()Lcom/daylightcomputer/coreplugin/database/sqldefinitions/BundlesQueries;') {
-        final $r = _$impls[$p]!.getBundlesQueries();
-        return ($r as jni$_.JObject?)
-                ?.as(const jni$_.JObjectType())
-                .reference
-                .toPointer() ??
-            jni$_.nullptr;
-      }
-      if ($d ==
-          r'getConfigQueries()Lcom/daylightcomputer/coreplugin/database/sqldefinitions/ConfigQueries;') {
-        final $r = _$impls[$p]!.getConfigQueries();
-        return ($r as jni$_.JObject?)
-                ?.as(const jni$_.JObjectType())
-                .reference
-                .toPointer() ??
-            jni$_.nullptr;
-      }
-      if ($d ==
-          r'getEventsQueries()Lcom/daylightcomputer/coreplugin/database/sqldefinitions/EventsQueries;') {
-        final $r = _$impls[$p]!.getEventsQueries();
-        return ($r as jni$_.JObject?)
-                ?.as(const jni$_.JObjectType())
-                .reference
-                .toPointer() ??
-            jni$_.nullptr;
-      }
-      if ($d ==
-          r'getTestingQueries()Lcom/daylightcomputer/coreplugin/database/sqldefinitions/TestingQueries;') {
-        final $r = _$impls[$p]!.getTestingQueries();
-        return ($r as jni$_.JObject?)
-                ?.as(const jni$_.JObjectType())
-                .reference
-                .toPointer() ??
-            jni$_.nullptr;
-      }
-      if ($d ==
-          r'getUsersClientsQueries()Lcom/daylightcomputer/coreplugin/database/sqldefinitions/UsersClientsQueries;') {
-        final $r = _$impls[$p]!.getUsersClientsQueries();
-        return ($r as jni$_.JObject?)
-                ?.as(const jni$_.JObjectType())
-                .reference
-                .toPointer() ??
-            jni$_.nullptr;
-      }
-    } catch (e) {
-      return jni$_.ProtectedJniExtensions.newDartException(e);
-    }
-    return jni$_.nullptr;
-  }
-
-  static void implementIn(
-    jni$_.JImplementer implementer,
-    $Database $impl,
-  ) {
-    late final jni$_.RawReceivePort $p;
-    $p = jni$_.RawReceivePort(($m) {
-      if ($m == null) {
-        _$impls.remove($p.sendPort.nativePort);
-        $p.close();
-        return;
-      }
-      final $i = jni$_.MethodInvocation.fromMessage($m);
-      final $r = _$invokeMethod($p.sendPort.nativePort, $i);
-      jni$_.ProtectedJniExtensions.returnResult($i.result, $r);
-    });
-    implementer.add(
-      r'com.daylightcomputer.coreplugin.database.sqldefinitions.Database',
-      $p,
-      _$invokePointer,
-      [],
-    );
-    final $a = $p.sendPort.nativePort;
-    _$impls[$a] = $impl;
-  }
-
-  factory Database.implement(
-    $Database $impl,
-  ) {
-    final $i = jni$_.JImplementer();
-    implementIn($i, $impl);
-    return Database.fromReference(
-      $i.implementReference(),
-    );
-  }
-}
-
-abstract base mixin class $Database {
-  factory $Database({
-    required AttributesQueries Function() getAttributesQueries,
-    required BundlesQueries Function() getBundlesQueries,
-    required ConfigQueries Function() getConfigQueries,
-    required EventsQueries Function() getEventsQueries,
-    required TestingQueries Function() getTestingQueries,
-    required UsersClientsQueries Function() getUsersClientsQueries,
-  }) = _$Database;
-
-  AttributesQueries getAttributesQueries();
-  BundlesQueries getBundlesQueries();
-  ConfigQueries getConfigQueries();
-  EventsQueries getEventsQueries();
-  TestingQueries getTestingQueries();
-  UsersClientsQueries getUsersClientsQueries();
-}
-
-final class _$Database with $Database {
-  _$Database({
-    required AttributesQueries Function() getAttributesQueries,
-    required BundlesQueries Function() getBundlesQueries,
-    required ConfigQueries Function() getConfigQueries,
-    required EventsQueries Function() getEventsQueries,
-    required TestingQueries Function() getTestingQueries,
-    required UsersClientsQueries Function() getUsersClientsQueries,
-  })  : _getAttributesQueries = getAttributesQueries,
-        _getBundlesQueries = getBundlesQueries,
-        _getConfigQueries = getConfigQueries,
-        _getEventsQueries = getEventsQueries,
-        _getTestingQueries = getTestingQueries,
-        _getUsersClientsQueries = getUsersClientsQueries;
-
-  final AttributesQueries Function() _getAttributesQueries;
-  final BundlesQueries Function() _getBundlesQueries;
-  final ConfigQueries Function() _getConfigQueries;
-  final EventsQueries Function() _getEventsQueries;
-  final TestingQueries Function() _getTestingQueries;
-  final UsersClientsQueries Function() _getUsersClientsQueries;
-
-  AttributesQueries getAttributesQueries() {
-    return _getAttributesQueries();
-  }
-
-  BundlesQueries getBundlesQueries() {
-    return _getBundlesQueries();
-  }
-
-  ConfigQueries getConfigQueries() {
-    return _getConfigQueries();
-  }
-
-  EventsQueries getEventsQueries() {
-    return _getEventsQueries();
-  }
-
-  TestingQueries getTestingQueries() {
-    return _getTestingQueries();
-  }
-
-  UsersClientsQueries getUsersClientsQueries() {
-    return _getUsersClientsQueries();
-  }
-}
-
-final class $Database$NullableType extends jni$_.JObjType<Database?> {
-  @jni$_.internal
-  const $Database$NullableType();
-
-  @jni$_.internal
-  @core$_.override
-  String get signature =>
-      r'Lcom/daylightcomputer/coreplugin/database/sqldefinitions/Database;';
-
-  @jni$_.internal
-  @core$_.override
-  Database? fromReference(jni$_.JReference reference) => reference.isNull
-      ? null
-      : Database.fromReference(
-          reference,
-        );
-  @jni$_.internal
-  @core$_.override
-  jni$_.JObjType get superType => const jni$_.JObjectNullableType();
-
-  @jni$_.internal
-  @core$_.override
-  jni$_.JObjType<Database?> get nullableType => this;
-
-  @jni$_.internal
-  @core$_.override
-  final superCount = 1;
-
-  @core$_.override
-  int get hashCode => ($Database$NullableType).hashCode;
-
-  @core$_.override
-  bool operator ==(Object other) {
-    return other.runtimeType == ($Database$NullableType) &&
-        other is $Database$NullableType;
-  }
-}
-
-final class $Database$Type extends jni$_.JObjType<Database> {
-  @jni$_.internal
-  const $Database$Type();
-
-  @jni$_.internal
-  @core$_.override
-  String get signature =>
-      r'Lcom/daylightcomputer/coreplugin/database/sqldefinitions/Database;';
-
-  @jni$_.internal
-  @core$_.override
-  Database fromReference(jni$_.JReference reference) => Database.fromReference(
-        reference,
-      );
-  @jni$_.internal
-  @core$_.override
-  jni$_.JObjType get superType => const jni$_.JObjectNullableType();
-
-  @jni$_.internal
-  @core$_.override
-  jni$_.JObjType<Database?> get nullableType => const $Database$NullableType();
-
-  @jni$_.internal
-  @core$_.override
-  final superCount = 1;
-
-  @core$_.override
-  int get hashCode => ($Database$Type).hashCode;
-
-  @core$_.override
-  bool operator ==(Object other) {
-    return other.runtimeType == ($Database$Type) && other is $Database$Type;
-  }
-}
-
-/// from: `com.daylightcomputer.coreplugin.database.sqldefinitions.Events`
-class Events extends jni$_.JObject {
-  @jni$_.internal
-  @core$_.override
-  final jni$_.JObjType<Events> $type;
-
-  @jni$_.internal
-  Events.fromReference(
-    jni$_.JReference reference,
-  )   : $type = type,
-        super.fromReference(reference);
-
-  static final _class = jni$_.JClass.forName(
-      r'com/daylightcomputer/coreplugin/database/sqldefinitions/Events');
-
-  /// The type which includes information such as the signature of this class.
-  static const nullableType = $Events$NullableType();
-  static const type = $Events$Type();
-  static final _id_new$ = _class.constructorId(
-    r'(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V',
-  );
-
-  static final _new$ = jni$_.ProtectedJniExtensions.lookup<
-          jni$_.NativeFunction<
-              jni$_.JniResult Function(
-                  jni$_.Pointer<jni$_.Void>,
-                  jni$_.JMethodIDPtr,
-                  jni$_.VarArgs<
-                      (
-                        jni$_.Pointer<jni$_.Void>,
-                        jni$_.Pointer<jni$_.Void>,
-                        jni$_.Pointer<jni$_.Void>,
-                        jni$_.Pointer<jni$_.Void>,
-                        jni$_.Pointer<jni$_.Void>,
-                        jni$_.Pointer<jni$_.Void>
-                      )>)>>('globalEnv_NewObject')
-      .asFunction<
-          jni$_.JniResult Function(
-              jni$_.Pointer<jni$_.Void>,
-              jni$_.JMethodIDPtr,
-              jni$_.Pointer<jni$_.Void>,
-              jni$_.Pointer<jni$_.Void>,
-              jni$_.Pointer<jni$_.Void>,
-              jni$_.Pointer<jni$_.Void>,
-              jni$_.Pointer<jni$_.Void>,
-              jni$_.Pointer<jni$_.Void>)>();
-
-  /// from: `public void <init>(java.lang.String string, java.lang.String string1, java.lang.String string2, java.lang.String string3, java.lang.String string4, java.lang.String string5)`
-  /// The returned object must be released after use, by calling the [release] method.
-  factory Events(
-    jni$_.JString string,
-    jni$_.JString string1,
-    jni$_.JString string2,
-    jni$_.JString string3,
-    jni$_.JString string4,
-    jni$_.JString string5,
-  ) {
-    final _$string = string.reference;
-    final _$string1 = string1.reference;
-    final _$string2 = string2.reference;
-    final _$string3 = string3.reference;
-    final _$string4 = string4.reference;
-    final _$string5 = string5.reference;
-    return Events.fromReference(_new$(
-            _class.reference.pointer,
-            _id_new$ as jni$_.JMethodIDPtr,
-            _$string.pointer,
-            _$string1.pointer,
-            _$string2.pointer,
-            _$string3.pointer,
-            _$string4.pointer,
-            _$string5.pointer)
-        .reference);
-  }
-
-  static final _id_getId = _class.instanceMethodId(
-    r'getId',
-    r'()Ljava/lang/String;',
-  );
-
-  static final _getId = jni$_.ProtectedJniExtensions.lookup<
-          jni$_.NativeFunction<
-              jni$_.JniResult Function(
-                jni$_.Pointer<jni$_.Void>,
-                jni$_.JMethodIDPtr,
-              )>>('globalEnv_CallObjectMethod')
-      .asFunction<
-          jni$_.JniResult Function(
-            jni$_.Pointer<jni$_.Void>,
-            jni$_.JMethodIDPtr,
-          )>();
-
-  /// from: `public final java.lang.String getId()`
-  /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JString getId() {
-    return _getId(reference.pointer, _id_getId as jni$_.JMethodIDPtr)
-        .object<jni$_.JString>(const jni$_.JStringType());
-  }
-
-  static final _id_getClient_id = _class.instanceMethodId(
-    r'getClient_id',
-    r'()Ljava/lang/String;',
-  );
-
-  static final _getClient_id = jni$_.ProtectedJniExtensions.lookup<
-          jni$_.NativeFunction<
-              jni$_.JniResult Function(
-                jni$_.Pointer<jni$_.Void>,
-                jni$_.JMethodIDPtr,
-              )>>('globalEnv_CallObjectMethod')
-      .asFunction<
-          jni$_.JniResult Function(
-            jni$_.Pointer<jni$_.Void>,
-            jni$_.JMethodIDPtr,
-          )>();
-
-  /// from: `public final java.lang.String getClient_id()`
-  /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JString getClient_id() {
-    return _getClient_id(
-            reference.pointer, _id_getClient_id as jni$_.JMethodIDPtr)
-        .object<jni$_.JString>(const jni$_.JStringType());
-  }
-
-  static final _id_getEntity_id = _class.instanceMethodId(
-    r'getEntity_id',
-    r'()Ljava/lang/String;',
-  );
-
-  static final _getEntity_id = jni$_.ProtectedJniExtensions.lookup<
-          jni$_.NativeFunction<
-              jni$_.JniResult Function(
-                jni$_.Pointer<jni$_.Void>,
-                jni$_.JMethodIDPtr,
-              )>>('globalEnv_CallObjectMethod')
-      .asFunction<
-          jni$_.JniResult Function(
-            jni$_.Pointer<jni$_.Void>,
-            jni$_.JMethodIDPtr,
-          )>();
-
-  /// from: `public final java.lang.String getEntity_id()`
-  /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JString getEntity_id() {
-    return _getEntity_id(
-            reference.pointer, _id_getEntity_id as jni$_.JMethodIDPtr)
-        .object<jni$_.JString>(const jni$_.JStringType());
-  }
-
-  static final _id_getAttribute = _class.instanceMethodId(
-    r'getAttribute',
-    r'()Ljava/lang/String;',
-  );
-
-  static final _getAttribute = jni$_.ProtectedJniExtensions.lookup<
-          jni$_.NativeFunction<
-              jni$_.JniResult Function(
-                jni$_.Pointer<jni$_.Void>,
-                jni$_.JMethodIDPtr,
-              )>>('globalEnv_CallObjectMethod')
-      .asFunction<
-          jni$_.JniResult Function(
-            jni$_.Pointer<jni$_.Void>,
-            jni$_.JMethodIDPtr,
-          )>();
-
-  /// from: `public final java.lang.String getAttribute()`
-  /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JString getAttribute() {
-    return _getAttribute(
-            reference.pointer, _id_getAttribute as jni$_.JMethodIDPtr)
-        .object<jni$_.JString>(const jni$_.JStringType());
-  }
-
-  static final _id_getAttr_value = _class.instanceMethodId(
-    r'getAttr_value',
-    r'()Ljava/lang/String;',
-  );
-
-  static final _getAttr_value = jni$_.ProtectedJniExtensions.lookup<
-          jni$_.NativeFunction<
-              jni$_.JniResult Function(
-                jni$_.Pointer<jni$_.Void>,
-                jni$_.JMethodIDPtr,
-              )>>('globalEnv_CallObjectMethod')
-      .asFunction<
-          jni$_.JniResult Function(
-            jni$_.Pointer<jni$_.Void>,
-            jni$_.JMethodIDPtr,
-          )>();
-
-  /// from: `public final java.lang.String getAttr_value()`
-  /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JString getAttr_value() {
-    return _getAttr_value(
-            reference.pointer, _id_getAttr_value as jni$_.JMethodIDPtr)
-        .object<jni$_.JString>(const jni$_.JStringType());
   }
 
   static final _id_getTimestamp = _class.instanceMethodId(
@@ -3874,708 +134,6 @@ class Events extends jni$_.JObject {
     return _getTimestamp(
             reference.pointer, _id_getTimestamp as jni$_.JMethodIDPtr)
         .object<jni$_.JString>(const jni$_.JStringType());
-  }
-
-  static final _id_component1 = _class.instanceMethodId(
-    r'component1',
-    r'()Ljava/lang/String;',
-  );
-
-  static final _component1 = jni$_.ProtectedJniExtensions.lookup<
-          jni$_.NativeFunction<
-              jni$_.JniResult Function(
-                jni$_.Pointer<jni$_.Void>,
-                jni$_.JMethodIDPtr,
-              )>>('globalEnv_CallObjectMethod')
-      .asFunction<
-          jni$_.JniResult Function(
-            jni$_.Pointer<jni$_.Void>,
-            jni$_.JMethodIDPtr,
-          )>();
-
-  /// from: `public final java.lang.String component1()`
-  /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JString component1() {
-    return _component1(reference.pointer, _id_component1 as jni$_.JMethodIDPtr)
-        .object<jni$_.JString>(const jni$_.JStringType());
-  }
-
-  static final _id_component2 = _class.instanceMethodId(
-    r'component2',
-    r'()Ljava/lang/String;',
-  );
-
-  static final _component2 = jni$_.ProtectedJniExtensions.lookup<
-          jni$_.NativeFunction<
-              jni$_.JniResult Function(
-                jni$_.Pointer<jni$_.Void>,
-                jni$_.JMethodIDPtr,
-              )>>('globalEnv_CallObjectMethod')
-      .asFunction<
-          jni$_.JniResult Function(
-            jni$_.Pointer<jni$_.Void>,
-            jni$_.JMethodIDPtr,
-          )>();
-
-  /// from: `public final java.lang.String component2()`
-  /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JString component2() {
-    return _component2(reference.pointer, _id_component2 as jni$_.JMethodIDPtr)
-        .object<jni$_.JString>(const jni$_.JStringType());
-  }
-
-  static final _id_component3 = _class.instanceMethodId(
-    r'component3',
-    r'()Ljava/lang/String;',
-  );
-
-  static final _component3 = jni$_.ProtectedJniExtensions.lookup<
-          jni$_.NativeFunction<
-              jni$_.JniResult Function(
-                jni$_.Pointer<jni$_.Void>,
-                jni$_.JMethodIDPtr,
-              )>>('globalEnv_CallObjectMethod')
-      .asFunction<
-          jni$_.JniResult Function(
-            jni$_.Pointer<jni$_.Void>,
-            jni$_.JMethodIDPtr,
-          )>();
-
-  /// from: `public final java.lang.String component3()`
-  /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JString component3() {
-    return _component3(reference.pointer, _id_component3 as jni$_.JMethodIDPtr)
-        .object<jni$_.JString>(const jni$_.JStringType());
-  }
-
-  static final _id_component4 = _class.instanceMethodId(
-    r'component4',
-    r'()Ljava/lang/String;',
-  );
-
-  static final _component4 = jni$_.ProtectedJniExtensions.lookup<
-          jni$_.NativeFunction<
-              jni$_.JniResult Function(
-                jni$_.Pointer<jni$_.Void>,
-                jni$_.JMethodIDPtr,
-              )>>('globalEnv_CallObjectMethod')
-      .asFunction<
-          jni$_.JniResult Function(
-            jni$_.Pointer<jni$_.Void>,
-            jni$_.JMethodIDPtr,
-          )>();
-
-  /// from: `public final java.lang.String component4()`
-  /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JString component4() {
-    return _component4(reference.pointer, _id_component4 as jni$_.JMethodIDPtr)
-        .object<jni$_.JString>(const jni$_.JStringType());
-  }
-
-  static final _id_component5 = _class.instanceMethodId(
-    r'component5',
-    r'()Ljava/lang/String;',
-  );
-
-  static final _component5 = jni$_.ProtectedJniExtensions.lookup<
-          jni$_.NativeFunction<
-              jni$_.JniResult Function(
-                jni$_.Pointer<jni$_.Void>,
-                jni$_.JMethodIDPtr,
-              )>>('globalEnv_CallObjectMethod')
-      .asFunction<
-          jni$_.JniResult Function(
-            jni$_.Pointer<jni$_.Void>,
-            jni$_.JMethodIDPtr,
-          )>();
-
-  /// from: `public final java.lang.String component5()`
-  /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JString component5() {
-    return _component5(reference.pointer, _id_component5 as jni$_.JMethodIDPtr)
-        .object<jni$_.JString>(const jni$_.JStringType());
-  }
-
-  static final _id_component6 = _class.instanceMethodId(
-    r'component6',
-    r'()Ljava/lang/String;',
-  );
-
-  static final _component6 = jni$_.ProtectedJniExtensions.lookup<
-          jni$_.NativeFunction<
-              jni$_.JniResult Function(
-                jni$_.Pointer<jni$_.Void>,
-                jni$_.JMethodIDPtr,
-              )>>('globalEnv_CallObjectMethod')
-      .asFunction<
-          jni$_.JniResult Function(
-            jni$_.Pointer<jni$_.Void>,
-            jni$_.JMethodIDPtr,
-          )>();
-
-  /// from: `public final java.lang.String component6()`
-  /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JString component6() {
-    return _component6(reference.pointer, _id_component6 as jni$_.JMethodIDPtr)
-        .object<jni$_.JString>(const jni$_.JStringType());
-  }
-
-  static final _id_copy = _class.instanceMethodId(
-    r'copy',
-    r'(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lcom/daylightcomputer/coreplugin/database/sqldefinitions/Events;',
-  );
-
-  static final _copy = jni$_.ProtectedJniExtensions.lookup<
-          jni$_.NativeFunction<
-              jni$_.JniResult Function(
-                  jni$_.Pointer<jni$_.Void>,
-                  jni$_.JMethodIDPtr,
-                  jni$_.VarArgs<
-                      (
-                        jni$_.Pointer<jni$_.Void>,
-                        jni$_.Pointer<jni$_.Void>,
-                        jni$_.Pointer<jni$_.Void>,
-                        jni$_.Pointer<jni$_.Void>,
-                        jni$_.Pointer<jni$_.Void>,
-                        jni$_.Pointer<jni$_.Void>
-                      )>)>>('globalEnv_CallObjectMethod')
-      .asFunction<
-          jni$_.JniResult Function(
-              jni$_.Pointer<jni$_.Void>,
-              jni$_.JMethodIDPtr,
-              jni$_.Pointer<jni$_.Void>,
-              jni$_.Pointer<jni$_.Void>,
-              jni$_.Pointer<jni$_.Void>,
-              jni$_.Pointer<jni$_.Void>,
-              jni$_.Pointer<jni$_.Void>,
-              jni$_.Pointer<jni$_.Void>)>();
-
-  /// from: `public final com.daylightcomputer.coreplugin.database.sqldefinitions.Events copy(java.lang.String string, java.lang.String string1, java.lang.String string2, java.lang.String string3, java.lang.String string4, java.lang.String string5)`
-  /// The returned object must be released after use, by calling the [release] method.
-  Events copy(
-    jni$_.JString string,
-    jni$_.JString string1,
-    jni$_.JString string2,
-    jni$_.JString string3,
-    jni$_.JString string4,
-    jni$_.JString string5,
-  ) {
-    final _$string = string.reference;
-    final _$string1 = string1.reference;
-    final _$string2 = string2.reference;
-    final _$string3 = string3.reference;
-    final _$string4 = string4.reference;
-    final _$string5 = string5.reference;
-    return _copy(
-            reference.pointer,
-            _id_copy as jni$_.JMethodIDPtr,
-            _$string.pointer,
-            _$string1.pointer,
-            _$string2.pointer,
-            _$string3.pointer,
-            _$string4.pointer,
-            _$string5.pointer)
-        .object<Events>(const $Events$Type());
-  }
-
-  static final _id_toString$1 = _class.instanceMethodId(
-    r'toString',
-    r'()Ljava/lang/String;',
-  );
-
-  static final _toString$1 = jni$_.ProtectedJniExtensions.lookup<
-          jni$_.NativeFunction<
-              jni$_.JniResult Function(
-                jni$_.Pointer<jni$_.Void>,
-                jni$_.JMethodIDPtr,
-              )>>('globalEnv_CallObjectMethod')
-      .asFunction<
-          jni$_.JniResult Function(
-            jni$_.Pointer<jni$_.Void>,
-            jni$_.JMethodIDPtr,
-          )>();
-
-  /// from: `public java.lang.String toString()`
-  /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JString toString$1() {
-    return _toString$1(reference.pointer, _id_toString$1 as jni$_.JMethodIDPtr)
-        .object<jni$_.JString>(const jni$_.JStringType());
-  }
-
-  static final _id_hashCode$1 = _class.instanceMethodId(
-    r'hashCode',
-    r'()I',
-  );
-
-  static final _hashCode$1 = jni$_.ProtectedJniExtensions.lookup<
-          jni$_.NativeFunction<
-              jni$_.JniResult Function(
-                jni$_.Pointer<jni$_.Void>,
-                jni$_.JMethodIDPtr,
-              )>>('globalEnv_CallIntMethod')
-      .asFunction<
-          jni$_.JniResult Function(
-            jni$_.Pointer<jni$_.Void>,
-            jni$_.JMethodIDPtr,
-          )>();
-
-  /// from: `public int hashCode()`
-  int hashCode$1() {
-    return _hashCode$1(reference.pointer, _id_hashCode$1 as jni$_.JMethodIDPtr)
-        .integer;
-  }
-
-  static final _id_equals = _class.instanceMethodId(
-    r'equals',
-    r'(Ljava/lang/Object;)Z',
-  );
-
-  static final _equals = jni$_.ProtectedJniExtensions.lookup<
-              jni$_.NativeFunction<
-                  jni$_.JniResult Function(
-                      jni$_.Pointer<jni$_.Void>,
-                      jni$_.JMethodIDPtr,
-                      jni$_.VarArgs<(jni$_.Pointer<jni$_.Void>,)>)>>(
-          'globalEnv_CallBooleanMethod')
-      .asFunction<
-          jni$_.JniResult Function(jni$_.Pointer<jni$_.Void>,
-              jni$_.JMethodIDPtr, jni$_.Pointer<jni$_.Void>)>();
-
-  /// from: `public boolean equals(java.lang.Object object)`
-  bool equals(
-    jni$_.JObject? object,
-  ) {
-    final _$object = object?.reference ?? jni$_.jNullReference;
-    return _equals(reference.pointer, _id_equals as jni$_.JMethodIDPtr,
-            _$object.pointer)
-        .boolean;
-  }
-}
-
-final class $Events$NullableType extends jni$_.JObjType<Events?> {
-  @jni$_.internal
-  const $Events$NullableType();
-
-  @jni$_.internal
-  @core$_.override
-  String get signature =>
-      r'Lcom/daylightcomputer/coreplugin/database/sqldefinitions/Events;';
-
-  @jni$_.internal
-  @core$_.override
-  Events? fromReference(jni$_.JReference reference) => reference.isNull
-      ? null
-      : Events.fromReference(
-          reference,
-        );
-  @jni$_.internal
-  @core$_.override
-  jni$_.JObjType get superType => const jni$_.JObjectType();
-
-  @jni$_.internal
-  @core$_.override
-  jni$_.JObjType<Events?> get nullableType => this;
-
-  @jni$_.internal
-  @core$_.override
-  final superCount = 1;
-
-  @core$_.override
-  int get hashCode => ($Events$NullableType).hashCode;
-
-  @core$_.override
-  bool operator ==(Object other) {
-    return other.runtimeType == ($Events$NullableType) &&
-        other is $Events$NullableType;
-  }
-}
-
-final class $Events$Type extends jni$_.JObjType<Events> {
-  @jni$_.internal
-  const $Events$Type();
-
-  @jni$_.internal
-  @core$_.override
-  String get signature =>
-      r'Lcom/daylightcomputer/coreplugin/database/sqldefinitions/Events;';
-
-  @jni$_.internal
-  @core$_.override
-  Events fromReference(jni$_.JReference reference) => Events.fromReference(
-        reference,
-      );
-  @jni$_.internal
-  @core$_.override
-  jni$_.JObjType get superType => const jni$_.JObjectType();
-
-  @jni$_.internal
-  @core$_.override
-  jni$_.JObjType<Events?> get nullableType => const $Events$NullableType();
-
-  @jni$_.internal
-  @core$_.override
-  final superCount = 1;
-
-  @core$_.override
-  int get hashCode => ($Events$Type).hashCode;
-
-  @core$_.override
-  bool operator ==(Object other) {
-    return other.runtimeType == ($Events$Type) && other is $Events$Type;
-  }
-}
-
-/// from: `com.daylightcomputer.coreplugin.database.sqldefinitions.EventsQueries`
-class EventsQueries extends jni$_.JObject {
-  @jni$_.internal
-  @core$_.override
-  final jni$_.JObjType<EventsQueries> $type;
-
-  @jni$_.internal
-  EventsQueries.fromReference(
-    jni$_.JReference reference,
-  )   : $type = type,
-        super.fromReference(reference);
-
-  static final _class = jni$_.JClass.forName(
-      r'com/daylightcomputer/coreplugin/database/sqldefinitions/EventsQueries');
-
-  /// The type which includes information such as the signature of this class.
-  static const nullableType = $EventsQueries$NullableType();
-  static const type = $EventsQueries$Type();
-  static final _id_new$ = _class.constructorId(
-    r'(Lapp/cash/sqldelight/db/SqlDriver;)V',
-  );
-
-  static final _new$ = jni$_.ProtectedJniExtensions.lookup<
-              jni$_.NativeFunction<
-                  jni$_.JniResult Function(
-                      jni$_.Pointer<jni$_.Void>,
-                      jni$_.JMethodIDPtr,
-                      jni$_.VarArgs<(jni$_.Pointer<jni$_.Void>,)>)>>(
-          'globalEnv_NewObject')
-      .asFunction<
-          jni$_.JniResult Function(jni$_.Pointer<jni$_.Void>,
-              jni$_.JMethodIDPtr, jni$_.Pointer<jni$_.Void>)>();
-
-  /// from: `public void <init>(app.cash.sqldelight.db.SqlDriver sqlDriver)`
-  /// The returned object must be released after use, by calling the [release] method.
-  factory EventsQueries(
-    jni$_.JObject sqlDriver,
-  ) {
-    final _$sqlDriver = sqlDriver.reference;
-    return EventsQueries.fromReference(_new$(_class.reference.pointer,
-            _id_new$ as jni$_.JMethodIDPtr, _$sqlDriver.pointer)
-        .reference);
-  }
-
-  static final _id_getEvents = _class.instanceMethodId(
-    r'getEvents',
-    r'(Lkotlin/jvm/functions/Function6;)Lapp/cash/sqldelight/Query;',
-  );
-
-  static final _getEvents = jni$_.ProtectedJniExtensions.lookup<
-              jni$_.NativeFunction<
-                  jni$_.JniResult Function(
-                      jni$_.Pointer<jni$_.Void>,
-                      jni$_.JMethodIDPtr,
-                      jni$_.VarArgs<(jni$_.Pointer<jni$_.Void>,)>)>>(
-          'globalEnv_CallObjectMethod')
-      .asFunction<
-          jni$_.JniResult Function(jni$_.Pointer<jni$_.Void>,
-              jni$_.JMethodIDPtr, jni$_.Pointer<jni$_.Void>)>();
-
-  /// from: `public final app.cash.sqldelight.Query getEvents(kotlin.jvm.functions.Function6 function6)`
-  /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JObject getEvents<$T extends jni$_.JObject>(
-    jni$_.JObject function6, {
-    required jni$_.JObjType<$T> T,
-  }) {
-    final _$function6 = function6.reference;
-    return _getEvents(reference.pointer, _id_getEvents as jni$_.JMethodIDPtr,
-            _$function6.pointer)
-        .object<jni$_.JObject>(const jni$_.JObjectType());
-  }
-
-  static final _id_getEvents$1 = _class.instanceMethodId(
-    r'getEvents',
-    r'()Lapp/cash/sqldelight/Query;',
-  );
-
-  static final _getEvents$1 = jni$_.ProtectedJniExtensions.lookup<
-          jni$_.NativeFunction<
-              jni$_.JniResult Function(
-                jni$_.Pointer<jni$_.Void>,
-                jni$_.JMethodIDPtr,
-              )>>('globalEnv_CallObjectMethod')
-      .asFunction<
-          jni$_.JniResult Function(
-            jni$_.Pointer<jni$_.Void>,
-            jni$_.JMethodIDPtr,
-          )>();
-
-  /// from: `public final app.cash.sqldelight.Query getEvents()`
-  /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JObject getEvents$1() {
-    return _getEvents$1(
-            reference.pointer, _id_getEvents$1 as jni$_.JMethodIDPtr)
-        .object<jni$_.JObject>(const jni$_.JObjectType());
-  }
-
-  static final _id_getLocalEventsToPush = _class.instanceMethodId(
-    r'getLocalEventsToPush',
-    r'(Lkotlin/jvm/functions/Function6;)Lapp/cash/sqldelight/Query;',
-  );
-
-  static final _getLocalEventsToPush = jni$_.ProtectedJniExtensions.lookup<
-              jni$_.NativeFunction<
-                  jni$_.JniResult Function(
-                      jni$_.Pointer<jni$_.Void>,
-                      jni$_.JMethodIDPtr,
-                      jni$_.VarArgs<(jni$_.Pointer<jni$_.Void>,)>)>>(
-          'globalEnv_CallObjectMethod')
-      .asFunction<
-          jni$_.JniResult Function(jni$_.Pointer<jni$_.Void>,
-              jni$_.JMethodIDPtr, jni$_.Pointer<jni$_.Void>)>();
-
-  /// from: `public final app.cash.sqldelight.Query getLocalEventsToPush(kotlin.jvm.functions.Function6 function6)`
-  /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JObject getLocalEventsToPush<$T extends jni$_.JObject>(
-    jni$_.JObject function6, {
-    required jni$_.JObjType<$T> T,
-  }) {
-    final _$function6 = function6.reference;
-    return _getLocalEventsToPush(reference.pointer,
-            _id_getLocalEventsToPush as jni$_.JMethodIDPtr, _$function6.pointer)
-        .object<jni$_.JObject>(const jni$_.JObjectType());
-  }
-
-  static final _id_getLocalEventsToPush$1 = _class.instanceMethodId(
-    r'getLocalEventsToPush',
-    r'()Lapp/cash/sqldelight/Query;',
-  );
-
-  static final _getLocalEventsToPush$1 = jni$_.ProtectedJniExtensions.lookup<
-          jni$_.NativeFunction<
-              jni$_.JniResult Function(
-                jni$_.Pointer<jni$_.Void>,
-                jni$_.JMethodIDPtr,
-              )>>('globalEnv_CallObjectMethod')
-      .asFunction<
-          jni$_.JniResult Function(
-            jni$_.Pointer<jni$_.Void>,
-            jni$_.JMethodIDPtr,
-          )>();
-
-  /// from: `public final app.cash.sqldelight.Query getLocalEventsToPush()`
-  /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JObject getLocalEventsToPush$1() {
-    return _getLocalEventsToPush$1(
-            reference.pointer, _id_getLocalEventsToPush$1 as jni$_.JMethodIDPtr)
-        .object<jni$_.JObject>(const jni$_.JObjectType());
-  }
-
-  static final _id_insertEvent = _class.instanceMethodId(
-    r'insertEvent',
-    r'(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V',
-  );
-
-  static final _insertEvent = jni$_.ProtectedJniExtensions.lookup<
-          jni$_.NativeFunction<
-              jni$_.JThrowablePtr Function(
-                  jni$_.Pointer<jni$_.Void>,
-                  jni$_.JMethodIDPtr,
-                  jni$_.VarArgs<
-                      (
-                        jni$_.Pointer<jni$_.Void>,
-                        jni$_.Pointer<jni$_.Void>,
-                        jni$_.Pointer<jni$_.Void>,
-                        jni$_.Pointer<jni$_.Void>,
-                        jni$_.Pointer<jni$_.Void>,
-                        jni$_.Pointer<jni$_.Void>
-                      )>)>>('globalEnv_CallVoidMethod')
-      .asFunction<
-          jni$_.JThrowablePtr Function(
-              jni$_.Pointer<jni$_.Void>,
-              jni$_.JMethodIDPtr,
-              jni$_.Pointer<jni$_.Void>,
-              jni$_.Pointer<jni$_.Void>,
-              jni$_.Pointer<jni$_.Void>,
-              jni$_.Pointer<jni$_.Void>,
-              jni$_.Pointer<jni$_.Void>,
-              jni$_.Pointer<jni$_.Void>)>();
-
-  /// from: `public final void insertEvent(java.lang.String string, java.lang.String string1, java.lang.String string2, java.lang.String string3, java.lang.String string4, java.lang.String string5)`
-  void insertEvent(
-    jni$_.JString string,
-    jni$_.JString string1,
-    jni$_.JString string2,
-    jni$_.JString string3,
-    jni$_.JString string4,
-    jni$_.JString string5,
-  ) {
-    final _$string = string.reference;
-    final _$string1 = string1.reference;
-    final _$string2 = string2.reference;
-    final _$string3 = string3.reference;
-    final _$string4 = string4.reference;
-    final _$string5 = string5.reference;
-    _insertEvent(
-            reference.pointer,
-            _id_insertEvent as jni$_.JMethodIDPtr,
-            _$string.pointer,
-            _$string1.pointer,
-            _$string2.pointer,
-            _$string3.pointer,
-            _$string4.pointer,
-            _$string5.pointer)
-        .check();
-  }
-}
-
-final class $EventsQueries$NullableType extends jni$_.JObjType<EventsQueries?> {
-  @jni$_.internal
-  const $EventsQueries$NullableType();
-
-  @jni$_.internal
-  @core$_.override
-  String get signature =>
-      r'Lcom/daylightcomputer/coreplugin/database/sqldefinitions/EventsQueries;';
-
-  @jni$_.internal
-  @core$_.override
-  EventsQueries? fromReference(jni$_.JReference reference) => reference.isNull
-      ? null
-      : EventsQueries.fromReference(
-          reference,
-        );
-  @jni$_.internal
-  @core$_.override
-  jni$_.JObjType get superType => const jni$_.JObjectType();
-
-  @jni$_.internal
-  @core$_.override
-  jni$_.JObjType<EventsQueries?> get nullableType => this;
-
-  @jni$_.internal
-  @core$_.override
-  final superCount = 1;
-
-  @core$_.override
-  int get hashCode => ($EventsQueries$NullableType).hashCode;
-
-  @core$_.override
-  bool operator ==(Object other) {
-    return other.runtimeType == ($EventsQueries$NullableType) &&
-        other is $EventsQueries$NullableType;
-  }
-}
-
-final class $EventsQueries$Type extends jni$_.JObjType<EventsQueries> {
-  @jni$_.internal
-  const $EventsQueries$Type();
-
-  @jni$_.internal
-  @core$_.override
-  String get signature =>
-      r'Lcom/daylightcomputer/coreplugin/database/sqldefinitions/EventsQueries;';
-
-  @jni$_.internal
-  @core$_.override
-  EventsQueries fromReference(jni$_.JReference reference) =>
-      EventsQueries.fromReference(
-        reference,
-      );
-  @jni$_.internal
-  @core$_.override
-  jni$_.JObjType get superType => const jni$_.JObjectType();
-
-  @jni$_.internal
-  @core$_.override
-  jni$_.JObjType<EventsQueries?> get nullableType =>
-      const $EventsQueries$NullableType();
-
-  @jni$_.internal
-  @core$_.override
-  final superCount = 1;
-
-  @core$_.override
-  int get hashCode => ($EventsQueries$Type).hashCode;
-
-  @core$_.override
-  bool operator ==(Object other) {
-    return other.runtimeType == ($EventsQueries$Type) &&
-        other is $EventsQueries$Type;
-  }
-}
-
-/// from: `com.daylightcomputer.coreplugin.database.sqldefinitions.GetValueForKey`
-class GetValueForKey extends jni$_.JObject {
-  @jni$_.internal
-  @core$_.override
-  final jni$_.JObjType<GetValueForKey> $type;
-
-  @jni$_.internal
-  GetValueForKey.fromReference(
-    jni$_.JReference reference,
-  )   : $type = type,
-        super.fromReference(reference);
-
-  static final _class = jni$_.JClass.forName(
-      r'com/daylightcomputer/coreplugin/database/sqldefinitions/GetValueForKey');
-
-  /// The type which includes information such as the signature of this class.
-  static const nullableType = $GetValueForKey$NullableType();
-  static const type = $GetValueForKey$Type();
-  static final _id_new$ = _class.constructorId(
-    r'(Ljava/lang/String;)V',
-  );
-
-  static final _new$ = jni$_.ProtectedJniExtensions.lookup<
-              jni$_.NativeFunction<
-                  jni$_.JniResult Function(
-                      jni$_.Pointer<jni$_.Void>,
-                      jni$_.JMethodIDPtr,
-                      jni$_.VarArgs<(jni$_.Pointer<jni$_.Void>,)>)>>(
-          'globalEnv_NewObject')
-      .asFunction<
-          jni$_.JniResult Function(jni$_.Pointer<jni$_.Void>,
-              jni$_.JMethodIDPtr, jni$_.Pointer<jni$_.Void>)>();
-
-  /// from: `public void <init>(java.lang.String string)`
-  /// The returned object must be released after use, by calling the [release] method.
-  factory GetValueForKey(
-    jni$_.JString? string,
-  ) {
-    final _$string = string?.reference ?? jni$_.jNullReference;
-    return GetValueForKey.fromReference(_new$(_class.reference.pointer,
-            _id_new$ as jni$_.JMethodIDPtr, _$string.pointer)
-        .reference);
-  }
-
-  static final _id_getConf_value = _class.instanceMethodId(
-    r'getConf_value',
-    r'()Ljava/lang/String;',
-  );
-
-  static final _getConf_value = jni$_.ProtectedJniExtensions.lookup<
-          jni$_.NativeFunction<
-              jni$_.JniResult Function(
-                jni$_.Pointer<jni$_.Void>,
-                jni$_.JMethodIDPtr,
-              )>>('globalEnv_CallObjectMethod')
-      .asFunction<
-          jni$_.JniResult Function(
-            jni$_.Pointer<jni$_.Void>,
-            jni$_.JMethodIDPtr,
-          )>();
-
-  /// from: `public final java.lang.String getConf_value()`
-  /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JString? getConf_value() {
-    return _getConf_value(
-            reference.pointer, _id_getConf_value as jni$_.JMethodIDPtr)
-        .object<jni$_.JString?>(const jni$_.JStringNullableType());
   }
 
   static final _id_component1 = _class.instanceMethodId(
@@ -4602,31 +160,63 @@ class GetValueForKey extends jni$_.JObject {
         .object<jni$_.JString?>(const jni$_.JStringNullableType());
   }
 
+  static final _id_component2 = _class.instanceMethodId(
+    r'component2',
+    r'()Ljava/lang/String;',
+  );
+
+  static final _component2 = jni$_.ProtectedJniExtensions.lookup<
+          jni$_.NativeFunction<
+              jni$_.JniResult Function(
+                jni$_.Pointer<jni$_.Void>,
+                jni$_.JMethodIDPtr,
+              )>>('globalEnv_CallObjectMethod')
+      .asFunction<
+          jni$_.JniResult Function(
+            jni$_.Pointer<jni$_.Void>,
+            jni$_.JMethodIDPtr,
+          )>();
+
+  /// from: `public final java.lang.String component2()`
+  /// The returned object must be released after use, by calling the [release] method.
+  jni$_.JString component2() {
+    return _component2(reference.pointer, _id_component2 as jni$_.JMethodIDPtr)
+        .object<jni$_.JString>(const jni$_.JStringType());
+  }
+
   static final _id_copy = _class.instanceMethodId(
     r'copy',
-    r'(Ljava/lang/String;)Lcom/daylightcomputer/coreplugin/database/sqldefinitions/GetValueForKey;',
+    r'(Ljava/lang/String;Ljava/lang/String;)Lcom/daylightcomputer/coreplugin/entity/AttributeValue;',
   );
 
   static final _copy = jni$_.ProtectedJniExtensions.lookup<
-              jni$_.NativeFunction<
-                  jni$_.JniResult Function(
-                      jni$_.Pointer<jni$_.Void>,
-                      jni$_.JMethodIDPtr,
-                      jni$_.VarArgs<(jni$_.Pointer<jni$_.Void>,)>)>>(
-          'globalEnv_CallObjectMethod')
+          jni$_.NativeFunction<
+              jni$_.JniResult Function(
+                  jni$_.Pointer<jni$_.Void>,
+                  jni$_.JMethodIDPtr,
+                  jni$_.VarArgs<
+                      (
+                        jni$_.Pointer<jni$_.Void>,
+                        jni$_.Pointer<jni$_.Void>
+                      )>)>>('globalEnv_CallObjectMethod')
       .asFunction<
-          jni$_.JniResult Function(jni$_.Pointer<jni$_.Void>,
-              jni$_.JMethodIDPtr, jni$_.Pointer<jni$_.Void>)>();
+          jni$_.JniResult Function(
+              jni$_.Pointer<jni$_.Void>,
+              jni$_.JMethodIDPtr,
+              jni$_.Pointer<jni$_.Void>,
+              jni$_.Pointer<jni$_.Void>)>();
 
-  /// from: `public final com.daylightcomputer.coreplugin.database.sqldefinitions.GetValueForKey copy(java.lang.String string)`
+  /// from: `public final com.daylightcomputer.coreplugin.entity.AttributeValue copy(java.lang.String string, java.lang.String string1)`
   /// The returned object must be released after use, by calling the [release] method.
-  GetValueForKey copy(
+  AttributeValue copy(
     jni$_.JString? string,
+    jni$_.JString string1,
   ) {
     final _$string = string?.reference ?? jni$_.jNullReference;
-    return _copy(
-            reference.pointer, _id_copy as jni$_.JMethodIDPtr, _$string.pointer)
-        .object<GetValueForKey>(const $GetValueForKey$Type());
+    final _$string1 = string1.reference;
+    return _copy(reference.pointer, _id_copy as jni$_.JMethodIDPtr,
+            _$string.pointer, _$string1.pointer)
+        .object<AttributeValue>(const $AttributeValue$Type());
   }
 
   static final _id_toString$1 = _class.instanceMethodId(
@@ -4703,21 +293,21 @@ class GetValueForKey extends jni$_.JObject {
   }
 }
 
-final class $GetValueForKey$NullableType
-    extends jni$_.JObjType<GetValueForKey?> {
+final class $AttributeValue$NullableType
+    extends jni$_.JObjType<AttributeValue?> {
   @jni$_.internal
-  const $GetValueForKey$NullableType();
+  const $AttributeValue$NullableType();
 
   @jni$_.internal
   @core$_.override
   String get signature =>
-      r'Lcom/daylightcomputer/coreplugin/database/sqldefinitions/GetValueForKey;';
+      r'Lcom/daylightcomputer/coreplugin/entity/AttributeValue;';
 
   @jni$_.internal
   @core$_.override
-  GetValueForKey? fromReference(jni$_.JReference reference) => reference.isNull
+  AttributeValue? fromReference(jni$_.JReference reference) => reference.isNull
       ? null
-      : GetValueForKey.fromReference(
+      : AttributeValue.fromReference(
           reference,
         );
   @jni$_.internal
@@ -4726,35 +316,35 @@ final class $GetValueForKey$NullableType
 
   @jni$_.internal
   @core$_.override
-  jni$_.JObjType<GetValueForKey?> get nullableType => this;
+  jni$_.JObjType<AttributeValue?> get nullableType => this;
 
   @jni$_.internal
   @core$_.override
   final superCount = 1;
 
   @core$_.override
-  int get hashCode => ($GetValueForKey$NullableType).hashCode;
+  int get hashCode => ($AttributeValue$NullableType).hashCode;
 
   @core$_.override
   bool operator ==(Object other) {
-    return other.runtimeType == ($GetValueForKey$NullableType) &&
-        other is $GetValueForKey$NullableType;
+    return other.runtimeType == ($AttributeValue$NullableType) &&
+        other is $AttributeValue$NullableType;
   }
 }
 
-final class $GetValueForKey$Type extends jni$_.JObjType<GetValueForKey> {
+final class $AttributeValue$Type extends jni$_.JObjType<AttributeValue> {
   @jni$_.internal
-  const $GetValueForKey$Type();
+  const $AttributeValue$Type();
 
   @jni$_.internal
   @core$_.override
   String get signature =>
-      r'Lcom/daylightcomputer/coreplugin/database/sqldefinitions/GetValueForKey;';
+      r'Lcom/daylightcomputer/coreplugin/entity/AttributeValue;';
 
   @jni$_.internal
   @core$_.override
-  GetValueForKey fromReference(jni$_.JReference reference) =>
-      GetValueForKey.fromReference(
+  AttributeValue fromReference(jni$_.JReference reference) =>
+      AttributeValue.fromReference(
         reference,
       );
   @jni$_.internal
@@ -4763,43 +353,108 @@ final class $GetValueForKey$Type extends jni$_.JObjType<GetValueForKey> {
 
   @jni$_.internal
   @core$_.override
-  jni$_.JObjType<GetValueForKey?> get nullableType =>
-      const $GetValueForKey$NullableType();
+  jni$_.JObjType<AttributeValue?> get nullableType =>
+      const $AttributeValue$NullableType();
 
   @jni$_.internal
   @core$_.override
   final superCount = 1;
 
   @core$_.override
-  int get hashCode => ($GetValueForKey$Type).hashCode;
+  int get hashCode => ($AttributeValue$Type).hashCode;
 
   @core$_.override
   bool operator ==(Object other) {
-    return other.runtimeType == ($GetValueForKey$Type) &&
-        other is $GetValueForKey$Type;
+    return other.runtimeType == ($AttributeValue$Type) &&
+        other is $AttributeValue$Type;
   }
 }
 
-/// from: `com.daylightcomputer.coreplugin.database.sqldefinitions.TestingQueries`
-class TestingQueries extends jni$_.JObject {
+/// from: `com.daylightcomputer.coreplugin.entity.Entity$Companion`
+class Entity$Companion extends jni$_.JObject {
   @jni$_.internal
   @core$_.override
-  final jni$_.JObjType<TestingQueries> $type;
+  final jni$_.JObjType<Entity$Companion> $type;
 
   @jni$_.internal
-  TestingQueries.fromReference(
+  Entity$Companion.fromReference(
     jni$_.JReference reference,
   )   : $type = type,
         super.fromReference(reference);
 
   static final _class = jni$_.JClass.forName(
-      r'com/daylightcomputer/coreplugin/database/sqldefinitions/TestingQueries');
+      r'com/daylightcomputer/coreplugin/entity/Entity$Companion');
 
   /// The type which includes information such as the signature of this class.
-  static const nullableType = $TestingQueries$NullableType();
-  static const type = $TestingQueries$Type();
+  static const nullableType = $Entity$Companion$NullableType();
+  static const type = $Entity$Companion$Type();
+  static final _id_fromAttributePool = _class.instanceMethodId(
+    r'fromAttributePool',
+    r'(Ljava/lang/String;Lkotlin/sequences/Sequence;)Lcom/daylightcomputer/coreplugin/entity/Entity;',
+  );
+
+  static final _fromAttributePool = jni$_.ProtectedJniExtensions.lookup<
+          jni$_.NativeFunction<
+              jni$_.JniResult Function(
+                  jni$_.Pointer<jni$_.Void>,
+                  jni$_.JMethodIDPtr,
+                  jni$_.VarArgs<
+                      (
+                        jni$_.Pointer<jni$_.Void>,
+                        jni$_.Pointer<jni$_.Void>
+                      )>)>>('globalEnv_CallObjectMethod')
+      .asFunction<
+          jni$_.JniResult Function(
+              jni$_.Pointer<jni$_.Void>,
+              jni$_.JMethodIDPtr,
+              jni$_.Pointer<jni$_.Void>,
+              jni$_.Pointer<jni$_.Void>)>();
+
+  /// from: `public final com.daylightcomputer.coreplugin.entity.Entity fromAttributePool(java.lang.String string, kotlin.sequences.Sequence sequence)`
+  /// The returned object must be released after use, by calling the [release] method.
+  Entity fromAttributePool(
+    jni$_.JString string,
+    jni$_.JObject sequence,
+  ) {
+    final _$string = string.reference;
+    final _$sequence = sequence.reference;
+    return _fromAttributePool(
+            reference.pointer,
+            _id_fromAttributePool as jni$_.JMethodIDPtr,
+            _$string.pointer,
+            _$sequence.pointer)
+        .object<Entity>(const $Entity$Type());
+  }
+
+  static final _id_fromAttributePool$1 = _class.instanceMethodId(
+    r'fromAttributePool',
+    r'(Lkotlin/sequences/Sequence;)Lkotlin/sequences/Sequence;',
+  );
+
+  static final _fromAttributePool$1 = jni$_.ProtectedJniExtensions.lookup<
+              jni$_.NativeFunction<
+                  jni$_.JniResult Function(
+                      jni$_.Pointer<jni$_.Void>,
+                      jni$_.JMethodIDPtr,
+                      jni$_.VarArgs<(jni$_.Pointer<jni$_.Void>,)>)>>(
+          'globalEnv_CallObjectMethod')
+      .asFunction<
+          jni$_.JniResult Function(jni$_.Pointer<jni$_.Void>,
+              jni$_.JMethodIDPtr, jni$_.Pointer<jni$_.Void>)>();
+
+  /// from: `public final kotlin.sequences.Sequence fromAttributePool(kotlin.sequences.Sequence sequence)`
+  /// The returned object must be released after use, by calling the [release] method.
+  jni$_.JObject fromAttributePool$1(
+    jni$_.JObject sequence,
+  ) {
+    final _$sequence = sequence.reference;
+    return _fromAttributePool$1(reference.pointer,
+            _id_fromAttributePool$1 as jni$_.JMethodIDPtr, _$sequence.pointer)
+        .object<jni$_.JObject>(const jni$_.JObjectType());
+  }
+
   static final _id_new$ = _class.constructorId(
-    r'(Lapp/cash/sqldelight/db/SqlDriver;)V',
+    r'(Lkotlin/jvm/internal/DefaultConstructorMarker;)V',
   );
 
   static final _new$ = jni$_.ProtectedJniExtensions.lookup<
@@ -4813,118 +468,72 @@ class TestingQueries extends jni$_.JObject {
           jni$_.JniResult Function(jni$_.Pointer<jni$_.Void>,
               jni$_.JMethodIDPtr, jni$_.Pointer<jni$_.Void>)>();
 
-  /// from: `public void <init>(app.cash.sqldelight.db.SqlDriver sqlDriver)`
+  /// from: `synthetic public void <init>(kotlin.jvm.internal.DefaultConstructorMarker defaultConstructorMarker)`
   /// The returned object must be released after use, by calling the [release] method.
-  factory TestingQueries(
-    jni$_.JObject sqlDriver,
+  factory Entity$Companion(
+    jni$_.JObject? defaultConstructorMarker,
   ) {
-    final _$sqlDriver = sqlDriver.reference;
-    return TestingQueries.fromReference(_new$(_class.reference.pointer,
-            _id_new$ as jni$_.JMethodIDPtr, _$sqlDriver.pointer)
+    final _$defaultConstructorMarker =
+        defaultConstructorMarker?.reference ?? jni$_.jNullReference;
+    return Entity$Companion.fromReference(_new$(_class.reference.pointer,
+            _id_new$ as jni$_.JMethodIDPtr, _$defaultConstructorMarker.pointer)
         .reference);
-  }
-
-  static final _id_cleanAllDataTables = _class.instanceMethodId(
-    r'cleanAllDataTables',
-    r'()V',
-  );
-
-  static final _cleanAllDataTables = jni$_.ProtectedJniExtensions.lookup<
-          jni$_.NativeFunction<
-              jni$_.JThrowablePtr Function(
-                jni$_.Pointer<jni$_.Void>,
-                jni$_.JMethodIDPtr,
-              )>>('globalEnv_CallVoidMethod')
-      .asFunction<
-          jni$_.JThrowablePtr Function(
-            jni$_.Pointer<jni$_.Void>,
-            jni$_.JMethodIDPtr,
-          )>();
-
-  /// from: `public final void cleanAllDataTables()`
-  void cleanAllDataTables() {
-    _cleanAllDataTables(
-            reference.pointer, _id_cleanAllDataTables as jni$_.JMethodIDPtr)
-        .check();
-  }
-
-  static final _id_cleanAllSystemTables = _class.instanceMethodId(
-    r'cleanAllSystemTables',
-    r'()V',
-  );
-
-  static final _cleanAllSystemTables = jni$_.ProtectedJniExtensions.lookup<
-          jni$_.NativeFunction<
-              jni$_.JThrowablePtr Function(
-                jni$_.Pointer<jni$_.Void>,
-                jni$_.JMethodIDPtr,
-              )>>('globalEnv_CallVoidMethod')
-      .asFunction<
-          jni$_.JThrowablePtr Function(
-            jni$_.Pointer<jni$_.Void>,
-            jni$_.JMethodIDPtr,
-          )>();
-
-  /// from: `public final void cleanAllSystemTables()`
-  void cleanAllSystemTables() {
-    _cleanAllSystemTables(
-            reference.pointer, _id_cleanAllSystemTables as jni$_.JMethodIDPtr)
-        .check();
   }
 }
 
-final class $TestingQueries$NullableType
-    extends jni$_.JObjType<TestingQueries?> {
+final class $Entity$Companion$NullableType
+    extends jni$_.JObjType<Entity$Companion?> {
   @jni$_.internal
-  const $TestingQueries$NullableType();
+  const $Entity$Companion$NullableType();
 
   @jni$_.internal
   @core$_.override
   String get signature =>
-      r'Lcom/daylightcomputer/coreplugin/database/sqldefinitions/TestingQueries;';
+      r'Lcom/daylightcomputer/coreplugin/entity/Entity$Companion;';
 
   @jni$_.internal
   @core$_.override
-  TestingQueries? fromReference(jni$_.JReference reference) => reference.isNull
-      ? null
-      : TestingQueries.fromReference(
-          reference,
-        );
+  Entity$Companion? fromReference(jni$_.JReference reference) =>
+      reference.isNull
+          ? null
+          : Entity$Companion.fromReference(
+              reference,
+            );
   @jni$_.internal
   @core$_.override
   jni$_.JObjType get superType => const jni$_.JObjectType();
 
   @jni$_.internal
   @core$_.override
-  jni$_.JObjType<TestingQueries?> get nullableType => this;
+  jni$_.JObjType<Entity$Companion?> get nullableType => this;
 
   @jni$_.internal
   @core$_.override
   final superCount = 1;
 
   @core$_.override
-  int get hashCode => ($TestingQueries$NullableType).hashCode;
+  int get hashCode => ($Entity$Companion$NullableType).hashCode;
 
   @core$_.override
   bool operator ==(Object other) {
-    return other.runtimeType == ($TestingQueries$NullableType) &&
-        other is $TestingQueries$NullableType;
+    return other.runtimeType == ($Entity$Companion$NullableType) &&
+        other is $Entity$Companion$NullableType;
   }
 }
 
-final class $TestingQueries$Type extends jni$_.JObjType<TestingQueries> {
+final class $Entity$Companion$Type extends jni$_.JObjType<Entity$Companion> {
   @jni$_.internal
-  const $TestingQueries$Type();
+  const $Entity$Companion$Type();
 
   @jni$_.internal
   @core$_.override
   String get signature =>
-      r'Lcom/daylightcomputer/coreplugin/database/sqldefinitions/TestingQueries;';
+      r'Lcom/daylightcomputer/coreplugin/entity/Entity$Companion;';
 
   @jni$_.internal
   @core$_.override
-  TestingQueries fromReference(jni$_.JReference reference) =>
-      TestingQueries.fromReference(
+  Entity$Companion fromReference(jni$_.JReference reference) =>
+      Entity$Companion.fromReference(
         reference,
       );
   @jni$_.internal
@@ -4933,43 +542,53 @@ final class $TestingQueries$Type extends jni$_.JObjType<TestingQueries> {
 
   @jni$_.internal
   @core$_.override
-  jni$_.JObjType<TestingQueries?> get nullableType =>
-      const $TestingQueries$NullableType();
+  jni$_.JObjType<Entity$Companion?> get nullableType =>
+      const $Entity$Companion$NullableType();
 
   @jni$_.internal
   @core$_.override
   final superCount = 1;
 
   @core$_.override
-  int get hashCode => ($TestingQueries$Type).hashCode;
+  int get hashCode => ($Entity$Companion$Type).hashCode;
 
   @core$_.override
   bool operator ==(Object other) {
-    return other.runtimeType == ($TestingQueries$Type) &&
-        other is $TestingQueries$Type;
+    return other.runtimeType == ($Entity$Companion$Type) &&
+        other is $Entity$Companion$Type;
   }
 }
 
-/// from: `com.daylightcomputer.coreplugin.database.sqldefinitions.Users`
-class Users extends jni$_.JObject {
+/// from: `com.daylightcomputer.coreplugin.entity.Entity`
+class Entity extends jni$_.JObject {
   @jni$_.internal
   @core$_.override
-  final jni$_.JObjType<Users> $type;
+  final jni$_.JObjType<Entity> $type;
 
   @jni$_.internal
-  Users.fromReference(
+  Entity.fromReference(
     jni$_.JReference reference,
   )   : $type = type,
         super.fromReference(reference);
 
-  static final _class = jni$_.JClass.forName(
-      r'com/daylightcomputer/coreplugin/database/sqldefinitions/Users');
+  static final _class =
+      jni$_.JClass.forName(r'com/daylightcomputer/coreplugin/entity/Entity');
 
   /// The type which includes information such as the signature of this class.
-  static const nullableType = $Users$NullableType();
-  static const type = $Users$Type();
+  static const nullableType = $Entity$NullableType();
+  static const type = $Entity$Type();
+  static final _id_Companion = _class.staticFieldId(
+    r'Companion',
+    r'Lcom/daylightcomputer/coreplugin/entity/Entity$Companion;',
+  );
+
+  /// from: `static public final com.daylightcomputer.coreplugin.entity.Entity$Companion Companion`
+  /// The returned object must be released after use, by calling the [release] method.
+  static Entity$Companion get Companion =>
+      _id_Companion.get(_class, const $Entity$Companion$Type());
+
   static final _id_new$ = _class.constructorId(
-    r'(Ljava/lang/String;Ljava/lang/String;)V',
+    r'(Ljava/lang/String;Ljava/util/Map;)V',
   );
 
   static final _new$ = jni$_.ProtectedJniExtensions.lookup<
@@ -4989,16 +608,16 @@ class Users extends jni$_.JObject {
               jni$_.Pointer<jni$_.Void>,
               jni$_.Pointer<jni$_.Void>)>();
 
-  /// from: `public void <init>(java.lang.String string, java.lang.String string1)`
+  /// from: `public void <init>(java.lang.String string, java.util.Map map)`
   /// The returned object must be released after use, by calling the [release] method.
-  factory Users(
+  factory Entity(
     jni$_.JString string,
-    jni$_.JString? string1,
+    jni$_.JMap<jni$_.JString, AttributeValue> map,
   ) {
     final _$string = string.reference;
-    final _$string1 = string1?.reference ?? jni$_.jNullReference;
-    return Users.fromReference(_new$(_class.reference.pointer,
-            _id_new$ as jni$_.JMethodIDPtr, _$string.pointer, _$string1.pointer)
+    final _$map = map.reference;
+    return Entity.fromReference(_new$(_class.reference.pointer,
+            _id_new$ as jni$_.JMethodIDPtr, _$string.pointer, _$map.pointer)
         .reference);
   }
 
@@ -5026,12 +645,12 @@ class Users extends jni$_.JObject {
         .object<jni$_.JString>(const jni$_.JStringType());
   }
 
-  static final _id_getName = _class.instanceMethodId(
-    r'getName',
-    r'()Ljava/lang/String;',
+  static final _id_getAttributes = _class.instanceMethodId(
+    r'getAttributes',
+    r'()Ljava/util/Map;',
   );
 
-  static final _getName = jni$_.ProtectedJniExtensions.lookup<
+  static final _getAttributes = jni$_.ProtectedJniExtensions.lookup<
           jni$_.NativeFunction<
               jni$_.JniResult Function(
                 jni$_.Pointer<jni$_.Void>,
@@ -5043,11 +662,14 @@ class Users extends jni$_.JObject {
             jni$_.JMethodIDPtr,
           )>();
 
-  /// from: `public final java.lang.String getName()`
+  /// from: `public final java.util.Map getAttributes()`
   /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JString? getName() {
-    return _getName(reference.pointer, _id_getName as jni$_.JMethodIDPtr)
-        .object<jni$_.JString?>(const jni$_.JStringNullableType());
+  jni$_.JMap<jni$_.JString, AttributeValue> getAttributes() {
+    return _getAttributes(
+            reference.pointer, _id_getAttributes as jni$_.JMethodIDPtr)
+        .object<jni$_.JMap<jni$_.JString, AttributeValue>>(
+            const jni$_.JMapType<jni$_.JString, AttributeValue>(
+                jni$_.JStringType(), $AttributeValue$Type()));
   }
 
   static final _id_component1 = _class.instanceMethodId(
@@ -5076,7 +698,7 @@ class Users extends jni$_.JObject {
 
   static final _id_component2 = _class.instanceMethodId(
     r'component2',
-    r'()Ljava/lang/String;',
+    r'()Ljava/util/Map;',
   );
 
   static final _component2 = jni$_.ProtectedJniExtensions.lookup<
@@ -5091,16 +713,18 @@ class Users extends jni$_.JObject {
             jni$_.JMethodIDPtr,
           )>();
 
-  /// from: `public final java.lang.String component2()`
+  /// from: `public final java.util.Map component2()`
   /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JString? component2() {
+  jni$_.JMap<jni$_.JString, AttributeValue> component2() {
     return _component2(reference.pointer, _id_component2 as jni$_.JMethodIDPtr)
-        .object<jni$_.JString?>(const jni$_.JStringNullableType());
+        .object<jni$_.JMap<jni$_.JString, AttributeValue>>(
+            const jni$_.JMapType<jni$_.JString, AttributeValue>(
+                jni$_.JStringType(), $AttributeValue$Type()));
   }
 
   static final _id_copy = _class.instanceMethodId(
     r'copy',
-    r'(Ljava/lang/String;Ljava/lang/String;)Lcom/daylightcomputer/coreplugin/database/sqldefinitions/Users;',
+    r'(Ljava/lang/String;Ljava/util/Map;)Lcom/daylightcomputer/coreplugin/entity/Entity;',
   );
 
   static final _copy = jni$_.ProtectedJniExtensions.lookup<
@@ -5120,17 +744,17 @@ class Users extends jni$_.JObject {
               jni$_.Pointer<jni$_.Void>,
               jni$_.Pointer<jni$_.Void>)>();
 
-  /// from: `public final com.daylightcomputer.coreplugin.database.sqldefinitions.Users copy(java.lang.String string, java.lang.String string1)`
+  /// from: `public final com.daylightcomputer.coreplugin.entity.Entity copy(java.lang.String string, java.util.Map map)`
   /// The returned object must be released after use, by calling the [release] method.
-  Users copy(
+  Entity copy(
     jni$_.JString string,
-    jni$_.JString? string1,
+    jni$_.JMap<jni$_.JString, AttributeValue> map,
   ) {
     final _$string = string.reference;
-    final _$string1 = string1?.reference ?? jni$_.jNullReference;
+    final _$map = map.reference;
     return _copy(reference.pointer, _id_copy as jni$_.JMethodIDPtr,
-            _$string.pointer, _$string1.pointer)
-        .object<Users>(const $Users$Type());
+            _$string.pointer, _$map.pointer)
+        .object<Entity>(const $Entity$Type());
   }
 
   static final _id_toString$1 = _class.instanceMethodId(
@@ -5207,20 +831,19 @@ class Users extends jni$_.JObject {
   }
 }
 
-final class $Users$NullableType extends jni$_.JObjType<Users?> {
+final class $Entity$NullableType extends jni$_.JObjType<Entity?> {
   @jni$_.internal
-  const $Users$NullableType();
+  const $Entity$NullableType();
 
   @jni$_.internal
   @core$_.override
-  String get signature =>
-      r'Lcom/daylightcomputer/coreplugin/database/sqldefinitions/Users;';
+  String get signature => r'Lcom/daylightcomputer/coreplugin/entity/Entity;';
 
   @jni$_.internal
   @core$_.override
-  Users? fromReference(jni$_.JReference reference) => reference.isNull
+  Entity? fromReference(jni$_.JReference reference) => reference.isNull
       ? null
-      : Users.fromReference(
+      : Entity.fromReference(
           reference,
         );
   @jni$_.internal
@@ -5229,34 +852,33 @@ final class $Users$NullableType extends jni$_.JObjType<Users?> {
 
   @jni$_.internal
   @core$_.override
-  jni$_.JObjType<Users?> get nullableType => this;
+  jni$_.JObjType<Entity?> get nullableType => this;
 
   @jni$_.internal
   @core$_.override
   final superCount = 1;
 
   @core$_.override
-  int get hashCode => ($Users$NullableType).hashCode;
+  int get hashCode => ($Entity$NullableType).hashCode;
 
   @core$_.override
   bool operator ==(Object other) {
-    return other.runtimeType == ($Users$NullableType) &&
-        other is $Users$NullableType;
+    return other.runtimeType == ($Entity$NullableType) &&
+        other is $Entity$NullableType;
   }
 }
 
-final class $Users$Type extends jni$_.JObjType<Users> {
+final class $Entity$Type extends jni$_.JObjType<Entity> {
   @jni$_.internal
-  const $Users$Type();
+  const $Entity$Type();
 
   @jni$_.internal
   @core$_.override
-  String get signature =>
-      r'Lcom/daylightcomputer/coreplugin/database/sqldefinitions/Users;';
+  String get signature => r'Lcom/daylightcomputer/coreplugin/entity/Entity;';
 
   @jni$_.internal
   @core$_.override
-  Users fromReference(jni$_.JReference reference) => Users.fromReference(
+  Entity fromReference(jni$_.JReference reference) => Entity.fromReference(
         reference,
       );
   @jni$_.internal
@@ -5265,41 +887,41 @@ final class $Users$Type extends jni$_.JObjType<Users> {
 
   @jni$_.internal
   @core$_.override
-  jni$_.JObjType<Users?> get nullableType => const $Users$NullableType();
+  jni$_.JObjType<Entity?> get nullableType => const $Entity$NullableType();
 
   @jni$_.internal
   @core$_.override
   final superCount = 1;
 
   @core$_.override
-  int get hashCode => ($Users$Type).hashCode;
+  int get hashCode => ($Entity$Type).hashCode;
 
   @core$_.override
   bool operator ==(Object other) {
-    return other.runtimeType == ($Users$Type) && other is $Users$Type;
+    return other.runtimeType == ($Entity$Type) && other is $Entity$Type;
   }
 }
 
-/// from: `com.daylightcomputer.coreplugin.database.sqldefinitions.UsersClientsQueries`
-class UsersClientsQueries extends jni$_.JObject {
+/// from: `com.daylightcomputer.coreplugin.entity.node.DocumentNode`
+class DocumentNode extends Node {
   @jni$_.internal
   @core$_.override
-  final jni$_.JObjType<UsersClientsQueries> $type;
+  final jni$_.JObjType<DocumentNode> $type;
 
   @jni$_.internal
-  UsersClientsQueries.fromReference(
+  DocumentNode.fromReference(
     jni$_.JReference reference,
   )   : $type = type,
         super.fromReference(reference);
 
   static final _class = jni$_.JClass.forName(
-      r'com/daylightcomputer/coreplugin/database/sqldefinitions/UsersClientsQueries');
+      r'com/daylightcomputer/coreplugin/entity/node/DocumentNode');
 
   /// The type which includes information such as the signature of this class.
-  static const nullableType = $UsersClientsQueries$NullableType();
-  static const type = $UsersClientsQueries$Type();
+  static const nullableType = $DocumentNode$NullableType();
+  static const type = $DocumentNode$Type();
   static final _id_new$ = _class.constructorId(
-    r'(Lapp/cash/sqldelight/db/SqlDriver;)V',
+    r'(Lcom/daylightcomputer/coreplugin/entity/Entity;)V',
   );
 
   static final _new$ = jni$_.ProtectedJniExtensions.lookup<
@@ -5313,62 +935,379 @@ class UsersClientsQueries extends jni$_.JObject {
           jni$_.JniResult Function(jni$_.Pointer<jni$_.Void>,
               jni$_.JMethodIDPtr, jni$_.Pointer<jni$_.Void>)>();
 
-  /// from: `public void <init>(app.cash.sqldelight.db.SqlDriver sqlDriver)`
+  /// from: `public void <init>(com.daylightcomputer.coreplugin.entity.Entity entity)`
   /// The returned object must be released after use, by calling the [release] method.
-  factory UsersClientsQueries(
-    jni$_.JObject sqlDriver,
+  factory DocumentNode(
+    Entity entity,
   ) {
-    final _$sqlDriver = sqlDriver.reference;
-    return UsersClientsQueries.fromReference(_new$(_class.reference.pointer,
-            _id_new$ as jni$_.JMethodIDPtr, _$sqlDriver.pointer)
+    final _$entity = entity.reference;
+    return DocumentNode.fromReference(_new$(_class.reference.pointer,
+            _id_new$ as jni$_.JMethodIDPtr, _$entity.pointer)
         .reference);
   }
 
-  static final _id_getUserFromClientId = _class.instanceMethodId(
-    r'getUserFromClientId',
-    r'(Ljava/lang/String;Lkotlin/jvm/functions/Function2;)Lapp/cash/sqldelight/Query;',
+  static final _id_getTitle = _class.instanceMethodId(
+    r'getTitle',
+    r'()Ljava/lang/String;',
   );
 
-  static final _getUserFromClientId = jni$_.ProtectedJniExtensions.lookup<
+  static final _getTitle = jni$_.ProtectedJniExtensions.lookup<
           jni$_.NativeFunction<
               jni$_.JniResult Function(
-                  jni$_.Pointer<jni$_.Void>,
-                  jni$_.JMethodIDPtr,
-                  jni$_.VarArgs<
-                      (
-                        jni$_.Pointer<jni$_.Void>,
-                        jni$_.Pointer<jni$_.Void>
-                      )>)>>('globalEnv_CallObjectMethod')
+                jni$_.Pointer<jni$_.Void>,
+                jni$_.JMethodIDPtr,
+              )>>('globalEnv_CallObjectMethod')
       .asFunction<
           jni$_.JniResult Function(
-              jni$_.Pointer<jni$_.Void>,
-              jni$_.JMethodIDPtr,
-              jni$_.Pointer<jni$_.Void>,
-              jni$_.Pointer<jni$_.Void>)>();
+            jni$_.Pointer<jni$_.Void>,
+            jni$_.JMethodIDPtr,
+          )>();
 
-  /// from: `public final app.cash.sqldelight.Query getUserFromClientId(java.lang.String string, kotlin.jvm.functions.Function2 function2)`
+  /// from: `public final java.lang.String getTitle()`
   /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JObject getUserFromClientId<$T extends jni$_.JObject>(
-    jni$_.JString string,
-    jni$_.JObject function2, {
-    required jni$_.JObjType<$T> T,
-  }) {
-    final _$string = string.reference;
-    final _$function2 = function2.reference;
-    return _getUserFromClientId(
-            reference.pointer,
-            _id_getUserFromClientId as jni$_.JMethodIDPtr,
-            _$string.pointer,
-            _$function2.pointer)
-        .object<jni$_.JObject>(const jni$_.JObjectType());
+  jni$_.JString getTitle() {
+    return _getTitle(reference.pointer, _id_getTitle as jni$_.JMethodIDPtr)
+        .object<jni$_.JString>(const jni$_.JStringType());
   }
 
-  static final _id_getUserFromClientId$1 = _class.instanceMethodId(
-    r'getUserFromClientId',
-    r'(Ljava/lang/String;)Lapp/cash/sqldelight/Query;',
+  static final _id_getAuthor = _class.instanceMethodId(
+    r'getAuthor',
+    r'()Ljava/lang/String;',
   );
 
-  static final _getUserFromClientId$1 = jni$_.ProtectedJniExtensions.lookup<
+  static final _getAuthor = jni$_.ProtectedJniExtensions.lookup<
+          jni$_.NativeFunction<
+              jni$_.JniResult Function(
+                jni$_.Pointer<jni$_.Void>,
+                jni$_.JMethodIDPtr,
+              )>>('globalEnv_CallObjectMethod')
+      .asFunction<
+          jni$_.JniResult Function(
+            jni$_.Pointer<jni$_.Void>,
+            jni$_.JMethodIDPtr,
+          )>();
+
+  /// from: `public final java.lang.String getAuthor()`
+  /// The returned object must be released after use, by calling the [release] method.
+  jni$_.JString? getAuthor() {
+    return _getAuthor(reference.pointer, _id_getAuthor as jni$_.JMethodIDPtr)
+        .object<jni$_.JString?>(const jni$_.JStringNullableType());
+  }
+}
+
+final class $DocumentNode$NullableType extends jni$_.JObjType<DocumentNode?> {
+  @jni$_.internal
+  const $DocumentNode$NullableType();
+
+  @jni$_.internal
+  @core$_.override
+  String get signature =>
+      r'Lcom/daylightcomputer/coreplugin/entity/node/DocumentNode;';
+
+  @jni$_.internal
+  @core$_.override
+  DocumentNode? fromReference(jni$_.JReference reference) => reference.isNull
+      ? null
+      : DocumentNode.fromReference(
+          reference,
+        );
+  @jni$_.internal
+  @core$_.override
+  jni$_.JObjType get superType => const $Node$Type();
+
+  @jni$_.internal
+  @core$_.override
+  jni$_.JObjType<DocumentNode?> get nullableType => this;
+
+  @jni$_.internal
+  @core$_.override
+  final superCount = 2;
+
+  @core$_.override
+  int get hashCode => ($DocumentNode$NullableType).hashCode;
+
+  @core$_.override
+  bool operator ==(Object other) {
+    return other.runtimeType == ($DocumentNode$NullableType) &&
+        other is $DocumentNode$NullableType;
+  }
+}
+
+final class $DocumentNode$Type extends jni$_.JObjType<DocumentNode> {
+  @jni$_.internal
+  const $DocumentNode$Type();
+
+  @jni$_.internal
+  @core$_.override
+  String get signature =>
+      r'Lcom/daylightcomputer/coreplugin/entity/node/DocumentNode;';
+
+  @jni$_.internal
+  @core$_.override
+  DocumentNode fromReference(jni$_.JReference reference) =>
+      DocumentNode.fromReference(
+        reference,
+      );
+  @jni$_.internal
+  @core$_.override
+  jni$_.JObjType get superType => const $Node$Type();
+
+  @jni$_.internal
+  @core$_.override
+  jni$_.JObjType<DocumentNode?> get nullableType =>
+      const $DocumentNode$NullableType();
+
+  @jni$_.internal
+  @core$_.override
+  final superCount = 2;
+
+  @core$_.override
+  int get hashCode => ($DocumentNode$Type).hashCode;
+
+  @core$_.override
+  bool operator ==(Object other) {
+    return other.runtimeType == ($DocumentNode$Type) &&
+        other is $DocumentNode$Type;
+  }
+}
+
+/// from: `com.daylightcomputer.coreplugin.entity.node.Node`
+class Node extends jni$_.JObject {
+  @jni$_.internal
+  @core$_.override
+  final jni$_.JObjType<Node> $type;
+
+  @jni$_.internal
+  Node.fromReference(
+    jni$_.JReference reference,
+  )   : $type = type,
+        super.fromReference(reference);
+
+  static final _class =
+      jni$_.JClass.forName(r'com/daylightcomputer/coreplugin/entity/node/Node');
+
+  /// The type which includes information such as the signature of this class.
+  static const nullableType = $Node$NullableType();
+  static const type = $Node$Type();
+  static final _id_new$ = _class.constructorId(
+    r'(Lcom/daylightcomputer/coreplugin/entity/Entity;)V',
+  );
+
+  static final _new$ = jni$_.ProtectedJniExtensions.lookup<
+              jni$_.NativeFunction<
+                  jni$_.JniResult Function(
+                      jni$_.Pointer<jni$_.Void>,
+                      jni$_.JMethodIDPtr,
+                      jni$_.VarArgs<(jni$_.Pointer<jni$_.Void>,)>)>>(
+          'globalEnv_NewObject')
+      .asFunction<
+          jni$_.JniResult Function(jni$_.Pointer<jni$_.Void>,
+              jni$_.JMethodIDPtr, jni$_.Pointer<jni$_.Void>)>();
+
+  /// from: `public void <init>(com.daylightcomputer.coreplugin.entity.Entity entity)`
+  /// The returned object must be released after use, by calling the [release] method.
+  factory Node(
+    Entity entity,
+  ) {
+    final _$entity = entity.reference;
+    return Node.fromReference(_new$(_class.reference.pointer,
+            _id_new$ as jni$_.JMethodIDPtr, _$entity.pointer)
+        .reference);
+  }
+
+  static final _id_getId = _class.instanceMethodId(
+    r'getId',
+    r'()Ljava/lang/String;',
+  );
+
+  static final _getId = jni$_.ProtectedJniExtensions.lookup<
+          jni$_.NativeFunction<
+              jni$_.JniResult Function(
+                jni$_.Pointer<jni$_.Void>,
+                jni$_.JMethodIDPtr,
+              )>>('globalEnv_CallObjectMethod')
+      .asFunction<
+          jni$_.JniResult Function(
+            jni$_.Pointer<jni$_.Void>,
+            jni$_.JMethodIDPtr,
+          )>();
+
+  /// from: `public final java.lang.String getId()`
+  /// The returned object must be released after use, by calling the [release] method.
+  jni$_.JString getId() {
+    return _getId(reference.pointer, _id_getId as jni$_.JMethodIDPtr)
+        .object<jni$_.JString>(const jni$_.JStringType());
+  }
+
+  static final _id_getType = _class.instanceMethodId(
+    r'getType',
+    r'()Lcom/daylightcomputer/coreplugin/entity/node/NodeTypes;',
+  );
+
+  static final _getType = jni$_.ProtectedJniExtensions.lookup<
+          jni$_.NativeFunction<
+              jni$_.JniResult Function(
+                jni$_.Pointer<jni$_.Void>,
+                jni$_.JMethodIDPtr,
+              )>>('globalEnv_CallObjectMethod')
+      .asFunction<
+          jni$_.JniResult Function(
+            jni$_.Pointer<jni$_.Void>,
+            jni$_.JMethodIDPtr,
+          )>();
+
+  /// from: `public final com.daylightcomputer.coreplugin.entity.node.NodeTypes getType()`
+  /// The returned object must be released after use, by calling the [release] method.
+  NodeTypes getType() {
+    return _getType(reference.pointer, _id_getType as jni$_.JMethodIDPtr)
+        .object<NodeTypes>(const $NodeTypes$Type());
+  }
+
+  static final _id_getLastModifiedAtTimestamp = _class.instanceMethodId(
+    r'getLastModifiedAtTimestamp',
+    r'()Ljava/lang/String;',
+  );
+
+  static final _getLastModifiedAtTimestamp =
+      jni$_.ProtectedJniExtensions.lookup<
+              jni$_.NativeFunction<
+                  jni$_.JniResult Function(
+                    jni$_.Pointer<jni$_.Void>,
+                    jni$_.JMethodIDPtr,
+                  )>>('globalEnv_CallObjectMethod')
+          .asFunction<
+              jni$_.JniResult Function(
+                jni$_.Pointer<jni$_.Void>,
+                jni$_.JMethodIDPtr,
+              )>();
+
+  /// from: `public final java.lang.String getLastModifiedAtTimestamp()`
+  /// The returned object must be released after use, by calling the [release] method.
+  jni$_.JString getLastModifiedAtTimestamp() {
+    return _getLastModifiedAtTimestamp(reference.pointer,
+            _id_getLastModifiedAtTimestamp as jni$_.JMethodIDPtr)
+        .object<jni$_.JString>(const jni$_.JStringType());
+  }
+
+  static final _id_isDeleted = _class.instanceMethodId(
+    r'isDeleted',
+    r'()Z',
+  );
+
+  static final _isDeleted = jni$_.ProtectedJniExtensions.lookup<
+          jni$_.NativeFunction<
+              jni$_.JniResult Function(
+                jni$_.Pointer<jni$_.Void>,
+                jni$_.JMethodIDPtr,
+              )>>('globalEnv_CallBooleanMethod')
+      .asFunction<
+          jni$_.JniResult Function(
+            jni$_.Pointer<jni$_.Void>,
+            jni$_.JMethodIDPtr,
+          )>();
+
+  /// from: `public final boolean isDeleted()`
+  bool isDeleted() {
+    return _isDeleted(reference.pointer, _id_isDeleted as jni$_.JMethodIDPtr)
+        .boolean;
+  }
+}
+
+final class $Node$NullableType extends jni$_.JObjType<Node?> {
+  @jni$_.internal
+  const $Node$NullableType();
+
+  @jni$_.internal
+  @core$_.override
+  String get signature => r'Lcom/daylightcomputer/coreplugin/entity/node/Node;';
+
+  @jni$_.internal
+  @core$_.override
+  Node? fromReference(jni$_.JReference reference) => reference.isNull
+      ? null
+      : Node.fromReference(
+          reference,
+        );
+  @jni$_.internal
+  @core$_.override
+  jni$_.JObjType get superType => const jni$_.JObjectType();
+
+  @jni$_.internal
+  @core$_.override
+  jni$_.JObjType<Node?> get nullableType => this;
+
+  @jni$_.internal
+  @core$_.override
+  final superCount = 1;
+
+  @core$_.override
+  int get hashCode => ($Node$NullableType).hashCode;
+
+  @core$_.override
+  bool operator ==(Object other) {
+    return other.runtimeType == ($Node$NullableType) &&
+        other is $Node$NullableType;
+  }
+}
+
+final class $Node$Type extends jni$_.JObjType<Node> {
+  @jni$_.internal
+  const $Node$Type();
+
+  @jni$_.internal
+  @core$_.override
+  String get signature => r'Lcom/daylightcomputer/coreplugin/entity/node/Node;';
+
+  @jni$_.internal
+  @core$_.override
+  Node fromReference(jni$_.JReference reference) => Node.fromReference(
+        reference,
+      );
+  @jni$_.internal
+  @core$_.override
+  jni$_.JObjType get superType => const jni$_.JObjectType();
+
+  @jni$_.internal
+  @core$_.override
+  jni$_.JObjType<Node?> get nullableType => const $Node$NullableType();
+
+  @jni$_.internal
+  @core$_.override
+  final superCount = 1;
+
+  @core$_.override
+  int get hashCode => ($Node$Type).hashCode;
+
+  @core$_.override
+  bool operator ==(Object other) {
+    return other.runtimeType == ($Node$Type) && other is $Node$Type;
+  }
+}
+
+/// from: `com.daylightcomputer.coreplugin.entity.node.NodeTypes$Companion`
+class NodeTypes$Companion extends jni$_.JObject {
+  @jni$_.internal
+  @core$_.override
+  final jni$_.JObjType<NodeTypes$Companion> $type;
+
+  @jni$_.internal
+  NodeTypes$Companion.fromReference(
+    jni$_.JReference reference,
+  )   : $type = type,
+        super.fromReference(reference);
+
+  static final _class = jni$_.JClass.forName(
+      r'com/daylightcomputer/coreplugin/entity/node/NodeTypes$Companion');
+
+  /// The type which includes information such as the signature of this class.
+  static const nullableType = $NodeTypes$Companion$NullableType();
+  static const type = $NodeTypes$Companion$Type();
+  static final _id_fromString = _class.instanceMethodId(
+    r'fromString',
+    r'(Ljava/lang/String;)Lcom/daylightcomputer/coreplugin/entity/node/NodeTypes;',
+  );
+
+  static final _fromString = jni$_.ProtectedJniExtensions.lookup<
               jni$_.NativeFunction<
                   jni$_.JniResult Function(
                       jni$_.Pointer<jni$_.Void>,
@@ -5379,102 +1318,88 @@ class UsersClientsQueries extends jni$_.JObject {
           jni$_.JniResult Function(jni$_.Pointer<jni$_.Void>,
               jni$_.JMethodIDPtr, jni$_.Pointer<jni$_.Void>)>();
 
-  /// from: `public final app.cash.sqldelight.Query getUserFromClientId(java.lang.String string)`
+  /// from: `public final com.daylightcomputer.coreplugin.entity.node.NodeTypes fromString(java.lang.String string)`
   /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JObject getUserFromClientId$1(
+  NodeTypes fromString(
     jni$_.JString string,
   ) {
     final _$string = string.reference;
-    return _getUserFromClientId$1(reference.pointer,
-            _id_getUserFromClientId$1 as jni$_.JMethodIDPtr, _$string.pointer)
-        .object<jni$_.JObject>(const jni$_.JObjectType());
+    return _fromString(reference.pointer, _id_fromString as jni$_.JMethodIDPtr,
+            _$string.pointer)
+        .object<NodeTypes>(const $NodeTypes$Type());
   }
 
-  static final _id_addKnownClient = _class.instanceMethodId(
-    r'addKnownClient',
-    r'(Ljava/lang/String;Ljava/lang/String;)V',
+  static final _id_createNodeFromEntity = _class.instanceMethodId(
+    r'createNodeFromEntity',
+    r'(Lcom/daylightcomputer/coreplugin/entity/Entity;)Lcom/daylightcomputer/coreplugin/entity/node/Node;',
   );
 
-  static final _addKnownClient = jni$_.ProtectedJniExtensions.lookup<
-          jni$_.NativeFunction<
-              jni$_.JThrowablePtr Function(
-                  jni$_.Pointer<jni$_.Void>,
-                  jni$_.JMethodIDPtr,
-                  jni$_.VarArgs<
-                      (
-                        jni$_.Pointer<jni$_.Void>,
-                        jni$_.Pointer<jni$_.Void>
-                      )>)>>('globalEnv_CallVoidMethod')
+  static final _createNodeFromEntity = jni$_.ProtectedJniExtensions.lookup<
+              jni$_.NativeFunction<
+                  jni$_.JniResult Function(
+                      jni$_.Pointer<jni$_.Void>,
+                      jni$_.JMethodIDPtr,
+                      jni$_.VarArgs<(jni$_.Pointer<jni$_.Void>,)>)>>(
+          'globalEnv_CallObjectMethod')
       .asFunction<
-          jni$_.JThrowablePtr Function(
-              jni$_.Pointer<jni$_.Void>,
-              jni$_.JMethodIDPtr,
-              jni$_.Pointer<jni$_.Void>,
-              jni$_.Pointer<jni$_.Void>)>();
+          jni$_.JniResult Function(jni$_.Pointer<jni$_.Void>,
+              jni$_.JMethodIDPtr, jni$_.Pointer<jni$_.Void>)>();
 
-  /// from: `public final void addKnownClient(java.lang.String string, java.lang.String string1)`
-  void addKnownClient(
-    jni$_.JString string,
-    jni$_.JString? string1,
+  /// from: `public final com.daylightcomputer.coreplugin.entity.node.Node createNodeFromEntity(com.daylightcomputer.coreplugin.entity.Entity entity)`
+  /// The returned object must be released after use, by calling the [release] method.
+  Node? createNodeFromEntity(
+    Entity entity,
   ) {
-    final _$string = string.reference;
-    final _$string1 = string1?.reference ?? jni$_.jNullReference;
-    _addKnownClient(reference.pointer, _id_addKnownClient as jni$_.JMethodIDPtr,
-            _$string.pointer, _$string1.pointer)
-        .check();
+    final _$entity = entity.reference;
+    return _createNodeFromEntity(reference.pointer,
+            _id_createNodeFromEntity as jni$_.JMethodIDPtr, _$entity.pointer)
+        .object<Node?>(const $Node$NullableType());
   }
 
-  static final _id_addKnownUser = _class.instanceMethodId(
-    r'addKnownUser',
-    r'(Ljava/lang/String;Ljava/lang/String;)V',
+  static final _id_new$ = _class.constructorId(
+    r'(Lkotlin/jvm/internal/DefaultConstructorMarker;)V',
   );
 
-  static final _addKnownUser = jni$_.ProtectedJniExtensions.lookup<
-          jni$_.NativeFunction<
-              jni$_.JThrowablePtr Function(
-                  jni$_.Pointer<jni$_.Void>,
-                  jni$_.JMethodIDPtr,
-                  jni$_.VarArgs<
-                      (
-                        jni$_.Pointer<jni$_.Void>,
-                        jni$_.Pointer<jni$_.Void>
-                      )>)>>('globalEnv_CallVoidMethod')
+  static final _new$ = jni$_.ProtectedJniExtensions.lookup<
+              jni$_.NativeFunction<
+                  jni$_.JniResult Function(
+                      jni$_.Pointer<jni$_.Void>,
+                      jni$_.JMethodIDPtr,
+                      jni$_.VarArgs<(jni$_.Pointer<jni$_.Void>,)>)>>(
+          'globalEnv_NewObject')
       .asFunction<
-          jni$_.JThrowablePtr Function(
-              jni$_.Pointer<jni$_.Void>,
-              jni$_.JMethodIDPtr,
-              jni$_.Pointer<jni$_.Void>,
-              jni$_.Pointer<jni$_.Void>)>();
+          jni$_.JniResult Function(jni$_.Pointer<jni$_.Void>,
+              jni$_.JMethodIDPtr, jni$_.Pointer<jni$_.Void>)>();
 
-  /// from: `public final void addKnownUser(java.lang.String string, java.lang.String string1)`
-  void addKnownUser(
-    jni$_.JString string,
-    jni$_.JString? string1,
+  /// from: `synthetic public void <init>(kotlin.jvm.internal.DefaultConstructorMarker defaultConstructorMarker)`
+  /// The returned object must be released after use, by calling the [release] method.
+  factory NodeTypes$Companion(
+    jni$_.JObject? defaultConstructorMarker,
   ) {
-    final _$string = string.reference;
-    final _$string1 = string1?.reference ?? jni$_.jNullReference;
-    _addKnownUser(reference.pointer, _id_addKnownUser as jni$_.JMethodIDPtr,
-            _$string.pointer, _$string1.pointer)
-        .check();
+    final _$defaultConstructorMarker =
+        defaultConstructorMarker?.reference ?? jni$_.jNullReference;
+    return NodeTypes$Companion.fromReference(_new$(_class.reference.pointer,
+            _id_new$ as jni$_.JMethodIDPtr, _$defaultConstructorMarker.pointer)
+        .reference);
   }
 }
 
-final class $UsersClientsQueries$NullableType
-    extends jni$_.JObjType<UsersClientsQueries?> {
+final class $NodeTypes$Companion$NullableType
+    extends jni$_.JObjType<NodeTypes$Companion?> {
   @jni$_.internal
-  const $UsersClientsQueries$NullableType();
+  const $NodeTypes$Companion$NullableType();
 
   @jni$_.internal
   @core$_.override
   String get signature =>
-      r'Lcom/daylightcomputer/coreplugin/database/sqldefinitions/UsersClientsQueries;';
+      r'Lcom/daylightcomputer/coreplugin/entity/node/NodeTypes$Companion;';
 
   @jni$_.internal
   @core$_.override
-  UsersClientsQueries? fromReference(jni$_.JReference reference) =>
+  NodeTypes$Companion? fromReference(jni$_.JReference reference) =>
       reference.isNull
           ? null
-          : UsersClientsQueries.fromReference(
+          : NodeTypes$Companion.fromReference(
               reference,
             );
   @jni$_.internal
@@ -5483,36 +1408,36 @@ final class $UsersClientsQueries$NullableType
 
   @jni$_.internal
   @core$_.override
-  jni$_.JObjType<UsersClientsQueries?> get nullableType => this;
+  jni$_.JObjType<NodeTypes$Companion?> get nullableType => this;
 
   @jni$_.internal
   @core$_.override
   final superCount = 1;
 
   @core$_.override
-  int get hashCode => ($UsersClientsQueries$NullableType).hashCode;
+  int get hashCode => ($NodeTypes$Companion$NullableType).hashCode;
 
   @core$_.override
   bool operator ==(Object other) {
-    return other.runtimeType == ($UsersClientsQueries$NullableType) &&
-        other is $UsersClientsQueries$NullableType;
+    return other.runtimeType == ($NodeTypes$Companion$NullableType) &&
+        other is $NodeTypes$Companion$NullableType;
   }
 }
 
-final class $UsersClientsQueries$Type
-    extends jni$_.JObjType<UsersClientsQueries> {
+final class $NodeTypes$Companion$Type
+    extends jni$_.JObjType<NodeTypes$Companion> {
   @jni$_.internal
-  const $UsersClientsQueries$Type();
+  const $NodeTypes$Companion$Type();
 
   @jni$_.internal
   @core$_.override
   String get signature =>
-      r'Lcom/daylightcomputer/coreplugin/database/sqldefinitions/UsersClientsQueries;';
+      r'Lcom/daylightcomputer/coreplugin/entity/node/NodeTypes$Companion;';
 
   @jni$_.internal
   @core$_.override
-  UsersClientsQueries fromReference(jni$_.JReference reference) =>
-      UsersClientsQueries.fromReference(
+  NodeTypes$Companion fromReference(jni$_.JReference reference) =>
+      NodeTypes$Companion.fromReference(
         reference,
       );
   @jni$_.internal
@@ -5521,214 +1446,270 @@ final class $UsersClientsQueries$Type
 
   @jni$_.internal
   @core$_.override
-  jni$_.JObjType<UsersClientsQueries?> get nullableType =>
-      const $UsersClientsQueries$NullableType();
+  jni$_.JObjType<NodeTypes$Companion?> get nullableType =>
+      const $NodeTypes$Companion$NullableType();
 
   @jni$_.internal
   @core$_.override
   final superCount = 1;
 
   @core$_.override
-  int get hashCode => ($UsersClientsQueries$Type).hashCode;
+  int get hashCode => ($NodeTypes$Companion$Type).hashCode;
 
   @core$_.override
   bool operator ==(Object other) {
-    return other.runtimeType == ($UsersClientsQueries$Type) &&
-        other is $UsersClientsQueries$Type;
+    return other.runtimeType == ($NodeTypes$Companion$Type) &&
+        other is $NodeTypes$Companion$Type;
   }
 }
 
-/// from: `com.daylightcomputer.coreplugin.database.sqldefinitions.coreplugin.DatabaseImpl$Schema`
-class JObject$Schema extends jni$_.JObject {
+/// from: `com.daylightcomputer.coreplugin.entity.node.NodeTypes`
+class NodeTypes extends jni$_.JObject {
   @jni$_.internal
   @core$_.override
-  final jni$_.JObjType<JObject$Schema> $type;
+  final jni$_.JObjType<NodeTypes> $type;
 
   @jni$_.internal
-  JObject$Schema.fromReference(
+  NodeTypes.fromReference(
     jni$_.JReference reference,
   )   : $type = type,
         super.fromReference(reference);
 
   static final _class = jni$_.JClass.forName(
-      r'com/daylightcomputer/coreplugin/database/sqldefinitions/coreplugin/DatabaseImpl$Schema');
+      r'com/daylightcomputer/coreplugin/entity/node/NodeTypes');
 
   /// The type which includes information such as the signature of this class.
-  static const nullableType = $JObject$Schema$NullableType();
-  static const type = $JObject$Schema$Type();
-  static final _id_INSTANCE = _class.staticFieldId(
-    r'INSTANCE',
-    r'Lcom/daylightcomputer/coreplugin/database/sqldefinitions/coreplugin/DatabaseImpl$Schema;',
+  static const nullableType = $NodeTypes$NullableType();
+  static const type = $NodeTypes$Type();
+  static final _id_Companion = _class.staticFieldId(
+    r'Companion',
+    r'Lcom/daylightcomputer/coreplugin/entity/node/NodeTypes$Companion;',
   );
 
-  /// from: `static public final com.daylightcomputer.coreplugin.database.sqldefinitions.coreplugin.DatabaseImpl$Schema INSTANCE`
+  /// from: `static public final com.daylightcomputer.coreplugin.entity.node.NodeTypes$Companion Companion`
   /// The returned object must be released after use, by calling the [release] method.
-  static JObject$Schema get INSTANCE =>
-      _id_INSTANCE.get(_class, const $JObject$Schema$Type());
+  static NodeTypes$Companion get Companion =>
+      _id_Companion.get(_class, const $NodeTypes$Companion$Type());
 
-  static final _id_getVersion = _class.instanceMethodId(
-    r'getVersion',
-    r'()J',
+  static final _id_DOCUMENT = _class.staticFieldId(
+    r'DOCUMENT',
+    r'Lcom/daylightcomputer/coreplugin/entity/node/NodeTypes;',
   );
 
-  static final _getVersion = jni$_.ProtectedJniExtensions.lookup<
+  /// from: `static public final com.daylightcomputer.coreplugin.entity.node.NodeTypes DOCUMENT`
+  /// The returned object must be released after use, by calling the [release] method.
+  static NodeTypes get DOCUMENT =>
+      _id_DOCUMENT.get(_class, const $NodeTypes$Type());
+
+  static final _id_FOUNDATION = _class.staticFieldId(
+    r'FOUNDATION',
+    r'Lcom/daylightcomputer/coreplugin/entity/node/NodeTypes;',
+  );
+
+  /// from: `static public final com.daylightcomputer.coreplugin.entity.node.NodeTypes FOUNDATION`
+  /// The returned object must be released after use, by calling the [release] method.
+  static NodeTypes get FOUNDATION =>
+      _id_FOUNDATION.get(_class, const $NodeTypes$Type());
+
+  static final _id_getStringValue = _class.instanceMethodId(
+    r'getStringValue',
+    r'()Ljava/lang/String;',
+  );
+
+  static final _getStringValue = jni$_.ProtectedJniExtensions.lookup<
           jni$_.NativeFunction<
               jni$_.JniResult Function(
                 jni$_.Pointer<jni$_.Void>,
                 jni$_.JMethodIDPtr,
-              )>>('globalEnv_CallLongMethod')
+              )>>('globalEnv_CallObjectMethod')
       .asFunction<
           jni$_.JniResult Function(
             jni$_.Pointer<jni$_.Void>,
             jni$_.JMethodIDPtr,
           )>();
 
-  /// from: `public long getVersion()`
-  int getVersion() {
-    return _getVersion(reference.pointer, _id_getVersion as jni$_.JMethodIDPtr)
-        .long;
+  /// from: `public final java.lang.String getStringValue()`
+  /// The returned object must be released after use, by calling the [release] method.
+  jni$_.JString getStringValue() {
+    return _getStringValue(
+            reference.pointer, _id_getStringValue as jni$_.JMethodIDPtr)
+        .object<jni$_.JString>(const jni$_.JStringType());
+  }
+
+  static final _id_getFactory = _class.instanceMethodId(
+    r'getFactory',
+    r'()Lkotlin/jvm/functions/Function1;',
+  );
+
+  static final _getFactory = jni$_.ProtectedJniExtensions.lookup<
+          jni$_.NativeFunction<
+              jni$_.JniResult Function(
+                jni$_.Pointer<jni$_.Void>,
+                jni$_.JMethodIDPtr,
+              )>>('globalEnv_CallObjectMethod')
+      .asFunction<
+          jni$_.JniResult Function(
+            jni$_.Pointer<jni$_.Void>,
+            jni$_.JMethodIDPtr,
+          )>();
+
+  /// from: `public final kotlin.jvm.functions.Function1 getFactory()`
+  /// The returned object must be released after use, by calling the [release] method.
+  jni$_.JObject getFactory() {
+    return _getFactory(reference.pointer, _id_getFactory as jni$_.JMethodIDPtr)
+        .object<jni$_.JObject>(const jni$_.JObjectType());
+  }
+
+  static final _id_values = _class.staticMethodId(
+    r'values',
+    r'()[Lcom/daylightcomputer/coreplugin/entity/node/NodeTypes;',
+  );
+
+  static final _values = jni$_.ProtectedJniExtensions.lookup<
+          jni$_.NativeFunction<
+              jni$_.JniResult Function(
+                jni$_.Pointer<jni$_.Void>,
+                jni$_.JMethodIDPtr,
+              )>>('globalEnv_CallStaticObjectMethod')
+      .asFunction<
+          jni$_.JniResult Function(
+            jni$_.Pointer<jni$_.Void>,
+            jni$_.JMethodIDPtr,
+          )>();
+
+  /// from: `static public com.daylightcomputer.coreplugin.entity.node.NodeTypes[] values()`
+  /// The returned object must be released after use, by calling the [release] method.
+  static jni$_.JArray<NodeTypes?>? values() {
+    return _values(_class.reference.pointer, _id_values as jni$_.JMethodIDPtr)
+        .object<jni$_.JArray<NodeTypes?>?>(
+            const jni$_.JArrayNullableType<NodeTypes?>(
+                $NodeTypes$NullableType()));
+  }
+
+  static final _id_valueOf = _class.staticMethodId(
+    r'valueOf',
+    r'(Ljava/lang/String;)Lcom/daylightcomputer/coreplugin/entity/node/NodeTypes;',
+  );
+
+  static final _valueOf = jni$_.ProtectedJniExtensions.lookup<
+              jni$_.NativeFunction<
+                  jni$_.JniResult Function(
+                      jni$_.Pointer<jni$_.Void>,
+                      jni$_.JMethodIDPtr,
+                      jni$_.VarArgs<(jni$_.Pointer<jni$_.Void>,)>)>>(
+          'globalEnv_CallStaticObjectMethod')
+      .asFunction<
+          jni$_.JniResult Function(jni$_.Pointer<jni$_.Void>,
+              jni$_.JMethodIDPtr, jni$_.Pointer<jni$_.Void>)>();
+
+  /// from: `static public com.daylightcomputer.coreplugin.entity.node.NodeTypes valueOf(java.lang.String string)`
+  /// The returned object must be released after use, by calling the [release] method.
+  static NodeTypes? valueOf(
+    jni$_.JString? string,
+  ) {
+    final _$string = string?.reference ?? jni$_.jNullReference;
+    return _valueOf(_class.reference.pointer, _id_valueOf as jni$_.JMethodIDPtr,
+            _$string.pointer)
+        .object<NodeTypes?>(const $NodeTypes$NullableType());
+  }
+
+  static final _id_getEntries = _class.staticMethodId(
+    r'getEntries',
+    r'()Lkotlin/enums/EnumEntries;',
+  );
+
+  static final _getEntries = jni$_.ProtectedJniExtensions.lookup<
+          jni$_.NativeFunction<
+              jni$_.JniResult Function(
+                jni$_.Pointer<jni$_.Void>,
+                jni$_.JMethodIDPtr,
+              )>>('globalEnv_CallStaticObjectMethod')
+      .asFunction<
+          jni$_.JniResult Function(
+            jni$_.Pointer<jni$_.Void>,
+            jni$_.JMethodIDPtr,
+          )>();
+
+  /// from: `static public kotlin.enums.EnumEntries getEntries()`
+  /// The returned object must be released after use, by calling the [release] method.
+  static jni$_.JObject getEntries() {
+    return _getEntries(
+            _class.reference.pointer, _id_getEntries as jni$_.JMethodIDPtr)
+        .object<jni$_.JObject>(const jni$_.JObjectType());
   }
 }
 
-final class $JObject$Schema$NullableType
-    extends jni$_.JObjType<JObject$Schema?> {
+final class $NodeTypes$NullableType extends jni$_.JObjType<NodeTypes?> {
   @jni$_.internal
-  const $JObject$Schema$NullableType();
+  const $NodeTypes$NullableType();
 
   @jni$_.internal
   @core$_.override
   String get signature =>
-      r'Lcom/daylightcomputer/coreplugin/database/sqldefinitions/coreplugin/DatabaseImpl$Schema;';
+      r'Lcom/daylightcomputer/coreplugin/entity/node/NodeTypes;';
 
   @jni$_.internal
   @core$_.override
-  JObject$Schema? fromReference(jni$_.JReference reference) => reference.isNull
+  NodeTypes? fromReference(jni$_.JReference reference) => reference.isNull
       ? null
-      : JObject$Schema.fromReference(
+      : NodeTypes.fromReference(
           reference,
         );
   @jni$_.internal
   @core$_.override
-  jni$_.JObjType get superType => const jni$_.JObjectNullableType();
+  jni$_.JObjType get superType => const jni$_.JObjectType();
 
   @jni$_.internal
   @core$_.override
-  jni$_.JObjType<JObject$Schema?> get nullableType => this;
+  jni$_.JObjType<NodeTypes?> get nullableType => this;
 
   @jni$_.internal
   @core$_.override
   final superCount = 1;
 
   @core$_.override
-  int get hashCode => ($JObject$Schema$NullableType).hashCode;
+  int get hashCode => ($NodeTypes$NullableType).hashCode;
 
   @core$_.override
   bool operator ==(Object other) {
-    return other.runtimeType == ($JObject$Schema$NullableType) &&
-        other is $JObject$Schema$NullableType;
+    return other.runtimeType == ($NodeTypes$NullableType) &&
+        other is $NodeTypes$NullableType;
   }
 }
 
-final class $JObject$Schema$Type extends jni$_.JObjType<JObject$Schema> {
+final class $NodeTypes$Type extends jni$_.JObjType<NodeTypes> {
   @jni$_.internal
-  const $JObject$Schema$Type();
+  const $NodeTypes$Type();
 
   @jni$_.internal
   @core$_.override
   String get signature =>
-      r'Lcom/daylightcomputer/coreplugin/database/sqldefinitions/coreplugin/DatabaseImpl$Schema;';
+      r'Lcom/daylightcomputer/coreplugin/entity/node/NodeTypes;';
 
   @jni$_.internal
   @core$_.override
-  JObject$Schema fromReference(jni$_.JReference reference) =>
-      JObject$Schema.fromReference(
+  NodeTypes fromReference(jni$_.JReference reference) =>
+      NodeTypes.fromReference(
         reference,
       );
   @jni$_.internal
   @core$_.override
-  jni$_.JObjType get superType => const jni$_.JObjectNullableType();
+  jni$_.JObjType get superType => const jni$_.JObjectType();
 
   @jni$_.internal
   @core$_.override
-  jni$_.JObjType<JObject$Schema?> get nullableType =>
-      const $JObject$Schema$NullableType();
+  jni$_.JObjType<NodeTypes?> get nullableType =>
+      const $NodeTypes$NullableType();
 
   @jni$_.internal
   @core$_.override
   final superCount = 1;
 
   @core$_.override
-  int get hashCode => ($JObject$Schema$Type).hashCode;
+  int get hashCode => ($NodeTypes$Type).hashCode;
 
   @core$_.override
   bool operator ==(Object other) {
-    return other.runtimeType == ($JObject$Schema$Type) &&
-        other is $JObject$Schema$Type;
+    return other.runtimeType == ($NodeTypes$Type) && other is $NodeTypes$Type;
   }
 }
-
-final _DatabaseImplKtClass = jni$_.JClass.forName(
-    r'com/daylightcomputer/coreplugin/database/sqldefinitions/coreplugin/DatabaseImplKt');
-
-final _id_getSchema = _DatabaseImplKtClass.staticMethodId(
-  r'getSchema',
-  r'(Lkotlin/reflect/KClass;)Lapp/cash/sqldelight/db/SqlSchema;',
-);
-
-final _getSchema = jni$_.ProtectedJniExtensions.lookup<
-            jni$_.NativeFunction<
-                jni$_.JniResult Function(
-                    jni$_.Pointer<jni$_.Void>,
-                    jni$_.JMethodIDPtr,
-                    jni$_.VarArgs<(jni$_.Pointer<jni$_.Void>,)>)>>(
-        'globalEnv_CallStaticObjectMethod')
-    .asFunction<
-        jni$_.JniResult Function(jni$_.Pointer<jni$_.Void>, jni$_.JMethodIDPtr,
-            jni$_.Pointer<jni$_.Void>)>();
-
-/// from: `static public final app.cash.sqldelight.db.SqlSchema getSchema(kotlin.reflect.KClass kClass)`
-/// The returned object must be released after use, by calling the [release] method.
-jni$_.JObject getSchema(
-  jni$_.JObject kClass,
-) {
-  final _$kClass = kClass.reference;
-  return _getSchema(_DatabaseImplKtClass.reference.pointer,
-          _id_getSchema as jni$_.JMethodIDPtr, _$kClass.pointer)
-      .object<jni$_.JObject>(const jni$_.JObjectType());
-}
-
-final _id_newInstance = _DatabaseImplKtClass.staticMethodId(
-  r'newInstance',
-  r'(Lkotlin/reflect/KClass;Lapp/cash/sqldelight/db/SqlDriver;)Lcom/daylightcomputer/coreplugin/database/sqldefinitions/Database;',
-);
-
-final _newInstance = jni$_.ProtectedJniExtensions.lookup<
-        jni$_.NativeFunction<
-            jni$_.JniResult Function(
-                jni$_.Pointer<jni$_.Void>,
-                jni$_.JMethodIDPtr,
-                jni$_.VarArgs<
-                    (
-                      jni$_.Pointer<jni$_.Void>,
-                      jni$_.Pointer<jni$_.Void>
-                    )>)>>('globalEnv_CallStaticObjectMethod')
-    .asFunction<
-        jni$_.JniResult Function(jni$_.Pointer<jni$_.Void>, jni$_.JMethodIDPtr,
-            jni$_.Pointer<jni$_.Void>, jni$_.Pointer<jni$_.Void>)>();
-
-/// from: `static public final com.daylightcomputer.coreplugin.database.sqldefinitions.Database newInstance(kotlin.reflect.KClass kClass, app.cash.sqldelight.db.SqlDriver sqlDriver)`
-/// The returned object must be released after use, by calling the [release] method.
-Database newInstance(
-  jni$_.JObject kClass,
-  jni$_.JObject sqlDriver,
-) {
-  final _$kClass = kClass.reference;
-  final _$sqlDriver = sqlDriver.reference;
-  return _newInstance(
-          _DatabaseImplKtClass.reference.pointer,
-          _id_newInstance as jni$_.JMethodIDPtr,
-          _$kClass.pointer,
-          _$sqlDriver.pointer)
-      .object<Database>(const $Database$Type());
-}
->>>>>>> Stashed changes
