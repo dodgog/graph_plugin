@@ -28,9 +28,7 @@ data class Entity(
          * get all possible entities (by distinct id's).
          * CAUTION: lazy evaluation with sequences.
          * */
-        fun fromAttributePool(
-            attributes: Sequence<Attributes>,
-        ): Sequence<Entity> =
+        fun fromAttributePool(attributes: Sequence<Attributes>): Sequence<Entity> =
             attributes
                 .groupBy { it.entity_id }
                 .asSequence()

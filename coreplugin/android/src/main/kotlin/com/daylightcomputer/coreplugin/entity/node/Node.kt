@@ -12,10 +12,9 @@ open class Node(
     // for setting and retreiving fields
 
     protected fun getRequiredAttribute(attributeName: String): String =
-        entity.attributes[attributeName]?.value
-            ?: throw IllegalStateException(
-                "Node lacks a required attribute `$attributeName`",
-            )
+        entity.attributes[attributeName]?.value ?: throw IllegalStateException(
+            "Node lacks a required attribute `$attributeName`",
+        )
 
     protected fun getAttribute(attributeName: String): String? =
         entity.attributes[attributeName]?.value
@@ -23,8 +22,7 @@ open class Node(
     /**
      * Override should concatenate with super to validate inherited fields
      */
-    protected open fun getKnownFields(): Set<String> =
-        setOf("type", "isDeleted")
+    protected open fun getKnownFields(): Set<String> = setOf("type", "isDeleted")
 
     protected fun getUnknownAttributes(): Set<String> {
         val knownFields = getKnownFields()
@@ -51,17 +49,13 @@ open class Node(
     ): Pair<Pair<String, AttributeValue>, T> {
         val timestamp = issueTimestamp()
         val attributeValue = (name to AttributeValue(value, timestamp))
-        val newEntity =
-            entity.copy(
-                attributes =
-                    entity.attributes + attributeValue,
-            )
+        val newEntity = entity.copy(
+            attributes = entity.attributes + attributeValue,
+        )
 
-        val newNode =
-            NodeTypes.createNodeFromEntity<T>(newEntity)
-                ?: throw IllegalStateException(
-                    "Failed to create node from entity",
-                )
+        val newNode = NodeTypes.createNodeFromEntity<T>(newEntity) ?: throw IllegalStateException(
+            "Failed to create node from entity",
+        )
 
         return Pair(attributeValue, newNode)
     }
@@ -71,18 +65,15 @@ open class Node(
     fun <T : Node> delete(): Pair<Pair<String, AttributeValue>, T> =
         mutateSingleAttribute("isDeleted", "true") { "TODO TIMESTAMP" }
 
-    val type: NodeTypes =
-        NodeTypes.fromString(
-            getRequiredAttribute("type"),
-        )
+    val type: NodeTypes = NodeTypes.fromString(
+        getRequiredAttribute("type"),
+    )
 
     // TODO: this could also be a getter or a lazy eval for complex properties
-    val lastModifiedAtTimestamp: String =
-        entity.attributes.values.maxOfOrNull { it.timestamp }
-            ?: throw IllegalStateException("Node does not have attributes")
+    val lastModifiedAtTimestamp: String = entity.attributes.values.maxOfOrNull { it.timestamp }
+        ?: throw IllegalStateException("Node does not have attributes")
 
-    val isDeleted: Boolean =
-        getAttribute("isDeleted").toBoolean()
+    val isDeleted: Boolean = getAttribute("isDeleted").toBoolean()
 
     init {
         validateNoExtraAttributes()

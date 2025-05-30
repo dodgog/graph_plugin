@@ -15,8 +15,7 @@ data class Counter(
         }
     }
 
-    override fun encode(): String =
-        value.toString(16).padStart(encodedLength, '0')
+    override fun encode(): String = value.toString(16).padStart(encodedLength, '0')
 
     override fun compareTo(other: Counter): Int = value.compareTo(other.value)
 
@@ -27,8 +26,7 @@ data class Counter(
         val maxValue: Int get() = HLCEnvironment.config.maxCount
 
         /** How to compute the max value available in with encoding */
-        fun computeMaxValue(numberOfHexDigits: Int): Int =
-            (1 shl (4 * numberOfHexDigits)) - 1
+        fun computeMaxValue(numberOfHexDigits: Int): Int = (1 shl (4 * numberOfHexDigits)) - 1
 
         override val encodedLength: Int
             get() = HLCEnvironment.config.counterLength

@@ -18,14 +18,12 @@ data class DistributedNode(
 
     override fun encode(): String = clientNodeId
 
-    override fun compareTo(other: DistributedNode): Int =
-        clientNodeId.compareTo(other.clientNodeId)
+    override fun compareTo(other: DistributedNode): Int = clientNodeId.compareTo(other.clientNodeId)
 
     companion object : Packable.HelpHelp<DistributedNode> {
         override val encodedLength: Int
             get() = HLCEnvironment.config.distributedNodeLength
 
-        override fun fromEncodedImpl(data: String): DistributedNode =
-            DistributedNode(data)
+        override fun fromEncodedImpl(data: String): DistributedNode = DistributedNode(data)
     }
 }
