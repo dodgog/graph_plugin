@@ -1,6 +1,6 @@
 CREATE TABLE config (
     key TEXT NOT NULL PRIMARY KEY,
-    value TEXT,
+    conf_value TEXT,
     time_modified TEXT DEFAULT (STRFTIME('%Y-%m-%dT%H:%M:%fZ', 'NOW'))
 );
 
@@ -8,13 +8,13 @@ CREATE TABLE config (
 CREATE TRIGGER IF NOT EXISTS config_auto_update_time_modified
 AFTER UPDATE ON config
 FOR EACH ROW
-WHEN old.value IS NOT new.value OR (old.value IS NULL AND new.value IS NOT NULL) OR (old.value IS NOT NULL AND new.value IS NULL)
+WHEN old.conf_value IS NOT new.conf_value OR (old.conf_value IS NULL AND new.conf_value IS NOT NULL) OR (old.conf_value IS NOT NULL AND new.conf_value IS NULL)
 BEGIN
     UPDATE config SET time_modified = STRFTIME('%Y-%m-%dT%H:%M:%fZ', 'NOW') WHERE key = new.key;
 END;
 
 initializeConfig:
-INSERT OR IGNORE INTO config (key, value) VALUES
+INSERT OR IGNORE INTO config (key, conf_value) VALUES
     ('client_id', NULL),
     ('last_server_issued_timestamp', '1970-01-01T00:00:01.000Z-0000-serverId'),
     ('user_id', NULL),
@@ -22,34 +22,34 @@ INSERT OR IGNORE INTO config (key, value) VALUES
     ('hlc_absolute_zero', '1970-01-01T00:00:01.000Z-0000');
 
 getValueForKey:
-SELECT value FROM config WHERE key = :key;
+SELECT conf_value FROM config WHERE key = :key;
 
 setValueForKey:
-INSERT OR REPLACE INTO config (key, value) VALUES (:key, :value);
+INSERT OR REPLACE INTO config (key, conf_value) VALUES (:key, :conf_value);
 
 getAllConfigValues:
-SELECT key, value, time_modified FROM config;
+SELECT key, conf_value, time_modified FROM config;
 
 -- This query assumes the 'clients' table is available
 getCurrentClient:
 SELECT cl.*
 FROM clients cl
-WHERE cl.id = (SELECT value FROM config WHERE key = 'client_id');
+WHERE cl.id = (SELECT conf_value FROM config WHERE key = 'client_id');
 
 -- This query assumes the 'users' table is available
 getCurrentUser:
 SELECT u.*
 FROM users u
-WHERE u.id = (SELECT value FROM config WHERE key = 'user_id');
+WHERE u.id = (SELECT conf_value FROM config WHERE key = 'user_id');
 
 setLastSyncTime:
-INSERT OR REPLACE INTO config (key, value) VALUES ('last_server_issued_timestamp', :last_sync_time);
+INSERT OR REPLACE INTO config (key, conf_value) VALUES ('last_server_issued_timestamp', :last_sync_time);
 
 setClientId:
-INSERT OR REPLACE INTO config (key, value) VALUES ('client_id', :client_id);
+INSERT OR REPLACE INTO config (key, conf_value) VALUES ('client_id', :client_id);
 
 setUserId:
-INSERT OR REPLACE INTO config (key, value) VALUES ('user_id', :user_id);
+INSERT OR REPLACE INTO config (key, conf_value) VALUES ('user_id', :user_id);
 
 setUserToken:
-INSERT OR REPLACE INTO config (key, value) VALUES ('user_token', :user_token);
+INSERT OR REPLACE INTO config (key, conf_value) VALUES ('user_token', :user_token);
