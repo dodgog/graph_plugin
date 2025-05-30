@@ -17,8 +17,8 @@ data class Entity(
         ): Entity {
             val map =
                 attributes.filter { it.entity_id == id }.associate {
-                    it.attribute to
-                        AttributeValue(it.attr_value, it.timestamp)
+                    it.attr_name to
+                        AttributeValue(it.attr_val, it.timestamp)
                 }
             return Entity(id, map)
         }
@@ -37,8 +37,8 @@ data class Entity(
                 .map { (entityId, attrs) ->
                     val attributeMap =
                         attrs.associate {
-                            it.attribute to
-                                AttributeValue(it.attr_value, it.timestamp)
+                            it.attr_name to
+                                AttributeValue(it.attr_val, it.timestamp)
                         }
                     Entity(entityId, attributeMap)
                 }

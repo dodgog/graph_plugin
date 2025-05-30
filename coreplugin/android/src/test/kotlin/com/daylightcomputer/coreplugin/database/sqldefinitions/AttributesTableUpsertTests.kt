@@ -15,8 +15,8 @@ class AttributesTableUpsertTests {
 
             db.attributesQueries.upsertEventIntoAttributes(
                 entity_id = "node1",
-                attribute = "title",
-                attr_value = "Old Title",
+                attr_name = "title",
+                attr_val = "Old Title",
                 timestamp = olderTimestamp,
             )
 
@@ -26,7 +26,7 @@ class AttributesTableUpsertTests {
                     .getAttributes()
                     .executeAsList()
             assertThat(attributesAfterFirst).hasSize(1)
-            assertThat(attributesAfterFirst.first().attr_value)
+            assertThat(attributesAfterFirst.first().attr_val)
                 .isEqualTo("Old Title")
             assertThat(attributesAfterFirst.first().timestamp)
                 .isEqualTo(olderTimestamp)
@@ -34,8 +34,8 @@ class AttributesTableUpsertTests {
             // Insert newer event - should update the existing attribute
             db.attributesQueries.upsertEventIntoAttributes(
                 entity_id = "node1",
-                attribute = "title",
-                attr_value = "New Title",
+                attr_name = "title",
+                attr_val = "New Title",
                 timestamp = newerTimestamp,
             )
 
@@ -46,28 +46,28 @@ class AttributesTableUpsertTests {
                     .executeAsList()
             assertThat(attributesAfterSecond).hasSize(1)
             assertThat(
-                attributesAfterSecond.first().attr_value,
+                attributesAfterSecond.first().attr_val,
             ).isEqualTo("New Title")
             assertThat(
                 attributesAfterSecond.first().timestamp,
             ).isEqualTo(newerTimestamp)
 
-            // Try inserting older event again - should NOT override newer attr_value
+            // Try inserting older event again - should NOT override newer attr_val
             db.attributesQueries.upsertEventIntoAttributes(
                 entity_id = "node1",
-                attribute = "title",
-                attr_value = "Old Title",
+                attr_name = "title",
+                attr_val = "Old Title",
                 timestamp = olderTimestamp,
             )
 
-            // Verify that newer attr_value is still preserved
+            // Verify that newer attr_val is still preserved
             val attributesAfterOldInsert =
                 db.attributesQueries
                     .getAttributes()
                     .executeAsList()
             assertThat(attributesAfterOldInsert).hasSize(1)
             assertThat(
-                attributesAfterOldInsert.first().attr_value,
+                attributesAfterOldInsert.first().attr_val,
             ).isEqualTo("New Title")
             assertThat(
                 attributesAfterOldInsert.first().timestamp,
@@ -82,15 +82,15 @@ class AttributesTableUpsertTests {
             // Insert different attributes for the same entity
             db.attributesQueries.upsertEventIntoAttributes(
                 entity_id = "node1",
-                attribute = "title",
-                attr_value = "Node Title",
+                attr_name = "title",
+                attr_val = "Node Title",
                 timestamp = timestamp,
             )
 
             db.attributesQueries.upsertEventIntoAttributes(
                 entity_id = "node1",
-                attribute = "description",
-                attr_value = "Node Description",
+                attr_name = "description",
+                attr_val = "Node Description",
                 timestamp = timestamp,
             )
 
@@ -109,14 +109,14 @@ class AttributesTableUpsertTests {
                     ).executeAsList()
             assertThat(entityAttributes).hasSize(2)
 
-            val titleAttr = entityAttributes.find { it.attribute == "title" }
+            val titleAttr = entityAttributes.find { it.attr_name == "title" }
             val descAttr =
                 entityAttributes.find {
-                    it.attribute == "description"
+                    it.attr_name == "description"
                 }
 
-            assertThat(titleAttr?.attr_value).isEqualTo("Node Title")
-            assertThat(descAttr?.attr_value).isEqualTo("Node Description")
+            assertThat(titleAttr?.attr_val).isEqualTo("Node Title")
+            assertThat(descAttr?.attr_val).isEqualTo("Node Description")
         }
 
     @Test
@@ -127,15 +127,15 @@ class AttributesTableUpsertTests {
             // Insert same attribute name for different entities
             db.attributesQueries.upsertEventIntoAttributes(
                 entity_id = "node1",
-                attribute = "title",
-                attr_value = "Node 1 Title",
+                attr_name = "title",
+                attr_val = "Node 1 Title",
                 timestamp = timestamp,
             )
 
             db.attributesQueries.upsertEventIntoAttributes(
                 entity_id = "node2",
-                attribute = "title",
-                attr_value = "Node 2 Title",
+                attr_name = "title",
+                attr_val = "Node 2 Title",
                 timestamp = timestamp,
             )
 
@@ -159,8 +159,8 @@ class AttributesTableUpsertTests {
 
             assertThat(node1Attrs).hasSize(1)
             assertThat(node2Attrs).hasSize(1)
-            assertThat(node1Attrs.first().attr_value).isEqualTo("Node 1 Title")
-            assertThat(node2Attrs.first().attr_value).isEqualTo("Node 2 Title")
+            assertThat(node1Attrs.first().attr_val).isEqualTo("Node 1 Title")
+            assertThat(node2Attrs.first().attr_val).isEqualTo("Node 2 Title")
         }
 
     @Test
@@ -189,8 +189,8 @@ class AttributesTableUpsertTests {
             // First insertion with timestamp
             db.attributesQueries.upsertEventIntoAttributes(
                 entity_id = "node1",
-                attribute = "title",
-                attr_value = "First Value",
+                attr_name = "title",
+                attr_val = "First Value",
                 timestamp = timestamp,
             )
 
@@ -198,8 +198,8 @@ class AttributesTableUpsertTests {
             // (since timestamp is not greater)
             db.attributesQueries.upsertEventIntoAttributes(
                 entity_id = "node1",
-                attribute = "title",
-                attr_value = "Second Value",
+                attr_name = "title",
+                attr_val = "Second Value",
                 timestamp = timestamp,
             )
 
@@ -208,7 +208,7 @@ class AttributesTableUpsertTests {
                     .getAttributes()
                     .executeAsList()
             assertThat(attributes).hasSize(1)
-            // Should keep first attr_value
-            assertThat(attributes.first().attr_value).isEqualTo("First Value")
+            // Should keep first attr_val
+            assertThat(attributes.first().attr_val).isEqualTo("First Value")
         }
 }
