@@ -23,10 +23,11 @@ enum class NodeTypes(
          * Create appropriate Node subclass from Entity
          * using the type's factory method
          */
-        fun createNodeFromEntity(entity: Entity): Node? {
+        @Suppress("UNCHECKED_CAST")
+        fun <T : Node> createNodeFromEntity(entity: Entity): T? {
             val typeString = entity.attributes["type"]?.value ?: return null
             val nodeType = fromString(typeString)
-            return nodeType.factory(entity)
+            return nodeType.factory(entity) as? T
         }
     }
 }
