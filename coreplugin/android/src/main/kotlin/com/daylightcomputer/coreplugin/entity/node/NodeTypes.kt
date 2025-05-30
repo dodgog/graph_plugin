@@ -6,8 +6,8 @@ enum class NodeTypes(
     val stringValue: String,
     val factory: (Entity) -> Node?,
 ) {
-    DOCUMENT("document", DocumentNode::fromEntity),
-    PICTURE("picture", Node::fromEntity),
+    DOCUMENT("DOCUMENT", DocumentNode::fromEntity),
+    FOUNDATION("FOUNDATION", Node::fromEntity),
     ;
 
     companion object {
