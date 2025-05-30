@@ -6,7 +6,7 @@ import assertk.assertions.isEmpty
 import assertk.assertions.isEqualTo
 import org.junit.Test
 
-class AttributesTableTests {
+class AttributesTableUpsertTests {
     @Test
     fun `attribute conflicts should keep newer timestamp`() =
         testing { db ->
