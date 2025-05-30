@@ -4,6 +4,8 @@ import assertk.assertThat
 import assertk.assertions.hasSize
 import assertk.assertions.isEmpty
 import assertk.assertions.isEqualTo
+import assertk.assertions.isNotNull
+import assertk.assertions.isNull
 import com.daylightcomputer.coreplugin.database.sqldefinitions.Attributes
 import org.junit.Test
 
