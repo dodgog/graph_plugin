@@ -14,8 +14,7 @@ data class LogicalTimestamp(
     Packable<LogicalTimestamp> {
     override fun encode(): String = instant.format(FIXED_MICROSECOND_FORMAT)
 
-    override fun compareTo(other: LogicalTimestamp): Int =
-        instant.compareTo(other.instant)
+    override fun compareTo(other: LogicalTimestamp): Int = instant.compareTo(other.instant)
 
     fun absDifferenceInMillis(other: LogicalTimestamp): Long =
         (
@@ -32,8 +31,7 @@ data class LogicalTimestamp(
         override fun fromEncodedImpl(data: String): LogicalTimestamp =
             LogicalTimestamp(Instant.parse(data))
 
-        fun now(): LogicalTimestamp =
-            LogicalTimestamp(HLCEnvironment.config.getPhysicalTime())
+        fun now(): LogicalTimestamp = LogicalTimestamp(HLCEnvironment.config.getPhysicalTime())
 
         private val FIXED_MICROSECOND_FORMAT =
             DateTimeComponents.Format {
