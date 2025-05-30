@@ -1,15 +1,18 @@
 package com.daylightcomputer.hlc
 
 import com.daylightcomputer.hlc.model.Counter
-import com.daylightcomputer.hlc.model.LogicalTimestamp
 import com.daylightcomputer.hlc.model.Packable
+import kotlinx.datetime.Instant
 
 data class HLCConfig(
     val maxClockDriftMilliseconds: Int = 3_600_000,
     val counterLength: Int = 4,
     val distributedNodeLength: Int = 6,
     val logicalTimestampLength: Int = 27,
-    val getPhysicalTime: () -> LogicalTimestamp = { LogicalTimestamp.now() },
+    val getPhysicalTime: () -> Instant = {
+        kotlinx.datetime.Clock.System
+            .now()
+    },
 ) : Packable<HLCConfig> {
     override fun encode(): String {
         val serialized =
