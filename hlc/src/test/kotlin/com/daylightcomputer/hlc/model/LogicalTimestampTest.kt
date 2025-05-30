@@ -7,7 +7,7 @@ import com.daylightcomputer.hlc.HLCConfig
 import com.daylightcomputer.hlc.HLCEnvironment
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
-import java.time.Instant
+import kotlinx.datetime.Instant
 
 // AIUSE: AI generated tests
 
@@ -34,15 +34,15 @@ class LogicalTimestampTest {
     fun `LogicalTimestamp fromMillis works`() {
         val timestamp =
             LogicalTimestamp.fromMillisForTests(
-                fixedTime.toEpochMilli(),
+                fixedTime.toEpochMilliseconds(),
             )
-        assertThat(timestamp.millisForTests).isEqualTo(fixedTime.toEpochMilli())
+        assertThat(timestamp.millisForTests).isEqualTo(fixedTime.toEpochMilliseconds())
     }
 
     @Test
     fun `LogicalTimestamp comparison works correctly`() {
         val earlier = LogicalTimestamp(fixedTime)
-        val later = LogicalTimestamp(fixedTime.plusMillis(1000))
+        val later = LogicalTimestamp(Instant.fromEpochMilliseconds(fixedTime.toEpochMilliseconds() + 1000))
 
         assertThat(earlier).isLessThan(later)
         assertThat(earlier).isEqualTo(LogicalTimestamp(fixedTime))
@@ -51,8 +51,8 @@ class LogicalTimestampTest {
     @Test
     fun `LogicalTimestamp absDifferenceInMillis works`() {
         val t1 = LogicalTimestamp(fixedTime)
-        val t2 = LogicalTimestamp(fixedTime.plusMillis(1000))
-        val t3 = LogicalTimestamp(fixedTime.minusMillis(1000))
+        val t2 = LogicalTimestamp(Instant.fromEpochMilliseconds(fixedTime.toEpochMilliseconds() + 1000))
+        val t3 = LogicalTimestamp(Instant.fromEpochMilliseconds(fixedTime.toEpochMilliseconds() - 1000))
 
         assertThat(t1.absDifferenceInMillis(t2)).isEqualTo(1000)
         assertThat(t1.absDifferenceInMillis(t3)).isEqualTo(1000)
