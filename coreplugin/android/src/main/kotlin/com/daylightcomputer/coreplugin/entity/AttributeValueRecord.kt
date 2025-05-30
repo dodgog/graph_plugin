@@ -1,6 +1,6 @@
 package com.daylightcomputer.coreplugin.entity
 
-data class AttributeValue(
+data class AttributeValueRecord(
     val value: String?,
     val timestamp: String,
 )

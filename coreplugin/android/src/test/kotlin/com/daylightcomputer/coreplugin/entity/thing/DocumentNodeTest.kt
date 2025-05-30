@@ -1,4 +1,4 @@
-package com.daylightcomputer.coreplugin.entity.node
+package com.daylightcomputer.coreplugin.entity.thing
 
 import assertk.assertFailure
 import assertk.assertThat
@@ -7,7 +7,7 @@ import assertk.assertions.isEqualTo
 import assertk.assertions.isFalse
 import assertk.assertions.isNull
 import assertk.assertions.isTrue
-import com.daylightcomputer.coreplugin.entity.AttributeValue
+import com.daylightcomputer.coreplugin.entity.AttributeValueRecord
 import com.daylightcomputer.coreplugin.entity.Entity
 import org.junit.Test
 
@@ -18,9 +18,9 @@ class DocumentNodeTest {
             Entity(
                 "doc1",
                 mapOf(
-                    "type" to AttributeValue("DOCUMENT", "time1"),
-                    "title" to AttributeValue("My Document", "time2"),
-                    "isDeleted" to AttributeValue("false", "time3"),
+                    "type" to AttributeValueRecord("DOCUMENT", "time1"),
+                    "title" to AttributeValueRecord("My Document", "time2"),
+                    "isDeleted" to AttributeValueRecord("false", "time3"),
                 ),
             )
 
@@ -39,10 +39,10 @@ class DocumentNodeTest {
             Entity(
                 "doc2",
                 mapOf(
-                    "type" to AttributeValue("DOCUMENT", "time1"),
-                    "title" to AttributeValue("Authored Document", "time2"),
-                    "author" to AttributeValue("Anjan", "time3"),
-                    "isDeleted" to AttributeValue("true", "time4"),
+                    "type" to AttributeValueRecord("DOCUMENT", "time1"),
+                    "title" to AttributeValueRecord("Authored Document", "time2"),
+                    "author" to AttributeValueRecord("Anjan", "time3"),
+                    "isDeleted" to AttributeValueRecord("true", "time4"),
                 ),
             )
 
@@ -60,8 +60,8 @@ class DocumentNodeTest {
             Entity(
                 "doc3",
                 mapOf(
-                    "type" to AttributeValue("DOCUMENT", "time1"),
-                    "title" to AttributeValue("Basic Document", "time2"),
+                    "type" to AttributeValueRecord("DOCUMENT", "time1"),
+                    "title" to AttributeValueRecord("Basic Document", "time2"),
                 ),
             )
 
@@ -79,12 +79,12 @@ class DocumentNodeTest {
             Entity(
                 "doc4",
                 mapOf(
-                    "type" to AttributeValue("DOCUMENT", "time1"),
-                    "title" to AttributeValue("Document with extras", "time2"),
-                    "isDeleted" to AttributeValue("false", "time3"),
-                    "extraField" to AttributeValue("unexpected", "time4"),
+                    "type" to AttributeValueRecord("DOCUMENT", "time1"),
+                    "title" to AttributeValueRecord("Document with extras", "time2"),
+                    "isDeleted" to AttributeValueRecord("false", "time3"),
+                    "extraField" to AttributeValueRecord("unexpected", "time4"),
                     "anotherExtra" to
-                        AttributeValue(
+                        AttributeValueRecord(
                             "also unexpected",
                             "time5",
                         ),
@@ -104,8 +104,8 @@ class DocumentNodeTest {
             Entity(
                 "doc5",
                 mapOf(
-                    "title" to AttributeValue("Document without type", "time1"),
-                    "isDeleted" to AttributeValue("false", "time2"),
+                    "title" to AttributeValueRecord("Document without type", "time1"),
+                    "isDeleted" to AttributeValueRecord("false", "time2"),
                 ),
             )
 
@@ -120,8 +120,8 @@ class DocumentNodeTest {
             Entity(
                 "doc6",
                 mapOf(
-                    "type" to AttributeValue("DOCUMENT", "time1"),
-                    "isDeleted" to AttributeValue("false", "time2"),
+                    "type" to AttributeValueRecord("DOCUMENT", "time1"),
+                    "isDeleted" to AttributeValueRecord("false", "time2"),
                 ),
             )
 
@@ -136,10 +136,10 @@ class DocumentNodeTest {
             Entity(
                 "doc7",
                 mapOf(
-                    "type" to AttributeValue("DOCUMENT", "time1"),
-                    "title" to AttributeValue("Timestamped Document", "time5"),
-                    "author" to AttributeValue("Tanuj", "time3"),
-                    "isDeleted" to AttributeValue("false", "time2"),
+                    "type" to AttributeValueRecord("DOCUMENT", "time1"),
+                    "title" to AttributeValueRecord("Timestamped Document", "time5"),
+                    "author" to AttributeValueRecord("Tanuj", "time3"),
+                    "isDeleted" to AttributeValueRecord("false", "time2"),
                 ),
             )
 

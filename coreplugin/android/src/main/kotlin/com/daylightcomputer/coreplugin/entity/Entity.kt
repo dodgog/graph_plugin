@@ -4,7 +4,7 @@ import com.daylightcomputer.coreplugin.database.sqldefinitions.Attributes
 
 data class Entity(
     val id: String,
-    val attributes: Map<String, AttributeValue>,
+    val attributes: Map<String, AttributeValueRecord>,
 ) {
     companion object {
         /**
@@ -18,7 +18,7 @@ data class Entity(
             val map =
                 attributes.filter { it.entity_id == id }.associate {
                     it.attr_name to
-                        AttributeValue(it.attr_val, it.timestamp)
+                        AttributeValueRecord(it.attr_val, it.timestamp)
                 }
             return Entity(id, map)
         }
@@ -36,7 +36,7 @@ data class Entity(
                     val attributeMap =
                         attrs.associate {
                             it.attr_name to
-                                AttributeValue(it.attr_val, it.timestamp)
+                                AttributeValueRecord(it.attr_val, it.timestamp)
                         }
                     Entity(entityId, attributeMap)
                 }

@@ -1,9 +1,9 @@
-package com.daylightcomputer.coreplugin.entity.node
+package com.daylightcomputer.coreplugin.entity.thing
 
-import com.daylightcomputer.coreplugin.entity.AttributeValue
+import com.daylightcomputer.coreplugin.entity.AttributeValueRecord
 import com.daylightcomputer.coreplugin.entity.Entity
 
-open class Node(
+open class Thing(
     protected val entity: Entity,
 ) {
     val id: String = entity.id
@@ -42,36 +42,40 @@ open class Node(
         }
     }
 
-    fun <T : Node> mutateSingleAttribute(
+    fun <T : Thing> mutateSingleAttribute(
         name: String,
         value: String,
         issueTimestamp: () -> String,
-    ): Pair<Pair<String, AttributeValue>, T> {
+    ): Pair<Pair<String, AttributeValueRecord>, T> {
         val timestamp = issueTimestamp()
-        val attributeValue = (name to AttributeValue(value, timestamp))
-        val newEntity = entity.copy(
-            attributes = entity.attributes + attributeValue,
-        )
+        val attributeValueRecord = (name to AttributeValueRecord(value, timestamp))
+        val newEntity =
+            entity.copy(
+                attributes = entity.attributes + attributeValueRecord,
+            )
 
-        val newNode = NodeTypes.createNodeFromEntity<T>(newEntity) ?: throw IllegalStateException(
-            "Failed to create node from entity",
-        )
+        val newNode =
+            ThingTypes.createNodeFromEntity<T>(newEntity) ?: throw IllegalStateException(
+                "Failed to create node from entity",
+            )
 
-        return Pair(attributeValue, newNode)
+        return Pair(attributeValueRecord, newNode)
     }
 
     // TODO: Tanuj:also need to drop / delete the other attribute values
     //  here (except isDeleted and maybe updatedAt?)
-    fun <T : Node> delete(): Pair<Pair<String, AttributeValue>, T> =
+    fun <T : Thing> delete(): Pair<Pair<String, AttributeValueRecord>, T> =
         mutateSingleAttribute("isDeleted", "true") { "TODO TIMESTAMP" }
 
-    val type: NodeTypes = NodeTypes.fromString(
-        getRequiredAttribute("type"),
-    )
+    val type: ThingTypes =
+        ThingTypes.fromString(
+            getRequiredAttribute("type"),
+        )
 
     // TODO: this could also be a getter or a lazy eval for complex properties
-    val lastModifiedAtTimestamp: String = entity.attributes.values.maxOfOrNull { it.timestamp }
-        ?: throw IllegalStateException("Node does not have attributes")
+    val lastModifiedAtTimestamp: String =
+        entity.attributes.values.maxOfOrNull { it.timestamp }
+            ?: throw IllegalStateException("Node does not have attributes")
 
     val isDeleted: Boolean = getAttribute("isDeleted").toBoolean()
 
