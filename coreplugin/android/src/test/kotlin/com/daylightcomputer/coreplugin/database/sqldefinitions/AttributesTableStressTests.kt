@@ -27,15 +27,15 @@ class AttributesTableStressTests {
             // Insert some test data
             db.attributesQueries.upsertEventIntoAttributes(
                 entity_id = "node1",
-                attribute = "title",
-                attr_value = "Title 1",
+                attr_name = "title",
+                attr_val = "Title 1",
                 timestamp = "1-o-clock",
             )
 
             db.attributesQueries.upsertEventIntoAttributes(
                 entity_id = "node2",
-                attribute = "description",
-                attr_value = "Description 2",
+                attr_name = "description",
+                attr_val = "Description 2",
                 timestamp = "2-o-clock",
             )
 
@@ -63,8 +63,8 @@ class AttributesTableStressTests {
             // Insert attributes for one entity
             db.attributesQueries.upsertEventIntoAttributes(
                 entity_id = "existingNode",
-                attribute = "title",
-                attr_value = "Existing Title",
+                attr_name = "title",
+                attr_val = "Existing Title",
                 timestamp = "1-o-clock",
             )
 
@@ -89,24 +89,24 @@ class AttributesTableStressTests {
             // Test empty entity_id - should work (TEXT NOT NULL allows empty strings)
             db.attributesQueries.upsertEventIntoAttributes(
                 entity_id = "",
-                attribute = "title",
-                attr_value = "Title for empty entity",
+                attr_name = "title",
+                attr_val = "Title for empty entity",
                 timestamp = "1-o-clock",
             )
 
             // Test empty attribute name
             db.attributesQueries.upsertEventIntoAttributes(
                 entity_id = "node1",
-                attribute = "",
-                attr_value = "Value for empty attribute",
+                attr_name = "",
+                attr_val = "Value for empty attribute",
                 timestamp = "1-o-clock",
             )
 
-            // Test empty attr_value
+            // Test empty attr_val
             db.attributesQueries.upsertEventIntoAttributes(
                 entity_id = "node2",
-                attribute = "title",
-                attr_value = "",
+                attr_name = "title",
+                attr_val = "",
                 timestamp = "1-o-clock",
             )
 
@@ -118,8 +118,8 @@ class AttributesTableStressTests {
 
             // Verify empty values are preserved
             val emptyEntityAttr = allAttributes.find { it.entity_id == "" }
-            val emptyAttributeAttr = allAttributes.find { it.attribute == "" }
-            val emptyValueAttr = allAttributes.find { it.attr_value == "" }
+            val emptyAttributeAttr = allAttributes.find { it.attr_name == "" }
+            val emptyValueAttr = allAttributes.find { it.attr_val == "" }
 
             assertThat(emptyEntityAttr).isNotNull()
             assertThat(emptyAttributeAttr).isNotNull()
@@ -134,15 +134,15 @@ class AttributesTableStressTests {
 
             db.attributesQueries.upsertEventIntoAttributes(
                 entity_id = specialChars,
-                attribute = "special",
-                attr_value = unicodeText,
+                attr_name = "special",
+                attr_val = unicodeText,
                 timestamp = "1-o-clock",
             )
 
             val result = db.attributesQueries.getAttributes().executeAsList()
             assertThat(result).hasSize(1)
             assertThat(result.first().entity_id).isEqualTo(specialChars)
-            assertThat(result.first().attr_value).isEqualTo(unicodeText)
+            assertThat(result.first().attr_val).isEqualTo(unicodeText)
         }
 
     @Test
@@ -154,16 +154,16 @@ class AttributesTableStressTests {
 
             db.attributesQueries.upsertEventIntoAttributes(
                 entity_id = longEntityId,
-                attribute = longAttribute,
-                attr_value = largeValue,
+                attr_name = longAttribute,
+                attr_val = largeValue,
                 timestamp = "1-o-clock",
             )
 
             val result = db.attributesQueries.getAttributes().executeAsList()
             assertThat(result).hasSize(1)
             assertThat(result.first().entity_id).isEqualTo(longEntityId)
-            assertThat(result.first().attribute).isEqualTo(longAttribute)
-            assertThat(result.first().attr_value).isEqualTo(largeValue)
+            assertThat(result.first().attr_name).isEqualTo(longAttribute)
+            assertThat(result.first().attr_val).isEqualTo(largeValue)
         }
 
     @Test
@@ -177,16 +177,16 @@ class AttributesTableStressTests {
             // Insert with middle timestamp
             db.attributesQueries.upsertEventIntoAttributes(
                 entity_id = "node1",
-                attribute = "title",
-                attr_value = "First Value",
+                attr_name = "title",
+                attr_val = "First Value",
                 timestamp = timestamp1,
             )
 
             // Insert with lexicographically smaller but chronologically earlier
             db.attributesQueries.upsertEventIntoAttributes(
                 entity_id = "node1",
-                attribute = "title",
-                attr_value = "Earlier Value",
+                attr_name = "title",
+                attr_val = "Earlier Value",
                 timestamp = timestamp2,
             )
 
@@ -196,13 +196,13 @@ class AttributesTableStressTests {
                     .getAttributes()
                     .executeAsList()
             assertThat(afterSecond).hasSize(1)
-            assertThat(afterSecond.first().attr_value).isEqualTo("First Value")
+            assertThat(afterSecond.first().attr_val).isEqualTo("First Value")
 
             // Insert with lexicographically and chronologically later
             db.attributesQueries.upsertEventIntoAttributes(
                 entity_id = "node1",
-                attribute = "title",
-                attr_value = "Later Value",
+                attr_name = "title",
+                attr_val = "Later Value",
                 timestamp = timestamp3,
             )
 
@@ -212,7 +212,7 @@ class AttributesTableStressTests {
                     .getAttributes()
                     .executeAsList()
             assertThat(afterThird).hasSize(1)
-            assertThat(afterThird.first().attr_value).isEqualTo("Later Value")
+            assertThat(afterThird.first().attr_val).isEqualTo("Later Value")
         }
 
     @Test
@@ -225,16 +225,16 @@ class AttributesTableStressTests {
 
             db.attributesQueries.upsertEventIntoAttributes(
                 entity_id = "node1",
-                attribute = "title",
-                attr_value = "First Value",
+                attr_name = "title",
+                attr_val = "First Value",
                 timestamp = timestamp1,
             )
 
             // Should update because "99" > "100" lexicographically
             db.attributesQueries.upsertEventIntoAttributes(
                 entity_id = "node1",
-                attribute = "title",
-                attr_value = "Second Value",
+                attr_name = "title",
+                attr_val = "Second Value",
                 timestamp = timestamp2,
             )
 
@@ -243,13 +243,13 @@ class AttributesTableStressTests {
                     .getAttributes()
                     .executeAsList()
             assertThat(afterSecond).hasSize(1)
-            assertThat(afterSecond.first().attr_value).isEqualTo("Second Value")
+            assertThat(afterSecond.first().attr_val).isEqualTo("Second Value")
 
             // Should not update because "101" < "99" lexicographically
             db.attributesQueries.upsertEventIntoAttributes(
                 entity_id = "node1",
-                attribute = "title",
-                attr_value = "Third Value",
+                attr_name = "title",
+                attr_val = "Third Value",
                 timestamp = timestamp3,
             )
 
@@ -258,7 +258,7 @@ class AttributesTableStressTests {
                     .getAttributes()
                     .executeAsList()
             assertThat(afterThird).hasSize(1)
-            assertThat(afterThird.first().attr_value).isEqualTo("Second Value")
+            assertThat(afterThird.first().attr_val).isEqualTo("Second Value")
         }
 
     @Test
@@ -273,8 +273,8 @@ class AttributesTableStressTests {
                 attributes.forEachIndexed { index, attr ->
                     db.attributesQueries.upsertEventIntoAttributes(
                         entity_id = entityId,
-                        attribute = attr,
-                        attr_value = "${attr}_value_for_$entityId",
+                        attr_name = attr,
+                        attr_val = "${attr}_value_for_$entityId",
                         timestamp = "${index}_o_clock",
                     )
                 }
@@ -296,9 +296,9 @@ class AttributesTableStressTests {
                 assertThat(entityAttrs).hasSize(attributes.size)
 
                 attributes.forEach { attr ->
-                    val found = entityAttrs.find { it.attribute == attr }
+                    val found = entityAttrs.find { it.attr_name == attr }
                     assertThat(
-                        found?.attr_value,
+                        found?.attr_val,
                     ).isEqualTo("${attr}_value_for_$entityId")
                 }
             }
@@ -313,8 +313,8 @@ class AttributesTableStressTests {
             (1..9).forEach { i ->
                 db.attributesQueries.upsertEventIntoAttributes(
                     entity_id = "node1",
-                    attribute = "counter",
-                    attr_value = "value_$i",
+                    attr_name = "counter",
+                    attr_val = "value_$i",
                     // beware of padding: just the strings 10 < 9
                     timestamp = "${baseTimestamp}${i}Z",
                 )
@@ -323,7 +323,7 @@ class AttributesTableStressTests {
             val result = db.attributesQueries.getAttributes().executeAsList()
             assertThat(result).hasSize(1)
             // Should have the last (lexicographically largest) value
-            assertThat(result.first().attr_value).isEqualTo("value_9")
+            assertThat(result.first().attr_val).isEqualTo("value_9")
             assertThat(result.first().timestamp).isEqualTo("${baseTimestamp}9Z")
         }
 
@@ -333,16 +333,16 @@ class AttributesTableStressTests {
             // Insert initial attribute
             db.attributesQueries.upsertEventIntoAttributes(
                 entity_id = "test_entity",
-                attribute = "test_attr",
-                attr_value = "old_value",
+                attr_name = "test_attr",
+                attr_val = "old_value",
                 timestamp = "2024-01-01T00:00:00Z",
             )
 
             // Update with newer timestamp
             db.attributesQueries.upsertEventIntoAttributes(
                 entity_id = "test_entity",
-                attribute = "test_attr",
-                attr_value = "new_value",
+                attr_name = "test_attr",
+                attr_val = "new_value",
                 timestamp = "2024-01-02T00:00:00Z",
             )
 
@@ -351,8 +351,8 @@ class AttributesTableStressTests {
 
             val result = updated.first()
             assertThat(result.entity_id).isEqualTo("test_entity")
-            assertThat(result.attribute).isEqualTo("test_attr")
-            assertThat(result.attr_value).isEqualTo("new_value")
+            assertThat(result.attr_name).isEqualTo("test_attr")
+            assertThat(result.attr_val).isEqualTo("new_value")
             assertThat(result.timestamp).isEqualTo("2024-01-02T00:00:00Z")
         }
 
@@ -365,8 +365,8 @@ class AttributesTableStressTests {
 
             db.attributesQueries.upsertEventIntoAttributes(
                 entity_id = entityWithSpaces,
-                attribute = attrWithSpaces,
-                attr_value = valueWithSpaces,
+                attr_name = attrWithSpaces,
+                attr_val = valueWithSpaces,
                 timestamp = "1-o-clock",
             )
 
@@ -375,8 +375,8 @@ class AttributesTableStressTests {
 
             // Verify spaces are preserved exactly
             assertThat(result.first().entity_id).isEqualTo(entityWithSpaces)
-            assertThat(result.first().attribute).isEqualTo(attrWithSpaces)
-            assertThat(result.first().attr_value).isEqualTo(valueWithSpaces)
+            assertThat(result.first().attr_name).isEqualTo(attrWithSpaces)
+            assertThat(result.first().attr_val).isEqualTo(valueWithSpaces)
         }
 
     @Test
@@ -397,8 +397,8 @@ class AttributesTableStressTests {
             nullLikeValues.forEachIndexed { index, nullLikeValue ->
                 db.attributesQueries.upsertEventIntoAttributes(
                     entity_id = "entity_$index",
-                    attribute = "test_attr",
-                    attr_value = nullLikeValue,
+                    attr_name = "test_attr",
+                    attr_val = nullLikeValue,
                     timestamp = "${index}_o_clock",
                 )
             }
@@ -409,7 +409,7 @@ class AttributesTableStressTests {
             // Verify all null-like values are preserved as strings
             nullLikeValues.forEachIndexed { index, expectedValue ->
                 val found = results.find { it.entity_id == "entity_$index" }
-                assertThat(found?.attr_value).isEqualTo(expectedValue)
+                assertThat(found?.attr_val).isEqualTo(expectedValue)
             }
         }
 
@@ -424,15 +424,15 @@ class AttributesTableStressTests {
             // Insert in non-lexicographic order
             db.attributesQueries.upsertEventIntoAttributes(
                 entity_id = "node1",
-                attribute = "title",
-                attr_value = "Value 1",
+                attr_name = "title",
+                attr_val = "Value 1",
                 timestamp = timestamp2,
             )
 
             db.attributesQueries.upsertEventIntoAttributes(
                 entity_id = "node1",
-                attribute = "title",
-                attr_value = "Value 2",
+                attr_name = "title",
+                attr_val = "Value 2",
                 timestamp = timestamp3,
             )
 
@@ -442,13 +442,13 @@ class AttributesTableStressTests {
                     .getAttributes()
                     .executeAsList()
             assertThat(afterSecond).hasSize(1)
-            assertThat(afterSecond.first().attr_value).isEqualTo("Value 2")
+            assertThat(afterSecond.first().attr_val).isEqualTo("Value 2")
 
             // Insert earlier timestamp - should not update
             db.attributesQueries.upsertEventIntoAttributes(
                 entity_id = "node1",
-                attribute = "title",
-                attr_value = "Value 0",
+                attr_name = "title",
+                attr_val = "Value 0",
                 timestamp = timestamp1,
             )
 
@@ -457,7 +457,7 @@ class AttributesTableStressTests {
                     .getAttributes()
                     .executeAsList()
             assertThat(afterThird).hasSize(1)
-            assertThat(afterThird.first().attr_value).isEqualTo("Value 2")
+            assertThat(afterThird.first().attr_val).isEqualTo("Value 2")
         }
 
     @Test
@@ -466,22 +466,22 @@ class AttributesTableStressTests {
             // Test case sensitivity - these should be treated as different entities/attributes
             db.attributesQueries.upsertEventIntoAttributes(
                 entity_id = "entity_test",
-                attribute = "title",
-                attr_value = "lowercase entity, lowercase attr",
+                attr_name = "title",
+                attr_val = "lowercase entity, lowercase attr",
                 timestamp = "1-o-clock",
             )
 
             db.attributesQueries.upsertEventIntoAttributes(
                 entity_id = "ENTITY_TEST",
-                attribute = "title",
-                attr_value = "uppercase entity, lowercase attr",
+                attr_name = "title",
+                attr_val = "uppercase entity, lowercase attr",
                 timestamp = "1-o-clock",
             )
 
             db.attributesQueries.upsertEventIntoAttributes(
                 entity_id = "entity_test",
-                attribute = "TITLE",
-                attr_value = "lowercase entity, uppercase attr",
+                attr_name = "TITLE",
+                attr_val = "lowercase entity, uppercase attr",
                 timestamp = "1-o-clock",
             )
 
@@ -509,8 +509,8 @@ class AttributesTableStressTests {
 
             db.attributesQueries.upsertEventIntoAttributes(
                 entity_id = "node1",
-                attribute = "title",
-                attr_value = "Value with long timestamp",
+                attr_name = "title",
+                attr_val = "Value with long timestamp",
                 timestamp = longTimestamp,
             )
 
@@ -523,7 +523,7 @@ class AttributesTableStressTests {
     fun `upsert with identical content should not cause issues`() =
         testing { db ->
             val entityId = "test_entity"
-            val attribute = "test_attr"
+            val attrName = "test_attr"
             val value = "test_value"
             val timestamp = "1-o-clock"
 
@@ -531,15 +531,15 @@ class AttributesTableStressTests {
             repeat(5) {
                 db.attributesQueries.upsertEventIntoAttributes(
                     entity_id = entityId,
-                    attribute = attribute,
-                    attr_value = value,
+                    attr_name = attrName,
+                    attr_val = value,
                     timestamp = timestamp,
                 )
             }
 
             val result = db.attributesQueries.getAttributes().executeAsList()
             assertThat(result).hasSize(1)
-            assertThat(result.first().attr_value).isEqualTo(value)
+            assertThat(result.first().attr_val).isEqualTo(value)
         }
 
     @Test
@@ -559,8 +559,8 @@ class AttributesTableStressTests {
             updates.forEachIndexed { index, (entityId, attr, timestamp) ->
                 db.attributesQueries.upsertEventIntoAttributes(
                     entity_id = entityId,
-                    attribute = attr,
-                    attr_value = "value_$index",
+                    attr_name = attr,
+                    attr_val = "value_$index",
                     timestamp = timestamp,
                 )
             }
@@ -572,27 +572,27 @@ class AttributesTableStressTests {
             val entity1Attr1 =
                 results.find {
                     it.entity_id == "entity1" &&
-                        it.attribute == "attr1"
+                        it.attr_name == "attr1"
                 }
             val entity1Attr2 =
                 results.find {
                     it.entity_id == "entity1" &&
-                        it.attribute == "attr2"
+                        it.attr_name == "attr2"
                 }
             val entity2Attr1 =
                 results.find {
                     it.entity_id == "entity2" &&
-                        it.attribute == "attr1"
+                        it.attr_name == "attr1"
                 }
             val entity2Attr2 =
                 results.find {
                     it.entity_id == "entity2" &&
-                        it.attribute == "attr2"
+                        it.attr_name == "attr2"
                 }
 
-            assertThat(entity1Attr1?.attr_value).isEqualTo("value_3")
-            assertThat(entity1Attr2?.attr_value).isEqualTo("value_1")
-            assertThat(entity2Attr1?.attr_value).isEqualTo("value_2")
-            assertThat(entity2Attr2?.attr_value).isEqualTo("value_4")
+            assertThat(entity1Attr1?.attr_val).isEqualTo("value_3")
+            assertThat(entity1Attr2?.attr_val).isEqualTo("value_1")
+            assertThat(entity2Attr1?.attr_val).isEqualTo("value_2")
+            assertThat(entity2Attr2?.attr_val).isEqualTo("value_4")
         }
 }
