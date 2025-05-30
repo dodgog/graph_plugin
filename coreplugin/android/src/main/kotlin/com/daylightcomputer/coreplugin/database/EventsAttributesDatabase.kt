@@ -7,7 +7,9 @@ import com.daylightcomputer.hlc.HLCConfig
 import com.daylightcomputer.hlc.HLCEnvironment
 import com.daylightcomputer.hlc.model.DistributedNode
 
-/** Singleton providing low level database operations */
+/**
+ * Singleton providing low level database operations
+ * */
 object EventsAttributesDatabase {
     private lateinit var hlcInstance: HLC
     private lateinit var databaseInstance: Database
