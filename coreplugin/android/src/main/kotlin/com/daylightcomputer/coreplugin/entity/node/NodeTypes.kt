@@ -6,6 +6,8 @@ enum class NodeTypes(
     val stringValue: String,
     val factory: (Entity) -> Node?,
 ) {
+    // TODO: Tanuj: Optimization for later: maybe store enum values in a map
+    //  for faster lookups instead of a find here.
     DOCUMENT("DOCUMENT", ::DocumentNode),
     FOUNDATION("FOUNDATION", ::Node),
     ;
