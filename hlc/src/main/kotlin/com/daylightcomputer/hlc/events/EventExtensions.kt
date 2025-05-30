@@ -23,11 +23,13 @@ fun HLC.receivePackedAndRepack(packedTimestamp: String): String =
 fun HLC.getZeroTimestamp(): Timestamp =
     Timestamp(
         LogicalTimestamp(Instant.fromEpochMilliseconds(0)),
-        this.distributedNode, Counter(0),
+        this.distributedNode,
+        Counter(0),
     )
 
 fun HLC.getZeroTimestampPacked(): String =
     Timestamp(
         LogicalTimestamp(Instant.fromEpochMilliseconds(0)),
-        this.distributedNode, Counter(0),
+        this.distributedNode,
+        Counter(0),
     ).encode()
