@@ -8,6 +8,9 @@ open class Node(
 ) {
     val id: String = entity.id
 
+    // TODO: Tanuj suggests using property delegates
+    // for setting and retreiving fields
+
     protected fun getRequiredAttribute(attributeName: String): String =
         entity.attributes[attributeName]?.value
             ?: throw IllegalStateException(
@@ -44,8 +47,9 @@ open class Node(
     fun <T : Node> mutateSingleAttribute(
         name: String,
         value: String,
+        issueTimestamp: () -> String,
     ): Pair<Pair<String, AttributeValue>, T> {
-        val timestamp = "time TODO"
+        val timestamp = issueTimestamp()
         val attributeValue = (name to AttributeValue(value, timestamp))
         val newEntity =
             entity.copy(
@@ -62,8 +66,10 @@ open class Node(
         return Pair(attributeValue, newNode)
     }
 
+    // TODO: Tanuj:also need to drop / delete the other attribute values
+    //  here (except isDeleted and maybe updatedAt?)
     fun <T : Node> delete(): Pair<Pair<String, AttributeValue>, T> =
-        mutateSingleAttribute("isDeleted", "true")
+        mutateSingleAttribute("isDeleted", "true") { "TODO TIMESTAMP" }
 
     val type: NodeTypes =
         NodeTypes.fromString(
