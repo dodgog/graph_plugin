@@ -15,7 +15,7 @@ class ThingTest {
         val entity =
             Entity(
                 "1",
-                mapOf(
+                mutableMapOf(
                     "type" to AttributeValueRecord("FOUNDATION", "time1"),
                     "isDeleted" to AttributeValueRecord("false", "time2"),
                 ),
@@ -32,7 +32,7 @@ class ThingTest {
         val entity =
             Entity(
                 "1",
-                mapOf(
+                mutableMapOf(
                     "type" to AttributeValueRecord("FOUNDATION", "time1"),
                     "isDeleted" to AttributeValueRecord("false", "time2"),
                     "extra" to AttributeValueRecord("wooohoo", "time3"),
@@ -50,7 +50,7 @@ class ThingTest {
         val entity =
             Entity(
                 "1",
-                mapOf(
+                mutableMapOf(
                     "isDeleted" to AttributeValueRecord("false", "time2"),
                 ),
             )

@@ -4,7 +4,7 @@ import com.daylightcomputer.coreplugin.entity.Entity
 
 enum class ThingTypes(
     val stringValue: String,
-    val factory: (Entity) -> Thing?,
+    val factory: (Entity) -> IThing?,
 ) {
     // TODO: Tanuj: Optimization for later: maybe store enum values in a map
     //  for faster lookups instead of a find here.

@@ -30,7 +30,7 @@ class EntityTests {
     @Test
     fun `should create entity with valid parameters`() {
         val attributes =
-            mapOf(
+            mutableMapOf(
                 "title" to AttributeValueRecord("Test Title", "2024-01-01"),
                 "description" to
                     AttributeValueRecord("Test Description", "2024-01-02"),
@@ -48,7 +48,7 @@ class EntityTests {
 
     @Test
     fun `should create entity with empty attributes map`() {
-        val entity = Entity("test-id", emptyMap())
+        val entity = Entity("test-id", mutableMapOf())
 
         assertThat(entity.id).isEqualTo("test-id")
         assertThat(entity.attributes).isEmpty()
@@ -57,7 +57,7 @@ class EntityTests {
     @Test
     fun `should handle null attribute values in constructor`() {
         val attributes =
-            mapOf(
+            mutableMapOf(
                 "title" to AttributeValueRecord(null, "2024-01-01"),
                 "description" to
                     AttributeValueRecord("Valid Description", "2024-01-02"),
