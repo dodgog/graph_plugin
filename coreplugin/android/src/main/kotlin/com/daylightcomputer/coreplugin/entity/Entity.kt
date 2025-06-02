@@ -2,6 +2,7 @@ package com.daylightcomputer.coreplugin.entity
 
 import com.daylightcomputer.coreplugin.database.sqldefinitions.Attributes
 import kotlin.properties.ReadOnlyProperty
+import kotlin.properties.ReadWriteProperty
 import kotlin.reflect.KProperty
 
 // Entity is a mutable collection of
@@ -13,28 +14,58 @@ data class Entity(
 ) {
     val attributes get(): Map<String, AttributeValueRecord> = _attributes.toMap()
 
-    // Read-only delegates
+    /**
+     * The property has to be specified as an attribute
+     */
     fun <T> required(
         attributeName: String,
-        transform: (String) -> T,
+        decode: (String?) -> T,
     ) = object : ReadOnlyProperty<Any?, T> {
         override fun getValue(
             thisRef: Any?,
             property: KProperty<*>,
-        ): T = transform(getRequiredAttribute(attributeName))
+        ): T = decode(getRequiredAttribute(attributeName))
     }
 
+    fun <T> requiredMutable(
+        attributeName: String,
+        decode: (String?) -> T,
+        encode: (T) -> String?,
+    ) = object : ReadWriteProperty<Any?, T> {
+        override fun getValue(
+            thisRef: Any?,
+            property: KProperty<*>,
+        ): T = decode(getRequiredAttribute(attributeName))
+
+        override fun setValue(
+            thisRef: Any?,
+            property: KProperty<*>,
+            value: T,
+        ) {
+            setAttribute(attributeName, encode(value), "TODO time")
+        }
+    }
+
+    // TODO: Can also add observable which will propagate mutation-affected fields in a flow
+
+    /**
+     * The attribute does not have to be specified,
+     * if it isn't the default value is returned.
+     */
     fun <T> optional(
         attributeName: String,
         defaultValue: T,
-        transform: (String?) -> T,
+        decode: (String?) -> T,
     ) = object : ReadOnlyProperty<Any?, T> {
         override fun getValue(
             thisRef: Any?,
             property: KProperty<*>,
-        ): T = transform(getAttribute(attributeName)) ?: defaultValue
+        ): T = decode(getAttribute(attributeName)) ?: defaultValue
     }
 
+    /**
+     * A value which is not directly specified, but rather derived from the entity (other attributes)
+     */
     fun <T> derived(derivation: (Entity) -> T) =
         object : ReadOnlyProperty<Any?, T> {
             override fun getValue(
@@ -43,44 +74,26 @@ data class Entity(
             ): T = derivation(this@Entity)
         }
 
-//    // Mutable delegates
-//    fun requiredMutable(attributeName: String, timestampProvider: () -> String) =
-//        object : ReadWriteProperty<Any?, String> {
-//            override fun getValue(thisRef: Any?, property: KProperty<*>): String {
-//                return getRequiredAttribute(attributeName)
-//            }
-//
-//            override fun setValue(thisRef: Any?, property: KProperty<*>, value: String) {
-//                setRequiredAttribute(attributeName, value, timestampProvider())
-//            }
-//        }
-//
-//    fun optionalMutable(attributeName: String, timestampProvider: () -> String) =
-//        object : ReadWriteProperty<Any?, String?> {
-//            override fun getValue(thisRef: Any?, property: KProperty<*>): String? {
-//                return getAttribute(attributeName)
-//            }
-//
-//            override fun setValue(thisRef: Any?, property: KProperty<*>, value: String?) {
-//                setAttribute(attributeName, value, timestampProvider())
-//            }
-//        }
-//
-//    // Helper methods
-//    fun setRequiredAttribute(attributeName: String, value: String, timestamp: String) {
-//        _attributes[attributeName] = AttributeValueRecord(value, timestamp)
-//    }
-//
-//    fun setAttribute(attributeName: String, value: String?, timestamp: String) {
-//        _attributes[attributeName] = AttributeValueRecord(value, timestamp)
-//    }
-
     fun getRequiredAttribute(attributeName: String): String =
-        _attributes[attributeName]?.value ?: throw IllegalStateException(
+        getAttribute(attributeName) ?: throw IllegalStateException(
             "Entity lacks a required attribute `$attributeName`",
         )
 
+    /**
+     * DEV: Should be the only way to read an attribute
+     */
     fun getAttribute(attributeName: String): String? = _attributes[attributeName]?.value
+
+    /**
+     * DEV: Should be the only way to set an attribute
+     */
+    fun setAttribute(
+        attributeName: String,
+        value: String?,
+        timestamp: String,
+    ) {
+        _attributes[attributeName] = AttributeValueRecord(value, timestamp)
+    }
 
     companion object {
         /**
