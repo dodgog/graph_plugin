@@ -7,6 +7,7 @@ import assertk.assertions.isEqualTo
 import assertk.assertions.isNotNull
 import assertk.assertions.isNull
 import com.daylightcomputer.coreplugin.database.sqldefinitions.Attributes
+import org.junit.Before
 import org.junit.Test
 
 /**
@@ -19,6 +20,14 @@ import org.junit.Test
  * - Error handling
  */
 class EntityTests {
+    private var counter: Int = 0
+    private val timestampProvider = TimestampProvider { "test-timestamp-${++counter}" }
+
+    @Before
+    fun setUp() {
+        counter = 0
+    }
+
     // Helper function to create test Attributes
     private fun createAttribute(
         entityId: String,
@@ -31,12 +40,12 @@ class EntityTests {
     fun `should create entity with valid parameters`() {
         val attributes =
             mutableMapOf(
-                "title" to AttributeValueRecord("Test Title", "2024-01-01"),
+                "title" to AttributeValueRecord("Test Title", timestampProvider.issueTimestamp()),
                 "description" to
-                    AttributeValueRecord("Test Description", "2024-01-02"),
+                    AttributeValueRecord("Test Description", timestampProvider.issueTimestamp()),
             )
 
-        val entity = Entity("test-id", attributes)
+        val entity = Entity("test-id", attributes, timestampProvider)
 
         assertThat(entity.id).isEqualTo("test-id")
         assertThat(entity.attributes).hasSize(2)
@@ -48,7 +57,7 @@ class EntityTests {
 
     @Test
     fun `should create entity with empty attributes map`() {
-        val entity = Entity("test-id", mutableMapOf())
+        val entity = Entity("test-id", mutableMapOf(), timestampProvider)
 
         assertThat(entity.id).isEqualTo("test-id")
         assertThat(entity.attributes).isEmpty()
@@ -58,12 +67,12 @@ class EntityTests {
     fun `should handle null attribute values in constructor`() {
         val attributes =
             mutableMapOf(
-                "title" to AttributeValueRecord(null, "2024-01-01"),
+                "title" to AttributeValueRecord(null, timestampProvider.issueTimestamp()),
                 "description" to
-                    AttributeValueRecord("Valid Description", "2024-01-02"),
+                    AttributeValueRecord("Valid Description", timestampProvider.issueTimestamp()),
             )
 
-        val entity = Entity("test-id", attributes)
+        val entity = Entity("test-id", attributes, timestampProvider)
 
         assertThat(entity.attributes["title"]?.value).isNull()
         assertThat(
@@ -78,7 +87,7 @@ class EntityTests {
                 createAttribute("entity1", "title", "Test Title", "2024-01-01"),
             )
 
-        val entity = Entity.fromAttributePool("entity1", attributes)
+        val entity = Entity.fromAttributePool("entity1", attributes, timestampProvider)
 
         assertThat(entity.id).isEqualTo("entity1")
         assertThat(entity.attributes).hasSize(1)
@@ -102,7 +111,7 @@ class EntityTests {
                 createAttribute("entity1", "type", "document", "2024-01-03"),
             )
 
-        val entity = Entity.fromAttributePool("entity1", attributes)
+        val entity = Entity.fromAttributePool("entity1", attributes, timestampProvider)
 
         assertThat(entity.id).isEqualTo("entity1")
         assertThat(entity.attributes).hasSize(3)
@@ -128,7 +137,7 @@ class EntityTests {
                 createAttribute("entity3", "title", "Title 3", "2024-01-04"),
             )
 
-        val entity = Entity.fromAttributePool("entity1", attributes)
+        val entity = Entity.fromAttributePool("entity1", attributes, timestampProvider)
 
         assertThat(entity.id).isEqualTo("entity1")
         assertThat(entity.attributes).hasSize(2)
@@ -146,7 +155,7 @@ class EntityTests {
                 createAttribute("entity2", "title", "Title 2", "2024-01-02"),
             )
 
-        val entity = Entity.fromAttributePool("nonexistent", attributes)
+        val entity = Entity.fromAttributePool("nonexistent", attributes, timestampProvider)
 
         assertThat(entity.id).isEqualTo("nonexistent")
         assertThat(entity.attributes).isEmpty()
@@ -165,7 +174,7 @@ class EntityTests {
                 ),
             )
 
-        val entity = Entity.fromAttributePool("entity1", attributes)
+        val entity = Entity.fromAttributePool("entity1", attributes, timestampProvider)
 
         assertThat(entity.attributes).hasSize(2)
         assertThat(entity.attributes["title"]?.value).isNull()
@@ -178,7 +187,7 @@ class EntityTests {
     fun `should handle empty sequence for single entity`() {
         val attributes = emptySequence<Attributes>()
 
-        val entity = Entity.fromAttributePool("entity1", attributes)
+        val entity = Entity.fromAttributePool("entity1", attributes, timestampProvider)
 
         assertThat(entity.id).isEqualTo("entity1")
         assertThat(entity.attributes).isEmpty()
@@ -200,7 +209,7 @@ class EntityTests {
                 createAttribute("entity2", "type", "document", "2024-01-05"),
             )
 
-        val entities = Entity.fromAttributePool(attributes).toList()
+        val entities = Entity.fromAttributePool(attributes, timestampProvider).toList()
 
         assertThat(entities).hasSize(3)
 
@@ -240,7 +249,7 @@ class EntityTests {
                 createAttribute("entity1", "author", "John Doe", "2024-01-04"),
             )
 
-        val entities = Entity.fromAttributePool(attributes).toList()
+        val entities = Entity.fromAttributePool(attributes, timestampProvider).toList()
 
         assertThat(entities).hasSize(1)
         val entity = entities.first()
@@ -252,7 +261,7 @@ class EntityTests {
     fun `should handle empty sequence for multiple entities`() {
         val attributes = emptySequence<Attributes>()
 
-        val entities = Entity.fromAttributePool(attributes).toList()
+        val entities = Entity.fromAttributePool(attributes, timestampProvider).toList()
 
         assertThat(entities).isEmpty()
     }
@@ -265,7 +274,7 @@ class EntityTests {
                 createAttribute(longId, "title", "Title", "2024-01-01"),
             )
 
-        val entity = Entity.fromAttributePool(longId, attributes)
+        val entity = Entity.fromAttributePool(longId, attributes, timestampProvider)
 
         assertThat(entity.id).isEqualTo(longId)
         assertThat(entity.attributes).hasSize(1)
@@ -284,7 +293,7 @@ class EntityTests {
                 ),
             )
 
-        val entity = Entity.fromAttributePool("entity1", attributes)
+        val entity = Entity.fromAttributePool("entity1", attributes, timestampProvider)
 
         assertThat(entity.attributes).hasSize(1)
         assertThat(entity.attributes[longAttribute]?.value).isEqualTo("Value")
@@ -298,7 +307,7 @@ class EntityTests {
                 createAttribute("entity1", "content", longValue, "2024-01-01"),
             )
 
-        val entity = Entity.fromAttributePool("entity1", attributes)
+        val entity = Entity.fromAttributePool("entity1", attributes, timestampProvider)
 
         assertThat(entity.attributes["content"]?.value).isEqualTo(longValue)
     }
@@ -311,7 +320,7 @@ class EntityTests {
                 createAttribute(specialId, "title", "Title", "2024-01-01"),
             )
 
-        val entity = Entity.fromAttributePool(specialId, attributes)
+        val entity = Entity.fromAttributePool(specialId, attributes, timestampProvider)
 
         assertThat(entity.id).isEqualTo(specialId)
         assertThat(entity.attributes).hasSize(1)
@@ -333,7 +342,7 @@ class EntityTests {
                 ),
             )
 
-        val entity = Entity.fromAttributePool(unicodeId, attributes)
+        val entity = Entity.fromAttributePool(unicodeId, attributes, timestampProvider)
 
         assertThat(entity.id).isEqualTo(unicodeId)
         assertThat(
@@ -349,7 +358,7 @@ class EntityTests {
                 createAttribute("entity1", "", "value", "2024-01-02"),
             )
 
-        val entities = Entity.fromAttributePool(attributes).toList()
+        val entities = Entity.fromAttributePool(attributes, timestampProvider).toList()
 
         assertThat(entities).hasSize(2)
 
@@ -380,7 +389,7 @@ class EntityTests {
                 }
             }
 
-        val entity = Entity.fromAttributePool("entity1", attributes)
+        val entity = Entity.fromAttributePool("entity1", attributes, timestampProvider)
 
         assertThat(entity.attributes).hasSize(attributeCount)
         assertThat(entity.attributes["attr_0"]?.value).isEqualTo("value_0")
@@ -412,7 +421,7 @@ class EntityTests {
                 }
             }
 
-        val entities = Entity.fromAttributePool(attributes).toList()
+        val entities = Entity.fromAttributePool(attributes, timestampProvider).toList()
 
         assertThat(entities).hasSize(entityCount)
 
@@ -443,7 +452,7 @@ class EntityTests {
                 ),
             )
 
-        val entity = Entity.fromAttributePool("entity1", attributes)
+        val entity = Entity.fromAttributePool("entity1", attributes, timestampProvider)
 
         assertThat(
             entity.attributes["title"]?.timestamp,
@@ -468,7 +477,7 @@ class EntityTests {
                 createAttribute("entity1", "attr4", "value4", "1-o-clock"),
             )
 
-        val entity = Entity.fromAttributePool("entity1", attributes)
+        val entity = Entity.fromAttributePool("entity1", attributes, timestampProvider)
 
         assertThat(entity.attributes).hasSize(4)
         assertThat(
@@ -502,7 +511,7 @@ class EntityTests {
                 ),
             )
 
-        val entity = Entity.fromAttributePool("entity1", attributes)
+        val entity = Entity.fromAttributePool("entity1", attributes, timestampProvider)
 
         assertThat(entity.attributes).hasSize(1)
         // The associate function will use the last occurrence
@@ -536,7 +545,7 @@ class EntityTests {
                 ),
             )
 
-        val entities = Entity.fromAttributePool(attributes).toList()
+        val entities = Entity.fromAttributePool(attributes, timestampProvider).toList()
 
         val entity1 = entities.find { it.id == "entity1" }
         val entity2 = entities.find { it.id == "entity2" }
