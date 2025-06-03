@@ -32,17 +32,17 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   Future<String>? answer;
 
-  late Example example;
+  // late Example example;
 
   @override
   void initState() {
     super.initState();
-    example = Example();
+    // example = Example();
   }
 
   @override
   void dispose() {
-    example.release();
+    // example.release();
     super.dispose();
   }
 
@@ -62,8 +62,8 @@ class _MyHomePageState extends State<MyHomePage> {
             ElevatedButton(
               onPressed: () {
                 setState(() {
-                  answer = example.thinkBeforeAnswering().then(
-                      (value) => value.toDartString(releaseOriginal: true));
+                  // answer = example.thinkBeforeAnswering().then(
+                  //     (value) => value.toDartString(releaseOriginal: true));
                 });
               },
               child: const Text('Think...'),

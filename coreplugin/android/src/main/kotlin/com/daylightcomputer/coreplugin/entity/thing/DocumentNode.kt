@@ -14,7 +14,14 @@ class DocumentNode(
         decode = { it },
     )
 
+    var thought: String? by entity.requiredMutable(
+        "thought",
+        { it },
+        { it },
+    )
+
     override fun validateRequiredProperties() {
+        // TODO: add thoguht and other required fields
     }
 
     init {
