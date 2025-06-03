@@ -19,14 +19,14 @@ class DocumentNodeTest {
             Entity(
                 "doc1",
                 mutableMapOf(
-                    "type" to AttributeValueRecord("DOCUMENT", "time1"),
+                    "type" to AttributeValueRecord("DOCUMENT_NODE", "time1"),
                     "title" to AttributeValueRecord("My Document", "time2"),
                     "isDeleted" to AttributeValueRecord("false", "time3"),
                 ),
             )
 
         val node = DocumentNode(entity)
-        assertThat(node.type.name).isEqualTo("DOCUMENT")
+        assertThat(node.type.name).isEqualTo("DOCUMENT_NODE")
         assertThat(node.title).isEqualTo("My Document")
         assertThat(node.author).isNull()
         assertThat(node.isDeleted).isFalse()
@@ -40,7 +40,7 @@ class DocumentNodeTest {
             Entity(
                 "doc2",
                 mutableMapOf(
-                    "type" to AttributeValueRecord("DOCUMENT", "time1"),
+                    "type" to AttributeValueRecord("DOCUMENT_NODE", "time1"),
                     "title" to AttributeValueRecord("Authored Document", "time2"),
                     "author" to AttributeValueRecord("Anjan", "time3"),
                     "isDeleted" to AttributeValueRecord("true", "time4"),
@@ -48,7 +48,7 @@ class DocumentNodeTest {
             )
 
         val node = DocumentNode(entity)
-        assertThat(node.type.name).isEqualTo("DOCUMENT")
+        assertThat(node.type.name).isEqualTo("DOCUMENT_NODE")
         assertThat(node.title).isEqualTo("Authored Document")
         assertThat(node.author).isEqualTo("Anjan")
         assertThat(node.isDeleted).isTrue()
@@ -61,13 +61,13 @@ class DocumentNodeTest {
             Entity(
                 "doc3",
                 mutableMapOf(
-                    "type" to AttributeValueRecord("DOCUMENT", "time1"),
+                    "type" to AttributeValueRecord("DOCUMENT_NODE", "time1"),
                     "title" to AttributeValueRecord("Basic Document", "time2"),
                 ),
             )
 
         val node = DocumentNode(entity)
-        assertThat(node.type.name).isEqualTo("DOCUMENT")
+        assertThat(node.type.name).isEqualTo("DOCUMENT_NODE")
         assertThat(node.title).isEqualTo("Basic Document")
         assertThat(node.author).isNull()
         assertThat(node.isDeleted).isFalse()
@@ -81,7 +81,7 @@ class DocumentNodeTest {
 //            Entity(
 //                "doc4",
 //                mutableMapOf(
-//                    "type" to AttributeValueRecord("DOCUMENT", "time1"),
+//                    "type" to AttributeValueRecord("DOCUMENT_NODE", "time1"),
 //                    "title" to AttributeValueRecord("Document with extras", "time2"),
 //                    "isDeleted" to AttributeValueRecord("false", "time3"),
 //                    "extraField" to AttributeValueRecord("unexpected", "time4"),
@@ -122,7 +122,7 @@ class DocumentNodeTest {
             Entity(
                 "doc6",
                 mutableMapOf(
-                    "type" to AttributeValueRecord("DOCUMENT", "time1"),
+                    "type" to AttributeValueRecord("DOCUMENT_NODE", "time1"),
                     "isDeleted" to AttributeValueRecord("false", "time2"),
                 ),
             )
@@ -138,7 +138,7 @@ class DocumentNodeTest {
             Entity(
                 "doc7",
                 mutableMapOf(
-                    "type" to AttributeValueRecord("DOCUMENT", "time1"),
+                    "type" to AttributeValueRecord("DOCUMENT_NODE", "time1"),
                     "title" to AttributeValueRecord("Timestamped Document", "time5"),
                     "author" to AttributeValueRecord("Tanuj", "time3"),
                     "isDeleted" to AttributeValueRecord("false", "time2"),
@@ -155,7 +155,7 @@ class DocumentNodeTest {
             Entity(
                 "doc8",
                 mutableMapOf(
-                    "type" to AttributeValueRecord("DOCUMENT", "time1"),
+                    "type" to AttributeValueRecord("DOCUMENT_NODE", "time1"),
                     "title" to AttributeValueRecord(null, "time2"),
                     "isDeleted" to AttributeValueRecord("false", "time3"),
                 ),
@@ -172,7 +172,7 @@ class DocumentNodeTest {
             Entity(
                 "doc8",
                 mutableMapOf(
-                    "type" to AttributeValueRecord("DOCUMENT", "time1"),
+                    "type" to AttributeValueRecord("DOCUMENT_NODE", "time1"),
                     "title" to AttributeValueRecord("Timestamped Document", "time5"),
                     "author" to AttributeValueRecord("Tanuj", "time3"),
                     "thought" to AttributeValueRecord("i think 1", "time2"),
@@ -191,7 +191,7 @@ class DocumentNodeTest {
             Entity(
                 "doc8",
                 mutableMapOf(
-                    "type" to AttributeValueRecord("DOCUMENT", "0time1"),
+                    "type" to AttributeValueRecord("DOCUMENT_NODE", "0time1"),
                     "title" to AttributeValueRecord("Timestamped Document", "0time5"),
                     "author" to AttributeValueRecord("Tanuj", "0time3"),
                     "thought" to AttributeValueRecord("i think 1", "0time2"),
@@ -211,7 +211,7 @@ class DocumentNodeTest {
             Entity(
                 "doc8",
                 mutableMapOf(
-                    "type" to AttributeValueRecord("DOCUMENT", "0time1"),
+                    "type" to AttributeValueRecord("DOCUMENT_NODE", "0time1"),
                     "title" to AttributeValueRecord("Timestamped Document", "0time5"),
                     "author" to AttributeValueRecord("Tanuj", "0time3"),
                     "thought" to AttributeValueRecord("i think 1", "0time2"),

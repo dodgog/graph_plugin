@@ -11,30 +11,30 @@ import org.junit.Test
 
 class ThingTest {
     @Test
-    fun `single foundation thing constructs from entity`() {
+    fun `single BASE thing constructs from entity`() {
         val entity =
             Entity(
                 "1",
                 mutableMapOf(
-                    "type" to AttributeValueRecord("FOUNDATION", "time1"),
+                    "type" to AttributeValueRecord("BASE", "time1"),
                     "isDeleted" to AttributeValueRecord("false", "time2"),
                 ),
             )
 
         val thing = Thing(entity)
-        assertThat(thing.type.name).isEqualTo("FOUNDATION")
+        assertThat(thing.type.name).isEqualTo("BASE")
         assertThat(thing.isDeleted).isFalse()
         assertThat(thing.lastModifiedAtTimestamp).isEqualTo("time2")
     }
 
     // TODO: check extra attributes perhaps
 //    @Test
-//    fun `single foundation thing with extra attributes throws`() {
+//    fun `single base thing with extra attributes throws`() {
 //        val entity =
 //            Entity(
 //                "1",
 //                mutableMapOf(
-//                    "type" to AttributeValueRecord("FOUNDATION", "time1"),
+//                    "type" to AttributeValueRecord("BASE", "time1"),
 //                    "isDeleted" to AttributeValueRecord("false", "time2"),
 //                    "extra" to AttributeValueRecord("wooohoo", "time3"),
 //                    "extra2" to AttributeValueRecord("wooohoo", "time3"),

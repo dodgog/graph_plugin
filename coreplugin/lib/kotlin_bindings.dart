@@ -3520,25 +3520,33 @@ class ThingTypes extends jni$_.JObject {
   static ThingTypes$Companion get Companion =>
       _id_Companion.get(_class, const $ThingTypes$Companion$Type());
 
-  static final _id_DOCUMENT = _class.staticFieldId(
-    r'DOCUMENT',
+  static final _id_DOCUMENT_NODE = _class.staticFieldId(
+    r'DOCUMENT_NODE',
     r'Lcom/daylightcomputer/coreplugin/entity/thing/ThingTypes;',
   );
 
-  /// from: `static public final com.daylightcomputer.coreplugin.entity.thing.ThingTypes DOCUMENT`
+  /// from: `static public final com.daylightcomputer.coreplugin.entity.thing.ThingTypes DOCUMENT_NODE`
   /// The returned object must be released after use, by calling the [release] method.
-  static ThingTypes get DOCUMENT =>
-      _id_DOCUMENT.get(_class, const $ThingTypes$Type());
+  static ThingTypes get DOCUMENT_NODE =>
+      _id_DOCUMENT_NODE.get(_class, const $ThingTypes$Type());
 
-  static final _id_FOUNDATION = _class.staticFieldId(
-    r'FOUNDATION',
+  static final _id_NODE = _class.staticFieldId(
+    r'NODE',
     r'Lcom/daylightcomputer/coreplugin/entity/thing/ThingTypes;',
   );
 
-  /// from: `static public final com.daylightcomputer.coreplugin.entity.thing.ThingTypes FOUNDATION`
+  /// from: `static public final com.daylightcomputer.coreplugin.entity.thing.ThingTypes NODE`
   /// The returned object must be released after use, by calling the [release] method.
-  static ThingTypes get FOUNDATION =>
-      _id_FOUNDATION.get(_class, const $ThingTypes$Type());
+  static ThingTypes get NODE => _id_NODE.get(_class, const $ThingTypes$Type());
+
+  static final _id_BASE = _class.staticFieldId(
+    r'BASE',
+    r'Lcom/daylightcomputer/coreplugin/entity/thing/ThingTypes;',
+  );
+
+  /// from: `static public final com.daylightcomputer.coreplugin.entity.thing.ThingTypes BASE`
+  /// The returned object must be released after use, by calling the [release] method.
+  static ThingTypes get BASE => _id_BASE.get(_class, const $ThingTypes$Type());
 
   static final _id_getStringValue = _class.instanceMethodId(
     r'getStringValue',
