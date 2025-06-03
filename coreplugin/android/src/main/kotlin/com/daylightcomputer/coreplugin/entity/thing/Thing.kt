@@ -26,7 +26,7 @@ open class Thing(
         }
     }
 
-    override fun validateRequiredProperties() {
+    override fun validatePropertiesOnInit() {
         type
     }
 
@@ -37,7 +37,7 @@ open class Thing(
     )
 
     init {
-        validateRequiredProperties()
+        validatePropertiesOnInit()
         // TODO: check extra attributes perhaps
     }
 }
