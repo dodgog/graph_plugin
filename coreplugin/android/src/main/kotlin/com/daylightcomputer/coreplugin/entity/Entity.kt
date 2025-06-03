@@ -1,6 +1,8 @@
 package com.daylightcomputer.coreplugin.entity
 
 import com.daylightcomputer.coreplugin.database.sqldefinitions.Attributes
+import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.asSharedFlow
 import kotlin.properties.ReadOnlyProperty
 import kotlin.properties.ReadWriteProperty
 import kotlin.reflect.KProperty
@@ -15,6 +17,16 @@ data class Entity(
     val attributes get(): Map<String, AttributeValueRecord> = _attributes.toMap()
 
     /**
+     * Emit changes for events to be constructed and reduced
+     */
+    private val _attributeChanges = MutableSharedFlow<Pair<String, AttributeValueRecord>>()
+
+    /**
+     * Public consumable event flow without emission rights
+     */
+    val attributeChanges = _attributeChanges.asSharedFlow()
+
+    /**
      * The property has to be specified as an attribute
      */
     fun <T> required(
@@ -27,6 +39,10 @@ data class Entity(
         ): T = decode(getRequiredAttribute(attributeName))
     }
 
+    /**
+     * The property has to be specified as an attribute
+     * Setting triggers the event emission mechanism
+     */
     fun <T> requiredMutable(
         attributeName: String,
         decode: (String?) -> T,
@@ -64,6 +80,11 @@ data class Entity(
         ): T = decode(getAttribute(attributeName)) ?: defaultValue
     }
 
+    /**
+     * The attribute does not have to be specified,
+     * if it isn't the default value is returned.
+     * Setting triggers the event emission mechanism
+     */
     fun <T> optionalMutable(
         attributeName: String,
         defaultValue: T,
@@ -119,7 +140,10 @@ data class Entity(
         value: String?,
         timestampProvider: () -> String,
     ) {
-        _attributes[attributeName] = AttributeValueRecord(value, timestampProvider())
+        val record = AttributeValueRecord(value, timestampProvider())
+        _attributes[attributeName] = record
+        // TODO: what if this fails?
+        _attributeChanges.tryEmit(attributeName to record) // Non-suspend emit!
     }
 
     companion object {
