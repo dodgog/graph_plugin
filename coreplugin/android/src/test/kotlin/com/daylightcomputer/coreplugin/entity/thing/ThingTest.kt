@@ -7,24 +7,39 @@ import assertk.assertions.isEqualTo
 import assertk.assertions.isFalse
 import com.daylightcomputer.coreplugin.entity.AttributeValueRecord
 import com.daylightcomputer.coreplugin.entity.Entity
+import com.daylightcomputer.coreplugin.entity.TimestampProvider
+import org.junit.Before
 import org.junit.Test
 
 class ThingTest {
+    private var counter: Int = 0
+    private val timestampProvider = TimestampProvider { "timestamp-${++counter}" }
+
+    @Before
+    fun setUp() {
+        counter = 0
+    }
+
     @Test
-    fun `single BASE thing constructs from entity`() {
+    fun `single base thing constructs from entity`() {
         val entity =
             Entity(
                 "1",
                 mutableMapOf(
-                    "type" to AttributeValueRecord("BASE", "time1"),
-                    "isDeleted" to AttributeValueRecord("false", "time2"),
+                    "type" to AttributeValueRecord("BASE", timestampProvider.issueTimestamp()),
+                    "isDeleted" to
+                        AttributeValueRecord(
+                            "false",
+                            timestampProvider.issueTimestamp(),
+                        ),
                 ),
+                timestampProvider,
             )
 
         val thing = Thing(entity)
         assertThat(thing.type.name).isEqualTo("BASE")
         assertThat(thing.isDeleted).isFalse()
-        assertThat(thing.lastModifiedAtTimestamp).isEqualTo("time2")
+        assertThat(thing.lastModifiedAtTimestamp).isEqualTo("timestamp-2")
     }
 
     // TODO: check extra attributes perhaps
@@ -52,8 +67,13 @@ class ThingTest {
             Entity(
                 "1",
                 mutableMapOf(
-                    "isDeleted" to AttributeValueRecord("false", "time2"),
+                    "isDeleted" to
+                        AttributeValueRecord(
+                            "false",
+                            timestampProvider.issueTimestamp(),
+                        ),
                 ),
+                timestampProvider,
             )
 
         assertFailure {
@@ -67,9 +87,14 @@ class ThingTest {
             Entity(
                 "1",
                 mutableMapOf(
-                    "type" to AttributeValueRecord(null, "time1"),
-                    "isDeleted" to AttributeValueRecord("false", "time2"),
+                    "type" to AttributeValueRecord(null, timestampProvider.issueTimestamp()),
+                    "isDeleted" to
+                        AttributeValueRecord(
+                            "false",
+                            timestampProvider.issueTimestamp(),
+                        ),
                 ),
+                timestampProvider,
             )
 
         assertFailure {

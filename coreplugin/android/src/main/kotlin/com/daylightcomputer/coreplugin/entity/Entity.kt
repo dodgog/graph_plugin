@@ -13,6 +13,7 @@ import kotlin.reflect.KProperty
 data class Entity(
     val id: String,
     private var _attributes: MutableMap<String, AttributeValueRecord>,
+    private val timestampProvider: TimestampProvider,
 ) {
     val attributes get(): Map<String, AttributeValueRecord> = _attributes.toMap()
 
@@ -47,7 +48,6 @@ data class Entity(
         attributeName: String,
         decode: (String?) -> T,
         encode: (T) -> String?,
-        timestampProvider: () -> String = issueTimestamp(),
     ) = object : ReadWriteProperty<Any?, T> {
         override fun getValue(
             thisRef: Any?,
@@ -62,8 +62,6 @@ data class Entity(
             setAttribute(attributeName, encode(value), timestampProvider)
         }
     }
-
-    // TODO: Can also add observable which will propagate mutation-affected fields in a flow
 
     /**
      * The attribute does not have to be specified,
@@ -90,7 +88,6 @@ data class Entity(
         defaultValue: T,
         decode: (String?) -> T,
         encode: (T) -> String?,
-        timestampProvider: () -> String = issueTimestamp(),
     ) = object : ReadWriteProperty<Any?, T> {
         override fun getValue(
             thisRef: Any?,
@@ -138,21 +135,16 @@ data class Entity(
     fun setAttribute(
         attributeName: String,
         value: String?,
-        timestampProvider: () -> String,
+        timestampProvider: TimestampProvider,
     ) {
-        val record = AttributeValueRecord(value, timestampProvider())
+        val record = AttributeValueRecord(value, timestampProvider.issueTimestamp())
         _attributes[attributeName] = record
         // TODO: what if this fails?
         _attributeChanges.tryEmit(attributeName to record) // Non-suspend emit!
     }
 
     companion object {
-        fun issueTimestamp() =
-            {
-                kotlinx.datetime.Clock.System
-                    .now()
-                    .toString()
-            }
+        // TODO: move these methods up to where the timestamp provider is created (closer to the db)
 
         /**
          * From an arbitrary list of attributes find entity with id
@@ -161,12 +153,13 @@ data class Entity(
         fun fromAttributePool(
             id: String,
             attributes: Sequence<Attributes>,
+            timestampProvider: TimestampProvider,
         ): Entity {
             val map =
                 attributes.filter { it.entity_id == id }.associate {
                     it.attr_name to AttributeValueRecord(it.attr_val, it.timestamp)
                 }
-            return Entity(id, map.toMutableMap())
+            return Entity(id, map.toMutableMap(), timestampProvider)
         }
 
         /**
@@ -174,13 +167,16 @@ data class Entity(
          * get all possible entities (by distinct id's).
          * CAUTION: lazy evaluation with sequences.
          * */
-        fun fromAttributePool(attributes: Sequence<Attributes>): Sequence<Entity> =
+        fun fromAttributePool(
+            attributes: Sequence<Attributes>,
+            timestampProvider: TimestampProvider,
+        ): Sequence<Entity> =
             attributes.groupBy { it.entity_id }.asSequence().map { (entityId, attrs) ->
                 val attributeMap =
                     attrs.associate {
                         it.attr_name to AttributeValueRecord(it.attr_val, it.timestamp)
                     }
-                Entity(entityId, attributeMap.toMutableMap())
+                Entity(entityId, attributeMap.toMutableMap(), timestampProvider)
             }
     }
 }
