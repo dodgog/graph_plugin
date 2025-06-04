@@ -1,6 +1,7 @@
-package com.daylightcomputer.coreplugin.database.sqldefinitions
+package com.daylightcomputer.coreplugin.database
 
 import app.cash.sqldelight.driver.jdbc.sqlite.JdbcSqliteDriver
+import com.daylightcomputer.coreplugin.database.sqldefinitions.Database
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.test.runTest
 

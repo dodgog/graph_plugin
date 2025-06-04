@@ -64,6 +64,7 @@ dependencies {
     testImplementation("app.cash.sqldelight:sqlite-driver:2.0.2")
     testImplementation("org.testng:testng:6.9.6")
     testImplementation("com.willowtreeapps.assertk:assertk:0.28.1")
+    testImplementation("org.jetbrains.kotlin:kotlin-reflect")
 
     testImplementation("org.xerial:sqlite-jdbc") {
         version { strictly("3.32.3.3") }
