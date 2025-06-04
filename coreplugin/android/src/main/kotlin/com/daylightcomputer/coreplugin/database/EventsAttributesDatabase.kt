@@ -1,5 +1,6 @@
 package com.daylightcomputer.coreplugin.database
 
+import com.daylightcomputer.coreplugin.database.sqldefinitions.Attributes
 import com.daylightcomputer.coreplugin.database.sqldefinitions.Database
 import com.daylightcomputer.coreplugin.entity.Entity
 import com.daylightcomputer.hlc.HLC
@@ -83,6 +84,25 @@ object EventsAttributesDatabase {
         }
     }
 
+    /**
+     * Reset the singleton state for testing purposes.
+     * Should only be used in test environments.
+     */
+    internal fun resetForTesting() {
+        synchronized(this) {
+            isInitialized = false
+        }
+    }
+
+    fun insertAttributeRecord(attribute: Attributes) {
+        insertAttributeRecord(
+            attribute.entity_id,
+            attribute.attr_name,
+            attribute.attr_val,
+            attribute.timestamp,
+        )
+    }
+
     fun insertAttributeRecord(
         entityId: String,
         attrName: String,
@@ -108,6 +128,7 @@ object EventsAttributesDatabase {
 
     fun getEntity(entityId: String): Entity {
         val attributes = db.attributesQueries.getAttributesForEntity(entityId).executeAsList()
+        // TODO: if this fails, should we maybe refresh the attributes from events
         val entity =
             Entity.fromAttributePool(
                 entityId,
