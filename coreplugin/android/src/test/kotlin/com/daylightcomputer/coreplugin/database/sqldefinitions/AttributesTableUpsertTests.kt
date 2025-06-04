@@ -4,6 +4,7 @@ import assertk.assertThat
 import assertk.assertions.hasSize
 import assertk.assertions.isEmpty
 import assertk.assertions.isEqualTo
+import com.daylightcomputer.coreplugin.database.testing
 import org.junit.Test
 
 class AttributesTableUpsertTests {

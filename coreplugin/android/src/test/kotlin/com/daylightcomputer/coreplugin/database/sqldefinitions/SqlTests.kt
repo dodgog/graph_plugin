@@ -3,6 +3,7 @@ package com.daylightcomputer.coreplugin.database.sqldefinitions
 import assertk.assertThat
 import assertk.assertions.isEmpty
 import assertk.assertions.isEqualTo
+import com.daylightcomputer.coreplugin.database.testing
 import com.daylightcomputer.hlc.HLC
 import com.daylightcomputer.hlc.HLCConfig
 import com.daylightcomputer.hlc.HLCEnvironment

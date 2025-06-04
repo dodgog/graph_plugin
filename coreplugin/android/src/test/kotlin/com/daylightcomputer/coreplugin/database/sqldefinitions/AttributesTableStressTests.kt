@@ -5,6 +5,7 @@ import assertk.assertions.hasSize
 import assertk.assertions.isEmpty
 import assertk.assertions.isEqualTo
 import assertk.assertions.isNotNull
+import com.daylightcomputer.coreplugin.database.testing
 import org.junit.Test
 
 /**

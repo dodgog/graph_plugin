@@ -1,6 +1,5 @@
 package com.daylightcomputer.coreplugin.database
 
-import app.cash.sqldelight.db.SqlDriver
 import com.daylightcomputer.coreplugin.database.sqldefinitions.Database
 import com.daylightcomputer.coreplugin.entity.Entity
 import com.daylightcomputer.hlc.HLC
@@ -25,8 +24,7 @@ object EventsAttributesDatabase {
     private lateinit var databaseInstance: Database
 
     // TODO: initialize client
-    val clientId = "client_id_temporary"
-//    private lateinit var clientId: String
+    private lateinit var clientId: String
 
     @Volatile
     private var isInitialized = false
@@ -54,8 +52,8 @@ object EventsAttributesDatabase {
         }
 
     fun initialize(
-        driver: SqlDriver,
-        nodeId: String,
+        database: Database,
+        clientId: String,
     ) {
         synchronized(this) {
             if (isInitialized) {
@@ -69,12 +67,14 @@ object EventsAttributesDatabase {
                 println("HLCEnvironment was already initialized: ${e.message}")
             }
 
+            EventsAttributesDatabase.clientId = clientId
+
             hlcInstance =
                 HLC(
-                    distributedNode = DistributedNode(nodeId),
+                    distributedNode = DistributedNode(clientId),
                 )
 
-            databaseInstance = Database(driver)
+            databaseInstance = database
 
             // TODO: initialize client somewhere, if stored -- good, if not then create
 //            client_id = databaseInstance.configQueries.getCurrentClient().executeAsOneOrNull()
