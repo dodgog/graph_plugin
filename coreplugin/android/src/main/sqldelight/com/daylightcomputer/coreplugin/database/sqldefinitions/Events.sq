@@ -6,7 +6,7 @@ CREATE TABLE events (
     -- part of the event which exactly matches the attributes table
     entity_id TEXT NOT NULL, -- doesn't always reference an existing node, so references is omitted
     attr_name TEXT NOT NULL,
-    attr_val TEXT NOT NULL,
+    attr_val TEXT,
     timestamp TEXT NOT NULL
 );
 

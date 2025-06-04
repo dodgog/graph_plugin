@@ -152,7 +152,7 @@ data class Entity(
          * */
         fun fromAttributePool(
             id: String,
-            attributes: Sequence<Attributes>,
+            attributes: List<Attributes>,
             timestampProvider: TimestampProvider,
         ): Entity {
             val map =
@@ -167,8 +167,8 @@ data class Entity(
          * get all possible entities (by distinct id's).
          * CAUTION: lazy evaluation with sequences.
          * */
-        fun fromAttributePool(
-            attributes: Sequence<Attributes>,
+        fun allFromAttributePool(
+            attributes: List<Attributes>,
             timestampProvider: TimestampProvider,
         ): Sequence<Entity> =
             attributes.groupBy { it.entity_id }.asSequence().map { (entityId, attrs) ->

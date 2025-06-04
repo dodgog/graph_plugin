@@ -390,37 +390,55 @@ class Entity$Companion extends jni$_.JObject {
   /// The type which includes information such as the signature of this class.
   static const nullableType = $Entity$Companion$NullableType();
   static const type = $Entity$Companion$Type();
-  static final _id_issueTimestamp = _class.instanceMethodId(
-    r'issueTimestamp',
-    r'()Lkotlin/jvm/functions/Function0;',
-  );
-
-  static final _issueTimestamp = jni$_.ProtectedJniExtensions.lookup<
-          jni$_.NativeFunction<
-              jni$_.JniResult Function(
-                jni$_.Pointer<jni$_.Void>,
-                jni$_.JMethodIDPtr,
-              )>>('globalEnv_CallObjectMethod')
-      .asFunction<
-          jni$_.JniResult Function(
-            jni$_.Pointer<jni$_.Void>,
-            jni$_.JMethodIDPtr,
-          )>();
-
-  /// from: `public final kotlin.jvm.functions.Function0 issueTimestamp()`
-  /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JObject issueTimestamp() {
-    return _issueTimestamp(
-            reference.pointer, _id_issueTimestamp as jni$_.JMethodIDPtr)
-        .object<jni$_.JObject>(const jni$_.JObjectType());
-  }
-
   static final _id_fromAttributePool = _class.instanceMethodId(
     r'fromAttributePool',
-    r'(Ljava/lang/String;Lkotlin/sequences/Sequence;)Lcom/daylightcomputer/coreplugin/entity/Entity;',
+    r'(Ljava/lang/String;Ljava/util/List;Lcom/daylightcomputer/coreplugin/entity/TimestampProvider;)Lcom/daylightcomputer/coreplugin/entity/Entity;',
   );
 
   static final _fromAttributePool = jni$_.ProtectedJniExtensions.lookup<
+          jni$_.NativeFunction<
+              jni$_.JniResult Function(
+                  jni$_.Pointer<jni$_.Void>,
+                  jni$_.JMethodIDPtr,
+                  jni$_.VarArgs<
+                      (
+                        jni$_.Pointer<jni$_.Void>,
+                        jni$_.Pointer<jni$_.Void>,
+                        jni$_.Pointer<jni$_.Void>
+                      )>)>>('globalEnv_CallObjectMethod')
+      .asFunction<
+          jni$_.JniResult Function(
+              jni$_.Pointer<jni$_.Void>,
+              jni$_.JMethodIDPtr,
+              jni$_.Pointer<jni$_.Void>,
+              jni$_.Pointer<jni$_.Void>,
+              jni$_.Pointer<jni$_.Void>)>();
+
+  /// from: `public final com.daylightcomputer.coreplugin.entity.Entity fromAttributePool(java.lang.String string, java.util.List list, com.daylightcomputer.coreplugin.entity.TimestampProvider timestampProvider)`
+  /// The returned object must be released after use, by calling the [release] method.
+  Entity fromAttributePool(
+    jni$_.JString string,
+    jni$_.JList<jni$_.JObject> list,
+    TimestampProvider timestampProvider,
+  ) {
+    final _$string = string.reference;
+    final _$list = list.reference;
+    final _$timestampProvider = timestampProvider.reference;
+    return _fromAttributePool(
+            reference.pointer,
+            _id_fromAttributePool as jni$_.JMethodIDPtr,
+            _$string.pointer,
+            _$list.pointer,
+            _$timestampProvider.pointer)
+        .object<Entity>(const $Entity$Type());
+  }
+
+  static final _id_allFromAttributePool = _class.instanceMethodId(
+    r'allFromAttributePool',
+    r'(Ljava/util/List;Lcom/daylightcomputer/coreplugin/entity/TimestampProvider;)Lkotlin/sequences/Sequence;',
+  );
+
+  static final _allFromAttributePool = jni$_.ProtectedJniExtensions.lookup<
           jni$_.NativeFunction<
               jni$_.JniResult Function(
                   jni$_.Pointer<jni$_.Void>,
@@ -437,46 +455,19 @@ class Entity$Companion extends jni$_.JObject {
               jni$_.Pointer<jni$_.Void>,
               jni$_.Pointer<jni$_.Void>)>();
 
-  /// from: `public final com.daylightcomputer.coreplugin.entity.Entity fromAttributePool(java.lang.String string, kotlin.sequences.Sequence sequence)`
+  /// from: `public final kotlin.sequences.Sequence allFromAttributePool(java.util.List list, com.daylightcomputer.coreplugin.entity.TimestampProvider timestampProvider)`
   /// The returned object must be released after use, by calling the [release] method.
-  Entity fromAttributePool(
-    jni$_.JString string,
-    jni$_.JObject sequence,
+  jni$_.JObject allFromAttributePool(
+    jni$_.JList<jni$_.JObject> list,
+    TimestampProvider timestampProvider,
   ) {
-    final _$string = string.reference;
-    final _$sequence = sequence.reference;
-    return _fromAttributePool(
+    final _$list = list.reference;
+    final _$timestampProvider = timestampProvider.reference;
+    return _allFromAttributePool(
             reference.pointer,
-            _id_fromAttributePool as jni$_.JMethodIDPtr,
-            _$string.pointer,
-            _$sequence.pointer)
-        .object<Entity>(const $Entity$Type());
-  }
-
-  static final _id_fromAttributePool$1 = _class.instanceMethodId(
-    r'fromAttributePool',
-    r'(Lkotlin/sequences/Sequence;)Lkotlin/sequences/Sequence;',
-  );
-
-  static final _fromAttributePool$1 = jni$_.ProtectedJniExtensions.lookup<
-              jni$_.NativeFunction<
-                  jni$_.JniResult Function(
-                      jni$_.Pointer<jni$_.Void>,
-                      jni$_.JMethodIDPtr,
-                      jni$_.VarArgs<(jni$_.Pointer<jni$_.Void>,)>)>>(
-          'globalEnv_CallObjectMethod')
-      .asFunction<
-          jni$_.JniResult Function(jni$_.Pointer<jni$_.Void>,
-              jni$_.JMethodIDPtr, jni$_.Pointer<jni$_.Void>)>();
-
-  /// from: `public final kotlin.sequences.Sequence fromAttributePool(kotlin.sequences.Sequence sequence)`
-  /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JObject fromAttributePool$1(
-    jni$_.JObject sequence,
-  ) {
-    final _$sequence = sequence.reference;
-    return _fromAttributePool$1(reference.pointer,
-            _id_fromAttributePool$1 as jni$_.JMethodIDPtr, _$sequence.pointer)
+            _id_allFromAttributePool as jni$_.JMethodIDPtr,
+            _$list.pointer,
+            _$timestampProvider.pointer)
         .object<jni$_.JObject>(const jni$_.JObjectType());
   }
 
@@ -615,7 +606,7 @@ class Entity extends jni$_.JObject {
       _id_Companion.get(_class, const $Entity$Companion$Type());
 
   static final _id_new$ = _class.constructorId(
-    r'(Ljava/lang/String;Ljava/util/Map;)V',
+    r'(Ljava/lang/String;Ljava/util/Map;Lcom/daylightcomputer/coreplugin/entity/TimestampProvider;)V',
   );
 
   static final _new$ = jni$_.ProtectedJniExtensions.lookup<
@@ -626,6 +617,7 @@ class Entity extends jni$_.JObject {
                   jni$_.VarArgs<
                       (
                         jni$_.Pointer<jni$_.Void>,
+                        jni$_.Pointer<jni$_.Void>,
                         jni$_.Pointer<jni$_.Void>
                       )>)>>('globalEnv_NewObject')
       .asFunction<
@@ -633,18 +625,25 @@ class Entity extends jni$_.JObject {
               jni$_.Pointer<jni$_.Void>,
               jni$_.JMethodIDPtr,
               jni$_.Pointer<jni$_.Void>,
+              jni$_.Pointer<jni$_.Void>,
               jni$_.Pointer<jni$_.Void>)>();
 
-  /// from: `public void <init>(java.lang.String string, java.util.Map map)`
+  /// from: `public void <init>(java.lang.String string, java.util.Map map, com.daylightcomputer.coreplugin.entity.TimestampProvider timestampProvider)`
   /// The returned object must be released after use, by calling the [release] method.
   factory Entity(
     jni$_.JString string,
     jni$_.JMap<jni$_.JString, AttributeValueRecord> map,
+    TimestampProvider timestampProvider,
   ) {
     final _$string = string.reference;
     final _$map = map.reference;
-    return Entity.fromReference(_new$(_class.reference.pointer,
-            _id_new$ as jni$_.JMethodIDPtr, _$string.pointer, _$map.pointer)
+    final _$timestampProvider = timestampProvider.reference;
+    return Entity.fromReference(_new$(
+            _class.reference.pointer,
+            _id_new$ as jni$_.JMethodIDPtr,
+            _$string.pointer,
+            _$map.pointer,
+            _$timestampProvider.pointer)
         .reference);
   }
 
@@ -762,7 +761,7 @@ class Entity extends jni$_.JObject {
 
   static final _id_requiredMutable = _class.instanceMethodId(
     r'requiredMutable',
-    r'(Ljava/lang/String;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function0;)Lkotlin/properties/ReadWriteProperty;',
+    r'(Ljava/lang/String;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;)Lkotlin/properties/ReadWriteProperty;',
   );
 
   static final _requiredMutable = jni$_.ProtectedJniExtensions.lookup<
@@ -774,7 +773,6 @@ class Entity extends jni$_.JObject {
                       (
                         jni$_.Pointer<jni$_.Void>,
                         jni$_.Pointer<jni$_.Void>,
-                        jni$_.Pointer<jni$_.Void>,
                         jni$_.Pointer<jni$_.Void>
                       )>)>>('globalEnv_CallObjectMethod')
       .asFunction<
@@ -783,29 +781,25 @@ class Entity extends jni$_.JObject {
               jni$_.JMethodIDPtr,
               jni$_.Pointer<jni$_.Void>,
               jni$_.Pointer<jni$_.Void>,
-              jni$_.Pointer<jni$_.Void>,
               jni$_.Pointer<jni$_.Void>)>();
 
-  /// from: `public final kotlin.properties.ReadWriteProperty requiredMutable(java.lang.String string, kotlin.jvm.functions.Function1 function1, kotlin.jvm.functions.Function1 function11, kotlin.jvm.functions.Function0 function0)`
+  /// from: `public final kotlin.properties.ReadWriteProperty requiredMutable(java.lang.String string, kotlin.jvm.functions.Function1 function1, kotlin.jvm.functions.Function1 function11)`
   /// The returned object must be released after use, by calling the [release] method.
   jni$_.JObject requiredMutable<$T extends jni$_.JObject?>(
     jni$_.JString string,
     jni$_.JObject function1,
-    jni$_.JObject function11,
-    jni$_.JObject function0, {
+    jni$_.JObject function11, {
     required jni$_.JObjType<$T> T,
   }) {
     final _$string = string.reference;
     final _$function1 = function1.reference;
     final _$function11 = function11.reference;
-    final _$function0 = function0.reference;
     return _requiredMutable(
             reference.pointer,
             _id_requiredMutable as jni$_.JMethodIDPtr,
             _$string.pointer,
             _$function1.pointer,
-            _$function11.pointer,
-            _$function0.pointer)
+            _$function11.pointer)
         .object<jni$_.JObject>(const jni$_.JObjectType());
   }
 
@@ -851,7 +845,7 @@ class Entity extends jni$_.JObject {
 
   static final _id_optionalMutable = _class.instanceMethodId(
     r'optionalMutable',
-    r'(Ljava/lang/String;Ljava/lang/Object;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function0;)Lkotlin/properties/ReadWriteProperty;',
+    r'(Ljava/lang/String;Ljava/lang/Object;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;)Lkotlin/properties/ReadWriteProperty;',
   );
 
   static final _optionalMutable = jni$_.ProtectedJniExtensions.lookup<
@@ -864,7 +858,6 @@ class Entity extends jni$_.JObject {
                         jni$_.Pointer<jni$_.Void>,
                         jni$_.Pointer<jni$_.Void>,
                         jni$_.Pointer<jni$_.Void>,
-                        jni$_.Pointer<jni$_.Void>,
                         jni$_.Pointer<jni$_.Void>
                       )>)>>('globalEnv_CallObjectMethod')
       .asFunction<
@@ -874,32 +867,28 @@ class Entity extends jni$_.JObject {
               jni$_.Pointer<jni$_.Void>,
               jni$_.Pointer<jni$_.Void>,
               jni$_.Pointer<jni$_.Void>,
-              jni$_.Pointer<jni$_.Void>,
               jni$_.Pointer<jni$_.Void>)>();
 
-  /// from: `public final kotlin.properties.ReadWriteProperty optionalMutable(java.lang.String string, T object, kotlin.jvm.functions.Function1 function1, kotlin.jvm.functions.Function1 function11, kotlin.jvm.functions.Function0 function0)`
+  /// from: `public final kotlin.properties.ReadWriteProperty optionalMutable(java.lang.String string, T object, kotlin.jvm.functions.Function1 function1, kotlin.jvm.functions.Function1 function11)`
   /// The returned object must be released after use, by calling the [release] method.
   jni$_.JObject optionalMutable<$T extends jni$_.JObject?>(
     jni$_.JString string,
     $T object,
     jni$_.JObject function1,
-    jni$_.JObject function11,
-    jni$_.JObject function0, {
+    jni$_.JObject function11, {
     required jni$_.JObjType<$T> T,
   }) {
     final _$string = string.reference;
     final _$object = object?.reference ?? jni$_.jNullReference;
     final _$function1 = function1.reference;
     final _$function11 = function11.reference;
-    final _$function0 = function0.reference;
     return _optionalMutable(
             reference.pointer,
             _id_optionalMutable as jni$_.JMethodIDPtr,
             _$string.pointer,
             _$object.pointer,
             _$function1.pointer,
-            _$function11.pointer,
-            _$function0.pointer)
+            _$function11.pointer)
         .object<jni$_.JObject>(const jni$_.JObjectType());
   }
 
@@ -987,7 +976,7 @@ class Entity extends jni$_.JObject {
 
   static final _id_setAttribute = _class.instanceMethodId(
     r'setAttribute',
-    r'(Ljava/lang/String;Ljava/lang/String;Lkotlin/jvm/functions/Function0;)V',
+    r'(Ljava/lang/String;Ljava/lang/String;Lcom/daylightcomputer/coreplugin/entity/TimestampProvider;)V',
   );
 
   static final _setAttribute = jni$_.ProtectedJniExtensions.lookup<
@@ -1009,17 +998,17 @@ class Entity extends jni$_.JObject {
               jni$_.Pointer<jni$_.Void>,
               jni$_.Pointer<jni$_.Void>)>();
 
-  /// from: `public final void setAttribute(java.lang.String string, java.lang.String string1, kotlin.jvm.functions.Function0 function0)`
+  /// from: `public final void setAttribute(java.lang.String string, java.lang.String string1, com.daylightcomputer.coreplugin.entity.TimestampProvider timestampProvider)`
   void setAttribute(
     jni$_.JString string,
     jni$_.JString? string1,
-    jni$_.JObject function0,
+    TimestampProvider timestampProvider,
   ) {
     final _$string = string.reference;
     final _$string1 = string1?.reference ?? jni$_.jNullReference;
-    final _$function0 = function0.reference;
+    final _$timestampProvider = timestampProvider.reference;
     _setAttribute(reference.pointer, _id_setAttribute as jni$_.JMethodIDPtr,
-            _$string.pointer, _$string1.pointer, _$function0.pointer)
+            _$string.pointer, _$string1.pointer, _$timestampProvider.pointer)
         .check();
   }
 
@@ -1049,7 +1038,7 @@ class Entity extends jni$_.JObject {
 
   static final _id_copy = _class.instanceMethodId(
     r'copy',
-    r'(Ljava/lang/String;Ljava/util/Map;)Lcom/daylightcomputer/coreplugin/entity/Entity;',
+    r'(Ljava/lang/String;Ljava/util/Map;Lcom/daylightcomputer/coreplugin/entity/TimestampProvider;)Lcom/daylightcomputer/coreplugin/entity/Entity;',
   );
 
   static final _copy = jni$_.ProtectedJniExtensions.lookup<
@@ -1060,6 +1049,7 @@ class Entity extends jni$_.JObject {
                   jni$_.VarArgs<
                       (
                         jni$_.Pointer<jni$_.Void>,
+                        jni$_.Pointer<jni$_.Void>,
                         jni$_.Pointer<jni$_.Void>
                       )>)>>('globalEnv_CallObjectMethod')
       .asFunction<
@@ -1067,18 +1057,21 @@ class Entity extends jni$_.JObject {
               jni$_.Pointer<jni$_.Void>,
               jni$_.JMethodIDPtr,
               jni$_.Pointer<jni$_.Void>,
+              jni$_.Pointer<jni$_.Void>,
               jni$_.Pointer<jni$_.Void>)>();
 
-  /// from: `public final com.daylightcomputer.coreplugin.entity.Entity copy(java.lang.String string, java.util.Map map)`
+  /// from: `public final com.daylightcomputer.coreplugin.entity.Entity copy(java.lang.String string, java.util.Map map, com.daylightcomputer.coreplugin.entity.TimestampProvider timestampProvider)`
   /// The returned object must be released after use, by calling the [release] method.
   Entity copy(
     jni$_.JString string,
     jni$_.JMap<jni$_.JString, AttributeValueRecord> map,
+    TimestampProvider timestampProvider,
   ) {
     final _$string = string.reference;
     final _$map = map.reference;
+    final _$timestampProvider = timestampProvider.reference;
     return _copy(reference.pointer, _id_copy as jni$_.JMethodIDPtr,
-            _$string.pointer, _$map.pointer)
+            _$string.pointer, _$map.pointer, _$timestampProvider.pointer)
         .object<Entity>(const $Entity$Type());
   }
 
@@ -1224,6 +1217,227 @@ final class $Entity$Type extends jni$_.JObjType<Entity> {
   @core$_.override
   bool operator ==(Object other) {
     return other.runtimeType == ($Entity$Type) && other is $Entity$Type;
+  }
+}
+
+/// from: `com.daylightcomputer.coreplugin.entity.TimestampProvider`
+class TimestampProvider extends jni$_.JObject {
+  @jni$_.internal
+  @core$_.override
+  final jni$_.JObjType<TimestampProvider> $type;
+
+  @jni$_.internal
+  TimestampProvider.fromReference(
+    jni$_.JReference reference,
+  )   : $type = type,
+        super.fromReference(reference);
+
+  static final _class = jni$_.JClass.forName(
+      r'com/daylightcomputer/coreplugin/entity/TimestampProvider');
+
+  /// The type which includes information such as the signature of this class.
+  static const nullableType = $TimestampProvider$NullableType();
+  static const type = $TimestampProvider$Type();
+  static final _id_issueTimestamp = _class.instanceMethodId(
+    r'issueTimestamp',
+    r'()Ljava/lang/String;',
+  );
+
+  static final _issueTimestamp = jni$_.ProtectedJniExtensions.lookup<
+          jni$_.NativeFunction<
+              jni$_.JniResult Function(
+                jni$_.Pointer<jni$_.Void>,
+                jni$_.JMethodIDPtr,
+              )>>('globalEnv_CallObjectMethod')
+      .asFunction<
+          jni$_.JniResult Function(
+            jni$_.Pointer<jni$_.Void>,
+            jni$_.JMethodIDPtr,
+          )>();
+
+  /// from: `public abstract java.lang.String issueTimestamp()`
+  /// The returned object must be released after use, by calling the [release] method.
+  jni$_.JString issueTimestamp() {
+    return _issueTimestamp(
+            reference.pointer, _id_issueTimestamp as jni$_.JMethodIDPtr)
+        .object<jni$_.JString>(const jni$_.JStringType());
+  }
+
+  /// Maps a specific port to the implemented interface.
+  static final core$_.Map<int, $TimestampProvider> _$impls = {};
+  static jni$_.JObjectPtr _$invoke(
+    int port,
+    jni$_.JObjectPtr descriptor,
+    jni$_.JObjectPtr args,
+  ) {
+    return _$invokeMethod(
+      port,
+      jni$_.MethodInvocation.fromAddresses(
+        0,
+        descriptor.address,
+        args.address,
+      ),
+    );
+  }
+
+  static final jni$_.Pointer<
+          jni$_.NativeFunction<
+              jni$_.JObjectPtr Function(
+                  jni$_.Int64, jni$_.JObjectPtr, jni$_.JObjectPtr)>>
+      _$invokePointer = jni$_.Pointer.fromFunction(_$invoke);
+
+  static jni$_.Pointer<jni$_.Void> _$invokeMethod(
+    int $p,
+    jni$_.MethodInvocation $i,
+  ) {
+    try {
+      final $d = $i.methodDescriptor.toDartString(releaseOriginal: true);
+      final $a = $i.args;
+      if ($d == r'issueTimestamp()Ljava/lang/String;') {
+        final $r = _$impls[$p]!.issueTimestamp();
+        return ($r as jni$_.JObject?)
+                ?.as(const jni$_.JObjectType())
+                .reference
+                .toPointer() ??
+            jni$_.nullptr;
+      }
+    } catch (e) {
+      return jni$_.ProtectedJniExtensions.newDartException(e);
+    }
+    return jni$_.nullptr;
+  }
+
+  static void implementIn(
+    jni$_.JImplementer implementer,
+    $TimestampProvider $impl,
+  ) {
+    late final jni$_.RawReceivePort $p;
+    $p = jni$_.RawReceivePort(($m) {
+      if ($m == null) {
+        _$impls.remove($p.sendPort.nativePort);
+        $p.close();
+        return;
+      }
+      final $i = jni$_.MethodInvocation.fromMessage($m);
+      final $r = _$invokeMethod($p.sendPort.nativePort, $i);
+      jni$_.ProtectedJniExtensions.returnResult($i.result, $r);
+    });
+    implementer.add(
+      r'com.daylightcomputer.coreplugin.entity.TimestampProvider',
+      $p,
+      _$invokePointer,
+      [],
+    );
+    final $a = $p.sendPort.nativePort;
+    _$impls[$a] = $impl;
+  }
+
+  factory TimestampProvider.implement(
+    $TimestampProvider $impl,
+  ) {
+    final $i = jni$_.JImplementer();
+    implementIn($i, $impl);
+    return TimestampProvider.fromReference(
+      $i.implementReference(),
+    );
+  }
+}
+
+abstract base mixin class $TimestampProvider {
+  factory $TimestampProvider({
+    required jni$_.JString Function() issueTimestamp,
+  }) = _$TimestampProvider;
+
+  jni$_.JString issueTimestamp();
+}
+
+final class _$TimestampProvider with $TimestampProvider {
+  _$TimestampProvider({
+    required jni$_.JString Function() issueTimestamp,
+  }) : _issueTimestamp = issueTimestamp;
+
+  final jni$_.JString Function() _issueTimestamp;
+
+  jni$_.JString issueTimestamp() {
+    return _issueTimestamp();
+  }
+}
+
+final class $TimestampProvider$NullableType
+    extends jni$_.JObjType<TimestampProvider?> {
+  @jni$_.internal
+  const $TimestampProvider$NullableType();
+
+  @jni$_.internal
+  @core$_.override
+  String get signature =>
+      r'Lcom/daylightcomputer/coreplugin/entity/TimestampProvider;';
+
+  @jni$_.internal
+  @core$_.override
+  TimestampProvider? fromReference(jni$_.JReference reference) =>
+      reference.isNull
+          ? null
+          : TimestampProvider.fromReference(
+              reference,
+            );
+  @jni$_.internal
+  @core$_.override
+  jni$_.JObjType get superType => const jni$_.JObjectType();
+
+  @jni$_.internal
+  @core$_.override
+  jni$_.JObjType<TimestampProvider?> get nullableType => this;
+
+  @jni$_.internal
+  @core$_.override
+  final superCount = 1;
+
+  @core$_.override
+  int get hashCode => ($TimestampProvider$NullableType).hashCode;
+
+  @core$_.override
+  bool operator ==(Object other) {
+    return other.runtimeType == ($TimestampProvider$NullableType) &&
+        other is $TimestampProvider$NullableType;
+  }
+}
+
+final class $TimestampProvider$Type extends jni$_.JObjType<TimestampProvider> {
+  @jni$_.internal
+  const $TimestampProvider$Type();
+
+  @jni$_.internal
+  @core$_.override
+  String get signature =>
+      r'Lcom/daylightcomputer/coreplugin/entity/TimestampProvider;';
+
+  @jni$_.internal
+  @core$_.override
+  TimestampProvider fromReference(jni$_.JReference reference) =>
+      TimestampProvider.fromReference(
+        reference,
+      );
+  @jni$_.internal
+  @core$_.override
+  jni$_.JObjType get superType => const jni$_.JObjectType();
+
+  @jni$_.internal
+  @core$_.override
+  jni$_.JObjType<TimestampProvider?> get nullableType =>
+      const $TimestampProvider$NullableType();
+
+  @jni$_.internal
+  @core$_.override
+  final superCount = 1;
+
+  @core$_.override
+  int get hashCode => ($TimestampProvider$Type).hashCode;
+
+  @core$_.override
+  bool operator ==(Object other) {
+    return other.runtimeType == ($TimestampProvider$Type) &&
+        other is $TimestampProvider$Type;
   }
 }
 
