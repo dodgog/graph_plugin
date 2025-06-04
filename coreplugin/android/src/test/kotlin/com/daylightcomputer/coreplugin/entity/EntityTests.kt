@@ -83,7 +83,7 @@ class EntityTests {
     @Test
     fun `should create entity from single attribute`() {
         val attributes =
-            sequenceOf(
+            listOf(
                 createAttribute("entity1", "title", "Test Title", "2024-01-01"),
             )
 
@@ -100,7 +100,7 @@ class EntityTests {
     @Test
     fun `should create entity from multiple attributes`() {
         val attributes =
-            sequenceOf(
+            listOf(
                 createAttribute("entity1", "title", "Test Title", "2024-01-01"),
                 createAttribute(
                     "entity1",
@@ -125,7 +125,7 @@ class EntityTests {
     @Test
     fun `should filter attributes by entity id`() {
         val attributes =
-            sequenceOf(
+            listOf(
                 createAttribute("entity1", "title", "Title 1", "2024-01-01"),
                 createAttribute("entity2", "title", "Title 2", "2024-01-02"),
                 createAttribute(
@@ -150,7 +150,7 @@ class EntityTests {
     @Test
     fun `should return empty attributes when no matching entity id`() {
         val attributes =
-            sequenceOf(
+            listOf(
                 createAttribute("entity1", "title", "Title 1", "2024-01-01"),
                 createAttribute("entity2", "title", "Title 2", "2024-01-02"),
             )
@@ -164,7 +164,7 @@ class EntityTests {
     @Test
     fun `should handle null attribute values in fromAttributePool`() {
         val attributes =
-            sequenceOf(
+            listOf(
                 createAttribute("entity1", "title", null, "2024-01-01"),
                 createAttribute(
                     "entity1",
@@ -185,7 +185,7 @@ class EntityTests {
 
     @Test
     fun `should handle empty sequence for single entity`() {
-        val attributes = emptySequence<Attributes>()
+        val attributes = emptyList<Attributes>()
 
         val entity = Entity.fromAttributePool("entity1", attributes, timestampProvider)
 
@@ -196,7 +196,7 @@ class EntityTests {
     @Test
     fun `should create sequence of entities from mixed attributes`() {
         val attributes =
-            sequenceOf(
+            listOf(
                 createAttribute("entity1", "title", "Title 1", "2024-01-01"),
                 createAttribute("entity2", "title", "Title 2", "2024-01-02"),
                 createAttribute(
@@ -209,7 +209,7 @@ class EntityTests {
                 createAttribute("entity2", "type", "document", "2024-01-05"),
             )
 
-        val entities = Entity.fromAttributePool(attributes, timestampProvider).toList()
+        val entities = Entity.allFromAttributePool(attributes, timestampProvider).toList()
 
         assertThat(entities).hasSize(3)
 
@@ -237,7 +237,7 @@ class EntityTests {
     @Test
     fun `should handle single entity with multiple attributes`() {
         val attributes =
-            sequenceOf(
+            listOf(
                 createAttribute("entity1", "title", "Title", "2024-01-01"),
                 createAttribute(
                     "entity1",
@@ -249,7 +249,7 @@ class EntityTests {
                 createAttribute("entity1", "author", "John Doe", "2024-01-04"),
             )
 
-        val entities = Entity.fromAttributePool(attributes, timestampProvider).toList()
+        val entities = Entity.allFromAttributePool(attributes, timestampProvider).toList()
 
         assertThat(entities).hasSize(1)
         val entity = entities.first()
@@ -259,9 +259,9 @@ class EntityTests {
 
     @Test
     fun `should handle empty sequence for multiple entities`() {
-        val attributes = emptySequence<Attributes>()
+        val attributes = emptyList<Attributes>()
 
-        val entities = Entity.fromAttributePool(attributes, timestampProvider).toList()
+        val entities = Entity.allFromAttributePool(attributes, timestampProvider).toList()
 
         assertThat(entities).isEmpty()
     }
@@ -270,7 +270,7 @@ class EntityTests {
     fun `should handle very long entity ids`() {
         val longId = "entity_" + "x".repeat(1000)
         val attributes =
-            sequenceOf(
+            listOf(
                 createAttribute(longId, "title", "Title", "2024-01-01"),
             )
 
@@ -284,7 +284,7 @@ class EntityTests {
     fun `should handle very long attribute names`() {
         val longAttribute = "attribute_" + "x".repeat(1000)
         val attributes =
-            sequenceOf(
+            listOf(
                 createAttribute(
                     "entity1",
                     longAttribute,
@@ -303,7 +303,7 @@ class EntityTests {
     fun `should handle very long attribute values`() {
         val longValue = "x".repeat(10000)
         val attributes =
-            sequenceOf(
+            listOf(
                 createAttribute("entity1", "content", longValue, "2024-01-01"),
             )
 
@@ -316,7 +316,7 @@ class EntityTests {
     fun `should handle special characters in entity ids`() {
         val specialId = "entity!@#$%^&*()[]{}|\\:;\"'<>?,./"
         val attributes =
-            sequenceOf(
+            listOf(
                 createAttribute(specialId, "title", "Title", "2024-01-01"),
             )
 
@@ -333,7 +333,7 @@ class EntityTests {
         val unicodeValue = "测试值 🎉 emojis αβγδε"
 
         val attributes =
-            sequenceOf(
+            listOf(
                 createAttribute(
                     unicodeId,
                     unicodeAttribute,
@@ -353,12 +353,12 @@ class EntityTests {
     @Test
     fun `should handle empty string values`() {
         val attributes =
-            sequenceOf(
+            listOf(
                 createAttribute("", "title", "", "2024-01-01"),
                 createAttribute("entity1", "", "value", "2024-01-02"),
             )
 
-        val entities = Entity.fromAttributePool(attributes, timestampProvider).toList()
+        val entities = Entity.allFromAttributePool(attributes, timestampProvider).toList()
 
         assertThat(entities).hasSize(2)
 
@@ -387,7 +387,7 @@ class EntityTests {
                         ),
                     )
                 }
-            }
+            }.toList()
 
         val entity = Entity.fromAttributePool("entity1", attributes, timestampProvider)
 
@@ -419,9 +419,9 @@ class EntityTests {
                         ),
                     )
                 }
-            }
+            }.toList()
 
-        val entities = Entity.fromAttributePool(attributes, timestampProvider).toList()
+        val entities = Entity.allFromAttributePool(attributes, timestampProvider).toList()
 
         assertThat(entities).hasSize(entityCount)
 
@@ -437,7 +437,7 @@ class EntityTests {
     @Test
     fun `should preserve timestamp information`() {
         val attributes =
-            sequenceOf(
+            listOf(
                 createAttribute(
                     "entity1",
                     "title",
@@ -465,7 +465,7 @@ class EntityTests {
     @Test
     fun `should handle various timestamp formats`() {
         val attributes =
-            sequenceOf(
+            listOf(
                 createAttribute("entity1", "attr1", "value1", "2024-01-01"),
                 createAttribute("entity1", "attr2", "value2", "1704067200000"),
                 createAttribute(
@@ -496,7 +496,7 @@ class EntityTests {
     fun `should handle duplicate attribute names for same entity`() {
         // This tests the groupBy behavior - last one should win in the associate call
         val attributes =
-            sequenceOf(
+            listOf(
                 createAttribute(
                     "entity1",
                     "title",
@@ -524,7 +524,7 @@ class EntityTests {
     @Test
     fun `should maintain attribute isolation between entities`() {
         val attributes =
-            sequenceOf(
+            listOf(
                 createAttribute(
                     "entity1",
                     "shared_attr",
@@ -545,7 +545,7 @@ class EntityTests {
                 ),
             )
 
-        val entities = Entity.fromAttributePool(attributes, timestampProvider).toList()
+        val entities = Entity.allFromAttributePool(attributes, timestampProvider).toList()
 
         val entity1 = entities.find { it.id == "entity1" }
         val entity2 = entities.find { it.id == "entity2" }
