@@ -10,12 +10,23 @@ import kotlin.reflect.KProperty
 /**
  * Collection of named timestamped values or "attributes" with assigned ID
  */
-data class Entity(
+class Entity(
     val id: String,
     private var _attributes: MutableMap<String, AttributeValueRecord>,
     private val timestampProvider: TimestampProvider,
 ) {
     val attributes get(): Map<String, AttributeValueRecord> = _attributes.toMap()
+
+    val attributesList
+        get(): List<Attributes> =
+            _attributes.map { (k, v) ->
+                Attributes(
+                    id,
+                    k,
+                    v.value,
+                    v.timestamp,
+                )
+            }
 
     /**
      * Emit changes for events to be constructed and reduced
@@ -142,6 +153,23 @@ data class Entity(
         // TODO: what if this fails?
         _attributeChanges.tryEmit(attributeName to record) // Non-suspend emit!
     }
+
+    // NOTE: Not using a data class, because then the timestamp provider becomes a value
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (javaClass != other?.javaClass) return false
+
+        other as Entity
+
+        if (id != other.id) return false
+        if (_attributes != other._attributes) return false
+
+        return true
+    }
+
+    override fun hashCode(): Int = 31 * id.hashCode() + _attributes.hashCode()
+
+    override fun toString(): String = "Entity(id='$id', attributes=$_attributes)"
 
     companion object {
         // TODO: move these methods up to where the timestamp provider is created (closer to the db)
