@@ -36,7 +36,7 @@ class HLCTest {
 
     @AfterEach
     fun tearDown() {
-        HLCEnvironment.resetForTests()
+        HLCEnvironment.uninitialize()
     }
 
     @Test
@@ -297,7 +297,7 @@ class HLCTest {
 
     @Test
     fun `Counter overflow throws exception`() {
-        HLCEnvironment.resetForTests()
+        HLCEnvironment.uninitialize()
         HLCEnvironment.initialize(
             HLCConfig(
                 getPhysicalTime = { fixedTime },

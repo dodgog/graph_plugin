@@ -18,7 +18,7 @@ class TimestampTest {
 
     @BeforeEach
     fun setup() {
-        HLCEnvironment.resetForTests()
+        HLCEnvironment.uninitialize()
         HLCEnvironment.initialize(
             HLCConfig(
                 logicalTimestampLength = 27,

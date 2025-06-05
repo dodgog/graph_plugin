@@ -15,7 +15,7 @@ import org.junit.jupiter.api.Test
 class ClientNodeTest {
     @BeforeEach
     fun setup() {
-        HLCEnvironment.resetForTests()
+        HLCEnvironment.uninitialize()
         HLCEnvironment.initialize(
             HLCConfig(
                 distributedNodeLength = 6,

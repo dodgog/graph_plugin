@@ -8,7 +8,8 @@ import com.daylightcomputer.hlc.HLCConfig
 import com.daylightcomputer.hlc.HLCEnvironment
 import com.daylightcomputer.hlc.events.issueLocalEventPacked
 import com.daylightcomputer.hlc.model.DistributedNode
-import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.cancel
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import java.util.UUID
@@ -23,6 +24,7 @@ import java.util.UUID
 object EventsAttributesDatabase {
     private lateinit var hlcInstance: HLC
     private lateinit var databaseInstance: Database
+    private lateinit var scope: CoroutineScope
 
     // TODO: initialize client
     private lateinit var clientId: String
@@ -52,9 +54,14 @@ object EventsAttributesDatabase {
             return databaseInstance
         }
 
+    fun close() {
+        scope.cancel()
+    }
+
     fun initialize(
         database: Database,
         clientId: String,
+        scope: CoroutineScope,
     ) {
         synchronized(this) {
             if (isInitialized) {
@@ -65,7 +72,7 @@ object EventsAttributesDatabase {
             try {
                 HLCEnvironment.initialize(HLCConfig())
             } catch (e: IllegalStateException) {
-                println("HLCEnvironment was already initialized: ${e.message}")
+                throw IllegalStateException("HLCEnvironment was already initialized: ${e.message}")
             }
 
             EventsAttributesDatabase.clientId = clientId
@@ -76,6 +83,8 @@ object EventsAttributesDatabase {
                 )
 
             databaseInstance = database
+
+            EventsAttributesDatabase.scope = scope
 
             // TODO: initialize client somewhere, if stored -- good, if not then create
 //            client_id = databaseInstance.configQueries.getCurrentClient().executeAsOneOrNull()
@@ -91,6 +100,7 @@ object EventsAttributesDatabase {
     internal fun resetForTesting() {
         synchronized(this) {
             isInitialized = false
+            HLCEnvironment.uninitialize()
         }
     }
 
@@ -137,39 +147,31 @@ object EventsAttributesDatabase {
         // TODO: figure out how to scope out this so that when we stop using the entity, its scope also dissapears
         entity.attributeChanges
             .onEach {
-                // insert it into the events and attributes
-                println(it)
                 insertAttributeRecord(
                     entityId,
                     it.first,
                     it.second.value,
                     it.second.timestamp,
                 )
-            }.launchIn(GlobalScope)
+            }.launchIn(scope)
 
         return entity
     }
 
     fun getAllEntities(): Sequence<Entity> {
-        val attributes = db.attributesQueries.getAttributes().executeAsList()
-        val entities =
-            Entity.allFromAttributePool(
-                attributes,
-            ) { hlcInstance.issueLocalEventPacked() }
-        // TODO: figure out how to scope out this so that when we stop using the entity, its scope also dissapears
-        entities.onEach { e ->
-            e.attributeChanges
-                .onEach {
-                    println(it)
-                    // insert into events and attributes
-                    insertAttributeRecord(
-                        e.id,
-                        it.first,
-                        it.second.value,
-                        it.second.timestamp,
-                    )
-                }.launchIn(GlobalScope)
-        }
-        return entities
+        val attrs = db.attributesQueries.getAttributes().executeAsList()
+        return Entity
+            .allFromAttributePool(attrs) { hlcInstance.issueLocalEventPacked() }
+            .onEach { e ->
+                e.attributeChanges
+                    .onEach {
+                        insertAttributeRecord(
+                            e.id,
+                            it.first,
+                            it.second.value,
+                            it.second.timestamp,
+                        )
+                    }.launchIn(scope)
+            }
     }
 }
