@@ -13,7 +13,7 @@ import org.junit.jupiter.api.Test
 class HLCEnvironmentTest {
     @AfterEach
     fun tearDown() {
-        HLCEnvironment.resetForTests()
+        HLCEnvironment.uninitialize()
     }
 
     @Test
@@ -45,7 +45,7 @@ class HLCEnvironmentTest {
     fun `HLCEnvironment reset works`() {
         val config = HLCConfig()
         HLCEnvironment.initialize(config)
-        HLCEnvironment.resetForTests()
+        HLCEnvironment.uninitialize()
         assertk
             .assertFailure {
                 HLCEnvironment.config

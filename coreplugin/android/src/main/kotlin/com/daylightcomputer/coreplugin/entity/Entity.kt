@@ -30,8 +30,10 @@ class Entity(
 
     /**
      * Emit changes for events to be constructed and reduced
+     *
+     * TODO: the replay was added because the first value would get lost due to couroutine setup i would guess
      */
-    private val _attributeChanges = MutableSharedFlow<Pair<String, AttributeValueRecord>>()
+    private val _attributeChanges = MutableSharedFlow<Pair<String, AttributeValueRecord>>(1)
 
     /**
      * Public consumable event flow without emission rights
@@ -70,7 +72,7 @@ class Entity(
             property: KProperty<*>,
             value: T,
         ) {
-            setAttribute(attributeName, encode(value), timestampProvider)
+            setAttribute(attributeName, encode(value))
         }
     }
 
@@ -110,7 +112,7 @@ class Entity(
             property: KProperty<*>,
             value: T,
         ) {
-            setAttribute(attributeName, encode(value), timestampProvider)
+            setAttribute(attributeName, encode(value))
         }
     }
 
@@ -146,7 +148,6 @@ class Entity(
     fun setAttribute(
         attributeName: String,
         value: String?,
-        timestampProvider: TimestampProvider,
     ) {
         val record = AttributeValueRecord(value, timestampProvider.issueTimestamp())
         _attributes[attributeName] = record

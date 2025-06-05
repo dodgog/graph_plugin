@@ -698,6 +698,32 @@ class Entity extends jni$_.JObject {
                 jni$_.JStringType(), $AttributeValueRecord$Type()));
   }
 
+  static final _id_getAttributesList = _class.instanceMethodId(
+    r'getAttributesList',
+    r'()Ljava/util/List;',
+  );
+
+  static final _getAttributesList = jni$_.ProtectedJniExtensions.lookup<
+          jni$_.NativeFunction<
+              jni$_.JniResult Function(
+                jni$_.Pointer<jni$_.Void>,
+                jni$_.JMethodIDPtr,
+              )>>('globalEnv_CallObjectMethod')
+      .asFunction<
+          jni$_.JniResult Function(
+            jni$_.Pointer<jni$_.Void>,
+            jni$_.JMethodIDPtr,
+          )>();
+
+  /// from: `public final java.util.List getAttributesList()`
+  /// The returned object must be released after use, by calling the [release] method.
+  jni$_.JList<jni$_.JObject> getAttributesList() {
+    return _getAttributesList(
+            reference.pointer, _id_getAttributesList as jni$_.JMethodIDPtr)
+        .object<jni$_.JList<jni$_.JObject>>(
+            const jni$_.JListType<jni$_.JObject>(jni$_.JObjectType()));
+  }
+
   static final _id_getAttributeChanges = _class.instanceMethodId(
     r'getAttributeChanges',
     r'()Lkotlinx/coroutines/flow/SharedFlow;',
@@ -976,7 +1002,7 @@ class Entity extends jni$_.JObject {
 
   static final _id_setAttribute = _class.instanceMethodId(
     r'setAttribute',
-    r'(Ljava/lang/String;Ljava/lang/String;Lcom/daylightcomputer/coreplugin/entity/TimestampProvider;)V',
+    r'(Ljava/lang/String;Ljava/lang/String;)V',
   );
 
   static final _setAttribute = jni$_.ProtectedJniExtensions.lookup<
@@ -987,7 +1013,6 @@ class Entity extends jni$_.JObject {
                   jni$_.VarArgs<
                       (
                         jni$_.Pointer<jni$_.Void>,
-                        jni$_.Pointer<jni$_.Void>,
                         jni$_.Pointer<jni$_.Void>
                       )>)>>('globalEnv_CallVoidMethod')
       .asFunction<
@@ -995,131 +1020,18 @@ class Entity extends jni$_.JObject {
               jni$_.Pointer<jni$_.Void>,
               jni$_.JMethodIDPtr,
               jni$_.Pointer<jni$_.Void>,
-              jni$_.Pointer<jni$_.Void>,
               jni$_.Pointer<jni$_.Void>)>();
 
-  /// from: `public final void setAttribute(java.lang.String string, java.lang.String string1, com.daylightcomputer.coreplugin.entity.TimestampProvider timestampProvider)`
+  /// from: `public final void setAttribute(java.lang.String string, java.lang.String string1)`
   void setAttribute(
     jni$_.JString string,
     jni$_.JString? string1,
-    TimestampProvider timestampProvider,
   ) {
     final _$string = string.reference;
     final _$string1 = string1?.reference ?? jni$_.jNullReference;
-    final _$timestampProvider = timestampProvider.reference;
     _setAttribute(reference.pointer, _id_setAttribute as jni$_.JMethodIDPtr,
-            _$string.pointer, _$string1.pointer, _$timestampProvider.pointer)
+            _$string.pointer, _$string1.pointer)
         .check();
-  }
-
-  static final _id_component1 = _class.instanceMethodId(
-    r'component1',
-    r'()Ljava/lang/String;',
-  );
-
-  static final _component1 = jni$_.ProtectedJniExtensions.lookup<
-          jni$_.NativeFunction<
-              jni$_.JniResult Function(
-                jni$_.Pointer<jni$_.Void>,
-                jni$_.JMethodIDPtr,
-              )>>('globalEnv_CallObjectMethod')
-      .asFunction<
-          jni$_.JniResult Function(
-            jni$_.Pointer<jni$_.Void>,
-            jni$_.JMethodIDPtr,
-          )>();
-
-  /// from: `public final java.lang.String component1()`
-  /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JString component1() {
-    return _component1(reference.pointer, _id_component1 as jni$_.JMethodIDPtr)
-        .object<jni$_.JString>(const jni$_.JStringType());
-  }
-
-  static final _id_copy = _class.instanceMethodId(
-    r'copy',
-    r'(Ljava/lang/String;Ljava/util/Map;Lcom/daylightcomputer/coreplugin/entity/TimestampProvider;)Lcom/daylightcomputer/coreplugin/entity/Entity;',
-  );
-
-  static final _copy = jni$_.ProtectedJniExtensions.lookup<
-          jni$_.NativeFunction<
-              jni$_.JniResult Function(
-                  jni$_.Pointer<jni$_.Void>,
-                  jni$_.JMethodIDPtr,
-                  jni$_.VarArgs<
-                      (
-                        jni$_.Pointer<jni$_.Void>,
-                        jni$_.Pointer<jni$_.Void>,
-                        jni$_.Pointer<jni$_.Void>
-                      )>)>>('globalEnv_CallObjectMethod')
-      .asFunction<
-          jni$_.JniResult Function(
-              jni$_.Pointer<jni$_.Void>,
-              jni$_.JMethodIDPtr,
-              jni$_.Pointer<jni$_.Void>,
-              jni$_.Pointer<jni$_.Void>,
-              jni$_.Pointer<jni$_.Void>)>();
-
-  /// from: `public final com.daylightcomputer.coreplugin.entity.Entity copy(java.lang.String string, java.util.Map map, com.daylightcomputer.coreplugin.entity.TimestampProvider timestampProvider)`
-  /// The returned object must be released after use, by calling the [release] method.
-  Entity copy(
-    jni$_.JString string,
-    jni$_.JMap<jni$_.JString, AttributeValueRecord> map,
-    TimestampProvider timestampProvider,
-  ) {
-    final _$string = string.reference;
-    final _$map = map.reference;
-    final _$timestampProvider = timestampProvider.reference;
-    return _copy(reference.pointer, _id_copy as jni$_.JMethodIDPtr,
-            _$string.pointer, _$map.pointer, _$timestampProvider.pointer)
-        .object<Entity>(const $Entity$Type());
-  }
-
-  static final _id_toString$1 = _class.instanceMethodId(
-    r'toString',
-    r'()Ljava/lang/String;',
-  );
-
-  static final _toString$1 = jni$_.ProtectedJniExtensions.lookup<
-          jni$_.NativeFunction<
-              jni$_.JniResult Function(
-                jni$_.Pointer<jni$_.Void>,
-                jni$_.JMethodIDPtr,
-              )>>('globalEnv_CallObjectMethod')
-      .asFunction<
-          jni$_.JniResult Function(
-            jni$_.Pointer<jni$_.Void>,
-            jni$_.JMethodIDPtr,
-          )>();
-
-  /// from: `public java.lang.String toString()`
-  /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JString toString$1() {
-    return _toString$1(reference.pointer, _id_toString$1 as jni$_.JMethodIDPtr)
-        .object<jni$_.JString>(const jni$_.JStringType());
-  }
-
-  static final _id_hashCode$1 = _class.instanceMethodId(
-    r'hashCode',
-    r'()I',
-  );
-
-  static final _hashCode$1 = jni$_.ProtectedJniExtensions.lookup<
-          jni$_.NativeFunction<
-              jni$_.JniResult Function(
-                jni$_.Pointer<jni$_.Void>,
-                jni$_.JMethodIDPtr,
-              )>>('globalEnv_CallIntMethod')
-      .asFunction<
-          jni$_.JniResult Function(
-            jni$_.Pointer<jni$_.Void>,
-            jni$_.JMethodIDPtr,
-          )>();
-
-  /// from: `public int hashCode()`
-  int hashCode$1() {
-    return _hashCode$1(reference.pointer, _id_hashCode$1 as jni$_.JMethodIDPtr)
-        .integer;
   }
 
   static final _id_equals = _class.instanceMethodId(
@@ -1146,6 +1058,53 @@ class Entity extends jni$_.JObject {
     return _equals(reference.pointer, _id_equals as jni$_.JMethodIDPtr,
             _$object.pointer)
         .boolean;
+  }
+
+  static final _id_hashCode$1 = _class.instanceMethodId(
+    r'hashCode',
+    r'()I',
+  );
+
+  static final _hashCode$1 = jni$_.ProtectedJniExtensions.lookup<
+          jni$_.NativeFunction<
+              jni$_.JniResult Function(
+                jni$_.Pointer<jni$_.Void>,
+                jni$_.JMethodIDPtr,
+              )>>('globalEnv_CallIntMethod')
+      .asFunction<
+          jni$_.JniResult Function(
+            jni$_.Pointer<jni$_.Void>,
+            jni$_.JMethodIDPtr,
+          )>();
+
+  /// from: `public int hashCode()`
+  int hashCode$1() {
+    return _hashCode$1(reference.pointer, _id_hashCode$1 as jni$_.JMethodIDPtr)
+        .integer;
+  }
+
+  static final _id_toString$1 = _class.instanceMethodId(
+    r'toString',
+    r'()Ljava/lang/String;',
+  );
+
+  static final _toString$1 = jni$_.ProtectedJniExtensions.lookup<
+          jni$_.NativeFunction<
+              jni$_.JniResult Function(
+                jni$_.Pointer<jni$_.Void>,
+                jni$_.JMethodIDPtr,
+              )>>('globalEnv_CallObjectMethod')
+      .asFunction<
+          jni$_.JniResult Function(
+            jni$_.Pointer<jni$_.Void>,
+            jni$_.JMethodIDPtr,
+          )>();
+
+  /// from: `public java.lang.String toString()`
+  /// The returned object must be released after use, by calling the [release] method.
+  jni$_.JString toString$1() {
+    return _toString$1(reference.pointer, _id_toString$1 as jni$_.JMethodIDPtr)
+        .object<jni$_.JString>(const jni$_.JStringType());
   }
 }
 

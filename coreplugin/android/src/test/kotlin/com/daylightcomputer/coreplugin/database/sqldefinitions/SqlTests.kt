@@ -15,6 +15,8 @@ class SqlTests {
     @Test
     fun sample() =
         testing { db ->
+            HLCEnvironment.uninitialize()
+
             assertThat(db.eventsQueries.getEvents().executeAsList()).isEmpty()
 
             HLCEnvironment.initialize(HLCConfig())

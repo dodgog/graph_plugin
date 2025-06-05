@@ -15,7 +15,7 @@ import org.junit.jupiter.api.Test
 class CounterTest {
     @BeforeEach
     fun setup() {
-        HLCEnvironment.resetForTests()
+        HLCEnvironment.uninitialize()
         HLCEnvironment.initialize(
             HLCConfig(
                 counterLength = 4,

@@ -20,7 +20,7 @@ object HLCEnvironment {
         }
     }
 
-    internal fun resetForTests() {
+    fun uninitialize() {
         ref.set(null)
     }
 }

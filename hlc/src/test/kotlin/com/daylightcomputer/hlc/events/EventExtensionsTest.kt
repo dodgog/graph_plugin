@@ -32,7 +32,7 @@ class EventExtensionsTest {
 
     @AfterEach
     fun tearDown() {
-        HLCEnvironment.resetForTests()
+        HLCEnvironment.uninitialize()
     }
 
     // === ZERO TIMESTAMP TESTS ===
@@ -433,7 +433,7 @@ class EventExtensionsTest {
     @Test
     fun `packing methods handle counter overflow protection`() {
         // Create HLC with small counter to test near-overflow
-        HLCEnvironment.resetForTests()
+        HLCEnvironment.uninitialize()
         HLCEnvironment.initialize(
             HLCConfig(
                 getPhysicalTime = { fixedTime },
