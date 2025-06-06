@@ -8,6 +8,6 @@ class DocumentNode(
     val author: String? by entity.optional(
         "author",
         defaultValue = null,
-        transform = { it },
+        decode = { it },
     )
 }
