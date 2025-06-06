@@ -204,4 +204,28 @@ class DocumentNodeTest {
         val secondTime = node.lastModifiedAtTimestamp
         assertThat(secondTime).isGreaterThan(firstTime)
     }
+
+    @Test
+    fun `comment is null by default and can be reassigned`() {
+        val entity =
+            Entity(
+                "doc8",
+                mutableMapOf(
+                    "type" to AttributeValueRecord("DOCUMENT", "0time1"),
+                    "title" to AttributeValueRecord("Timestamped Document", "0time5"),
+                    "author" to AttributeValueRecord("Tanuj", "0time3"),
+                    "thought" to AttributeValueRecord("i think 1", "0time2"),
+                ),
+            )
+
+        val node = DocumentNode(entity)
+        val firstTime = node.lastModifiedAtTimestamp
+        assertThat(node.comment).isEqualTo(null)
+        node.comment = "comment"
+        assertThat(node.comment).isEqualTo("comment")
+        node.comment = null
+        assertThat(node.comment).isEqualTo(null)
+        val secondTime = node.lastModifiedAtTimestamp
+        assertThat(secondTime).isGreaterThan(firstTime)
+    }
 }

@@ -21,6 +21,13 @@ class DocumentNode(
         { it },
     )
 
+    override var comment: String? by entity.optionalMutable(
+        "comment",
+        defaultValue = null,
+        { it },
+        { it },
+    )
+
     override fun validatePropertiesOnInit() {
         // TODO: add thoguht and other required fields
     }

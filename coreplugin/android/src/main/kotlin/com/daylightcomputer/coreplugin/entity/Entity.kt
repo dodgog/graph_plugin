@@ -64,6 +64,27 @@ data class Entity(
         ): T = decode(getAttribute(attributeName)) ?: defaultValue
     }
 
+    fun <T> optionalMutable(
+        attributeName: String,
+        defaultValue: T,
+        decode: (String?) -> T,
+        encode: (T) -> String?,
+        timestampProvider: () -> String = issueTimestamp(),
+    ) = object : ReadWriteProperty<Any?, T> {
+        override fun getValue(
+            thisRef: Any?,
+            property: KProperty<*>,
+        ): T = decode(getAttribute(attributeName)) ?: defaultValue
+
+        override fun setValue(
+            thisRef: Any?,
+            property: KProperty<*>,
+            value: T,
+        ) {
+            setAttribute(attributeName, encode(value), timestampProvider)
+        }
+    }
+
     /**
      * A value which is not directly specified, but rather derived from the entity (other attributes)
      */

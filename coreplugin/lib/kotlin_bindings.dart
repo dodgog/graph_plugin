@@ -824,6 +824,60 @@ class Entity extends jni$_.JObject {
         .object<jni$_.JObject>(const jni$_.JObjectType());
   }
 
+  static final _id_optionalMutable = _class.instanceMethodId(
+    r'optionalMutable',
+    r'(Ljava/lang/String;Ljava/lang/Object;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function0;)Lkotlin/properties/ReadWriteProperty;',
+  );
+
+  static final _optionalMutable = jni$_.ProtectedJniExtensions.lookup<
+          jni$_.NativeFunction<
+              jni$_.JniResult Function(
+                  jni$_.Pointer<jni$_.Void>,
+                  jni$_.JMethodIDPtr,
+                  jni$_.VarArgs<
+                      (
+                        jni$_.Pointer<jni$_.Void>,
+                        jni$_.Pointer<jni$_.Void>,
+                        jni$_.Pointer<jni$_.Void>,
+                        jni$_.Pointer<jni$_.Void>,
+                        jni$_.Pointer<jni$_.Void>
+                      )>)>>('globalEnv_CallObjectMethod')
+      .asFunction<
+          jni$_.JniResult Function(
+              jni$_.Pointer<jni$_.Void>,
+              jni$_.JMethodIDPtr,
+              jni$_.Pointer<jni$_.Void>,
+              jni$_.Pointer<jni$_.Void>,
+              jni$_.Pointer<jni$_.Void>,
+              jni$_.Pointer<jni$_.Void>,
+              jni$_.Pointer<jni$_.Void>)>();
+
+  /// from: `public final kotlin.properties.ReadWriteProperty optionalMutable(java.lang.String string, T object, kotlin.jvm.functions.Function1 function1, kotlin.jvm.functions.Function1 function11, kotlin.jvm.functions.Function0 function0)`
+  /// The returned object must be released after use, by calling the [release] method.
+  jni$_.JObject optionalMutable<$T extends jni$_.JObject?>(
+    jni$_.JString string,
+    $T object,
+    jni$_.JObject function1,
+    jni$_.JObject function11,
+    jni$_.JObject function0, {
+    required jni$_.JObjType<$T> T,
+  }) {
+    final _$string = string.reference;
+    final _$object = object?.reference ?? jni$_.jNullReference;
+    final _$function1 = function1.reference;
+    final _$function11 = function11.reference;
+    final _$function0 = function0.reference;
+    return _optionalMutable(
+            reference.pointer,
+            _id_optionalMutable as jni$_.JMethodIDPtr,
+            _$string.pointer,
+            _$object.pointer,
+            _$function1.pointer,
+            _$function11.pointer,
+            _$function0.pointer)
+        .object<jni$_.JObject>(const jni$_.JObjectType());
+  }
+
   static final _id_derived = _class.instanceMethodId(
     r'derived',
     r'(Lkotlin/jvm/functions/Function1;)Lkotlin/properties/ReadOnlyProperty;',
@@ -1330,7 +1384,7 @@ class DocumentNode extends jni$_.JObject {
             jni$_.JMethodIDPtr,
           )>();
 
-  /// from: `public final java.lang.String getAuthor()`
+  /// from: `public java.lang.String getAuthor()`
   /// The returned object must be released after use, by calling the [release] method.
   jni$_.JString? getAuthor() {
     return _getAuthor(reference.pointer, _id_getAuthor as jni$_.JMethodIDPtr)
@@ -1354,7 +1408,7 @@ class DocumentNode extends jni$_.JObject {
             jni$_.JMethodIDPtr,
           )>();
 
-  /// from: `public final java.lang.String getThought()`
+  /// from: `public java.lang.String getThought()`
   /// The returned object must be released after use, by calling the [release] method.
   jni$_.JString? getThought() {
     return _getThought(reference.pointer, _id_getThought as jni$_.JMethodIDPtr)
@@ -1377,7 +1431,7 @@ class DocumentNode extends jni$_.JObject {
           jni$_.JThrowablePtr Function(jni$_.Pointer<jni$_.Void>,
               jni$_.JMethodIDPtr, jni$_.Pointer<jni$_.Void>)>();
 
-  /// from: `public final void setThought(java.lang.String string)`
+  /// from: `public void setThought(java.lang.String string)`
   void setThought(
     jni$_.JString? string,
   ) {
@@ -1387,28 +1441,77 @@ class DocumentNode extends jni$_.JObject {
         .check();
   }
 
-  static final _id_validateRequiredProperties = _class.instanceMethodId(
-    r'validateRequiredProperties',
+  static final _id_getComment = _class.instanceMethodId(
+    r'getComment',
+    r'()Ljava/lang/String;',
+  );
+
+  static final _getComment = jni$_.ProtectedJniExtensions.lookup<
+          jni$_.NativeFunction<
+              jni$_.JniResult Function(
+                jni$_.Pointer<jni$_.Void>,
+                jni$_.JMethodIDPtr,
+              )>>('globalEnv_CallObjectMethod')
+      .asFunction<
+          jni$_.JniResult Function(
+            jni$_.Pointer<jni$_.Void>,
+            jni$_.JMethodIDPtr,
+          )>();
+
+  /// from: `public java.lang.String getComment()`
+  /// The returned object must be released after use, by calling the [release] method.
+  jni$_.JString? getComment() {
+    return _getComment(reference.pointer, _id_getComment as jni$_.JMethodIDPtr)
+        .object<jni$_.JString?>(const jni$_.JStringNullableType());
+  }
+
+  static final _id_setComment = _class.instanceMethodId(
+    r'setComment',
+    r'(Ljava/lang/String;)V',
+  );
+
+  static final _setComment = jni$_.ProtectedJniExtensions.lookup<
+              jni$_.NativeFunction<
+                  jni$_.JThrowablePtr Function(
+                      jni$_.Pointer<jni$_.Void>,
+                      jni$_.JMethodIDPtr,
+                      jni$_.VarArgs<(jni$_.Pointer<jni$_.Void>,)>)>>(
+          'globalEnv_CallVoidMethod')
+      .asFunction<
+          jni$_.JThrowablePtr Function(jni$_.Pointer<jni$_.Void>,
+              jni$_.JMethodIDPtr, jni$_.Pointer<jni$_.Void>)>();
+
+  /// from: `public void setComment(java.lang.String string)`
+  void setComment(
+    jni$_.JString? string,
+  ) {
+    final _$string = string?.reference ?? jni$_.jNullReference;
+    _setComment(reference.pointer, _id_setComment as jni$_.JMethodIDPtr,
+            _$string.pointer)
+        .check();
+  }
+
+  static final _id_validatePropertiesOnInit = _class.instanceMethodId(
+    r'validatePropertiesOnInit',
     r'()V',
   );
 
-  static final _validateRequiredProperties =
-      jni$_.ProtectedJniExtensions.lookup<
-              jni$_.NativeFunction<
-                  jni$_.JThrowablePtr Function(
-                    jni$_.Pointer<jni$_.Void>,
-                    jni$_.JMethodIDPtr,
-                  )>>('globalEnv_CallVoidMethod')
-          .asFunction<
+  static final _validatePropertiesOnInit = jni$_.ProtectedJniExtensions.lookup<
+          jni$_.NativeFunction<
               jni$_.JThrowablePtr Function(
                 jni$_.Pointer<jni$_.Void>,
                 jni$_.JMethodIDPtr,
-              )>();
+              )>>('globalEnv_CallVoidMethod')
+      .asFunction<
+          jni$_.JThrowablePtr Function(
+            jni$_.Pointer<jni$_.Void>,
+            jni$_.JMethodIDPtr,
+          )>();
 
-  /// from: `public void validateRequiredProperties()`
-  void validateRequiredProperties() {
-    _validateRequiredProperties(reference.pointer,
-            _id_validateRequiredProperties as jni$_.JMethodIDPtr)
+  /// from: `public void validatePropertiesOnInit()`
+  void validatePropertiesOnInit() {
+    _validatePropertiesOnInit(reference.pointer,
+            _id_validatePropertiesOnInit as jni$_.JMethodIDPtr)
         .check();
   }
 }
@@ -1486,6 +1589,399 @@ final class $DocumentNode$Type extends jni$_.JObjType<DocumentNode> {
   bool operator ==(Object other) {
     return other.runtimeType == ($DocumentNode$Type) &&
         other is $DocumentNode$Type;
+  }
+}
+
+/// from: `com.daylightcomputer.coreplugin.entity.thing.IDocumentNode`
+class IDocumentNode extends jni$_.JObject {
+  @jni$_.internal
+  @core$_.override
+  final jni$_.JObjType<IDocumentNode> $type;
+
+  @jni$_.internal
+  IDocumentNode.fromReference(
+    jni$_.JReference reference,
+  )   : $type = type,
+        super.fromReference(reference);
+
+  static final _class = jni$_.JClass.forName(
+      r'com/daylightcomputer/coreplugin/entity/thing/IDocumentNode');
+
+  /// The type which includes information such as the signature of this class.
+  static const nullableType = $IDocumentNode$NullableType();
+  static const type = $IDocumentNode$Type();
+  static final _id_getAuthor = _class.instanceMethodId(
+    r'getAuthor',
+    r'()Ljava/lang/String;',
+  );
+
+  static final _getAuthor = jni$_.ProtectedJniExtensions.lookup<
+          jni$_.NativeFunction<
+              jni$_.JniResult Function(
+                jni$_.Pointer<jni$_.Void>,
+                jni$_.JMethodIDPtr,
+              )>>('globalEnv_CallObjectMethod')
+      .asFunction<
+          jni$_.JniResult Function(
+            jni$_.Pointer<jni$_.Void>,
+            jni$_.JMethodIDPtr,
+          )>();
+
+  /// from: `public abstract java.lang.String getAuthor()`
+  /// The returned object must be released after use, by calling the [release] method.
+  jni$_.JString? getAuthor() {
+    return _getAuthor(reference.pointer, _id_getAuthor as jni$_.JMethodIDPtr)
+        .object<jni$_.JString?>(const jni$_.JStringNullableType());
+  }
+
+  static final _id_getThought = _class.instanceMethodId(
+    r'getThought',
+    r'()Ljava/lang/String;',
+  );
+
+  static final _getThought = jni$_.ProtectedJniExtensions.lookup<
+          jni$_.NativeFunction<
+              jni$_.JniResult Function(
+                jni$_.Pointer<jni$_.Void>,
+                jni$_.JMethodIDPtr,
+              )>>('globalEnv_CallObjectMethod')
+      .asFunction<
+          jni$_.JniResult Function(
+            jni$_.Pointer<jni$_.Void>,
+            jni$_.JMethodIDPtr,
+          )>();
+
+  /// from: `public abstract java.lang.String getThought()`
+  /// The returned object must be released after use, by calling the [release] method.
+  jni$_.JString? getThought() {
+    return _getThought(reference.pointer, _id_getThought as jni$_.JMethodIDPtr)
+        .object<jni$_.JString?>(const jni$_.JStringNullableType());
+  }
+
+  static final _id_setThought = _class.instanceMethodId(
+    r'setThought',
+    r'(Ljava/lang/String;)V',
+  );
+
+  static final _setThought = jni$_.ProtectedJniExtensions.lookup<
+              jni$_.NativeFunction<
+                  jni$_.JThrowablePtr Function(
+                      jni$_.Pointer<jni$_.Void>,
+                      jni$_.JMethodIDPtr,
+                      jni$_.VarArgs<(jni$_.Pointer<jni$_.Void>,)>)>>(
+          'globalEnv_CallVoidMethod')
+      .asFunction<
+          jni$_.JThrowablePtr Function(jni$_.Pointer<jni$_.Void>,
+              jni$_.JMethodIDPtr, jni$_.Pointer<jni$_.Void>)>();
+
+  /// from: `public abstract void setThought(java.lang.String string)`
+  void setThought(
+    jni$_.JString? string,
+  ) {
+    final _$string = string?.reference ?? jni$_.jNullReference;
+    _setThought(reference.pointer, _id_setThought as jni$_.JMethodIDPtr,
+            _$string.pointer)
+        .check();
+  }
+
+  static final _id_getComment = _class.instanceMethodId(
+    r'getComment',
+    r'()Ljava/lang/String;',
+  );
+
+  static final _getComment = jni$_.ProtectedJniExtensions.lookup<
+          jni$_.NativeFunction<
+              jni$_.JniResult Function(
+                jni$_.Pointer<jni$_.Void>,
+                jni$_.JMethodIDPtr,
+              )>>('globalEnv_CallObjectMethod')
+      .asFunction<
+          jni$_.JniResult Function(
+            jni$_.Pointer<jni$_.Void>,
+            jni$_.JMethodIDPtr,
+          )>();
+
+  /// from: `public abstract java.lang.String getComment()`
+  /// The returned object must be released after use, by calling the [release] method.
+  jni$_.JString? getComment() {
+    return _getComment(reference.pointer, _id_getComment as jni$_.JMethodIDPtr)
+        .object<jni$_.JString?>(const jni$_.JStringNullableType());
+  }
+
+  static final _id_setComment = _class.instanceMethodId(
+    r'setComment',
+    r'(Ljava/lang/String;)V',
+  );
+
+  static final _setComment = jni$_.ProtectedJniExtensions.lookup<
+              jni$_.NativeFunction<
+                  jni$_.JThrowablePtr Function(
+                      jni$_.Pointer<jni$_.Void>,
+                      jni$_.JMethodIDPtr,
+                      jni$_.VarArgs<(jni$_.Pointer<jni$_.Void>,)>)>>(
+          'globalEnv_CallVoidMethod')
+      .asFunction<
+          jni$_.JThrowablePtr Function(jni$_.Pointer<jni$_.Void>,
+              jni$_.JMethodIDPtr, jni$_.Pointer<jni$_.Void>)>();
+
+  /// from: `public abstract void setComment(java.lang.String string)`
+  void setComment(
+    jni$_.JString? string,
+  ) {
+    final _$string = string?.reference ?? jni$_.jNullReference;
+    _setComment(reference.pointer, _id_setComment as jni$_.JMethodIDPtr,
+            _$string.pointer)
+        .check();
+  }
+
+  /// Maps a specific port to the implemented interface.
+  static final core$_.Map<int, $IDocumentNode> _$impls = {};
+  static jni$_.JObjectPtr _$invoke(
+    int port,
+    jni$_.JObjectPtr descriptor,
+    jni$_.JObjectPtr args,
+  ) {
+    return _$invokeMethod(
+      port,
+      jni$_.MethodInvocation.fromAddresses(
+        0,
+        descriptor.address,
+        args.address,
+      ),
+    );
+  }
+
+  static final jni$_.Pointer<
+          jni$_.NativeFunction<
+              jni$_.JObjectPtr Function(
+                  jni$_.Int64, jni$_.JObjectPtr, jni$_.JObjectPtr)>>
+      _$invokePointer = jni$_.Pointer.fromFunction(_$invoke);
+
+  static jni$_.Pointer<jni$_.Void> _$invokeMethod(
+    int $p,
+    jni$_.MethodInvocation $i,
+  ) {
+    try {
+      final $d = $i.methodDescriptor.toDartString(releaseOriginal: true);
+      final $a = $i.args;
+      if ($d == r'getAuthor()Ljava/lang/String;') {
+        final $r = _$impls[$p]!.getAuthor();
+        return ($r as jni$_.JObject?)
+                ?.as(const jni$_.JObjectType())
+                .reference
+                .toPointer() ??
+            jni$_.nullptr;
+      }
+      if ($d == r'getThought()Ljava/lang/String;') {
+        final $r = _$impls[$p]!.getThought();
+        return ($r as jni$_.JObject?)
+                ?.as(const jni$_.JObjectType())
+                .reference
+                .toPointer() ??
+            jni$_.nullptr;
+      }
+      if ($d == r'setThought(Ljava/lang/String;)V') {
+        _$impls[$p]!.setThought(
+          $a![0]?.as(const jni$_.JStringType(), releaseOriginal: true),
+        );
+        return jni$_.nullptr;
+      }
+      if ($d == r'getComment()Ljava/lang/String;') {
+        final $r = _$impls[$p]!.getComment();
+        return ($r as jni$_.JObject?)
+                ?.as(const jni$_.JObjectType())
+                .reference
+                .toPointer() ??
+            jni$_.nullptr;
+      }
+      if ($d == r'setComment(Ljava/lang/String;)V') {
+        _$impls[$p]!.setComment(
+          $a![0]?.as(const jni$_.JStringType(), releaseOriginal: true),
+        );
+        return jni$_.nullptr;
+      }
+    } catch (e) {
+      return jni$_.ProtectedJniExtensions.newDartException(e);
+    }
+    return jni$_.nullptr;
+  }
+
+  static void implementIn(
+    jni$_.JImplementer implementer,
+    $IDocumentNode $impl,
+  ) {
+    late final jni$_.RawReceivePort $p;
+    $p = jni$_.RawReceivePort(($m) {
+      if ($m == null) {
+        _$impls.remove($p.sendPort.nativePort);
+        $p.close();
+        return;
+      }
+      final $i = jni$_.MethodInvocation.fromMessage($m);
+      final $r = _$invokeMethod($p.sendPort.nativePort, $i);
+      jni$_.ProtectedJniExtensions.returnResult($i.result, $r);
+    });
+    implementer.add(
+      r'com.daylightcomputer.coreplugin.entity.thing.IDocumentNode',
+      $p,
+      _$invokePointer,
+      [
+        if ($impl.setThought$async) r'setThought(Ljava/lang/String;)V',
+        if ($impl.setComment$async) r'setComment(Ljava/lang/String;)V',
+      ],
+    );
+    final $a = $p.sendPort.nativePort;
+    _$impls[$a] = $impl;
+  }
+
+  factory IDocumentNode.implement(
+    $IDocumentNode $impl,
+  ) {
+    final $i = jni$_.JImplementer();
+    implementIn($i, $impl);
+    return IDocumentNode.fromReference(
+      $i.implementReference(),
+    );
+  }
+}
+
+abstract base mixin class $IDocumentNode {
+  factory $IDocumentNode({
+    required jni$_.JString? Function() getAuthor,
+    required jni$_.JString? Function() getThought,
+    required void Function(jni$_.JString? string) setThought,
+    bool setThought$async,
+    required jni$_.JString? Function() getComment,
+    required void Function(jni$_.JString? string) setComment,
+    bool setComment$async,
+  }) = _$IDocumentNode;
+
+  jni$_.JString? getAuthor();
+  jni$_.JString? getThought();
+  void setThought(jni$_.JString? string);
+  bool get setThought$async => false;
+  jni$_.JString? getComment();
+  void setComment(jni$_.JString? string);
+  bool get setComment$async => false;
+}
+
+final class _$IDocumentNode with $IDocumentNode {
+  _$IDocumentNode({
+    required jni$_.JString? Function() getAuthor,
+    required jni$_.JString? Function() getThought,
+    required void Function(jni$_.JString? string) setThought,
+    this.setThought$async = false,
+    required jni$_.JString? Function() getComment,
+    required void Function(jni$_.JString? string) setComment,
+    this.setComment$async = false,
+  })  : _getAuthor = getAuthor,
+        _getThought = getThought,
+        _setThought = setThought,
+        _getComment = getComment,
+        _setComment = setComment;
+
+  final jni$_.JString? Function() _getAuthor;
+  final jni$_.JString? Function() _getThought;
+  final void Function(jni$_.JString? string) _setThought;
+  final bool setThought$async;
+  final jni$_.JString? Function() _getComment;
+  final void Function(jni$_.JString? string) _setComment;
+  final bool setComment$async;
+
+  jni$_.JString? getAuthor() {
+    return _getAuthor();
+  }
+
+  jni$_.JString? getThought() {
+    return _getThought();
+  }
+
+  void setThought(jni$_.JString? string) {
+    return _setThought(string);
+  }
+
+  jni$_.JString? getComment() {
+    return _getComment();
+  }
+
+  void setComment(jni$_.JString? string) {
+    return _setComment(string);
+  }
+}
+
+final class $IDocumentNode$NullableType extends jni$_.JObjType<IDocumentNode?> {
+  @jni$_.internal
+  const $IDocumentNode$NullableType();
+
+  @jni$_.internal
+  @core$_.override
+  String get signature =>
+      r'Lcom/daylightcomputer/coreplugin/entity/thing/IDocumentNode;';
+
+  @jni$_.internal
+  @core$_.override
+  IDocumentNode? fromReference(jni$_.JReference reference) => reference.isNull
+      ? null
+      : IDocumentNode.fromReference(
+          reference,
+        );
+  @jni$_.internal
+  @core$_.override
+  jni$_.JObjType get superType => const jni$_.JObjectType();
+
+  @jni$_.internal
+  @core$_.override
+  jni$_.JObjType<IDocumentNode?> get nullableType => this;
+
+  @jni$_.internal
+  @core$_.override
+  final superCount = 1;
+
+  @core$_.override
+  int get hashCode => ($IDocumentNode$NullableType).hashCode;
+
+  @core$_.override
+  bool operator ==(Object other) {
+    return other.runtimeType == ($IDocumentNode$NullableType) &&
+        other is $IDocumentNode$NullableType;
+  }
+}
+
+final class $IDocumentNode$Type extends jni$_.JObjType<IDocumentNode> {
+  @jni$_.internal
+  const $IDocumentNode$Type();
+
+  @jni$_.internal
+  @core$_.override
+  String get signature =>
+      r'Lcom/daylightcomputer/coreplugin/entity/thing/IDocumentNode;';
+
+  @jni$_.internal
+  @core$_.override
+  IDocumentNode fromReference(jni$_.JReference reference) =>
+      IDocumentNode.fromReference(
+        reference,
+      );
+  @jni$_.internal
+  @core$_.override
+  jni$_.JObjType get superType => const jni$_.JObjectType();
+
+  @jni$_.internal
+  @core$_.override
+  jni$_.JObjType<IDocumentNode?> get nullableType =>
+      const $IDocumentNode$NullableType();
+
+  @jni$_.internal
+  @core$_.override
+  final superCount = 1;
+
+  @core$_.override
+  int get hashCode => ($IDocumentNode$Type).hashCode;
+
+  @core$_.override
+  bool operator ==(Object other) {
+    return other.runtimeType == ($IDocumentNode$Type) &&
+        other is $IDocumentNode$Type;
   }
 }
 
@@ -1628,28 +2124,27 @@ class INode extends jni$_.JObject {
         .object<jni$_.JString>(const jni$_.JStringType());
   }
 
-  static final _id_validateRequiredProperties = _class.instanceMethodId(
-    r'validateRequiredProperties',
+  static final _id_validatePropertiesOnInit = _class.instanceMethodId(
+    r'validatePropertiesOnInit',
     r'()V',
   );
 
-  static final _validateRequiredProperties =
-      jni$_.ProtectedJniExtensions.lookup<
-              jni$_.NativeFunction<
-                  jni$_.JThrowablePtr Function(
-                    jni$_.Pointer<jni$_.Void>,
-                    jni$_.JMethodIDPtr,
-                  )>>('globalEnv_CallVoidMethod')
-          .asFunction<
+  static final _validatePropertiesOnInit = jni$_.ProtectedJniExtensions.lookup<
+          jni$_.NativeFunction<
               jni$_.JThrowablePtr Function(
                 jni$_.Pointer<jni$_.Void>,
                 jni$_.JMethodIDPtr,
-              )>();
+              )>>('globalEnv_CallVoidMethod')
+      .asFunction<
+          jni$_.JThrowablePtr Function(
+            jni$_.Pointer<jni$_.Void>,
+            jni$_.JMethodIDPtr,
+          )>();
 
-  /// from: `public abstract void validateRequiredProperties()`
-  void validateRequiredProperties() {
-    _validateRequiredProperties(reference.pointer,
-            _id_validateRequiredProperties as jni$_.JMethodIDPtr)
+  /// from: `public abstract void validatePropertiesOnInit()`
+  void validatePropertiesOnInit() {
+    _validatePropertiesOnInit(reference.pointer,
+            _id_validatePropertiesOnInit as jni$_.JMethodIDPtr)
         .check();
   }
 
@@ -1720,8 +2215,8 @@ class INode extends jni$_.JObject {
                 .toPointer() ??
             jni$_.nullptr;
       }
-      if ($d == r'validateRequiredProperties()V') {
-        _$impls[$p]!.validateRequiredProperties();
+      if ($d == r'validatePropertiesOnInit()V') {
+        _$impls[$p]!.validatePropertiesOnInit();
         return jni$_.nullptr;
       }
     } catch (e) {
@@ -1750,8 +2245,8 @@ class INode extends jni$_.JObject {
       $p,
       _$invokePointer,
       [
-        if ($impl.validateRequiredProperties$async)
-          r'validateRequiredProperties()V',
+        if ($impl.validatePropertiesOnInit$async)
+          r'validatePropertiesOnInit()V',
       ],
     );
     final $a = $p.sendPort.nativePort;
@@ -1776,8 +2271,8 @@ abstract base mixin class $INode {
     required ThingTypes Function() getType,
     required bool Function() isDeleted,
     required jni$_.JString Function() getLastModifiedAtTimestamp,
-    required void Function() validateRequiredProperties,
-    bool validateRequiredProperties$async,
+    required void Function() validatePropertiesOnInit,
+    bool validatePropertiesOnInit$async,
   }) = _$INode;
 
   jni$_.JString getTitle();
@@ -1785,8 +2280,8 @@ abstract base mixin class $INode {
   ThingTypes getType();
   bool isDeleted();
   jni$_.JString getLastModifiedAtTimestamp();
-  void validateRequiredProperties();
-  bool get validateRequiredProperties$async => false;
+  void validatePropertiesOnInit();
+  bool get validatePropertiesOnInit$async => false;
 }
 
 final class _$INode with $INode {
@@ -1796,22 +2291,22 @@ final class _$INode with $INode {
     required ThingTypes Function() getType,
     required bool Function() isDeleted,
     required jni$_.JString Function() getLastModifiedAtTimestamp,
-    required void Function() validateRequiredProperties,
-    this.validateRequiredProperties$async = false,
+    required void Function() validatePropertiesOnInit,
+    this.validatePropertiesOnInit$async = false,
   })  : _getTitle = getTitle,
         _getId = getId,
         _getType = getType,
         _isDeleted = isDeleted,
         _getLastModifiedAtTimestamp = getLastModifiedAtTimestamp,
-        _validateRequiredProperties = validateRequiredProperties;
+        _validatePropertiesOnInit = validatePropertiesOnInit;
 
   final jni$_.JString Function() _getTitle;
   final jni$_.JString Function() _getId;
   final ThingTypes Function() _getType;
   final bool Function() _isDeleted;
   final jni$_.JString Function() _getLastModifiedAtTimestamp;
-  final void Function() _validateRequiredProperties;
-  final bool validateRequiredProperties$async;
+  final void Function() _validatePropertiesOnInit;
+  final bool validatePropertiesOnInit$async;
 
   jni$_.JString getTitle() {
     return _getTitle();
@@ -1833,8 +2328,8 @@ final class _$INode with $INode {
     return _getLastModifiedAtTimestamp();
   }
 
-  void validateRequiredProperties() {
-    return _validateRequiredProperties();
+  void validatePropertiesOnInit() {
+    return _validatePropertiesOnInit();
   }
 }
 
@@ -2026,28 +2521,27 @@ class IThing extends jni$_.JObject {
         .object<jni$_.JString>(const jni$_.JStringType());
   }
 
-  static final _id_validateRequiredProperties = _class.instanceMethodId(
-    r'validateRequiredProperties',
+  static final _id_validatePropertiesOnInit = _class.instanceMethodId(
+    r'validatePropertiesOnInit',
     r'()V',
   );
 
-  static final _validateRequiredProperties =
-      jni$_.ProtectedJniExtensions.lookup<
-              jni$_.NativeFunction<
-                  jni$_.JThrowablePtr Function(
-                    jni$_.Pointer<jni$_.Void>,
-                    jni$_.JMethodIDPtr,
-                  )>>('globalEnv_CallVoidMethod')
-          .asFunction<
+  static final _validatePropertiesOnInit = jni$_.ProtectedJniExtensions.lookup<
+          jni$_.NativeFunction<
               jni$_.JThrowablePtr Function(
                 jni$_.Pointer<jni$_.Void>,
                 jni$_.JMethodIDPtr,
-              )>();
+              )>>('globalEnv_CallVoidMethod')
+      .asFunction<
+          jni$_.JThrowablePtr Function(
+            jni$_.Pointer<jni$_.Void>,
+            jni$_.JMethodIDPtr,
+          )>();
 
-  /// from: `public abstract void validateRequiredProperties()`
-  void validateRequiredProperties() {
-    _validateRequiredProperties(reference.pointer,
-            _id_validateRequiredProperties as jni$_.JMethodIDPtr)
+  /// from: `public abstract void validatePropertiesOnInit()`
+  void validatePropertiesOnInit() {
+    _validatePropertiesOnInit(reference.pointer,
+            _id_validatePropertiesOnInit as jni$_.JMethodIDPtr)
         .check();
   }
 
@@ -2110,8 +2604,8 @@ class IThing extends jni$_.JObject {
                 .toPointer() ??
             jni$_.nullptr;
       }
-      if ($d == r'validateRequiredProperties()V') {
-        _$impls[$p]!.validateRequiredProperties();
+      if ($d == r'validatePropertiesOnInit()V') {
+        _$impls[$p]!.validatePropertiesOnInit();
         return jni$_.nullptr;
       }
     } catch (e) {
@@ -2140,8 +2634,8 @@ class IThing extends jni$_.JObject {
       $p,
       _$invokePointer,
       [
-        if ($impl.validateRequiredProperties$async)
-          r'validateRequiredProperties()V',
+        if ($impl.validatePropertiesOnInit$async)
+          r'validatePropertiesOnInit()V',
       ],
     );
     final $a = $p.sendPort.nativePort;
@@ -2165,16 +2659,16 @@ abstract base mixin class $IThing {
     required ThingTypes Function() getType,
     required bool Function() isDeleted,
     required jni$_.JString Function() getLastModifiedAtTimestamp,
-    required void Function() validateRequiredProperties,
-    bool validateRequiredProperties$async,
+    required void Function() validatePropertiesOnInit,
+    bool validatePropertiesOnInit$async,
   }) = _$IThing;
 
   jni$_.JString getId();
   ThingTypes getType();
   bool isDeleted();
   jni$_.JString getLastModifiedAtTimestamp();
-  void validateRequiredProperties();
-  bool get validateRequiredProperties$async => false;
+  void validatePropertiesOnInit();
+  bool get validatePropertiesOnInit$async => false;
 }
 
 final class _$IThing with $IThing {
@@ -2183,20 +2677,20 @@ final class _$IThing with $IThing {
     required ThingTypes Function() getType,
     required bool Function() isDeleted,
     required jni$_.JString Function() getLastModifiedAtTimestamp,
-    required void Function() validateRequiredProperties,
-    this.validateRequiredProperties$async = false,
+    required void Function() validatePropertiesOnInit,
+    this.validatePropertiesOnInit$async = false,
   })  : _getId = getId,
         _getType = getType,
         _isDeleted = isDeleted,
         _getLastModifiedAtTimestamp = getLastModifiedAtTimestamp,
-        _validateRequiredProperties = validateRequiredProperties;
+        _validatePropertiesOnInit = validatePropertiesOnInit;
 
   final jni$_.JString Function() _getId;
   final ThingTypes Function() _getType;
   final bool Function() _isDeleted;
   final jni$_.JString Function() _getLastModifiedAtTimestamp;
-  final void Function() _validateRequiredProperties;
-  final bool validateRequiredProperties$async;
+  final void Function() _validatePropertiesOnInit;
+  final bool validatePropertiesOnInit$async;
 
   jni$_.JString getId() {
     return _getId();
@@ -2214,8 +2708,8 @@ final class _$IThing with $IThing {
     return _getLastModifiedAtTimestamp();
   }
 
-  void validateRequiredProperties() {
-    return _validateRequiredProperties();
+  void validatePropertiesOnInit() {
+    return _validatePropertiesOnInit();
   }
 }
 
@@ -2457,28 +2951,27 @@ class Node extends jni$_.JObject {
         .object<jni$_.JString>(const jni$_.JStringType());
   }
 
-  static final _id_validateRequiredProperties = _class.instanceMethodId(
-    r'validateRequiredProperties',
+  static final _id_validatePropertiesOnInit = _class.instanceMethodId(
+    r'validatePropertiesOnInit',
     r'()V',
   );
 
-  static final _validateRequiredProperties =
-      jni$_.ProtectedJniExtensions.lookup<
-              jni$_.NativeFunction<
-                  jni$_.JThrowablePtr Function(
-                    jni$_.Pointer<jni$_.Void>,
-                    jni$_.JMethodIDPtr,
-                  )>>('globalEnv_CallVoidMethod')
-          .asFunction<
+  static final _validatePropertiesOnInit = jni$_.ProtectedJniExtensions.lookup<
+          jni$_.NativeFunction<
               jni$_.JThrowablePtr Function(
                 jni$_.Pointer<jni$_.Void>,
                 jni$_.JMethodIDPtr,
-              )>();
+              )>>('globalEnv_CallVoidMethod')
+      .asFunction<
+          jni$_.JThrowablePtr Function(
+            jni$_.Pointer<jni$_.Void>,
+            jni$_.JMethodIDPtr,
+          )>();
 
-  /// from: `public void validateRequiredProperties()`
-  void validateRequiredProperties() {
-    _validateRequiredProperties(reference.pointer,
-            _id_validateRequiredProperties as jni$_.JMethodIDPtr)
+  /// from: `public void validatePropertiesOnInit()`
+  void validatePropertiesOnInit() {
+    _validatePropertiesOnInit(reference.pointer,
+            _id_validatePropertiesOnInit as jni$_.JMethodIDPtr)
         .check();
   }
 }
@@ -2698,28 +3191,27 @@ class Thing extends jni$_.JObject {
         .object<jni$_.JString>(const jni$_.JStringType());
   }
 
-  static final _id_validateRequiredProperties = _class.instanceMethodId(
-    r'validateRequiredProperties',
+  static final _id_validatePropertiesOnInit = _class.instanceMethodId(
+    r'validatePropertiesOnInit',
     r'()V',
   );
 
-  static final _validateRequiredProperties =
-      jni$_.ProtectedJniExtensions.lookup<
-              jni$_.NativeFunction<
-                  jni$_.JThrowablePtr Function(
-                    jni$_.Pointer<jni$_.Void>,
-                    jni$_.JMethodIDPtr,
-                  )>>('globalEnv_CallVoidMethod')
-          .asFunction<
+  static final _validatePropertiesOnInit = jni$_.ProtectedJniExtensions.lookup<
+          jni$_.NativeFunction<
               jni$_.JThrowablePtr Function(
                 jni$_.Pointer<jni$_.Void>,
                 jni$_.JMethodIDPtr,
-              )>();
+              )>>('globalEnv_CallVoidMethod')
+      .asFunction<
+          jni$_.JThrowablePtr Function(
+            jni$_.Pointer<jni$_.Void>,
+            jni$_.JMethodIDPtr,
+          )>();
 
-  /// from: `public void validateRequiredProperties()`
-  void validateRequiredProperties() {
-    _validateRequiredProperties(reference.pointer,
-            _id_validateRequiredProperties as jni$_.JMethodIDPtr)
+  /// from: `public void validatePropertiesOnInit()`
+  void validatePropertiesOnInit() {
+    _validatePropertiesOnInit(reference.pointer,
+            _id_validatePropertiesOnInit as jni$_.JMethodIDPtr)
         .check();
   }
 
