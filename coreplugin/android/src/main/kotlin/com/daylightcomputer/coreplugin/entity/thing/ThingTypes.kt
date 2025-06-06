@@ -8,8 +8,9 @@ enum class ThingTypes(
 ) {
     // TODO: Tanuj: Optimization for later: maybe store enum values in a map
     //  for faster lookups instead of a find here.
-    DOCUMENT("DOCUMENT", ::DocumentNode),
-    FOUNDATION("FOUNDATION", ::Thing),
+    DOCUMENT_NODE("DOCUMENT_NODE", ::DocumentNode),
+    NODE("NODE", ::Node),
+    BASE("BASE", ::Thing),
     ;
 
     companion object {
