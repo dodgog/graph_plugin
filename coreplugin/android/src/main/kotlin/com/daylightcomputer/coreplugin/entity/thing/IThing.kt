@@ -6,15 +6,11 @@ interface IThing {
     val isDeleted: Boolean
     val lastModifiedAtTimestamp: String
 
-//    fun <T : Thing> mutateSingleAttribute(
-//        // TODO: signature
-//        name: String,
-//        value: String,
-//        issueTimestamp: () -> String,
-//    ): Pair<Pair<String, AttributeValueRecord>, T>
-//
-//    // TODO different return types
-//    fun getKnownFields(): Set<String>
+    /**
+     * Invocation of all the required properties because if they cannot be obtained they will throw
+     */
+    fun validateRequiredProperties()
+
 //
 //    // TODO different types
 //    fun getUnknownAttributes(): Set<String>

@@ -5,9 +5,9 @@ import kotlin.properties.ReadOnlyProperty
 import kotlin.properties.ReadWriteProperty
 import kotlin.reflect.KProperty
 
-// Entity is a mutable collection of
-// attribute to (value, timestamp maps)
-// which has an id
+/**
+ * Collection of named timestamped values or "attributes" with assigned ID
+ */
 data class Entity(
     val id: String,
     private var _attributes: MutableMap<String, AttributeValueRecord>,
@@ -74,10 +74,15 @@ data class Entity(
             ): T = derivation(this@Entity)
         }
 
-    fun getRequiredAttribute(attributeName: String): String =
-        getAttribute(attributeName) ?: throw IllegalStateException(
-            "Entity lacks a required attribute `$attributeName`",
-        )
+    /**
+     * An attribute with a given name must be explicitly listed (even if null)
+     */
+    fun getRequiredAttribute(attributeName: String): String? {
+        if (!_attributes.containsKey(attributeName)) {
+            throw IllegalStateException("Entity lacks a required attribute `$attributeName`")
+        }
+        return _attributes[attributeName]?.value
+    }
 
     /**
      * DEV: Should be the only way to read an attribute
