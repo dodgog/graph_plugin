@@ -17,17 +17,6 @@ class Entity(
 ) {
     val attributes get(): Map<String, AttributeValueRecord> = _attributes.toMap()
 
-    val attributesList
-        get(): List<Attributes> =
-            _attributes.map { (k, v) ->
-                Attributes(
-                    id,
-                    k,
-                    v.value,
-                    v.timestamp,
-                )
-            }
-
     /**
      * Emit changes for events to be constructed and reduced
      *
@@ -183,13 +172,7 @@ class Entity(
             id: String,
             attributes: List<Attributes>,
             timestampProvider: TimestampProvider,
-        ): Entity {
-            val map =
-                attributes.filter { it.entity_id == id }.associate {
-                    it.attr_name to AttributeValueRecord(it.attr_val, it.timestamp)
-                }
-            return Entity(id, map.toMutableMap(), timestampProvider)
-        }
+        ): Entity = Entity(id, attributes.toAttributeMap().toMutableMap(), timestampProvider)
 
         /**
          * From an arbitrary collection of attributes
@@ -201,11 +184,7 @@ class Entity(
             timestampProvider: TimestampProvider,
         ): Sequence<Entity> =
             attributes.groupBy { it.entity_id }.asSequence().map { (entityId, attrs) ->
-                val attributeMap =
-                    attrs.associate {
-                        it.attr_name to AttributeValueRecord(it.attr_val, it.timestamp)
-                    }
-                Entity(entityId, attributeMap.toMutableMap(), timestampProvider)
+                Entity(entityId, attrs.toAttributeMap().toMutableMap(), timestampProvider)
             }
     }
 }

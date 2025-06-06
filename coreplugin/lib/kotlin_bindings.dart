@@ -35,6 +35,127 @@ import 'dart:core' as core$_;
 import 'package:jni/_internal.dart' as jni$_;
 import 'package:jni/jni.dart' as jni$_;
 
+final _AttributeExtensionsKtClass = jni$_.JClass.forName(
+    r'com/daylightcomputer/coreplugin/entity/AttributeExtensionsKt');
+
+final _id_toAttributeMap = _AttributeExtensionsKtClass.staticMethodId(
+  r'toAttributeMap',
+  r'(Ljava/util/List;)Ljava/util/Map;',
+);
+
+final _toAttributeMap = jni$_.ProtectedJniExtensions.lookup<
+            jni$_.NativeFunction<
+                jni$_.JniResult Function(
+                    jni$_.Pointer<jni$_.Void>,
+                    jni$_.JMethodIDPtr,
+                    jni$_.VarArgs<(jni$_.Pointer<jni$_.Void>,)>)>>(
+        'globalEnv_CallStaticObjectMethod')
+    .asFunction<
+        jni$_.JniResult Function(jni$_.Pointer<jni$_.Void>, jni$_.JMethodIDPtr,
+            jni$_.Pointer<jni$_.Void>)>();
+
+/// from: `static public final java.util.Map toAttributeMap(java.util.List list)`
+/// The returned object must be released after use, by calling the [release] method.
+jni$_.JMap<jni$_.JString, AttributeValueRecord> toAttributeMap(
+  jni$_.JList<jni$_.JObject?> list,
+) {
+  final _$list = list.reference;
+  return _toAttributeMap(_AttributeExtensionsKtClass.reference.pointer,
+          _id_toAttributeMap as jni$_.JMethodIDPtr, _$list.pointer)
+      .object<jni$_.JMap<jni$_.JString, AttributeValueRecord>>(
+          const jni$_.JMapType<jni$_.JString, AttributeValueRecord>(
+              jni$_.JStringType(), $AttributeValueRecord$Type()));
+}
+
+final _id_toAttributesList = _AttributeExtensionsKtClass.staticMethodId(
+  r'toAttributesList',
+  r'(Ljava/util/Map;Ljava/lang/String;)Ljava/util/List;',
+);
+
+final _toAttributesList = jni$_.ProtectedJniExtensions.lookup<
+        jni$_.NativeFunction<
+            jni$_.JniResult Function(
+                jni$_.Pointer<jni$_.Void>,
+                jni$_.JMethodIDPtr,
+                jni$_.VarArgs<
+                    (
+                      jni$_.Pointer<jni$_.Void>,
+                      jni$_.Pointer<jni$_.Void>
+                    )>)>>('globalEnv_CallStaticObjectMethod')
+    .asFunction<
+        jni$_.JniResult Function(jni$_.Pointer<jni$_.Void>, jni$_.JMethodIDPtr,
+            jni$_.Pointer<jni$_.Void>, jni$_.Pointer<jni$_.Void>)>();
+
+/// from: `static public final java.util.List toAttributesList(java.util.Map map, java.lang.String string)`
+/// The returned object must be released after use, by calling the [release] method.
+jni$_.JList<jni$_.JObject> toAttributesList(
+  jni$_.JMap<jni$_.JString?, AttributeValueRecord?> map,
+  jni$_.JString string,
+) {
+  final _$map = map.reference;
+  final _$string = string.reference;
+  return _toAttributesList(
+          _AttributeExtensionsKtClass.reference.pointer,
+          _id_toAttributesList as jni$_.JMethodIDPtr,
+          _$map.pointer,
+          _$string.pointer)
+      .object<jni$_.JList<jni$_.JObject>>(
+          const jni$_.JListType<jni$_.JObject>(jni$_.JObjectType()));
+}
+
+final _id_toAttributePair = _AttributeExtensionsKtClass.staticMethodId(
+  r'toAttributePair',
+  r'(Lcom/daylightcomputer/coreplugin/database/sqldefinitions/Attributes;)Lkotlin/Pair;',
+);
+
+final _toAttributePair = jni$_.ProtectedJniExtensions.lookup<
+            jni$_.NativeFunction<
+                jni$_.JniResult Function(
+                    jni$_.Pointer<jni$_.Void>,
+                    jni$_.JMethodIDPtr,
+                    jni$_.VarArgs<(jni$_.Pointer<jni$_.Void>,)>)>>(
+        'globalEnv_CallStaticObjectMethod')
+    .asFunction<
+        jni$_.JniResult Function(jni$_.Pointer<jni$_.Void>, jni$_.JMethodIDPtr,
+            jni$_.Pointer<jni$_.Void>)>();
+
+/// from: `static public final kotlin.Pair toAttributePair(com.daylightcomputer.coreplugin.database.sqldefinitions.Attributes attributes)`
+/// The returned object must be released after use, by calling the [release] method.
+jni$_.JObject toAttributePair(
+  jni$_.JObject attributes,
+) {
+  final _$attributes = attributes.reference;
+  return _toAttributePair(_AttributeExtensionsKtClass.reference.pointer,
+          _id_toAttributePair as jni$_.JMethodIDPtr, _$attributes.pointer)
+      .object<jni$_.JObject>(const jni$_.JObjectType());
+}
+
+final _id_insertAllAttributes = _AttributeExtensionsKtClass.staticMethodId(
+  r'insertAllAttributes',
+  r'(Lcom/daylightcomputer/coreplugin/entity/Entity;)V',
+);
+
+final _insertAllAttributes = jni$_.ProtectedJniExtensions.lookup<
+            jni$_.NativeFunction<
+                jni$_.JThrowablePtr Function(
+                    jni$_.Pointer<jni$_.Void>,
+                    jni$_.JMethodIDPtr,
+                    jni$_.VarArgs<(jni$_.Pointer<jni$_.Void>,)>)>>(
+        'globalEnv_CallStaticVoidMethod')
+    .asFunction<
+        jni$_.JThrowablePtr Function(jni$_.Pointer<jni$_.Void>,
+            jni$_.JMethodIDPtr, jni$_.Pointer<jni$_.Void>)>();
+
+/// from: `static public final void insertAllAttributes(com.daylightcomputer.coreplugin.entity.Entity entity)`
+void insertAllAttributes(
+  Entity entity,
+) {
+  final _$entity = entity.reference;
+  _insertAllAttributes(_AttributeExtensionsKtClass.reference.pointer,
+          _id_insertAllAttributes as jni$_.JMethodIDPtr, _$entity.pointer)
+      .check();
+}
+
 /// from: `com.daylightcomputer.coreplugin.entity.AttributeValueRecord`
 class AttributeValueRecord extends jni$_.JObject {
   @jni$_.internal
@@ -696,32 +817,6 @@ class Entity extends jni$_.JObject {
         .object<jni$_.JMap<jni$_.JString, AttributeValueRecord>>(
             const jni$_.JMapType<jni$_.JString, AttributeValueRecord>(
                 jni$_.JStringType(), $AttributeValueRecord$Type()));
-  }
-
-  static final _id_getAttributesList = _class.instanceMethodId(
-    r'getAttributesList',
-    r'()Ljava/util/List;',
-  );
-
-  static final _getAttributesList = jni$_.ProtectedJniExtensions.lookup<
-          jni$_.NativeFunction<
-              jni$_.JniResult Function(
-                jni$_.Pointer<jni$_.Void>,
-                jni$_.JMethodIDPtr,
-              )>>('globalEnv_CallObjectMethod')
-      .asFunction<
-          jni$_.JniResult Function(
-            jni$_.Pointer<jni$_.Void>,
-            jni$_.JMethodIDPtr,
-          )>();
-
-  /// from: `public final java.util.List getAttributesList()`
-  /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JList<jni$_.JObject> getAttributesList() {
-    return _getAttributesList(
-            reference.pointer, _id_getAttributesList as jni$_.JMethodIDPtr)
-        .object<jni$_.JList<jni$_.JObject>>(
-            const jni$_.JListType<jni$_.JObject>(jni$_.JObjectType()));
   }
 
   static final _id_getAttributeChanges = _class.instanceMethodId(
