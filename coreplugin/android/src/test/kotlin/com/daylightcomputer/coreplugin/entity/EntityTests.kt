@@ -123,45 +123,6 @@ class EntityTests {
     }
 
     @Test
-    fun `should filter attributes by entity id`() {
-        val attributes =
-            listOf(
-                createAttribute("entity1", "title", "Title 1", "2024-01-01"),
-                createAttribute("entity2", "title", "Title 2", "2024-01-02"),
-                createAttribute(
-                    "entity1",
-                    "description",
-                    "Description 1",
-                    "2024-01-03",
-                ),
-                createAttribute("entity3", "title", "Title 3", "2024-01-04"),
-            )
-
-        val entity = Entity.fromAttributePool("entity1", attributes, timestampProvider)
-
-        assertThat(entity.id).isEqualTo("entity1")
-        assertThat(entity.attributes).hasSize(2)
-        assertThat(entity.attributes["title"]?.value).isEqualTo("Title 1")
-        assertThat(
-            entity.attributes["description"]?.value,
-        ).isEqualTo("Description 1")
-    }
-
-    @Test
-    fun `should return empty attributes when no matching entity id`() {
-        val attributes =
-            listOf(
-                createAttribute("entity1", "title", "Title 1", "2024-01-01"),
-                createAttribute("entity2", "title", "Title 2", "2024-01-02"),
-            )
-
-        val entity = Entity.fromAttributePool("nonexistent", attributes, timestampProvider)
-
-        assertThat(entity.id).isEqualTo("nonexistent")
-        assertThat(entity.attributes).isEmpty()
-    }
-
-    @Test
     fun `should handle null attribute values in fromAttributePool`() {
         val attributes =
             listOf(

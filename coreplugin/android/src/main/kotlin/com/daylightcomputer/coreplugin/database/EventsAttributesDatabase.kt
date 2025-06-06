@@ -1,7 +1,7 @@
 package com.daylightcomputer.coreplugin.database
 
-import com.daylightcomputer.coreplugin.database.sqldefinitions.Attributes
 import com.daylightcomputer.coreplugin.database.sqldefinitions.Database
+import com.daylightcomputer.coreplugin.entity.AttributeValueRecord
 import com.daylightcomputer.coreplugin.entity.Entity
 import com.daylightcomputer.hlc.HLC
 import com.daylightcomputer.hlc.HLCConfig
@@ -104,16 +104,7 @@ object EventsAttributesDatabase {
         }
     }
 
-    fun insertAttributeRecord(attribute: Attributes) {
-        insertAttributeRecord(
-            attribute.entity_id,
-            attribute.attr_name,
-            attribute.attr_val,
-            attribute.timestamp,
-        )
-    }
-
-    fun insertAttributeRecord(
+    private fun insertAttributeRecord(
         entityId: String,
         attrName: String,
         attrVal: String?,
@@ -136,24 +127,26 @@ object EventsAttributesDatabase {
         )
     }
 
+    fun insertAttributeRecord(
+        entityId: String,
+        attribute: Pair<String, AttributeValueRecord>,
+    ) {
+        insertAttributeRecord(
+            entityId,
+            attribute.first,
+            attribute.second.value,
+            attribute.second.timestamp,
+        )
+    }
+
     fun getEntity(entityId: String): Entity {
         val attributes = db.attributesQueries.getAttributesForEntity(entityId).executeAsList()
-        // TODO: if this fails, should we maybe refresh the attributes from events
         val entity =
-            Entity.fromAttributePool(
-                entityId,
-                attributes,
-            ) { hlcInstance.issueLocalEventPacked() }
-        // TODO: figure out how to scope out this so that when we stop using the entity, its scope also dissapears
+            Entity.fromAttributePool(entityId, attributes) { hlcInstance.issueLocalEventPacked() }
+
         entity.attributeChanges
-            .onEach {
-                insertAttributeRecord(
-                    entityId,
-                    it.first,
-                    it.second.value,
-                    it.second.timestamp,
-                )
-            }.launchIn(scope)
+            .onEach { change -> insertAttributeRecord(entityId, change) }
+            .launchIn(scope)
 
         return entity
     }
@@ -162,16 +155,10 @@ object EventsAttributesDatabase {
         val attrs = db.attributesQueries.getAttributes().executeAsList()
         return Entity
             .allFromAttributePool(attrs) { hlcInstance.issueLocalEventPacked() }
-            .onEach { e ->
-                e.attributeChanges
-                    .onEach {
-                        insertAttributeRecord(
-                            e.id,
-                            it.first,
-                            it.second.value,
-                            it.second.timestamp,
-                        )
-                    }.launchIn(scope)
+            .onEach { entity ->
+                entity.attributeChanges
+                    .onEach { change -> insertAttributeRecord(entity.id, change) }
+                    .launchIn(scope)
             }
     }
 }

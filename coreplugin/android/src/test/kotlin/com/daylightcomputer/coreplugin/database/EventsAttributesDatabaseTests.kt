@@ -10,7 +10,9 @@ import com.daylightcomputer.coreplugin.database.EventsAttributesDatabase.insertA
 import com.daylightcomputer.coreplugin.database.EventsAttributesDatabase.resetForTesting
 import com.daylightcomputer.coreplugin.database.sqldefinitions.Attributes
 import com.daylightcomputer.coreplugin.database.sqldefinitions.Events
+import com.daylightcomputer.coreplugin.entity.AttributeValueRecord
 import com.daylightcomputer.coreplugin.entity.Entity
+import com.daylightcomputer.coreplugin.entity.insertAllAttributes
 import com.daylightcomputer.hlc.events.issueLocalEventPacked
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineScope
@@ -41,9 +43,13 @@ class EventsAttributesDatabaseTests {
             initialize(db, "client", databaseScope)
             insertAttributeRecord(
                 "entity_id",
-                "type",
-                "bob",
-                "time1",
+                Pair(
+                    "type",
+                    AttributeValueRecord(
+                        "bob",
+                        "time1",
+                    ),
+                ),
             )
 
             val events = db.eventsQueries.getEvents().executeAsList()
@@ -96,17 +102,13 @@ class EventsAttributesDatabaseTests {
                 Entity.fromAttributePool(
                     "entity_id",
                     listOf(
-                        Attributes(
-                            "entity_id",
-                            "name",
-                            "value",
-                            "time1",
-                        ),
+                        Attributes("entity_id", "name", "value", "time1"),
                     ),
                 ) { EventsAttributesDatabase.hlc.issueLocalEventPacked() }
 
+            // Simplified - use bulk insert method
             db.transaction {
-                entity.attributesList.onEach { insertAttributeRecord(it) }
+                entity.insertAllAttributes()
             }
 
             assertThat(EventsAttributesDatabase.getAllEntities().toList()).isEqualTo(listOf(entity))
@@ -149,9 +151,9 @@ class EventsAttributesDatabaseTests {
                     ),
                 ) { EventsAttributesDatabase.hlc.issueLocalEventPacked() }
 
-            // Insert the entity by disassembling into attributes
+            // Simplified - use bulk insert method
             db.transaction {
-                entity.attributesList.onEach { insertAttributeRecord(it) }
+                entity.insertAllAttributes()
             }
 
             // Get the single entity back from the db
