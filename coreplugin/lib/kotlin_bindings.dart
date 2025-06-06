@@ -699,6 +699,31 @@ class Entity extends jni$_.JObject {
                 jni$_.JStringType(), $AttributeValueRecord$Type()));
   }
 
+  static final _id_getAttributeChanges = _class.instanceMethodId(
+    r'getAttributeChanges',
+    r'()Lkotlinx/coroutines/flow/SharedFlow;',
+  );
+
+  static final _getAttributeChanges = jni$_.ProtectedJniExtensions.lookup<
+          jni$_.NativeFunction<
+              jni$_.JniResult Function(
+                jni$_.Pointer<jni$_.Void>,
+                jni$_.JMethodIDPtr,
+              )>>('globalEnv_CallObjectMethod')
+      .asFunction<
+          jni$_.JniResult Function(
+            jni$_.Pointer<jni$_.Void>,
+            jni$_.JMethodIDPtr,
+          )>();
+
+  /// from: `public final kotlinx.coroutines.flow.SharedFlow getAttributeChanges()`
+  /// The returned object must be released after use, by calling the [release] method.
+  jni$_.JObject getAttributeChanges() {
+    return _getAttributeChanges(
+            reference.pointer, _id_getAttributeChanges as jni$_.JMethodIDPtr)
+        .object<jni$_.JObject>(const jni$_.JObjectType());
+  }
+
   static final _id_required = _class.instanceMethodId(
     r'required',
     r'(Ljava/lang/String;Lkotlin/jvm/functions/Function1;)Lkotlin/properties/ReadOnlyProperty;',
@@ -1244,6 +1269,31 @@ class DocumentNode extends jni$_.JObject {
     return DocumentNode.fromReference(_new$(_class.reference.pointer,
             _id_new$ as jni$_.JMethodIDPtr, _$entity.pointer)
         .reference);
+  }
+
+  static final _id_getChangeNotifications = _class.instanceMethodId(
+    r'getChangeNotifications',
+    r'()Lkotlinx/coroutines/flow/Flow;',
+  );
+
+  static final _getChangeNotifications = jni$_.ProtectedJniExtensions.lookup<
+          jni$_.NativeFunction<
+              jni$_.JniResult Function(
+                jni$_.Pointer<jni$_.Void>,
+                jni$_.JMethodIDPtr,
+              )>>('globalEnv_CallObjectMethod')
+      .asFunction<
+          jni$_.JniResult Function(
+            jni$_.Pointer<jni$_.Void>,
+            jni$_.JMethodIDPtr,
+          )>();
+
+  /// from: `public kotlinx.coroutines.flow.Flow getChangeNotifications()`
+  /// The returned object must be released after use, by calling the [release] method.
+  jni$_.JObject getChangeNotifications() {
+    return _getChangeNotifications(
+            reference.pointer, _id_getChangeNotifications as jni$_.JMethodIDPtr)
+        .object<jni$_.JObject>(const jni$_.JObjectType());
   }
 
   static final _id_getId = _class.instanceMethodId(
@@ -2124,6 +2174,31 @@ class INode extends jni$_.JObject {
         .object<jni$_.JString>(const jni$_.JStringType());
   }
 
+  static final _id_getChangeNotifications = _class.instanceMethodId(
+    r'getChangeNotifications',
+    r'()Lkotlinx/coroutines/flow/Flow;',
+  );
+
+  static final _getChangeNotifications = jni$_.ProtectedJniExtensions.lookup<
+          jni$_.NativeFunction<
+              jni$_.JniResult Function(
+                jni$_.Pointer<jni$_.Void>,
+                jni$_.JMethodIDPtr,
+              )>>('globalEnv_CallObjectMethod')
+      .asFunction<
+          jni$_.JniResult Function(
+            jni$_.Pointer<jni$_.Void>,
+            jni$_.JMethodIDPtr,
+          )>();
+
+  /// from: `public abstract kotlinx.coroutines.flow.Flow getChangeNotifications()`
+  /// The returned object must be released after use, by calling the [release] method.
+  jni$_.JObject getChangeNotifications() {
+    return _getChangeNotifications(
+            reference.pointer, _id_getChangeNotifications as jni$_.JMethodIDPtr)
+        .object<jni$_.JObject>(const jni$_.JObjectType());
+  }
+
   static final _id_validatePropertiesOnInit = _class.instanceMethodId(
     r'validatePropertiesOnInit',
     r'()V',
@@ -2215,6 +2290,14 @@ class INode extends jni$_.JObject {
                 .toPointer() ??
             jni$_.nullptr;
       }
+      if ($d == r'getChangeNotifications()Lkotlinx/coroutines/flow/Flow;') {
+        final $r = _$impls[$p]!.getChangeNotifications();
+        return ($r as jni$_.JObject?)
+                ?.as(const jni$_.JObjectType())
+                .reference
+                .toPointer() ??
+            jni$_.nullptr;
+      }
       if ($d == r'validatePropertiesOnInit()V') {
         _$impls[$p]!.validatePropertiesOnInit();
         return jni$_.nullptr;
@@ -2271,6 +2354,7 @@ abstract base mixin class $INode {
     required ThingTypes Function() getType,
     required bool Function() isDeleted,
     required jni$_.JString Function() getLastModifiedAtTimestamp,
+    required jni$_.JObject Function() getChangeNotifications,
     required void Function() validatePropertiesOnInit,
     bool validatePropertiesOnInit$async,
   }) = _$INode;
@@ -2280,6 +2364,7 @@ abstract base mixin class $INode {
   ThingTypes getType();
   bool isDeleted();
   jni$_.JString getLastModifiedAtTimestamp();
+  jni$_.JObject getChangeNotifications();
   void validatePropertiesOnInit();
   bool get validatePropertiesOnInit$async => false;
 }
@@ -2291,6 +2376,7 @@ final class _$INode with $INode {
     required ThingTypes Function() getType,
     required bool Function() isDeleted,
     required jni$_.JString Function() getLastModifiedAtTimestamp,
+    required jni$_.JObject Function() getChangeNotifications,
     required void Function() validatePropertiesOnInit,
     this.validatePropertiesOnInit$async = false,
   })  : _getTitle = getTitle,
@@ -2298,6 +2384,7 @@ final class _$INode with $INode {
         _getType = getType,
         _isDeleted = isDeleted,
         _getLastModifiedAtTimestamp = getLastModifiedAtTimestamp,
+        _getChangeNotifications = getChangeNotifications,
         _validatePropertiesOnInit = validatePropertiesOnInit;
 
   final jni$_.JString Function() _getTitle;
@@ -2305,6 +2392,7 @@ final class _$INode with $INode {
   final ThingTypes Function() _getType;
   final bool Function() _isDeleted;
   final jni$_.JString Function() _getLastModifiedAtTimestamp;
+  final jni$_.JObject Function() _getChangeNotifications;
   final void Function() _validatePropertiesOnInit;
   final bool validatePropertiesOnInit$async;
 
@@ -2326,6 +2414,10 @@ final class _$INode with $INode {
 
   jni$_.JString getLastModifiedAtTimestamp() {
     return _getLastModifiedAtTimestamp();
+  }
+
+  jni$_.JObject getChangeNotifications() {
+    return _getChangeNotifications();
   }
 
   void validatePropertiesOnInit() {
@@ -2521,6 +2613,31 @@ class IThing extends jni$_.JObject {
         .object<jni$_.JString>(const jni$_.JStringType());
   }
 
+  static final _id_getChangeNotifications = _class.instanceMethodId(
+    r'getChangeNotifications',
+    r'()Lkotlinx/coroutines/flow/Flow;',
+  );
+
+  static final _getChangeNotifications = jni$_.ProtectedJniExtensions.lookup<
+          jni$_.NativeFunction<
+              jni$_.JniResult Function(
+                jni$_.Pointer<jni$_.Void>,
+                jni$_.JMethodIDPtr,
+              )>>('globalEnv_CallObjectMethod')
+      .asFunction<
+          jni$_.JniResult Function(
+            jni$_.Pointer<jni$_.Void>,
+            jni$_.JMethodIDPtr,
+          )>();
+
+  /// from: `public abstract kotlinx.coroutines.flow.Flow getChangeNotifications()`
+  /// The returned object must be released after use, by calling the [release] method.
+  jni$_.JObject getChangeNotifications() {
+    return _getChangeNotifications(
+            reference.pointer, _id_getChangeNotifications as jni$_.JMethodIDPtr)
+        .object<jni$_.JObject>(const jni$_.JObjectType());
+  }
+
   static final _id_validatePropertiesOnInit = _class.instanceMethodId(
     r'validatePropertiesOnInit',
     r'()V',
@@ -2604,6 +2721,14 @@ class IThing extends jni$_.JObject {
                 .toPointer() ??
             jni$_.nullptr;
       }
+      if ($d == r'getChangeNotifications()Lkotlinx/coroutines/flow/Flow;') {
+        final $r = _$impls[$p]!.getChangeNotifications();
+        return ($r as jni$_.JObject?)
+                ?.as(const jni$_.JObjectType())
+                .reference
+                .toPointer() ??
+            jni$_.nullptr;
+      }
       if ($d == r'validatePropertiesOnInit()V') {
         _$impls[$p]!.validatePropertiesOnInit();
         return jni$_.nullptr;
@@ -2659,6 +2784,7 @@ abstract base mixin class $IThing {
     required ThingTypes Function() getType,
     required bool Function() isDeleted,
     required jni$_.JString Function() getLastModifiedAtTimestamp,
+    required jni$_.JObject Function() getChangeNotifications,
     required void Function() validatePropertiesOnInit,
     bool validatePropertiesOnInit$async,
   }) = _$IThing;
@@ -2667,6 +2793,7 @@ abstract base mixin class $IThing {
   ThingTypes getType();
   bool isDeleted();
   jni$_.JString getLastModifiedAtTimestamp();
+  jni$_.JObject getChangeNotifications();
   void validatePropertiesOnInit();
   bool get validatePropertiesOnInit$async => false;
 }
@@ -2677,18 +2804,21 @@ final class _$IThing with $IThing {
     required ThingTypes Function() getType,
     required bool Function() isDeleted,
     required jni$_.JString Function() getLastModifiedAtTimestamp,
+    required jni$_.JObject Function() getChangeNotifications,
     required void Function() validatePropertiesOnInit,
     this.validatePropertiesOnInit$async = false,
   })  : _getId = getId,
         _getType = getType,
         _isDeleted = isDeleted,
         _getLastModifiedAtTimestamp = getLastModifiedAtTimestamp,
+        _getChangeNotifications = getChangeNotifications,
         _validatePropertiesOnInit = validatePropertiesOnInit;
 
   final jni$_.JString Function() _getId;
   final ThingTypes Function() _getType;
   final bool Function() _isDeleted;
   final jni$_.JString Function() _getLastModifiedAtTimestamp;
+  final jni$_.JObject Function() _getChangeNotifications;
   final void Function() _validatePropertiesOnInit;
   final bool validatePropertiesOnInit$async;
 
@@ -2706,6 +2836,10 @@ final class _$IThing with $IThing {
 
   jni$_.JString getLastModifiedAtTimestamp() {
     return _getLastModifiedAtTimestamp();
+  }
+
+  jni$_.JObject getChangeNotifications() {
+    return _getChangeNotifications();
   }
 
   void validatePropertiesOnInit() {
@@ -2828,6 +2962,31 @@ class Node extends jni$_.JObject {
     return Node.fromReference(_new$(_class.reference.pointer,
             _id_new$ as jni$_.JMethodIDPtr, _$entity.pointer)
         .reference);
+  }
+
+  static final _id_getChangeNotifications = _class.instanceMethodId(
+    r'getChangeNotifications',
+    r'()Lkotlinx/coroutines/flow/Flow;',
+  );
+
+  static final _getChangeNotifications = jni$_.ProtectedJniExtensions.lookup<
+          jni$_.NativeFunction<
+              jni$_.JniResult Function(
+                jni$_.Pointer<jni$_.Void>,
+                jni$_.JMethodIDPtr,
+              )>>('globalEnv_CallObjectMethod')
+      .asFunction<
+          jni$_.JniResult Function(
+            jni$_.Pointer<jni$_.Void>,
+            jni$_.JMethodIDPtr,
+          )>();
+
+  /// from: `public kotlinx.coroutines.flow.Flow getChangeNotifications()`
+  /// The returned object must be released after use, by calling the [release] method.
+  jni$_.JObject getChangeNotifications() {
+    return _getChangeNotifications(
+            reference.pointer, _id_getChangeNotifications as jni$_.JMethodIDPtr)
+        .object<jni$_.JObject>(const jni$_.JObjectType());
   }
 
   static final _id_getId = _class.instanceMethodId(
@@ -3236,6 +3395,31 @@ class Thing extends jni$_.JObject {
   bool isDeleted() {
     return _isDeleted(reference.pointer, _id_isDeleted as jni$_.JMethodIDPtr)
         .boolean;
+  }
+
+  static final _id_getChangeNotifications = _class.instanceMethodId(
+    r'getChangeNotifications',
+    r'()Lkotlinx/coroutines/flow/Flow;',
+  );
+
+  static final _getChangeNotifications = jni$_.ProtectedJniExtensions.lookup<
+          jni$_.NativeFunction<
+              jni$_.JniResult Function(
+                jni$_.Pointer<jni$_.Void>,
+                jni$_.JMethodIDPtr,
+              )>>('globalEnv_CallObjectMethod')
+      .asFunction<
+          jni$_.JniResult Function(
+            jni$_.Pointer<jni$_.Void>,
+            jni$_.JMethodIDPtr,
+          )>();
+
+  /// from: `public kotlinx.coroutines.flow.Flow getChangeNotifications()`
+  /// The returned object must be released after use, by calling the [release] method.
+  jni$_.JObject getChangeNotifications() {
+    return _getChangeNotifications(
+            reference.pointer, _id_getChangeNotifications as jni$_.JMethodIDPtr)
+        .object<jni$_.JObject>(const jni$_.JObjectType());
   }
 }
 

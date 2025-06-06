@@ -1,6 +1,8 @@
 package com.daylightcomputer.coreplugin.entity.thing
 
 import com.daylightcomputer.coreplugin.entity.Entity
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.transform
 
 /**
  * Represents any and all pieces of data used to build the knowledge graph: nodes, links, tags
@@ -35,6 +37,8 @@ open class Thing(
         defaultValue = false,
         decode = { it.toBoolean() },
     )
+
+    override val changeNotifications: Flow<Unit> = entity.attributeChanges.transform { }
 
     init {
         validatePropertiesOnInit()
