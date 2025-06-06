@@ -35,24 +35,24 @@ import 'dart:core' as core$_;
 import 'package:jni/_internal.dart' as jni$_;
 import 'package:jni/jni.dart' as jni$_;
 
-/// from: `com.daylightcomputer.coreplugin.entity.AttributeValue`
-class AttributeValue extends jni$_.JObject {
+/// from: `com.daylightcomputer.coreplugin.entity.AttributeValueRecord`
+class AttributeValueRecord extends jni$_.JObject {
   @jni$_.internal
   @core$_.override
-  final jni$_.JObjType<AttributeValue> $type;
+  final jni$_.JObjType<AttributeValueRecord> $type;
 
   @jni$_.internal
-  AttributeValue.fromReference(
+  AttributeValueRecord.fromReference(
     jni$_.JReference reference,
   )   : $type = type,
         super.fromReference(reference);
 
   static final _class = jni$_.JClass.forName(
-      r'com/daylightcomputer/coreplugin/entity/AttributeValue');
+      r'com/daylightcomputer/coreplugin/entity/AttributeValueRecord');
 
   /// The type which includes information such as the signature of this class.
-  static const nullableType = $AttributeValue$NullableType();
-  static const type = $AttributeValue$Type();
+  static const nullableType = $AttributeValueRecord$NullableType();
+  static const type = $AttributeValueRecord$Type();
   static final _id_new$ = _class.constructorId(
     r'(Ljava/lang/String;Ljava/lang/String;)V',
   );
@@ -76,13 +76,13 @@ class AttributeValue extends jni$_.JObject {
 
   /// from: `public void <init>(java.lang.String string, java.lang.String string1)`
   /// The returned object must be released after use, by calling the [release] method.
-  factory AttributeValue(
+  factory AttributeValueRecord(
     jni$_.JString? string,
     jni$_.JString string1,
   ) {
     final _$string = string?.reference ?? jni$_.jNullReference;
     final _$string1 = string1.reference;
-    return AttributeValue.fromReference(_new$(_class.reference.pointer,
+    return AttributeValueRecord.fromReference(_new$(_class.reference.pointer,
             _id_new$ as jni$_.JMethodIDPtr, _$string.pointer, _$string1.pointer)
         .reference);
   }
@@ -186,7 +186,7 @@ class AttributeValue extends jni$_.JObject {
 
   static final _id_copy = _class.instanceMethodId(
     r'copy',
-    r'(Ljava/lang/String;Ljava/lang/String;)Lcom/daylightcomputer/coreplugin/entity/AttributeValue;',
+    r'(Ljava/lang/String;Ljava/lang/String;)Lcom/daylightcomputer/coreplugin/entity/AttributeValueRecord;',
   );
 
   static final _copy = jni$_.ProtectedJniExtensions.lookup<
@@ -206,9 +206,9 @@ class AttributeValue extends jni$_.JObject {
               jni$_.Pointer<jni$_.Void>,
               jni$_.Pointer<jni$_.Void>)>();
 
-  /// from: `public final com.daylightcomputer.coreplugin.entity.AttributeValue copy(java.lang.String string, java.lang.String string1)`
+  /// from: `public final com.daylightcomputer.coreplugin.entity.AttributeValueRecord copy(java.lang.String string, java.lang.String string1)`
   /// The returned object must be released after use, by calling the [release] method.
-  AttributeValue copy(
+  AttributeValueRecord copy(
     jni$_.JString? string,
     jni$_.JString string1,
   ) {
@@ -216,7 +216,7 @@ class AttributeValue extends jni$_.JObject {
     final _$string1 = string1.reference;
     return _copy(reference.pointer, _id_copy as jni$_.JMethodIDPtr,
             _$string.pointer, _$string1.pointer)
-        .object<AttributeValue>(const $AttributeValue$Type());
+        .object<AttributeValueRecord>(const $AttributeValueRecord$Type());
   }
 
   static final _id_toString$1 = _class.instanceMethodId(
@@ -293,58 +293,60 @@ class AttributeValue extends jni$_.JObject {
   }
 }
 
-final class $AttributeValue$NullableType
-    extends jni$_.JObjType<AttributeValue?> {
+final class $AttributeValueRecord$NullableType
+    extends jni$_.JObjType<AttributeValueRecord?> {
   @jni$_.internal
-  const $AttributeValue$NullableType();
+  const $AttributeValueRecord$NullableType();
 
   @jni$_.internal
   @core$_.override
   String get signature =>
-      r'Lcom/daylightcomputer/coreplugin/entity/AttributeValue;';
+      r'Lcom/daylightcomputer/coreplugin/entity/AttributeValueRecord;';
 
   @jni$_.internal
   @core$_.override
-  AttributeValue? fromReference(jni$_.JReference reference) => reference.isNull
-      ? null
-      : AttributeValue.fromReference(
-          reference,
-        );
+  AttributeValueRecord? fromReference(jni$_.JReference reference) =>
+      reference.isNull
+          ? null
+          : AttributeValueRecord.fromReference(
+              reference,
+            );
   @jni$_.internal
   @core$_.override
   jni$_.JObjType get superType => const jni$_.JObjectType();
 
   @jni$_.internal
   @core$_.override
-  jni$_.JObjType<AttributeValue?> get nullableType => this;
+  jni$_.JObjType<AttributeValueRecord?> get nullableType => this;
 
   @jni$_.internal
   @core$_.override
   final superCount = 1;
 
   @core$_.override
-  int get hashCode => ($AttributeValue$NullableType).hashCode;
+  int get hashCode => ($AttributeValueRecord$NullableType).hashCode;
 
   @core$_.override
   bool operator ==(Object other) {
-    return other.runtimeType == ($AttributeValue$NullableType) &&
-        other is $AttributeValue$NullableType;
+    return other.runtimeType == ($AttributeValueRecord$NullableType) &&
+        other is $AttributeValueRecord$NullableType;
   }
 }
 
-final class $AttributeValue$Type extends jni$_.JObjType<AttributeValue> {
+final class $AttributeValueRecord$Type
+    extends jni$_.JObjType<AttributeValueRecord> {
   @jni$_.internal
-  const $AttributeValue$Type();
+  const $AttributeValueRecord$Type();
 
   @jni$_.internal
   @core$_.override
   String get signature =>
-      r'Lcom/daylightcomputer/coreplugin/entity/AttributeValue;';
+      r'Lcom/daylightcomputer/coreplugin/entity/AttributeValueRecord;';
 
   @jni$_.internal
   @core$_.override
-  AttributeValue fromReference(jni$_.JReference reference) =>
-      AttributeValue.fromReference(
+  AttributeValueRecord fromReference(jni$_.JReference reference) =>
+      AttributeValueRecord.fromReference(
         reference,
       );
   @jni$_.internal
@@ -353,20 +355,20 @@ final class $AttributeValue$Type extends jni$_.JObjType<AttributeValue> {
 
   @jni$_.internal
   @core$_.override
-  jni$_.JObjType<AttributeValue?> get nullableType =>
-      const $AttributeValue$NullableType();
+  jni$_.JObjType<AttributeValueRecord?> get nullableType =>
+      const $AttributeValueRecord$NullableType();
 
   @jni$_.internal
   @core$_.override
   final superCount = 1;
 
   @core$_.override
-  int get hashCode => ($AttributeValue$Type).hashCode;
+  int get hashCode => ($AttributeValueRecord$Type).hashCode;
 
   @core$_.override
   bool operator ==(Object other) {
-    return other.runtimeType == ($AttributeValue$Type) &&
-        other is $AttributeValue$Type;
+    return other.runtimeType == ($AttributeValueRecord$Type) &&
+        other is $AttributeValueRecord$Type;
   }
 }
 
@@ -388,6 +390,31 @@ class Entity$Companion extends jni$_.JObject {
   /// The type which includes information such as the signature of this class.
   static const nullableType = $Entity$Companion$NullableType();
   static const type = $Entity$Companion$Type();
+  static final _id_issueTimestamp = _class.instanceMethodId(
+    r'issueTimestamp',
+    r'()Lkotlin/jvm/functions/Function0;',
+  );
+
+  static final _issueTimestamp = jni$_.ProtectedJniExtensions.lookup<
+          jni$_.NativeFunction<
+              jni$_.JniResult Function(
+                jni$_.Pointer<jni$_.Void>,
+                jni$_.JMethodIDPtr,
+              )>>('globalEnv_CallObjectMethod')
+      .asFunction<
+          jni$_.JniResult Function(
+            jni$_.Pointer<jni$_.Void>,
+            jni$_.JMethodIDPtr,
+          )>();
+
+  /// from: `public final kotlin.jvm.functions.Function0 issueTimestamp()`
+  /// The returned object must be released after use, by calling the [release] method.
+  jni$_.JObject issueTimestamp() {
+    return _issueTimestamp(
+            reference.pointer, _id_issueTimestamp as jni$_.JMethodIDPtr)
+        .object<jni$_.JObject>(const jni$_.JObjectType());
+  }
+
   static final _id_fromAttributePool = _class.instanceMethodId(
     r'fromAttributePool',
     r'(Ljava/lang/String;Lkotlin/sequences/Sequence;)Lcom/daylightcomputer/coreplugin/entity/Entity;',
@@ -612,7 +639,7 @@ class Entity extends jni$_.JObject {
   /// The returned object must be released after use, by calling the [release] method.
   factory Entity(
     jni$_.JString string,
-    jni$_.JMap<jni$_.JString, AttributeValue> map,
+    jni$_.JMap<jni$_.JString, AttributeValueRecord> map,
   ) {
     final _$string = string.reference;
     final _$map = map.reference;
@@ -664,12 +691,257 @@ class Entity extends jni$_.JObject {
 
   /// from: `public final java.util.Map getAttributes()`
   /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JMap<jni$_.JString, AttributeValue> getAttributes() {
+  jni$_.JMap<jni$_.JString, AttributeValueRecord> getAttributes() {
     return _getAttributes(
             reference.pointer, _id_getAttributes as jni$_.JMethodIDPtr)
-        .object<jni$_.JMap<jni$_.JString, AttributeValue>>(
-            const jni$_.JMapType<jni$_.JString, AttributeValue>(
-                jni$_.JStringType(), $AttributeValue$Type()));
+        .object<jni$_.JMap<jni$_.JString, AttributeValueRecord>>(
+            const jni$_.JMapType<jni$_.JString, AttributeValueRecord>(
+                jni$_.JStringType(), $AttributeValueRecord$Type()));
+  }
+
+  static final _id_required = _class.instanceMethodId(
+    r'required',
+    r'(Ljava/lang/String;Lkotlin/jvm/functions/Function1;)Lkotlin/properties/ReadOnlyProperty;',
+  );
+
+  static final _required = jni$_.ProtectedJniExtensions.lookup<
+          jni$_.NativeFunction<
+              jni$_.JniResult Function(
+                  jni$_.Pointer<jni$_.Void>,
+                  jni$_.JMethodIDPtr,
+                  jni$_.VarArgs<
+                      (
+                        jni$_.Pointer<jni$_.Void>,
+                        jni$_.Pointer<jni$_.Void>
+                      )>)>>('globalEnv_CallObjectMethod')
+      .asFunction<
+          jni$_.JniResult Function(
+              jni$_.Pointer<jni$_.Void>,
+              jni$_.JMethodIDPtr,
+              jni$_.Pointer<jni$_.Void>,
+              jni$_.Pointer<jni$_.Void>)>();
+
+  /// from: `public final kotlin.properties.ReadOnlyProperty required(java.lang.String string, kotlin.jvm.functions.Function1 function1)`
+  /// The returned object must be released after use, by calling the [release] method.
+  jni$_.JObject required<$T extends jni$_.JObject?>(
+    jni$_.JString string,
+    jni$_.JObject function1, {
+    required jni$_.JObjType<$T> T,
+  }) {
+    final _$string = string.reference;
+    final _$function1 = function1.reference;
+    return _required(reference.pointer, _id_required as jni$_.JMethodIDPtr,
+            _$string.pointer, _$function1.pointer)
+        .object<jni$_.JObject>(const jni$_.JObjectType());
+  }
+
+  static final _id_requiredMutable = _class.instanceMethodId(
+    r'requiredMutable',
+    r'(Ljava/lang/String;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function0;)Lkotlin/properties/ReadWriteProperty;',
+  );
+
+  static final _requiredMutable = jni$_.ProtectedJniExtensions.lookup<
+          jni$_.NativeFunction<
+              jni$_.JniResult Function(
+                  jni$_.Pointer<jni$_.Void>,
+                  jni$_.JMethodIDPtr,
+                  jni$_.VarArgs<
+                      (
+                        jni$_.Pointer<jni$_.Void>,
+                        jni$_.Pointer<jni$_.Void>,
+                        jni$_.Pointer<jni$_.Void>,
+                        jni$_.Pointer<jni$_.Void>
+                      )>)>>('globalEnv_CallObjectMethod')
+      .asFunction<
+          jni$_.JniResult Function(
+              jni$_.Pointer<jni$_.Void>,
+              jni$_.JMethodIDPtr,
+              jni$_.Pointer<jni$_.Void>,
+              jni$_.Pointer<jni$_.Void>,
+              jni$_.Pointer<jni$_.Void>,
+              jni$_.Pointer<jni$_.Void>)>();
+
+  /// from: `public final kotlin.properties.ReadWriteProperty requiredMutable(java.lang.String string, kotlin.jvm.functions.Function1 function1, kotlin.jvm.functions.Function1 function11, kotlin.jvm.functions.Function0 function0)`
+  /// The returned object must be released after use, by calling the [release] method.
+  jni$_.JObject requiredMutable<$T extends jni$_.JObject?>(
+    jni$_.JString string,
+    jni$_.JObject function1,
+    jni$_.JObject function11,
+    jni$_.JObject function0, {
+    required jni$_.JObjType<$T> T,
+  }) {
+    final _$string = string.reference;
+    final _$function1 = function1.reference;
+    final _$function11 = function11.reference;
+    final _$function0 = function0.reference;
+    return _requiredMutable(
+            reference.pointer,
+            _id_requiredMutable as jni$_.JMethodIDPtr,
+            _$string.pointer,
+            _$function1.pointer,
+            _$function11.pointer,
+            _$function0.pointer)
+        .object<jni$_.JObject>(const jni$_.JObjectType());
+  }
+
+  static final _id_optional = _class.instanceMethodId(
+    r'optional',
+    r'(Ljava/lang/String;Ljava/lang/Object;Lkotlin/jvm/functions/Function1;)Lkotlin/properties/ReadOnlyProperty;',
+  );
+
+  static final _optional = jni$_.ProtectedJniExtensions.lookup<
+          jni$_.NativeFunction<
+              jni$_.JniResult Function(
+                  jni$_.Pointer<jni$_.Void>,
+                  jni$_.JMethodIDPtr,
+                  jni$_.VarArgs<
+                      (
+                        jni$_.Pointer<jni$_.Void>,
+                        jni$_.Pointer<jni$_.Void>,
+                        jni$_.Pointer<jni$_.Void>
+                      )>)>>('globalEnv_CallObjectMethod')
+      .asFunction<
+          jni$_.JniResult Function(
+              jni$_.Pointer<jni$_.Void>,
+              jni$_.JMethodIDPtr,
+              jni$_.Pointer<jni$_.Void>,
+              jni$_.Pointer<jni$_.Void>,
+              jni$_.Pointer<jni$_.Void>)>();
+
+  /// from: `public final kotlin.properties.ReadOnlyProperty optional(java.lang.String string, T object, kotlin.jvm.functions.Function1 function1)`
+  /// The returned object must be released after use, by calling the [release] method.
+  jni$_.JObject optional<$T extends jni$_.JObject?>(
+    jni$_.JString string,
+    $T object,
+    jni$_.JObject function1, {
+    required jni$_.JObjType<$T> T,
+  }) {
+    final _$string = string.reference;
+    final _$object = object?.reference ?? jni$_.jNullReference;
+    final _$function1 = function1.reference;
+    return _optional(reference.pointer, _id_optional as jni$_.JMethodIDPtr,
+            _$string.pointer, _$object.pointer, _$function1.pointer)
+        .object<jni$_.JObject>(const jni$_.JObjectType());
+  }
+
+  static final _id_derived = _class.instanceMethodId(
+    r'derived',
+    r'(Lkotlin/jvm/functions/Function1;)Lkotlin/properties/ReadOnlyProperty;',
+  );
+
+  static final _derived = jni$_.ProtectedJniExtensions.lookup<
+              jni$_.NativeFunction<
+                  jni$_.JniResult Function(
+                      jni$_.Pointer<jni$_.Void>,
+                      jni$_.JMethodIDPtr,
+                      jni$_.VarArgs<(jni$_.Pointer<jni$_.Void>,)>)>>(
+          'globalEnv_CallObjectMethod')
+      .asFunction<
+          jni$_.JniResult Function(jni$_.Pointer<jni$_.Void>,
+              jni$_.JMethodIDPtr, jni$_.Pointer<jni$_.Void>)>();
+
+  /// from: `public final kotlin.properties.ReadOnlyProperty derived(kotlin.jvm.functions.Function1 function1)`
+  /// The returned object must be released after use, by calling the [release] method.
+  jni$_.JObject derived<$T extends jni$_.JObject?>(
+    jni$_.JObject function1, {
+    required jni$_.JObjType<$T> T,
+  }) {
+    final _$function1 = function1.reference;
+    return _derived(reference.pointer, _id_derived as jni$_.JMethodIDPtr,
+            _$function1.pointer)
+        .object<jni$_.JObject>(const jni$_.JObjectType());
+  }
+
+  static final _id_getRequiredAttribute = _class.instanceMethodId(
+    r'getRequiredAttribute',
+    r'(Ljava/lang/String;)Ljava/lang/String;',
+  );
+
+  static final _getRequiredAttribute = jni$_.ProtectedJniExtensions.lookup<
+              jni$_.NativeFunction<
+                  jni$_.JniResult Function(
+                      jni$_.Pointer<jni$_.Void>,
+                      jni$_.JMethodIDPtr,
+                      jni$_.VarArgs<(jni$_.Pointer<jni$_.Void>,)>)>>(
+          'globalEnv_CallObjectMethod')
+      .asFunction<
+          jni$_.JniResult Function(jni$_.Pointer<jni$_.Void>,
+              jni$_.JMethodIDPtr, jni$_.Pointer<jni$_.Void>)>();
+
+  /// from: `public final java.lang.String getRequiredAttribute(java.lang.String string)`
+  /// The returned object must be released after use, by calling the [release] method.
+  jni$_.JString? getRequiredAttribute(
+    jni$_.JString string,
+  ) {
+    final _$string = string.reference;
+    return _getRequiredAttribute(reference.pointer,
+            _id_getRequiredAttribute as jni$_.JMethodIDPtr, _$string.pointer)
+        .object<jni$_.JString?>(const jni$_.JStringNullableType());
+  }
+
+  static final _id_getAttribute = _class.instanceMethodId(
+    r'getAttribute',
+    r'(Ljava/lang/String;)Ljava/lang/String;',
+  );
+
+  static final _getAttribute = jni$_.ProtectedJniExtensions.lookup<
+              jni$_.NativeFunction<
+                  jni$_.JniResult Function(
+                      jni$_.Pointer<jni$_.Void>,
+                      jni$_.JMethodIDPtr,
+                      jni$_.VarArgs<(jni$_.Pointer<jni$_.Void>,)>)>>(
+          'globalEnv_CallObjectMethod')
+      .asFunction<
+          jni$_.JniResult Function(jni$_.Pointer<jni$_.Void>,
+              jni$_.JMethodIDPtr, jni$_.Pointer<jni$_.Void>)>();
+
+  /// from: `public final java.lang.String getAttribute(java.lang.String string)`
+  /// The returned object must be released after use, by calling the [release] method.
+  jni$_.JString? getAttribute(
+    jni$_.JString string,
+  ) {
+    final _$string = string.reference;
+    return _getAttribute(reference.pointer,
+            _id_getAttribute as jni$_.JMethodIDPtr, _$string.pointer)
+        .object<jni$_.JString?>(const jni$_.JStringNullableType());
+  }
+
+  static final _id_setAttribute = _class.instanceMethodId(
+    r'setAttribute',
+    r'(Ljava/lang/String;Ljava/lang/String;Lkotlin/jvm/functions/Function0;)V',
+  );
+
+  static final _setAttribute = jni$_.ProtectedJniExtensions.lookup<
+          jni$_.NativeFunction<
+              jni$_.JThrowablePtr Function(
+                  jni$_.Pointer<jni$_.Void>,
+                  jni$_.JMethodIDPtr,
+                  jni$_.VarArgs<
+                      (
+                        jni$_.Pointer<jni$_.Void>,
+                        jni$_.Pointer<jni$_.Void>,
+                        jni$_.Pointer<jni$_.Void>
+                      )>)>>('globalEnv_CallVoidMethod')
+      .asFunction<
+          jni$_.JThrowablePtr Function(
+              jni$_.Pointer<jni$_.Void>,
+              jni$_.JMethodIDPtr,
+              jni$_.Pointer<jni$_.Void>,
+              jni$_.Pointer<jni$_.Void>,
+              jni$_.Pointer<jni$_.Void>)>();
+
+  /// from: `public final void setAttribute(java.lang.String string, java.lang.String string1, kotlin.jvm.functions.Function0 function0)`
+  void setAttribute(
+    jni$_.JString string,
+    jni$_.JString? string1,
+    jni$_.JObject function0,
+  ) {
+    final _$string = string.reference;
+    final _$string1 = string1?.reference ?? jni$_.jNullReference;
+    final _$function0 = function0.reference;
+    _setAttribute(reference.pointer, _id_setAttribute as jni$_.JMethodIDPtr,
+            _$string.pointer, _$string1.pointer, _$function0.pointer)
+        .check();
   }
 
   static final _id_component1 = _class.instanceMethodId(
@@ -694,32 +966,6 @@ class Entity extends jni$_.JObject {
   jni$_.JString component1() {
     return _component1(reference.pointer, _id_component1 as jni$_.JMethodIDPtr)
         .object<jni$_.JString>(const jni$_.JStringType());
-  }
-
-  static final _id_component2 = _class.instanceMethodId(
-    r'component2',
-    r'()Ljava/util/Map;',
-  );
-
-  static final _component2 = jni$_.ProtectedJniExtensions.lookup<
-          jni$_.NativeFunction<
-              jni$_.JniResult Function(
-                jni$_.Pointer<jni$_.Void>,
-                jni$_.JMethodIDPtr,
-              )>>('globalEnv_CallObjectMethod')
-      .asFunction<
-          jni$_.JniResult Function(
-            jni$_.Pointer<jni$_.Void>,
-            jni$_.JMethodIDPtr,
-          )>();
-
-  /// from: `public final java.util.Map component2()`
-  /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JMap<jni$_.JString, AttributeValue> component2() {
-    return _component2(reference.pointer, _id_component2 as jni$_.JMethodIDPtr)
-        .object<jni$_.JMap<jni$_.JString, AttributeValue>>(
-            const jni$_.JMapType<jni$_.JString, AttributeValue>(
-                jni$_.JStringType(), $AttributeValue$Type()));
   }
 
   static final _id_copy = _class.instanceMethodId(
@@ -748,7 +994,7 @@ class Entity extends jni$_.JObject {
   /// The returned object must be released after use, by calling the [release] method.
   Entity copy(
     jni$_.JString string,
-    jni$_.JMap<jni$_.JString, AttributeValue> map,
+    jni$_.JMap<jni$_.JString, AttributeValueRecord> map,
   ) {
     final _$string = string.reference;
     final _$map = map.reference;
@@ -902,8 +1148,8 @@ final class $Entity$Type extends jni$_.JObjType<Entity> {
   }
 }
 
-/// from: `com.daylightcomputer.coreplugin.entity.node.DocumentNode`
-class DocumentNode extends Node {
+/// from: `com.daylightcomputer.coreplugin.entity.thing.DocumentNode`
+class DocumentNode extends jni$_.JObject {
   @jni$_.internal
   @core$_.override
   final jni$_.JObjType<DocumentNode> $type;
@@ -915,7 +1161,7 @@ class DocumentNode extends Node {
         super.fromReference(reference);
 
   static final _class = jni$_.JClass.forName(
-      r'com/daylightcomputer/coreplugin/entity/node/DocumentNode');
+      r'com/daylightcomputer/coreplugin/entity/thing/DocumentNode');
 
   /// The type which includes information such as the signature of this class.
   static const nullableType = $DocumentNode$NullableType();
@@ -946,6 +1192,79 @@ class DocumentNode extends Node {
         .reference);
   }
 
+  static final _id_getId = _class.instanceMethodId(
+    r'getId',
+    r'()Ljava/lang/String;',
+  );
+
+  static final _getId = jni$_.ProtectedJniExtensions.lookup<
+          jni$_.NativeFunction<
+              jni$_.JniResult Function(
+                jni$_.Pointer<jni$_.Void>,
+                jni$_.JMethodIDPtr,
+              )>>('globalEnv_CallObjectMethod')
+      .asFunction<
+          jni$_.JniResult Function(
+            jni$_.Pointer<jni$_.Void>,
+            jni$_.JMethodIDPtr,
+          )>();
+
+  /// from: `public java.lang.String getId()`
+  /// The returned object must be released after use, by calling the [release] method.
+  jni$_.JString getId() {
+    return _getId(reference.pointer, _id_getId as jni$_.JMethodIDPtr)
+        .object<jni$_.JString>(const jni$_.JStringType());
+  }
+
+  static final _id_isDeleted = _class.instanceMethodId(
+    r'isDeleted',
+    r'()Z',
+  );
+
+  static final _isDeleted = jni$_.ProtectedJniExtensions.lookup<
+          jni$_.NativeFunction<
+              jni$_.JniResult Function(
+                jni$_.Pointer<jni$_.Void>,
+                jni$_.JMethodIDPtr,
+              )>>('globalEnv_CallBooleanMethod')
+      .asFunction<
+          jni$_.JniResult Function(
+            jni$_.Pointer<jni$_.Void>,
+            jni$_.JMethodIDPtr,
+          )>();
+
+  /// from: `public boolean isDeleted()`
+  bool isDeleted() {
+    return _isDeleted(reference.pointer, _id_isDeleted as jni$_.JMethodIDPtr)
+        .boolean;
+  }
+
+  static final _id_getLastModifiedAtTimestamp = _class.instanceMethodId(
+    r'getLastModifiedAtTimestamp',
+    r'()Ljava/lang/String;',
+  );
+
+  static final _getLastModifiedAtTimestamp =
+      jni$_.ProtectedJniExtensions.lookup<
+              jni$_.NativeFunction<
+                  jni$_.JniResult Function(
+                    jni$_.Pointer<jni$_.Void>,
+                    jni$_.JMethodIDPtr,
+                  )>>('globalEnv_CallObjectMethod')
+          .asFunction<
+              jni$_.JniResult Function(
+                jni$_.Pointer<jni$_.Void>,
+                jni$_.JMethodIDPtr,
+              )>();
+
+  /// from: `public java.lang.String getLastModifiedAtTimestamp()`
+  /// The returned object must be released after use, by calling the [release] method.
+  jni$_.JString getLastModifiedAtTimestamp() {
+    return _getLastModifiedAtTimestamp(reference.pointer,
+            _id_getLastModifiedAtTimestamp as jni$_.JMethodIDPtr)
+        .object<jni$_.JString>(const jni$_.JStringType());
+  }
+
   static final _id_getTitle = _class.instanceMethodId(
     r'getTitle',
     r'()Ljava/lang/String;',
@@ -963,11 +1282,35 @@ class DocumentNode extends Node {
             jni$_.JMethodIDPtr,
           )>();
 
-  /// from: `public final java.lang.String getTitle()`
+  /// from: `public java.lang.String getTitle()`
   /// The returned object must be released after use, by calling the [release] method.
   jni$_.JString getTitle() {
     return _getTitle(reference.pointer, _id_getTitle as jni$_.JMethodIDPtr)
         .object<jni$_.JString>(const jni$_.JStringType());
+  }
+
+  static final _id_getType = _class.instanceMethodId(
+    r'getType',
+    r'()Lcom/daylightcomputer/coreplugin/entity/thing/ThingTypes;',
+  );
+
+  static final _getType = jni$_.ProtectedJniExtensions.lookup<
+          jni$_.NativeFunction<
+              jni$_.JniResult Function(
+                jni$_.Pointer<jni$_.Void>,
+                jni$_.JMethodIDPtr,
+              )>>('globalEnv_CallObjectMethod')
+      .asFunction<
+          jni$_.JniResult Function(
+            jni$_.Pointer<jni$_.Void>,
+            jni$_.JMethodIDPtr,
+          )>();
+
+  /// from: `public com.daylightcomputer.coreplugin.entity.thing.ThingTypes getType()`
+  /// The returned object must be released after use, by calling the [release] method.
+  ThingTypes getType() {
+    return _getType(reference.pointer, _id_getType as jni$_.JMethodIDPtr)
+        .object<ThingTypes>(const $ThingTypes$Type());
   }
 
   static final _id_getAuthor = _class.instanceMethodId(
@@ -993,6 +1336,81 @@ class DocumentNode extends Node {
     return _getAuthor(reference.pointer, _id_getAuthor as jni$_.JMethodIDPtr)
         .object<jni$_.JString?>(const jni$_.JStringNullableType());
   }
+
+  static final _id_getThought = _class.instanceMethodId(
+    r'getThought',
+    r'()Ljava/lang/String;',
+  );
+
+  static final _getThought = jni$_.ProtectedJniExtensions.lookup<
+          jni$_.NativeFunction<
+              jni$_.JniResult Function(
+                jni$_.Pointer<jni$_.Void>,
+                jni$_.JMethodIDPtr,
+              )>>('globalEnv_CallObjectMethod')
+      .asFunction<
+          jni$_.JniResult Function(
+            jni$_.Pointer<jni$_.Void>,
+            jni$_.JMethodIDPtr,
+          )>();
+
+  /// from: `public final java.lang.String getThought()`
+  /// The returned object must be released after use, by calling the [release] method.
+  jni$_.JString? getThought() {
+    return _getThought(reference.pointer, _id_getThought as jni$_.JMethodIDPtr)
+        .object<jni$_.JString?>(const jni$_.JStringNullableType());
+  }
+
+  static final _id_setThought = _class.instanceMethodId(
+    r'setThought',
+    r'(Ljava/lang/String;)V',
+  );
+
+  static final _setThought = jni$_.ProtectedJniExtensions.lookup<
+              jni$_.NativeFunction<
+                  jni$_.JThrowablePtr Function(
+                      jni$_.Pointer<jni$_.Void>,
+                      jni$_.JMethodIDPtr,
+                      jni$_.VarArgs<(jni$_.Pointer<jni$_.Void>,)>)>>(
+          'globalEnv_CallVoidMethod')
+      .asFunction<
+          jni$_.JThrowablePtr Function(jni$_.Pointer<jni$_.Void>,
+              jni$_.JMethodIDPtr, jni$_.Pointer<jni$_.Void>)>();
+
+  /// from: `public final void setThought(java.lang.String string)`
+  void setThought(
+    jni$_.JString? string,
+  ) {
+    final _$string = string?.reference ?? jni$_.jNullReference;
+    _setThought(reference.pointer, _id_setThought as jni$_.JMethodIDPtr,
+            _$string.pointer)
+        .check();
+  }
+
+  static final _id_validateRequiredProperties = _class.instanceMethodId(
+    r'validateRequiredProperties',
+    r'()V',
+  );
+
+  static final _validateRequiredProperties =
+      jni$_.ProtectedJniExtensions.lookup<
+              jni$_.NativeFunction<
+                  jni$_.JThrowablePtr Function(
+                    jni$_.Pointer<jni$_.Void>,
+                    jni$_.JMethodIDPtr,
+                  )>>('globalEnv_CallVoidMethod')
+          .asFunction<
+              jni$_.JThrowablePtr Function(
+                jni$_.Pointer<jni$_.Void>,
+                jni$_.JMethodIDPtr,
+              )>();
+
+  /// from: `public void validateRequiredProperties()`
+  void validateRequiredProperties() {
+    _validateRequiredProperties(reference.pointer,
+            _id_validateRequiredProperties as jni$_.JMethodIDPtr)
+        .check();
+  }
 }
 
 final class $DocumentNode$NullableType extends jni$_.JObjType<DocumentNode?> {
@@ -1002,7 +1420,7 @@ final class $DocumentNode$NullableType extends jni$_.JObjType<DocumentNode?> {
   @jni$_.internal
   @core$_.override
   String get signature =>
-      r'Lcom/daylightcomputer/coreplugin/entity/node/DocumentNode;';
+      r'Lcom/daylightcomputer/coreplugin/entity/thing/DocumentNode;';
 
   @jni$_.internal
   @core$_.override
@@ -1013,7 +1431,7 @@ final class $DocumentNode$NullableType extends jni$_.JObjType<DocumentNode?> {
         );
   @jni$_.internal
   @core$_.override
-  jni$_.JObjType get superType => const $Node$Type();
+  jni$_.JObjType get superType => const jni$_.JObjectNullableType();
 
   @jni$_.internal
   @core$_.override
@@ -1021,7 +1439,7 @@ final class $DocumentNode$NullableType extends jni$_.JObjType<DocumentNode?> {
 
   @jni$_.internal
   @core$_.override
-  final superCount = 2;
+  final superCount = 1;
 
   @core$_.override
   int get hashCode => ($DocumentNode$NullableType).hashCode;
@@ -1040,7 +1458,7 @@ final class $DocumentNode$Type extends jni$_.JObjType<DocumentNode> {
   @jni$_.internal
   @core$_.override
   String get signature =>
-      r'Lcom/daylightcomputer/coreplugin/entity/node/DocumentNode;';
+      r'Lcom/daylightcomputer/coreplugin/entity/thing/DocumentNode;';
 
   @jni$_.internal
   @core$_.override
@@ -1050,7 +1468,7 @@ final class $DocumentNode$Type extends jni$_.JObjType<DocumentNode> {
       );
   @jni$_.internal
   @core$_.override
-  jni$_.JObjType get superType => const $Node$Type();
+  jni$_.JObjType get superType => const jni$_.JObjectNullableType();
 
   @jni$_.internal
   @core$_.override
@@ -1059,7 +1477,7 @@ final class $DocumentNode$Type extends jni$_.JObjType<DocumentNode> {
 
   @jni$_.internal
   @core$_.override
-  final superCount = 2;
+  final superCount = 1;
 
   @core$_.override
   int get hashCode => ($DocumentNode$Type).hashCode;
@@ -1071,7 +1489,810 @@ final class $DocumentNode$Type extends jni$_.JObjType<DocumentNode> {
   }
 }
 
-/// from: `com.daylightcomputer.coreplugin.entity.node.Node`
+/// from: `com.daylightcomputer.coreplugin.entity.thing.INode`
+class INode extends jni$_.JObject {
+  @jni$_.internal
+  @core$_.override
+  final jni$_.JObjType<INode> $type;
+
+  @jni$_.internal
+  INode.fromReference(
+    jni$_.JReference reference,
+  )   : $type = type,
+        super.fromReference(reference);
+
+  static final _class = jni$_.JClass.forName(
+      r'com/daylightcomputer/coreplugin/entity/thing/INode');
+
+  /// The type which includes information such as the signature of this class.
+  static const nullableType = $INode$NullableType();
+  static const type = $INode$Type();
+  static final _id_getTitle = _class.instanceMethodId(
+    r'getTitle',
+    r'()Ljava/lang/String;',
+  );
+
+  static final _getTitle = jni$_.ProtectedJniExtensions.lookup<
+          jni$_.NativeFunction<
+              jni$_.JniResult Function(
+                jni$_.Pointer<jni$_.Void>,
+                jni$_.JMethodIDPtr,
+              )>>('globalEnv_CallObjectMethod')
+      .asFunction<
+          jni$_.JniResult Function(
+            jni$_.Pointer<jni$_.Void>,
+            jni$_.JMethodIDPtr,
+          )>();
+
+  /// from: `public abstract java.lang.String getTitle()`
+  /// The returned object must be released after use, by calling the [release] method.
+  jni$_.JString getTitle() {
+    return _getTitle(reference.pointer, _id_getTitle as jni$_.JMethodIDPtr)
+        .object<jni$_.JString>(const jni$_.JStringType());
+  }
+
+  static final _id_getId = _class.instanceMethodId(
+    r'getId',
+    r'()Ljava/lang/String;',
+  );
+
+  static final _getId = jni$_.ProtectedJniExtensions.lookup<
+          jni$_.NativeFunction<
+              jni$_.JniResult Function(
+                jni$_.Pointer<jni$_.Void>,
+                jni$_.JMethodIDPtr,
+              )>>('globalEnv_CallObjectMethod')
+      .asFunction<
+          jni$_.JniResult Function(
+            jni$_.Pointer<jni$_.Void>,
+            jni$_.JMethodIDPtr,
+          )>();
+
+  /// from: `public abstract java.lang.String getId()`
+  /// The returned object must be released after use, by calling the [release] method.
+  jni$_.JString getId() {
+    return _getId(reference.pointer, _id_getId as jni$_.JMethodIDPtr)
+        .object<jni$_.JString>(const jni$_.JStringType());
+  }
+
+  static final _id_getType = _class.instanceMethodId(
+    r'getType',
+    r'()Lcom/daylightcomputer/coreplugin/entity/thing/ThingTypes;',
+  );
+
+  static final _getType = jni$_.ProtectedJniExtensions.lookup<
+          jni$_.NativeFunction<
+              jni$_.JniResult Function(
+                jni$_.Pointer<jni$_.Void>,
+                jni$_.JMethodIDPtr,
+              )>>('globalEnv_CallObjectMethod')
+      .asFunction<
+          jni$_.JniResult Function(
+            jni$_.Pointer<jni$_.Void>,
+            jni$_.JMethodIDPtr,
+          )>();
+
+  /// from: `public abstract com.daylightcomputer.coreplugin.entity.thing.ThingTypes getType()`
+  /// The returned object must be released after use, by calling the [release] method.
+  ThingTypes getType() {
+    return _getType(reference.pointer, _id_getType as jni$_.JMethodIDPtr)
+        .object<ThingTypes>(const $ThingTypes$Type());
+  }
+
+  static final _id_isDeleted = _class.instanceMethodId(
+    r'isDeleted',
+    r'()Z',
+  );
+
+  static final _isDeleted = jni$_.ProtectedJniExtensions.lookup<
+          jni$_.NativeFunction<
+              jni$_.JniResult Function(
+                jni$_.Pointer<jni$_.Void>,
+                jni$_.JMethodIDPtr,
+              )>>('globalEnv_CallBooleanMethod')
+      .asFunction<
+          jni$_.JniResult Function(
+            jni$_.Pointer<jni$_.Void>,
+            jni$_.JMethodIDPtr,
+          )>();
+
+  /// from: `public abstract boolean isDeleted()`
+  bool isDeleted() {
+    return _isDeleted(reference.pointer, _id_isDeleted as jni$_.JMethodIDPtr)
+        .boolean;
+  }
+
+  static final _id_getLastModifiedAtTimestamp = _class.instanceMethodId(
+    r'getLastModifiedAtTimestamp',
+    r'()Ljava/lang/String;',
+  );
+
+  static final _getLastModifiedAtTimestamp =
+      jni$_.ProtectedJniExtensions.lookup<
+              jni$_.NativeFunction<
+                  jni$_.JniResult Function(
+                    jni$_.Pointer<jni$_.Void>,
+                    jni$_.JMethodIDPtr,
+                  )>>('globalEnv_CallObjectMethod')
+          .asFunction<
+              jni$_.JniResult Function(
+                jni$_.Pointer<jni$_.Void>,
+                jni$_.JMethodIDPtr,
+              )>();
+
+  /// from: `public abstract java.lang.String getLastModifiedAtTimestamp()`
+  /// The returned object must be released after use, by calling the [release] method.
+  jni$_.JString getLastModifiedAtTimestamp() {
+    return _getLastModifiedAtTimestamp(reference.pointer,
+            _id_getLastModifiedAtTimestamp as jni$_.JMethodIDPtr)
+        .object<jni$_.JString>(const jni$_.JStringType());
+  }
+
+  static final _id_validateRequiredProperties = _class.instanceMethodId(
+    r'validateRequiredProperties',
+    r'()V',
+  );
+
+  static final _validateRequiredProperties =
+      jni$_.ProtectedJniExtensions.lookup<
+              jni$_.NativeFunction<
+                  jni$_.JThrowablePtr Function(
+                    jni$_.Pointer<jni$_.Void>,
+                    jni$_.JMethodIDPtr,
+                  )>>('globalEnv_CallVoidMethod')
+          .asFunction<
+              jni$_.JThrowablePtr Function(
+                jni$_.Pointer<jni$_.Void>,
+                jni$_.JMethodIDPtr,
+              )>();
+
+  /// from: `public abstract void validateRequiredProperties()`
+  void validateRequiredProperties() {
+    _validateRequiredProperties(reference.pointer,
+            _id_validateRequiredProperties as jni$_.JMethodIDPtr)
+        .check();
+  }
+
+  /// Maps a specific port to the implemented interface.
+  static final core$_.Map<int, $INode> _$impls = {};
+  static jni$_.JObjectPtr _$invoke(
+    int port,
+    jni$_.JObjectPtr descriptor,
+    jni$_.JObjectPtr args,
+  ) {
+    return _$invokeMethod(
+      port,
+      jni$_.MethodInvocation.fromAddresses(
+        0,
+        descriptor.address,
+        args.address,
+      ),
+    );
+  }
+
+  static final jni$_.Pointer<
+          jni$_.NativeFunction<
+              jni$_.JObjectPtr Function(
+                  jni$_.Int64, jni$_.JObjectPtr, jni$_.JObjectPtr)>>
+      _$invokePointer = jni$_.Pointer.fromFunction(_$invoke);
+
+  static jni$_.Pointer<jni$_.Void> _$invokeMethod(
+    int $p,
+    jni$_.MethodInvocation $i,
+  ) {
+    try {
+      final $d = $i.methodDescriptor.toDartString(releaseOriginal: true);
+      final $a = $i.args;
+      if ($d == r'getTitle()Ljava/lang/String;') {
+        final $r = _$impls[$p]!.getTitle();
+        return ($r as jni$_.JObject?)
+                ?.as(const jni$_.JObjectType())
+                .reference
+                .toPointer() ??
+            jni$_.nullptr;
+      }
+      if ($d == r'getId()Ljava/lang/String;') {
+        final $r = _$impls[$p]!.getId();
+        return ($r as jni$_.JObject?)
+                ?.as(const jni$_.JObjectType())
+                .reference
+                .toPointer() ??
+            jni$_.nullptr;
+      }
+      if ($d ==
+          r'getType()Lcom/daylightcomputer/coreplugin/entity/thing/ThingTypes;') {
+        final $r = _$impls[$p]!.getType();
+        return ($r as jni$_.JObject?)
+                ?.as(const jni$_.JObjectType())
+                .reference
+                .toPointer() ??
+            jni$_.nullptr;
+      }
+      if ($d == r'isDeleted()Z') {
+        final $r = _$impls[$p]!.isDeleted();
+        return jni$_.JBoolean($r).reference.toPointer();
+      }
+      if ($d == r'getLastModifiedAtTimestamp()Ljava/lang/String;') {
+        final $r = _$impls[$p]!.getLastModifiedAtTimestamp();
+        return ($r as jni$_.JObject?)
+                ?.as(const jni$_.JObjectType())
+                .reference
+                .toPointer() ??
+            jni$_.nullptr;
+      }
+      if ($d == r'validateRequiredProperties()V') {
+        _$impls[$p]!.validateRequiredProperties();
+        return jni$_.nullptr;
+      }
+    } catch (e) {
+      return jni$_.ProtectedJniExtensions.newDartException(e);
+    }
+    return jni$_.nullptr;
+  }
+
+  static void implementIn(
+    jni$_.JImplementer implementer,
+    $INode $impl,
+  ) {
+    late final jni$_.RawReceivePort $p;
+    $p = jni$_.RawReceivePort(($m) {
+      if ($m == null) {
+        _$impls.remove($p.sendPort.nativePort);
+        $p.close();
+        return;
+      }
+      final $i = jni$_.MethodInvocation.fromMessage($m);
+      final $r = _$invokeMethod($p.sendPort.nativePort, $i);
+      jni$_.ProtectedJniExtensions.returnResult($i.result, $r);
+    });
+    implementer.add(
+      r'com.daylightcomputer.coreplugin.entity.thing.INode',
+      $p,
+      _$invokePointer,
+      [
+        if ($impl.validateRequiredProperties$async)
+          r'validateRequiredProperties()V',
+      ],
+    );
+    final $a = $p.sendPort.nativePort;
+    _$impls[$a] = $impl;
+  }
+
+  factory INode.implement(
+    $INode $impl,
+  ) {
+    final $i = jni$_.JImplementer();
+    implementIn($i, $impl);
+    return INode.fromReference(
+      $i.implementReference(),
+    );
+  }
+}
+
+abstract base mixin class $INode {
+  factory $INode({
+    required jni$_.JString Function() getTitle,
+    required jni$_.JString Function() getId,
+    required ThingTypes Function() getType,
+    required bool Function() isDeleted,
+    required jni$_.JString Function() getLastModifiedAtTimestamp,
+    required void Function() validateRequiredProperties,
+    bool validateRequiredProperties$async,
+  }) = _$INode;
+
+  jni$_.JString getTitle();
+  jni$_.JString getId();
+  ThingTypes getType();
+  bool isDeleted();
+  jni$_.JString getLastModifiedAtTimestamp();
+  void validateRequiredProperties();
+  bool get validateRequiredProperties$async => false;
+}
+
+final class _$INode with $INode {
+  _$INode({
+    required jni$_.JString Function() getTitle,
+    required jni$_.JString Function() getId,
+    required ThingTypes Function() getType,
+    required bool Function() isDeleted,
+    required jni$_.JString Function() getLastModifiedAtTimestamp,
+    required void Function() validateRequiredProperties,
+    this.validateRequiredProperties$async = false,
+  })  : _getTitle = getTitle,
+        _getId = getId,
+        _getType = getType,
+        _isDeleted = isDeleted,
+        _getLastModifiedAtTimestamp = getLastModifiedAtTimestamp,
+        _validateRequiredProperties = validateRequiredProperties;
+
+  final jni$_.JString Function() _getTitle;
+  final jni$_.JString Function() _getId;
+  final ThingTypes Function() _getType;
+  final bool Function() _isDeleted;
+  final jni$_.JString Function() _getLastModifiedAtTimestamp;
+  final void Function() _validateRequiredProperties;
+  final bool validateRequiredProperties$async;
+
+  jni$_.JString getTitle() {
+    return _getTitle();
+  }
+
+  jni$_.JString getId() {
+    return _getId();
+  }
+
+  ThingTypes getType() {
+    return _getType();
+  }
+
+  bool isDeleted() {
+    return _isDeleted();
+  }
+
+  jni$_.JString getLastModifiedAtTimestamp() {
+    return _getLastModifiedAtTimestamp();
+  }
+
+  void validateRequiredProperties() {
+    return _validateRequiredProperties();
+  }
+}
+
+final class $INode$NullableType extends jni$_.JObjType<INode?> {
+  @jni$_.internal
+  const $INode$NullableType();
+
+  @jni$_.internal
+  @core$_.override
+  String get signature =>
+      r'Lcom/daylightcomputer/coreplugin/entity/thing/INode;';
+
+  @jni$_.internal
+  @core$_.override
+  INode? fromReference(jni$_.JReference reference) => reference.isNull
+      ? null
+      : INode.fromReference(
+          reference,
+        );
+  @jni$_.internal
+  @core$_.override
+  jni$_.JObjType get superType => const jni$_.JObjectNullableType();
+
+  @jni$_.internal
+  @core$_.override
+  jni$_.JObjType<INode?> get nullableType => this;
+
+  @jni$_.internal
+  @core$_.override
+  final superCount = 1;
+
+  @core$_.override
+  int get hashCode => ($INode$NullableType).hashCode;
+
+  @core$_.override
+  bool operator ==(Object other) {
+    return other.runtimeType == ($INode$NullableType) &&
+        other is $INode$NullableType;
+  }
+}
+
+final class $INode$Type extends jni$_.JObjType<INode> {
+  @jni$_.internal
+  const $INode$Type();
+
+  @jni$_.internal
+  @core$_.override
+  String get signature =>
+      r'Lcom/daylightcomputer/coreplugin/entity/thing/INode;';
+
+  @jni$_.internal
+  @core$_.override
+  INode fromReference(jni$_.JReference reference) => INode.fromReference(
+        reference,
+      );
+  @jni$_.internal
+  @core$_.override
+  jni$_.JObjType get superType => const jni$_.JObjectNullableType();
+
+  @jni$_.internal
+  @core$_.override
+  jni$_.JObjType<INode?> get nullableType => const $INode$NullableType();
+
+  @jni$_.internal
+  @core$_.override
+  final superCount = 1;
+
+  @core$_.override
+  int get hashCode => ($INode$Type).hashCode;
+
+  @core$_.override
+  bool operator ==(Object other) {
+    return other.runtimeType == ($INode$Type) && other is $INode$Type;
+  }
+}
+
+/// from: `com.daylightcomputer.coreplugin.entity.thing.IThing`
+class IThing extends jni$_.JObject {
+  @jni$_.internal
+  @core$_.override
+  final jni$_.JObjType<IThing> $type;
+
+  @jni$_.internal
+  IThing.fromReference(
+    jni$_.JReference reference,
+  )   : $type = type,
+        super.fromReference(reference);
+
+  static final _class = jni$_.JClass.forName(
+      r'com/daylightcomputer/coreplugin/entity/thing/IThing');
+
+  /// The type which includes information such as the signature of this class.
+  static const nullableType = $IThing$NullableType();
+  static const type = $IThing$Type();
+  static final _id_getId = _class.instanceMethodId(
+    r'getId',
+    r'()Ljava/lang/String;',
+  );
+
+  static final _getId = jni$_.ProtectedJniExtensions.lookup<
+          jni$_.NativeFunction<
+              jni$_.JniResult Function(
+                jni$_.Pointer<jni$_.Void>,
+                jni$_.JMethodIDPtr,
+              )>>('globalEnv_CallObjectMethod')
+      .asFunction<
+          jni$_.JniResult Function(
+            jni$_.Pointer<jni$_.Void>,
+            jni$_.JMethodIDPtr,
+          )>();
+
+  /// from: `public abstract java.lang.String getId()`
+  /// The returned object must be released after use, by calling the [release] method.
+  jni$_.JString getId() {
+    return _getId(reference.pointer, _id_getId as jni$_.JMethodIDPtr)
+        .object<jni$_.JString>(const jni$_.JStringType());
+  }
+
+  static final _id_getType = _class.instanceMethodId(
+    r'getType',
+    r'()Lcom/daylightcomputer/coreplugin/entity/thing/ThingTypes;',
+  );
+
+  static final _getType = jni$_.ProtectedJniExtensions.lookup<
+          jni$_.NativeFunction<
+              jni$_.JniResult Function(
+                jni$_.Pointer<jni$_.Void>,
+                jni$_.JMethodIDPtr,
+              )>>('globalEnv_CallObjectMethod')
+      .asFunction<
+          jni$_.JniResult Function(
+            jni$_.Pointer<jni$_.Void>,
+            jni$_.JMethodIDPtr,
+          )>();
+
+  /// from: `public abstract com.daylightcomputer.coreplugin.entity.thing.ThingTypes getType()`
+  /// The returned object must be released after use, by calling the [release] method.
+  ThingTypes getType() {
+    return _getType(reference.pointer, _id_getType as jni$_.JMethodIDPtr)
+        .object<ThingTypes>(const $ThingTypes$Type());
+  }
+
+  static final _id_isDeleted = _class.instanceMethodId(
+    r'isDeleted',
+    r'()Z',
+  );
+
+  static final _isDeleted = jni$_.ProtectedJniExtensions.lookup<
+          jni$_.NativeFunction<
+              jni$_.JniResult Function(
+                jni$_.Pointer<jni$_.Void>,
+                jni$_.JMethodIDPtr,
+              )>>('globalEnv_CallBooleanMethod')
+      .asFunction<
+          jni$_.JniResult Function(
+            jni$_.Pointer<jni$_.Void>,
+            jni$_.JMethodIDPtr,
+          )>();
+
+  /// from: `public abstract boolean isDeleted()`
+  bool isDeleted() {
+    return _isDeleted(reference.pointer, _id_isDeleted as jni$_.JMethodIDPtr)
+        .boolean;
+  }
+
+  static final _id_getLastModifiedAtTimestamp = _class.instanceMethodId(
+    r'getLastModifiedAtTimestamp',
+    r'()Ljava/lang/String;',
+  );
+
+  static final _getLastModifiedAtTimestamp =
+      jni$_.ProtectedJniExtensions.lookup<
+              jni$_.NativeFunction<
+                  jni$_.JniResult Function(
+                    jni$_.Pointer<jni$_.Void>,
+                    jni$_.JMethodIDPtr,
+                  )>>('globalEnv_CallObjectMethod')
+          .asFunction<
+              jni$_.JniResult Function(
+                jni$_.Pointer<jni$_.Void>,
+                jni$_.JMethodIDPtr,
+              )>();
+
+  /// from: `public abstract java.lang.String getLastModifiedAtTimestamp()`
+  /// The returned object must be released after use, by calling the [release] method.
+  jni$_.JString getLastModifiedAtTimestamp() {
+    return _getLastModifiedAtTimestamp(reference.pointer,
+            _id_getLastModifiedAtTimestamp as jni$_.JMethodIDPtr)
+        .object<jni$_.JString>(const jni$_.JStringType());
+  }
+
+  static final _id_validateRequiredProperties = _class.instanceMethodId(
+    r'validateRequiredProperties',
+    r'()V',
+  );
+
+  static final _validateRequiredProperties =
+      jni$_.ProtectedJniExtensions.lookup<
+              jni$_.NativeFunction<
+                  jni$_.JThrowablePtr Function(
+                    jni$_.Pointer<jni$_.Void>,
+                    jni$_.JMethodIDPtr,
+                  )>>('globalEnv_CallVoidMethod')
+          .asFunction<
+              jni$_.JThrowablePtr Function(
+                jni$_.Pointer<jni$_.Void>,
+                jni$_.JMethodIDPtr,
+              )>();
+
+  /// from: `public abstract void validateRequiredProperties()`
+  void validateRequiredProperties() {
+    _validateRequiredProperties(reference.pointer,
+            _id_validateRequiredProperties as jni$_.JMethodIDPtr)
+        .check();
+  }
+
+  /// Maps a specific port to the implemented interface.
+  static final core$_.Map<int, $IThing> _$impls = {};
+  static jni$_.JObjectPtr _$invoke(
+    int port,
+    jni$_.JObjectPtr descriptor,
+    jni$_.JObjectPtr args,
+  ) {
+    return _$invokeMethod(
+      port,
+      jni$_.MethodInvocation.fromAddresses(
+        0,
+        descriptor.address,
+        args.address,
+      ),
+    );
+  }
+
+  static final jni$_.Pointer<
+          jni$_.NativeFunction<
+              jni$_.JObjectPtr Function(
+                  jni$_.Int64, jni$_.JObjectPtr, jni$_.JObjectPtr)>>
+      _$invokePointer = jni$_.Pointer.fromFunction(_$invoke);
+
+  static jni$_.Pointer<jni$_.Void> _$invokeMethod(
+    int $p,
+    jni$_.MethodInvocation $i,
+  ) {
+    try {
+      final $d = $i.methodDescriptor.toDartString(releaseOriginal: true);
+      final $a = $i.args;
+      if ($d == r'getId()Ljava/lang/String;') {
+        final $r = _$impls[$p]!.getId();
+        return ($r as jni$_.JObject?)
+                ?.as(const jni$_.JObjectType())
+                .reference
+                .toPointer() ??
+            jni$_.nullptr;
+      }
+      if ($d ==
+          r'getType()Lcom/daylightcomputer/coreplugin/entity/thing/ThingTypes;') {
+        final $r = _$impls[$p]!.getType();
+        return ($r as jni$_.JObject?)
+                ?.as(const jni$_.JObjectType())
+                .reference
+                .toPointer() ??
+            jni$_.nullptr;
+      }
+      if ($d == r'isDeleted()Z') {
+        final $r = _$impls[$p]!.isDeleted();
+        return jni$_.JBoolean($r).reference.toPointer();
+      }
+      if ($d == r'getLastModifiedAtTimestamp()Ljava/lang/String;') {
+        final $r = _$impls[$p]!.getLastModifiedAtTimestamp();
+        return ($r as jni$_.JObject?)
+                ?.as(const jni$_.JObjectType())
+                .reference
+                .toPointer() ??
+            jni$_.nullptr;
+      }
+      if ($d == r'validateRequiredProperties()V') {
+        _$impls[$p]!.validateRequiredProperties();
+        return jni$_.nullptr;
+      }
+    } catch (e) {
+      return jni$_.ProtectedJniExtensions.newDartException(e);
+    }
+    return jni$_.nullptr;
+  }
+
+  static void implementIn(
+    jni$_.JImplementer implementer,
+    $IThing $impl,
+  ) {
+    late final jni$_.RawReceivePort $p;
+    $p = jni$_.RawReceivePort(($m) {
+      if ($m == null) {
+        _$impls.remove($p.sendPort.nativePort);
+        $p.close();
+        return;
+      }
+      final $i = jni$_.MethodInvocation.fromMessage($m);
+      final $r = _$invokeMethod($p.sendPort.nativePort, $i);
+      jni$_.ProtectedJniExtensions.returnResult($i.result, $r);
+    });
+    implementer.add(
+      r'com.daylightcomputer.coreplugin.entity.thing.IThing',
+      $p,
+      _$invokePointer,
+      [
+        if ($impl.validateRequiredProperties$async)
+          r'validateRequiredProperties()V',
+      ],
+    );
+    final $a = $p.sendPort.nativePort;
+    _$impls[$a] = $impl;
+  }
+
+  factory IThing.implement(
+    $IThing $impl,
+  ) {
+    final $i = jni$_.JImplementer();
+    implementIn($i, $impl);
+    return IThing.fromReference(
+      $i.implementReference(),
+    );
+  }
+}
+
+abstract base mixin class $IThing {
+  factory $IThing({
+    required jni$_.JString Function() getId,
+    required ThingTypes Function() getType,
+    required bool Function() isDeleted,
+    required jni$_.JString Function() getLastModifiedAtTimestamp,
+    required void Function() validateRequiredProperties,
+    bool validateRequiredProperties$async,
+  }) = _$IThing;
+
+  jni$_.JString getId();
+  ThingTypes getType();
+  bool isDeleted();
+  jni$_.JString getLastModifiedAtTimestamp();
+  void validateRequiredProperties();
+  bool get validateRequiredProperties$async => false;
+}
+
+final class _$IThing with $IThing {
+  _$IThing({
+    required jni$_.JString Function() getId,
+    required ThingTypes Function() getType,
+    required bool Function() isDeleted,
+    required jni$_.JString Function() getLastModifiedAtTimestamp,
+    required void Function() validateRequiredProperties,
+    this.validateRequiredProperties$async = false,
+  })  : _getId = getId,
+        _getType = getType,
+        _isDeleted = isDeleted,
+        _getLastModifiedAtTimestamp = getLastModifiedAtTimestamp,
+        _validateRequiredProperties = validateRequiredProperties;
+
+  final jni$_.JString Function() _getId;
+  final ThingTypes Function() _getType;
+  final bool Function() _isDeleted;
+  final jni$_.JString Function() _getLastModifiedAtTimestamp;
+  final void Function() _validateRequiredProperties;
+  final bool validateRequiredProperties$async;
+
+  jni$_.JString getId() {
+    return _getId();
+  }
+
+  ThingTypes getType() {
+    return _getType();
+  }
+
+  bool isDeleted() {
+    return _isDeleted();
+  }
+
+  jni$_.JString getLastModifiedAtTimestamp() {
+    return _getLastModifiedAtTimestamp();
+  }
+
+  void validateRequiredProperties() {
+    return _validateRequiredProperties();
+  }
+}
+
+final class $IThing$NullableType extends jni$_.JObjType<IThing?> {
+  @jni$_.internal
+  const $IThing$NullableType();
+
+  @jni$_.internal
+  @core$_.override
+  String get signature =>
+      r'Lcom/daylightcomputer/coreplugin/entity/thing/IThing;';
+
+  @jni$_.internal
+  @core$_.override
+  IThing? fromReference(jni$_.JReference reference) => reference.isNull
+      ? null
+      : IThing.fromReference(
+          reference,
+        );
+  @jni$_.internal
+  @core$_.override
+  jni$_.JObjType get superType => const jni$_.JObjectType();
+
+  @jni$_.internal
+  @core$_.override
+  jni$_.JObjType<IThing?> get nullableType => this;
+
+  @jni$_.internal
+  @core$_.override
+  final superCount = 1;
+
+  @core$_.override
+  int get hashCode => ($IThing$NullableType).hashCode;
+
+  @core$_.override
+  bool operator ==(Object other) {
+    return other.runtimeType == ($IThing$NullableType) &&
+        other is $IThing$NullableType;
+  }
+}
+
+final class $IThing$Type extends jni$_.JObjType<IThing> {
+  @jni$_.internal
+  const $IThing$Type();
+
+  @jni$_.internal
+  @core$_.override
+  String get signature =>
+      r'Lcom/daylightcomputer/coreplugin/entity/thing/IThing;';
+
+  @jni$_.internal
+  @core$_.override
+  IThing fromReference(jni$_.JReference reference) => IThing.fromReference(
+        reference,
+      );
+  @jni$_.internal
+  @core$_.override
+  jni$_.JObjType get superType => const jni$_.JObjectType();
+
+  @jni$_.internal
+  @core$_.override
+  jni$_.JObjType<IThing?> get nullableType => const $IThing$NullableType();
+
+  @jni$_.internal
+  @core$_.override
+  final superCount = 1;
+
+  @core$_.override
+  int get hashCode => ($IThing$Type).hashCode;
+
+  @core$_.override
+  bool operator ==(Object other) {
+    return other.runtimeType == ($IThing$Type) && other is $IThing$Type;
+  }
+}
+
+/// from: `com.daylightcomputer.coreplugin.entity.thing.Node`
 class Node extends jni$_.JObject {
   @jni$_.internal
   @core$_.override
@@ -1083,8 +2304,8 @@ class Node extends jni$_.JObject {
   )   : $type = type,
         super.fromReference(reference);
 
-  static final _class =
-      jni$_.JClass.forName(r'com/daylightcomputer/coreplugin/entity/node/Node');
+  static final _class = jni$_.JClass.forName(
+      r'com/daylightcomputer/coreplugin/entity/thing/Node');
 
   /// The type which includes information such as the signature of this class.
   static const nullableType = $Node$NullableType();
@@ -1132,60 +2353,10 @@ class Node extends jni$_.JObject {
             jni$_.JMethodIDPtr,
           )>();
 
-  /// from: `public final java.lang.String getId()`
+  /// from: `public java.lang.String getId()`
   /// The returned object must be released after use, by calling the [release] method.
   jni$_.JString getId() {
     return _getId(reference.pointer, _id_getId as jni$_.JMethodIDPtr)
-        .object<jni$_.JString>(const jni$_.JStringType());
-  }
-
-  static final _id_getType = _class.instanceMethodId(
-    r'getType',
-    r'()Lcom/daylightcomputer/coreplugin/entity/node/NodeTypes;',
-  );
-
-  static final _getType = jni$_.ProtectedJniExtensions.lookup<
-          jni$_.NativeFunction<
-              jni$_.JniResult Function(
-                jni$_.Pointer<jni$_.Void>,
-                jni$_.JMethodIDPtr,
-              )>>('globalEnv_CallObjectMethod')
-      .asFunction<
-          jni$_.JniResult Function(
-            jni$_.Pointer<jni$_.Void>,
-            jni$_.JMethodIDPtr,
-          )>();
-
-  /// from: `public final com.daylightcomputer.coreplugin.entity.node.NodeTypes getType()`
-  /// The returned object must be released after use, by calling the [release] method.
-  NodeTypes getType() {
-    return _getType(reference.pointer, _id_getType as jni$_.JMethodIDPtr)
-        .object<NodeTypes>(const $NodeTypes$Type());
-  }
-
-  static final _id_getLastModifiedAtTimestamp = _class.instanceMethodId(
-    r'getLastModifiedAtTimestamp',
-    r'()Ljava/lang/String;',
-  );
-
-  static final _getLastModifiedAtTimestamp =
-      jni$_.ProtectedJniExtensions.lookup<
-              jni$_.NativeFunction<
-                  jni$_.JniResult Function(
-                    jni$_.Pointer<jni$_.Void>,
-                    jni$_.JMethodIDPtr,
-                  )>>('globalEnv_CallObjectMethod')
-          .asFunction<
-              jni$_.JniResult Function(
-                jni$_.Pointer<jni$_.Void>,
-                jni$_.JMethodIDPtr,
-              )>();
-
-  /// from: `public final java.lang.String getLastModifiedAtTimestamp()`
-  /// The returned object must be released after use, by calling the [release] method.
-  jni$_.JString getLastModifiedAtTimestamp() {
-    return _getLastModifiedAtTimestamp(reference.pointer,
-            _id_getLastModifiedAtTimestamp as jni$_.JMethodIDPtr)
         .object<jni$_.JString>(const jni$_.JStringType());
   }
 
@@ -1206,10 +2377,109 @@ class Node extends jni$_.JObject {
             jni$_.JMethodIDPtr,
           )>();
 
-  /// from: `public final boolean isDeleted()`
+  /// from: `public boolean isDeleted()`
   bool isDeleted() {
     return _isDeleted(reference.pointer, _id_isDeleted as jni$_.JMethodIDPtr)
         .boolean;
+  }
+
+  static final _id_getLastModifiedAtTimestamp = _class.instanceMethodId(
+    r'getLastModifiedAtTimestamp',
+    r'()Ljava/lang/String;',
+  );
+
+  static final _getLastModifiedAtTimestamp =
+      jni$_.ProtectedJniExtensions.lookup<
+              jni$_.NativeFunction<
+                  jni$_.JniResult Function(
+                    jni$_.Pointer<jni$_.Void>,
+                    jni$_.JMethodIDPtr,
+                  )>>('globalEnv_CallObjectMethod')
+          .asFunction<
+              jni$_.JniResult Function(
+                jni$_.Pointer<jni$_.Void>,
+                jni$_.JMethodIDPtr,
+              )>();
+
+  /// from: `public java.lang.String getLastModifiedAtTimestamp()`
+  /// The returned object must be released after use, by calling the [release] method.
+  jni$_.JString getLastModifiedAtTimestamp() {
+    return _getLastModifiedAtTimestamp(reference.pointer,
+            _id_getLastModifiedAtTimestamp as jni$_.JMethodIDPtr)
+        .object<jni$_.JString>(const jni$_.JStringType());
+  }
+
+  static final _id_getType = _class.instanceMethodId(
+    r'getType',
+    r'()Lcom/daylightcomputer/coreplugin/entity/thing/ThingTypes;',
+  );
+
+  static final _getType = jni$_.ProtectedJniExtensions.lookup<
+          jni$_.NativeFunction<
+              jni$_.JniResult Function(
+                jni$_.Pointer<jni$_.Void>,
+                jni$_.JMethodIDPtr,
+              )>>('globalEnv_CallObjectMethod')
+      .asFunction<
+          jni$_.JniResult Function(
+            jni$_.Pointer<jni$_.Void>,
+            jni$_.JMethodIDPtr,
+          )>();
+
+  /// from: `public com.daylightcomputer.coreplugin.entity.thing.ThingTypes getType()`
+  /// The returned object must be released after use, by calling the [release] method.
+  ThingTypes getType() {
+    return _getType(reference.pointer, _id_getType as jni$_.JMethodIDPtr)
+        .object<ThingTypes>(const $ThingTypes$Type());
+  }
+
+  static final _id_getTitle = _class.instanceMethodId(
+    r'getTitle',
+    r'()Ljava/lang/String;',
+  );
+
+  static final _getTitle = jni$_.ProtectedJniExtensions.lookup<
+          jni$_.NativeFunction<
+              jni$_.JniResult Function(
+                jni$_.Pointer<jni$_.Void>,
+                jni$_.JMethodIDPtr,
+              )>>('globalEnv_CallObjectMethod')
+      .asFunction<
+          jni$_.JniResult Function(
+            jni$_.Pointer<jni$_.Void>,
+            jni$_.JMethodIDPtr,
+          )>();
+
+  /// from: `public java.lang.String getTitle()`
+  /// The returned object must be released after use, by calling the [release] method.
+  jni$_.JString getTitle() {
+    return _getTitle(reference.pointer, _id_getTitle as jni$_.JMethodIDPtr)
+        .object<jni$_.JString>(const jni$_.JStringType());
+  }
+
+  static final _id_validateRequiredProperties = _class.instanceMethodId(
+    r'validateRequiredProperties',
+    r'()V',
+  );
+
+  static final _validateRequiredProperties =
+      jni$_.ProtectedJniExtensions.lookup<
+              jni$_.NativeFunction<
+                  jni$_.JThrowablePtr Function(
+                    jni$_.Pointer<jni$_.Void>,
+                    jni$_.JMethodIDPtr,
+                  )>>('globalEnv_CallVoidMethod')
+          .asFunction<
+              jni$_.JThrowablePtr Function(
+                jni$_.Pointer<jni$_.Void>,
+                jni$_.JMethodIDPtr,
+              )>();
+
+  /// from: `public void validateRequiredProperties()`
+  void validateRequiredProperties() {
+    _validateRequiredProperties(reference.pointer,
+            _id_validateRequiredProperties as jni$_.JMethodIDPtr)
+        .check();
   }
 }
 
@@ -1219,7 +2489,8 @@ final class $Node$NullableType extends jni$_.JObjType<Node?> {
 
   @jni$_.internal
   @core$_.override
-  String get signature => r'Lcom/daylightcomputer/coreplugin/entity/node/Node;';
+  String get signature =>
+      r'Lcom/daylightcomputer/coreplugin/entity/thing/Node;';
 
   @jni$_.internal
   @core$_.override
@@ -1230,7 +2501,7 @@ final class $Node$NullableType extends jni$_.JObjType<Node?> {
         );
   @jni$_.internal
   @core$_.override
-  jni$_.JObjType get superType => const jni$_.JObjectType();
+  jni$_.JObjType get superType => const jni$_.JObjectNullableType();
 
   @jni$_.internal
   @core$_.override
@@ -1256,7 +2527,8 @@ final class $Node$Type extends jni$_.JObjType<Node> {
 
   @jni$_.internal
   @core$_.override
-  String get signature => r'Lcom/daylightcomputer/coreplugin/entity/node/Node;';
+  String get signature =>
+      r'Lcom/daylightcomputer/coreplugin/entity/thing/Node;';
 
   @jni$_.internal
   @core$_.override
@@ -1265,7 +2537,7 @@ final class $Node$Type extends jni$_.JObjType<Node> {
       );
   @jni$_.internal
   @core$_.override
-  jni$_.JObjType get superType => const jni$_.JObjectType();
+  jni$_.JObjType get superType => const jni$_.JObjectNullableType();
 
   @jni$_.internal
   @core$_.override
@@ -1284,27 +2556,291 @@ final class $Node$Type extends jni$_.JObjType<Node> {
   }
 }
 
-/// from: `com.daylightcomputer.coreplugin.entity.node.NodeTypes$Companion`
-class NodeTypes$Companion extends jni$_.JObject {
+/// from: `com.daylightcomputer.coreplugin.entity.thing.Thing`
+class Thing extends jni$_.JObject {
   @jni$_.internal
   @core$_.override
-  final jni$_.JObjType<NodeTypes$Companion> $type;
+  final jni$_.JObjType<Thing> $type;
 
   @jni$_.internal
-  NodeTypes$Companion.fromReference(
+  Thing.fromReference(
     jni$_.JReference reference,
   )   : $type = type,
         super.fromReference(reference);
 
   static final _class = jni$_.JClass.forName(
-      r'com/daylightcomputer/coreplugin/entity/node/NodeTypes$Companion');
+      r'com/daylightcomputer/coreplugin/entity/thing/Thing');
 
   /// The type which includes information such as the signature of this class.
-  static const nullableType = $NodeTypes$Companion$NullableType();
-  static const type = $NodeTypes$Companion$Type();
+  static const nullableType = $Thing$NullableType();
+  static const type = $Thing$Type();
+  static final _id_new$ = _class.constructorId(
+    r'(Lcom/daylightcomputer/coreplugin/entity/Entity;)V',
+  );
+
+  static final _new$ = jni$_.ProtectedJniExtensions.lookup<
+              jni$_.NativeFunction<
+                  jni$_.JniResult Function(
+                      jni$_.Pointer<jni$_.Void>,
+                      jni$_.JMethodIDPtr,
+                      jni$_.VarArgs<(jni$_.Pointer<jni$_.Void>,)>)>>(
+          'globalEnv_NewObject')
+      .asFunction<
+          jni$_.JniResult Function(jni$_.Pointer<jni$_.Void>,
+              jni$_.JMethodIDPtr, jni$_.Pointer<jni$_.Void>)>();
+
+  /// from: `public void <init>(com.daylightcomputer.coreplugin.entity.Entity entity)`
+  /// The returned object must be released after use, by calling the [release] method.
+  factory Thing(
+    Entity entity,
+  ) {
+    final _$entity = entity.reference;
+    return Thing.fromReference(_new$(_class.reference.pointer,
+            _id_new$ as jni$_.JMethodIDPtr, _$entity.pointer)
+        .reference);
+  }
+
+  static final _id_getEntity = _class.instanceMethodId(
+    r'getEntity',
+    r'()Lcom/daylightcomputer/coreplugin/entity/Entity;',
+  );
+
+  static final _getEntity = jni$_.ProtectedJniExtensions.lookup<
+          jni$_.NativeFunction<
+              jni$_.JniResult Function(
+                jni$_.Pointer<jni$_.Void>,
+                jni$_.JMethodIDPtr,
+              )>>('globalEnv_CallObjectMethod')
+      .asFunction<
+          jni$_.JniResult Function(
+            jni$_.Pointer<jni$_.Void>,
+            jni$_.JMethodIDPtr,
+          )>();
+
+  /// from: `public final com.daylightcomputer.coreplugin.entity.Entity getEntity()`
+  /// The returned object must be released after use, by calling the [release] method.
+  Entity getEntity() {
+    return _getEntity(reference.pointer, _id_getEntity as jni$_.JMethodIDPtr)
+        .object<Entity>(const $Entity$Type());
+  }
+
+  static final _id_getId = _class.instanceMethodId(
+    r'getId',
+    r'()Ljava/lang/String;',
+  );
+
+  static final _getId = jni$_.ProtectedJniExtensions.lookup<
+          jni$_.NativeFunction<
+              jni$_.JniResult Function(
+                jni$_.Pointer<jni$_.Void>,
+                jni$_.JMethodIDPtr,
+              )>>('globalEnv_CallObjectMethod')
+      .asFunction<
+          jni$_.JniResult Function(
+            jni$_.Pointer<jni$_.Void>,
+            jni$_.JMethodIDPtr,
+          )>();
+
+  /// from: `public java.lang.String getId()`
+  /// The returned object must be released after use, by calling the [release] method.
+  jni$_.JString getId() {
+    return _getId(reference.pointer, _id_getId as jni$_.JMethodIDPtr)
+        .object<jni$_.JString>(const jni$_.JStringType());
+  }
+
+  static final _id_getType = _class.instanceMethodId(
+    r'getType',
+    r'()Lcom/daylightcomputer/coreplugin/entity/thing/ThingTypes;',
+  );
+
+  static final _getType = jni$_.ProtectedJniExtensions.lookup<
+          jni$_.NativeFunction<
+              jni$_.JniResult Function(
+                jni$_.Pointer<jni$_.Void>,
+                jni$_.JMethodIDPtr,
+              )>>('globalEnv_CallObjectMethod')
+      .asFunction<
+          jni$_.JniResult Function(
+            jni$_.Pointer<jni$_.Void>,
+            jni$_.JMethodIDPtr,
+          )>();
+
+  /// from: `public com.daylightcomputer.coreplugin.entity.thing.ThingTypes getType()`
+  /// The returned object must be released after use, by calling the [release] method.
+  ThingTypes getType() {
+    return _getType(reference.pointer, _id_getType as jni$_.JMethodIDPtr)
+        .object<ThingTypes>(const $ThingTypes$Type());
+  }
+
+  static final _id_getLastModifiedAtTimestamp = _class.instanceMethodId(
+    r'getLastModifiedAtTimestamp',
+    r'()Ljava/lang/String;',
+  );
+
+  static final _getLastModifiedAtTimestamp =
+      jni$_.ProtectedJniExtensions.lookup<
+              jni$_.NativeFunction<
+                  jni$_.JniResult Function(
+                    jni$_.Pointer<jni$_.Void>,
+                    jni$_.JMethodIDPtr,
+                  )>>('globalEnv_CallObjectMethod')
+          .asFunction<
+              jni$_.JniResult Function(
+                jni$_.Pointer<jni$_.Void>,
+                jni$_.JMethodIDPtr,
+              )>();
+
+  /// from: `public java.lang.String getLastModifiedAtTimestamp()`
+  /// The returned object must be released after use, by calling the [release] method.
+  jni$_.JString getLastModifiedAtTimestamp() {
+    return _getLastModifiedAtTimestamp(reference.pointer,
+            _id_getLastModifiedAtTimestamp as jni$_.JMethodIDPtr)
+        .object<jni$_.JString>(const jni$_.JStringType());
+  }
+
+  static final _id_validateRequiredProperties = _class.instanceMethodId(
+    r'validateRequiredProperties',
+    r'()V',
+  );
+
+  static final _validateRequiredProperties =
+      jni$_.ProtectedJniExtensions.lookup<
+              jni$_.NativeFunction<
+                  jni$_.JThrowablePtr Function(
+                    jni$_.Pointer<jni$_.Void>,
+                    jni$_.JMethodIDPtr,
+                  )>>('globalEnv_CallVoidMethod')
+          .asFunction<
+              jni$_.JThrowablePtr Function(
+                jni$_.Pointer<jni$_.Void>,
+                jni$_.JMethodIDPtr,
+              )>();
+
+  /// from: `public void validateRequiredProperties()`
+  void validateRequiredProperties() {
+    _validateRequiredProperties(reference.pointer,
+            _id_validateRequiredProperties as jni$_.JMethodIDPtr)
+        .check();
+  }
+
+  static final _id_isDeleted = _class.instanceMethodId(
+    r'isDeleted',
+    r'()Z',
+  );
+
+  static final _isDeleted = jni$_.ProtectedJniExtensions.lookup<
+          jni$_.NativeFunction<
+              jni$_.JniResult Function(
+                jni$_.Pointer<jni$_.Void>,
+                jni$_.JMethodIDPtr,
+              )>>('globalEnv_CallBooleanMethod')
+      .asFunction<
+          jni$_.JniResult Function(
+            jni$_.Pointer<jni$_.Void>,
+            jni$_.JMethodIDPtr,
+          )>();
+
+  /// from: `public boolean isDeleted()`
+  bool isDeleted() {
+    return _isDeleted(reference.pointer, _id_isDeleted as jni$_.JMethodIDPtr)
+        .boolean;
+  }
+}
+
+final class $Thing$NullableType extends jni$_.JObjType<Thing?> {
+  @jni$_.internal
+  const $Thing$NullableType();
+
+  @jni$_.internal
+  @core$_.override
+  String get signature =>
+      r'Lcom/daylightcomputer/coreplugin/entity/thing/Thing;';
+
+  @jni$_.internal
+  @core$_.override
+  Thing? fromReference(jni$_.JReference reference) => reference.isNull
+      ? null
+      : Thing.fromReference(
+          reference,
+        );
+  @jni$_.internal
+  @core$_.override
+  jni$_.JObjType get superType => const jni$_.JObjectNullableType();
+
+  @jni$_.internal
+  @core$_.override
+  jni$_.JObjType<Thing?> get nullableType => this;
+
+  @jni$_.internal
+  @core$_.override
+  final superCount = 1;
+
+  @core$_.override
+  int get hashCode => ($Thing$NullableType).hashCode;
+
+  @core$_.override
+  bool operator ==(Object other) {
+    return other.runtimeType == ($Thing$NullableType) &&
+        other is $Thing$NullableType;
+  }
+}
+
+final class $Thing$Type extends jni$_.JObjType<Thing> {
+  @jni$_.internal
+  const $Thing$Type();
+
+  @jni$_.internal
+  @core$_.override
+  String get signature =>
+      r'Lcom/daylightcomputer/coreplugin/entity/thing/Thing;';
+
+  @jni$_.internal
+  @core$_.override
+  Thing fromReference(jni$_.JReference reference) => Thing.fromReference(
+        reference,
+      );
+  @jni$_.internal
+  @core$_.override
+  jni$_.JObjType get superType => const jni$_.JObjectNullableType();
+
+  @jni$_.internal
+  @core$_.override
+  jni$_.JObjType<Thing?> get nullableType => const $Thing$NullableType();
+
+  @jni$_.internal
+  @core$_.override
+  final superCount = 1;
+
+  @core$_.override
+  int get hashCode => ($Thing$Type).hashCode;
+
+  @core$_.override
+  bool operator ==(Object other) {
+    return other.runtimeType == ($Thing$Type) && other is $Thing$Type;
+  }
+}
+
+/// from: `com.daylightcomputer.coreplugin.entity.thing.ThingTypes$Companion`
+class ThingTypes$Companion extends jni$_.JObject {
+  @jni$_.internal
+  @core$_.override
+  final jni$_.JObjType<ThingTypes$Companion> $type;
+
+  @jni$_.internal
+  ThingTypes$Companion.fromReference(
+    jni$_.JReference reference,
+  )   : $type = type,
+        super.fromReference(reference);
+
+  static final _class = jni$_.JClass.forName(
+      r'com/daylightcomputer/coreplugin/entity/thing/ThingTypes$Companion');
+
+  /// The type which includes information such as the signature of this class.
+  static const nullableType = $ThingTypes$Companion$NullableType();
+  static const type = $ThingTypes$Companion$Type();
   static final _id_fromString = _class.instanceMethodId(
     r'fromString',
-    r'(Ljava/lang/String;)Lcom/daylightcomputer/coreplugin/entity/node/NodeTypes;',
+    r'(Ljava/lang/String;)Lcom/daylightcomputer/coreplugin/entity/thing/ThingTypes;',
   );
 
   static final _fromString = jni$_.ProtectedJniExtensions.lookup<
@@ -1318,20 +2854,20 @@ class NodeTypes$Companion extends jni$_.JObject {
           jni$_.JniResult Function(jni$_.Pointer<jni$_.Void>,
               jni$_.JMethodIDPtr, jni$_.Pointer<jni$_.Void>)>();
 
-  /// from: `public final com.daylightcomputer.coreplugin.entity.node.NodeTypes fromString(java.lang.String string)`
+  /// from: `public final com.daylightcomputer.coreplugin.entity.thing.ThingTypes fromString(java.lang.String string)`
   /// The returned object must be released after use, by calling the [release] method.
-  NodeTypes fromString(
+  ThingTypes fromString(
     jni$_.JString string,
   ) {
     final _$string = string.reference;
     return _fromString(reference.pointer, _id_fromString as jni$_.JMethodIDPtr,
             _$string.pointer)
-        .object<NodeTypes>(const $NodeTypes$Type());
+        .object<ThingTypes>(const $ThingTypes$Type());
   }
 
   static final _id_createNodeFromEntity = _class.instanceMethodId(
     r'createNodeFromEntity',
-    r'(Lcom/daylightcomputer/coreplugin/entity/Entity;)Lcom/daylightcomputer/coreplugin/entity/node/Node;',
+    r'(Lcom/daylightcomputer/coreplugin/entity/Entity;)Lcom/daylightcomputer/coreplugin/entity/thing/Thing;',
   );
 
   static final _createNodeFromEntity = jni$_.ProtectedJniExtensions.lookup<
@@ -1345,15 +2881,16 @@ class NodeTypes$Companion extends jni$_.JObject {
           jni$_.JniResult Function(jni$_.Pointer<jni$_.Void>,
               jni$_.JMethodIDPtr, jni$_.Pointer<jni$_.Void>)>();
 
-  /// from: `public final com.daylightcomputer.coreplugin.entity.node.Node createNodeFromEntity(com.daylightcomputer.coreplugin.entity.Entity entity)`
+  /// from: `public final T createNodeFromEntity(com.daylightcomputer.coreplugin.entity.Entity entity)`
   /// The returned object must be released after use, by calling the [release] method.
-  Node? createNodeFromEntity(
-    Entity entity,
-  ) {
+  $T? createNodeFromEntity<$T extends jni$_.JObject>(
+    Entity entity, {
+    required jni$_.JObjType<$T> T,
+  }) {
     final _$entity = entity.reference;
     return _createNodeFromEntity(reference.pointer,
             _id_createNodeFromEntity as jni$_.JMethodIDPtr, _$entity.pointer)
-        .object<Node?>(const $Node$NullableType());
+        .object<$T?>(T.nullableType);
   }
 
   static final _id_new$ = _class.constructorId(
@@ -1373,33 +2910,33 @@ class NodeTypes$Companion extends jni$_.JObject {
 
   /// from: `synthetic public void <init>(kotlin.jvm.internal.DefaultConstructorMarker defaultConstructorMarker)`
   /// The returned object must be released after use, by calling the [release] method.
-  factory NodeTypes$Companion(
+  factory ThingTypes$Companion(
     jni$_.JObject? defaultConstructorMarker,
   ) {
     final _$defaultConstructorMarker =
         defaultConstructorMarker?.reference ?? jni$_.jNullReference;
-    return NodeTypes$Companion.fromReference(_new$(_class.reference.pointer,
+    return ThingTypes$Companion.fromReference(_new$(_class.reference.pointer,
             _id_new$ as jni$_.JMethodIDPtr, _$defaultConstructorMarker.pointer)
         .reference);
   }
 }
 
-final class $NodeTypes$Companion$NullableType
-    extends jni$_.JObjType<NodeTypes$Companion?> {
+final class $ThingTypes$Companion$NullableType
+    extends jni$_.JObjType<ThingTypes$Companion?> {
   @jni$_.internal
-  const $NodeTypes$Companion$NullableType();
+  const $ThingTypes$Companion$NullableType();
 
   @jni$_.internal
   @core$_.override
   String get signature =>
-      r'Lcom/daylightcomputer/coreplugin/entity/node/NodeTypes$Companion;';
+      r'Lcom/daylightcomputer/coreplugin/entity/thing/ThingTypes$Companion;';
 
   @jni$_.internal
   @core$_.override
-  NodeTypes$Companion? fromReference(jni$_.JReference reference) =>
+  ThingTypes$Companion? fromReference(jni$_.JReference reference) =>
       reference.isNull
           ? null
-          : NodeTypes$Companion.fromReference(
+          : ThingTypes$Companion.fromReference(
               reference,
             );
   @jni$_.internal
@@ -1408,36 +2945,36 @@ final class $NodeTypes$Companion$NullableType
 
   @jni$_.internal
   @core$_.override
-  jni$_.JObjType<NodeTypes$Companion?> get nullableType => this;
+  jni$_.JObjType<ThingTypes$Companion?> get nullableType => this;
 
   @jni$_.internal
   @core$_.override
   final superCount = 1;
 
   @core$_.override
-  int get hashCode => ($NodeTypes$Companion$NullableType).hashCode;
+  int get hashCode => ($ThingTypes$Companion$NullableType).hashCode;
 
   @core$_.override
   bool operator ==(Object other) {
-    return other.runtimeType == ($NodeTypes$Companion$NullableType) &&
-        other is $NodeTypes$Companion$NullableType;
+    return other.runtimeType == ($ThingTypes$Companion$NullableType) &&
+        other is $ThingTypes$Companion$NullableType;
   }
 }
 
-final class $NodeTypes$Companion$Type
-    extends jni$_.JObjType<NodeTypes$Companion> {
+final class $ThingTypes$Companion$Type
+    extends jni$_.JObjType<ThingTypes$Companion> {
   @jni$_.internal
-  const $NodeTypes$Companion$Type();
+  const $ThingTypes$Companion$Type();
 
   @jni$_.internal
   @core$_.override
   String get signature =>
-      r'Lcom/daylightcomputer/coreplugin/entity/node/NodeTypes$Companion;';
+      r'Lcom/daylightcomputer/coreplugin/entity/thing/ThingTypes$Companion;';
 
   @jni$_.internal
   @core$_.override
-  NodeTypes$Companion fromReference(jni$_.JReference reference) =>
-      NodeTypes$Companion.fromReference(
+  ThingTypes$Companion fromReference(jni$_.JReference reference) =>
+      ThingTypes$Companion.fromReference(
         reference,
       );
   @jni$_.internal
@@ -1446,70 +2983,70 @@ final class $NodeTypes$Companion$Type
 
   @jni$_.internal
   @core$_.override
-  jni$_.JObjType<NodeTypes$Companion?> get nullableType =>
-      const $NodeTypes$Companion$NullableType();
+  jni$_.JObjType<ThingTypes$Companion?> get nullableType =>
+      const $ThingTypes$Companion$NullableType();
 
   @jni$_.internal
   @core$_.override
   final superCount = 1;
 
   @core$_.override
-  int get hashCode => ($NodeTypes$Companion$Type).hashCode;
+  int get hashCode => ($ThingTypes$Companion$Type).hashCode;
 
   @core$_.override
   bool operator ==(Object other) {
-    return other.runtimeType == ($NodeTypes$Companion$Type) &&
-        other is $NodeTypes$Companion$Type;
+    return other.runtimeType == ($ThingTypes$Companion$Type) &&
+        other is $ThingTypes$Companion$Type;
   }
 }
 
-/// from: `com.daylightcomputer.coreplugin.entity.node.NodeTypes`
-class NodeTypes extends jni$_.JObject {
+/// from: `com.daylightcomputer.coreplugin.entity.thing.ThingTypes`
+class ThingTypes extends jni$_.JObject {
   @jni$_.internal
   @core$_.override
-  final jni$_.JObjType<NodeTypes> $type;
+  final jni$_.JObjType<ThingTypes> $type;
 
   @jni$_.internal
-  NodeTypes.fromReference(
+  ThingTypes.fromReference(
     jni$_.JReference reference,
   )   : $type = type,
         super.fromReference(reference);
 
   static final _class = jni$_.JClass.forName(
-      r'com/daylightcomputer/coreplugin/entity/node/NodeTypes');
+      r'com/daylightcomputer/coreplugin/entity/thing/ThingTypes');
 
   /// The type which includes information such as the signature of this class.
-  static const nullableType = $NodeTypes$NullableType();
-  static const type = $NodeTypes$Type();
+  static const nullableType = $ThingTypes$NullableType();
+  static const type = $ThingTypes$Type();
   static final _id_Companion = _class.staticFieldId(
     r'Companion',
-    r'Lcom/daylightcomputer/coreplugin/entity/node/NodeTypes$Companion;',
+    r'Lcom/daylightcomputer/coreplugin/entity/thing/ThingTypes$Companion;',
   );
 
-  /// from: `static public final com.daylightcomputer.coreplugin.entity.node.NodeTypes$Companion Companion`
+  /// from: `static public final com.daylightcomputer.coreplugin.entity.thing.ThingTypes$Companion Companion`
   /// The returned object must be released after use, by calling the [release] method.
-  static NodeTypes$Companion get Companion =>
-      _id_Companion.get(_class, const $NodeTypes$Companion$Type());
+  static ThingTypes$Companion get Companion =>
+      _id_Companion.get(_class, const $ThingTypes$Companion$Type());
 
   static final _id_DOCUMENT = _class.staticFieldId(
     r'DOCUMENT',
-    r'Lcom/daylightcomputer/coreplugin/entity/node/NodeTypes;',
+    r'Lcom/daylightcomputer/coreplugin/entity/thing/ThingTypes;',
   );
 
-  /// from: `static public final com.daylightcomputer.coreplugin.entity.node.NodeTypes DOCUMENT`
+  /// from: `static public final com.daylightcomputer.coreplugin.entity.thing.ThingTypes DOCUMENT`
   /// The returned object must be released after use, by calling the [release] method.
-  static NodeTypes get DOCUMENT =>
-      _id_DOCUMENT.get(_class, const $NodeTypes$Type());
+  static ThingTypes get DOCUMENT =>
+      _id_DOCUMENT.get(_class, const $ThingTypes$Type());
 
   static final _id_FOUNDATION = _class.staticFieldId(
     r'FOUNDATION',
-    r'Lcom/daylightcomputer/coreplugin/entity/node/NodeTypes;',
+    r'Lcom/daylightcomputer/coreplugin/entity/thing/ThingTypes;',
   );
 
-  /// from: `static public final com.daylightcomputer.coreplugin.entity.node.NodeTypes FOUNDATION`
+  /// from: `static public final com.daylightcomputer.coreplugin.entity.thing.ThingTypes FOUNDATION`
   /// The returned object must be released after use, by calling the [release] method.
-  static NodeTypes get FOUNDATION =>
-      _id_FOUNDATION.get(_class, const $NodeTypes$Type());
+  static ThingTypes get FOUNDATION =>
+      _id_FOUNDATION.get(_class, const $ThingTypes$Type());
 
   static final _id_getStringValue = _class.instanceMethodId(
     r'getStringValue',
@@ -1562,7 +3099,7 @@ class NodeTypes extends jni$_.JObject {
 
   static final _id_values = _class.staticMethodId(
     r'values',
-    r'()[Lcom/daylightcomputer/coreplugin/entity/node/NodeTypes;',
+    r'()[Lcom/daylightcomputer/coreplugin/entity/thing/ThingTypes;',
   );
 
   static final _values = jni$_.ProtectedJniExtensions.lookup<
@@ -1577,18 +3114,18 @@ class NodeTypes extends jni$_.JObject {
             jni$_.JMethodIDPtr,
           )>();
 
-  /// from: `static public com.daylightcomputer.coreplugin.entity.node.NodeTypes[] values()`
+  /// from: `static public com.daylightcomputer.coreplugin.entity.thing.ThingTypes[] values()`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni$_.JArray<NodeTypes?>? values() {
+  static jni$_.JArray<ThingTypes?>? values() {
     return _values(_class.reference.pointer, _id_values as jni$_.JMethodIDPtr)
-        .object<jni$_.JArray<NodeTypes?>?>(
-            const jni$_.JArrayNullableType<NodeTypes?>(
-                $NodeTypes$NullableType()));
+        .object<jni$_.JArray<ThingTypes?>?>(
+            const jni$_.JArrayNullableType<ThingTypes?>(
+                $ThingTypes$NullableType()));
   }
 
   static final _id_valueOf = _class.staticMethodId(
     r'valueOf',
-    r'(Ljava/lang/String;)Lcom/daylightcomputer/coreplugin/entity/node/NodeTypes;',
+    r'(Ljava/lang/String;)Lcom/daylightcomputer/coreplugin/entity/thing/ThingTypes;',
   );
 
   static final _valueOf = jni$_.ProtectedJniExtensions.lookup<
@@ -1602,15 +3139,15 @@ class NodeTypes extends jni$_.JObject {
           jni$_.JniResult Function(jni$_.Pointer<jni$_.Void>,
               jni$_.JMethodIDPtr, jni$_.Pointer<jni$_.Void>)>();
 
-  /// from: `static public com.daylightcomputer.coreplugin.entity.node.NodeTypes valueOf(java.lang.String string)`
+  /// from: `static public com.daylightcomputer.coreplugin.entity.thing.ThingTypes valueOf(java.lang.String string)`
   /// The returned object must be released after use, by calling the [release] method.
-  static NodeTypes? valueOf(
+  static ThingTypes? valueOf(
     jni$_.JString? string,
   ) {
     final _$string = string?.reference ?? jni$_.jNullReference;
     return _valueOf(_class.reference.pointer, _id_valueOf as jni$_.JMethodIDPtr,
             _$string.pointer)
-        .object<NodeTypes?>(const $NodeTypes$NullableType());
+        .object<ThingTypes?>(const $ThingTypes$NullableType());
   }
 
   static final _id_getEntries = _class.staticMethodId(
@@ -1639,20 +3176,20 @@ class NodeTypes extends jni$_.JObject {
   }
 }
 
-final class $NodeTypes$NullableType extends jni$_.JObjType<NodeTypes?> {
+final class $ThingTypes$NullableType extends jni$_.JObjType<ThingTypes?> {
   @jni$_.internal
-  const $NodeTypes$NullableType();
+  const $ThingTypes$NullableType();
 
   @jni$_.internal
   @core$_.override
   String get signature =>
-      r'Lcom/daylightcomputer/coreplugin/entity/node/NodeTypes;';
+      r'Lcom/daylightcomputer/coreplugin/entity/thing/ThingTypes;';
 
   @jni$_.internal
   @core$_.override
-  NodeTypes? fromReference(jni$_.JReference reference) => reference.isNull
+  ThingTypes? fromReference(jni$_.JReference reference) => reference.isNull
       ? null
-      : NodeTypes.fromReference(
+      : ThingTypes.fromReference(
           reference,
         );
   @jni$_.internal
@@ -1661,35 +3198,35 @@ final class $NodeTypes$NullableType extends jni$_.JObjType<NodeTypes?> {
 
   @jni$_.internal
   @core$_.override
-  jni$_.JObjType<NodeTypes?> get nullableType => this;
+  jni$_.JObjType<ThingTypes?> get nullableType => this;
 
   @jni$_.internal
   @core$_.override
   final superCount = 1;
 
   @core$_.override
-  int get hashCode => ($NodeTypes$NullableType).hashCode;
+  int get hashCode => ($ThingTypes$NullableType).hashCode;
 
   @core$_.override
   bool operator ==(Object other) {
-    return other.runtimeType == ($NodeTypes$NullableType) &&
-        other is $NodeTypes$NullableType;
+    return other.runtimeType == ($ThingTypes$NullableType) &&
+        other is $ThingTypes$NullableType;
   }
 }
 
-final class $NodeTypes$Type extends jni$_.JObjType<NodeTypes> {
+final class $ThingTypes$Type extends jni$_.JObjType<ThingTypes> {
   @jni$_.internal
-  const $NodeTypes$Type();
+  const $ThingTypes$Type();
 
   @jni$_.internal
   @core$_.override
   String get signature =>
-      r'Lcom/daylightcomputer/coreplugin/entity/node/NodeTypes;';
+      r'Lcom/daylightcomputer/coreplugin/entity/thing/ThingTypes;';
 
   @jni$_.internal
   @core$_.override
-  NodeTypes fromReference(jni$_.JReference reference) =>
-      NodeTypes.fromReference(
+  ThingTypes fromReference(jni$_.JReference reference) =>
+      ThingTypes.fromReference(
         reference,
       );
   @jni$_.internal
@@ -1698,18 +3235,18 @@ final class $NodeTypes$Type extends jni$_.JObjType<NodeTypes> {
 
   @jni$_.internal
   @core$_.override
-  jni$_.JObjType<NodeTypes?> get nullableType =>
-      const $NodeTypes$NullableType();
+  jni$_.JObjType<ThingTypes?> get nullableType =>
+      const $ThingTypes$NullableType();
 
   @jni$_.internal
   @core$_.override
   final superCount = 1;
 
   @core$_.override
-  int get hashCode => ($NodeTypes$Type).hashCode;
+  int get hashCode => ($ThingTypes$Type).hashCode;
 
   @core$_.override
   bool operator ==(Object other) {
-    return other.runtimeType == ($NodeTypes$Type) && other is $NodeTypes$Type;
+    return other.runtimeType == ($ThingTypes$Type) && other is $ThingTypes$Type;
   }
 }

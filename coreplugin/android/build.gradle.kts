@@ -51,6 +51,7 @@ dependencies {
     implementation("com.daylightcomputer.hlc:hlc:1.0-SNAPSHOT")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
+    implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.6.2")
 
     // TODO: Needed for kotlinx datetime, otherwise R8 proguard screams
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-core:1.6.3")

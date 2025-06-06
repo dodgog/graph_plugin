@@ -5,6 +5,7 @@ import assertk.assertThat
 import assertk.assertions.hasMessage
 import assertk.assertions.isEqualTo
 import assertk.assertions.isFalse
+import assertk.assertions.isGreaterThan
 import assertk.assertions.isNull
 import assertk.assertions.isTrue
 import com.daylightcomputer.coreplugin.entity.AttributeValueRecord
@@ -163,5 +164,44 @@ class DocumentNodeTest {
         assertFailure {
             DocumentNode(entity)
         }.hasMessage("Title cannot be null for Node entity")
+    }
+
+    @Test
+    fun `mutable required field can be reassigned`() {
+        val entity =
+            Entity(
+                "doc8",
+                mutableMapOf(
+                    "type" to AttributeValueRecord("DOCUMENT", "time1"),
+                    "title" to AttributeValueRecord("Timestamped Document", "time5"),
+                    "author" to AttributeValueRecord("Tanuj", "time3"),
+                    "thought" to AttributeValueRecord("i think 1", "time2"),
+                ),
+            )
+
+        val node = DocumentNode(entity)
+        assertThat(node.thought).isEqualTo("i think 1")
+        node.thought = "i think 2"
+        assertThat(node.thought).isEqualTo("i think 2")
+    }
+
+    @Test
+    fun `mutable required field reassign increases timestamp`() {
+        val entity =
+            Entity(
+                "doc8",
+                mutableMapOf(
+                    "type" to AttributeValueRecord("DOCUMENT", "0time1"),
+                    "title" to AttributeValueRecord("Timestamped Document", "0time5"),
+                    "author" to AttributeValueRecord("Tanuj", "0time3"),
+                    "thought" to AttributeValueRecord("i think 1", "0time2"),
+                ),
+            )
+
+        val node = DocumentNode(entity)
+        val firstTime = node.lastModifiedAtTimestamp
+        node.thought = "i think 2"
+        val secondTime = node.lastModifiedAtTimestamp
+        assertThat(secondTime).isGreaterThan(firstTime)
     }
 }

@@ -31,6 +31,7 @@ data class Entity(
         attributeName: String,
         decode: (String?) -> T,
         encode: (T) -> String?,
+        timestampProvider: () -> String = issueTimestamp(),
     ) = object : ReadWriteProperty<Any?, T> {
         override fun getValue(
             thisRef: Any?,
@@ -42,7 +43,7 @@ data class Entity(
             property: KProperty<*>,
             value: T,
         ) {
-            setAttribute(attributeName, encode(value), "TODO time")
+            setAttribute(attributeName, encode(value), timestampProvider)
         }
     }
 
@@ -95,12 +96,19 @@ data class Entity(
     fun setAttribute(
         attributeName: String,
         value: String?,
-        timestamp: String,
+        timestampProvider: () -> String,
     ) {
-        _attributes[attributeName] = AttributeValueRecord(value, timestamp)
+        _attributes[attributeName] = AttributeValueRecord(value, timestampProvider())
     }
 
     companion object {
+        fun issueTimestamp() =
+            {
+                kotlinx.datetime.Clock.System
+                    .now()
+                    .toString()
+            }
+
         /**
          * From an arbitrary list of attributes find entity with id
          * TODO: is sequence appropriate here?
