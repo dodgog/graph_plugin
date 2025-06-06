@@ -14,11 +14,11 @@ class Node(
         decode = { it ?: throw IllegalArgumentException("Title cannot be null for Node entity") },
     )
 
-    override fun validateRequiredProperties() {
+    override fun validatePropertiesOnInit() {
         title
     }
 
     init {
-        validateRequiredProperties()
+        validatePropertiesOnInit()
     }
 }

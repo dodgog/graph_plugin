@@ -9,7 +9,7 @@ interface IThing {
     /**
      * Invocation of all the required properties because if they cannot be obtained they will throw
      */
-    fun validateRequiredProperties()
+    fun validatePropertiesOnInit()
 
 //
 //    // TODO different types
