@@ -47,6 +47,13 @@ sqldelight {
     }
 }
 
+// AIGEN to get the cli to work
+tasks.register("printRuntimeClasspath") {
+    doLast {
+        println(configurations["debugRuntimeClasspath"].files.joinToString(":"))
+    }
+}
+
 dependencies {
     implementation("com.daylightcomputer.hlc:hlc:1.0-SNAPSHOT")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
@@ -58,6 +65,10 @@ dependencies {
 
     implementation("androidx.annotation:annotation:1.9.1")
     implementation("app.cash.sqldelight:android-driver:2.0.2")
+
+    // CLI
+    implementation("app.cash.sqldelight:sqlite-driver:2.0.2")
+    runtimeOnly("org.xerial:sqlite-jdbc:3.32.3.3")
 
     testImplementation("androidx.test:core:1.6.1")
     testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.1")
